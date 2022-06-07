@@ -34,7 +34,6 @@ class ViewController: UIViewController {
                 //let time: Date
                 let tsunami: Int
                 let title: String
-                let coordinates: [Int]
             }
             
             struct Geometry: Codable {
@@ -54,7 +53,7 @@ class ViewController: UIViewController {
                         result = try JSONDecoder().decode(Response.self, from: data)
                     }
                     catch {
-                        print("Failed to convert \(error.localizedDescription)")
+                        print("Failed to convert \(error)")
                     }
 
                     guard let json = result else {
@@ -62,6 +61,7 @@ class ViewController: UIViewController {
                     }
                     
                     print(json.type)
+                    print(json.features)
                     
                 })
                     task.resume()
