@@ -47,18 +47,43 @@
         <!--Earthquakes-->
         <scene sceneID="yaM-Ga-AFo">
             <objects>
-                <viewController id="ns9-xb-6K3" customClass="ViewController" customModule="Quake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ns9-xb-6K3" customClass="EarthquakeViewController" customModule="Quake" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LeE-8k-EH6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZRp-Sv-ycg">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="mFf-FA-KOF">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mFf-FA-KOF" id="2SJ-tf-TWt">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="sBW-Hz-Iiw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sBW-Hz-Iiw" firstAttribute="bottom" secondItem="ZRp-Sv-ycg" secondAttribute="bottom" id="MNP-Ah-I2z"/>
+                            <constraint firstItem="sBW-Hz-Iiw" firstAttribute="trailing" secondItem="ZRp-Sv-ycg" secondAttribute="trailing" id="gze-dI-E35"/>
+                            <constraint firstItem="ZRp-Sv-ycg" firstAttribute="top" secondItem="sBW-Hz-Iiw" secondAttribute="top" id="hbS-DK-QOI"/>
+                            <constraint firstItem="ZRp-Sv-ycg" firstAttribute="leading" secondItem="sBW-Hz-Iiw" secondAttribute="leading" id="l2M-5s-Qgk"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Earthquakes" image="chart.xyaxis.line" catalog="system" id="7iv-60-ggf"/>
+                    <connections>
+                        <outlet property="tableView" destination="ZRp-Sv-ycg" id="LXS-9H-vis"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Duk-Ud-1Yd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2112" y="610"/>
+            <point key="canvasLocation" x="-2113.0434782608695" y="609.375"/>
         </scene>
         <!--Search-->
         <scene sceneID="q0p-Jf-Ulw">
@@ -79,7 +104,7 @@
         <!--Map-->
         <scene sceneID="5c4-as-43z">
             <objects>
-                <viewController id="KRY-XR-PfN" sceneMemberID="viewController">
+                <viewController id="KRY-XR-PfN" customClass="MapViewController" customModule="Quake" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZiZ-Ky-9Z7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
