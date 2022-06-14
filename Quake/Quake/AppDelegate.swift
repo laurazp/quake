@@ -15,14 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        window = UIWindow(frame: UIScreen.main.bounds)
+        /*window = UIWindow(frame: UIScreen.main.bounds)
         
         // Set up the Tab Bar Controller to have two tabs
         let tabBarController = UITabBarController()
                     
         // Make the Tab Bar Controller the root view controller
         window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
+        window?.makeKeyAndVisible()*/
         
         return true
     }

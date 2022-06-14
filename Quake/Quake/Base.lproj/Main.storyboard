@@ -27,12 +27,17 @@
         <!--Tab Bar Controller-->
         <scene sceneID="93g-o4-glm">
             <objects>
-                <tabBarController id="q9R-q6-LEf" sceneMemberID="viewController">
+                <tabBarController id="q9R-q6-LEf" customClass="TabBarController" customModule="Quake" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Nfg-qu-VnC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="initialIndex">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="ns9-xb-6K3" kind="relationship" relationship="viewControllers" id="cOa-yu-hkL"/>
                         <segue destination="KRY-XR-PfN" kind="relationship" relationship="viewControllers" id="w7d-YL-hha"/>
