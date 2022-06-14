@@ -15,8 +15,7 @@ class EarthquakeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = .gray
-        // Do any additional setup after loading the view.
+        setupTable()
         
         let anonymousFunction = { (fetchedData: [Feature]) in
             DispatchQueue.main.async {
@@ -33,6 +32,12 @@ class EarthquakeViewController: UIViewController {
                 self.tableView.reloadData()
             }
          }*/
+    }
+
+    private func setupTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "EarthquakeEventCell", bundle: nil), forCellReuseIdentifier: "EarthquakeEventCell")
     }
     
     struct Response: Codable {
@@ -95,28 +100,26 @@ class EarthquakeViewController: UIViewController {
 
 }
 
-extension EarthquakeViewController : UITableViewDelegate, UITableViewDataSource {
-    
+extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return earthquakesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = earthquakesData[indexPath.row].properties.title
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EarthquakeEventCell", for: indexPath) as? EarthquakeEventCell else { return UITableViewCell() }
+        cell.label.text = earthquakesData[indexPath.row].properties.title
         return cell
     }
-}
-
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Header"
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController")
+        viewController.title = "Detail"
+//        navigationController?.pushViewController(viewController, animated: true) // Navegacion
+        present(viewController, animated: true) // Modal
+    }
+}
