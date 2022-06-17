@@ -15,7 +15,8 @@ class TabBarController: UITabBarController {
         selectedIndex = initialIndex
         let earthquakes = getEarthquakesViewController()
         let map = getMapViewController()
-        viewControllers = [earthquakes, map]
+        let settings = getSettingsViewController()
+        viewControllers = [earthquakes, map, settings]
     }
     
     private func getMapViewController() -> UIViewController {
@@ -35,4 +36,14 @@ class TabBarController: UITabBarController {
         navigationController.tabBarItem.image = UIImage(systemName: "house")
         return navigationController
     }
+    
+    private func getSettingsViewController() -> UIViewController {
+        let storyboard = UIStoryboard(name: "SettingsStoryboard", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
+        viewController.title = "Settings"
+        let navigationController = UINavigationController(rootViewController: viewController) // TODO: Explicar navigation controller
+        navigationController.tabBarItem.image = UIImage(systemName: "wrench.and.screwdriver")
+        return navigationController
+    }
+    
 }

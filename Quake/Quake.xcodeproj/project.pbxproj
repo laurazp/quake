@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22143456285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22143455285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard */; };
+		22143458285CFED800F1CBA0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22143457285CFED800F1CBA0 /* SettingsViewController.swift */; };
+		2214345E285D093600F1CBA0 /* AnnotationInMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214345D285D093600F1CBA0 /* AnnotationInMap.swift */; };
 		223A2F1C284FFAA900034143 /* EarthquakesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223A2F1B284FFAA900034143 /* EarthquakesStoryboard.storyboard */; };
 		223A2F1E2856512E00034143 /* EarthquakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2F1D2856512E00034143 /* EarthquakeViewController.swift */; };
 		223A2F222857EF4000034143 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2F212857EF4000034143 /* TabBarController.swift */; };
@@ -45,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22143455285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsStoryboard.storyboard; sourceTree = "<group>"; };
+		22143457285CFED800F1CBA0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2214345D285D093600F1CBA0 /* AnnotationInMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationInMap.swift; sourceTree = "<group>"; };
 		223A2F1B284FFAA900034143 /* EarthquakesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EarthquakesStoryboard.storyboard; sourceTree = "<group>"; };
 		223A2F1D2856512E00034143 /* EarthquakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeViewController.swift; sourceTree = "<group>"; };
 		223A2F212857EF4000034143 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -94,6 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22143454285CFE9400F1CBA0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				22143455285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard */,
+				22143457285CFED800F1CBA0 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		2214345A285D087000F1CBA0 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				2214345D285D093600F1CBA0 /* AnnotationInMap.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
 		22990A03284BD40500C1104D = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +140,7 @@
 		22990A0E284BD40500C1104D /* Quake */ = {
 			isa = PBXGroup;
 			children = (
+				22143454285CFE9400F1CBA0 /* Settings */,
 				B615E8642858F16A00B77A5F /* EarthquakeDetail */,
 				B615E8612858ED5C00B77A5F /* TabBar */,
 				B615E8602858ED5100B77A5F /* Map */,
@@ -161,6 +185,7 @@
 		B615E8602858ED5100B77A5F /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				2214345A285D087000F1CBA0 /* Annotations */,
 				B615E8582858EBA800B77A5F /* MapViewController.swift */,
 				B615E85C2858EBE900B77A5F /* MapStoryboard.storyboard */,
 			);
@@ -304,6 +329,7 @@
 				B615E8632858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard in Resources */,
 				22990A17284BD40500C1104D /* Main.storyboard in Resources */,
 				B615E86B2858F5EF00B77A5F /* EarthquakeEventCell.xib in Resources */,
+				22143456285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard in Resources */,
 				B615E85D2858EBE900B77A5F /* MapStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,6 +363,8 @@
 				22990A12284BD40500C1104D /* SceneDelegate.swift in Sources */,
 				223A2F222857EF4000034143 /* TabBarController.swift in Sources */,
 				223A2F1E2856512E00034143 /* EarthquakeViewController.swift in Sources */,
+				2214345E285D093600F1CBA0 /* AnnotationInMap.swift in Sources */,
+				22143458285CFED800F1CBA0 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
