@@ -17,6 +17,7 @@ class TabBarController: UITabBarController {
         let map = getMapViewController()
         let settings = getSettingsViewController()
         viewControllers = [earthquakes, map, settings]
+        //UITabBar.appearance().barTintColor = UIColor.black
     }
     
     private func getMapViewController() -> UIViewController {

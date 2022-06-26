@@ -8,20 +8,42 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Earthquake Detail View Controller-->
+        <!--EarthquakeDetailViewController-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="EarthquakeDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="EarthquakeDetailViewController" customModule="Quake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EarthquakeDetailViewController" title="EarthquakeDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="EarthquakeDetailViewController" customModule="Quake" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xz-u2-Tje">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <accessibility key="accessibilityConfiguration" identifier="titleLabel">
+                                    <accessibilityTraits key="traits" staticText="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="P6K-N3-YW9"/>
+                                    <constraint firstAttribute="width" constant="50" id="yLL-Nu-96p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0Xz-u2-Tje" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="C50-lE-LtV"/>
+                            <constraint firstItem="0Xz-u2-Tje" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="bIX-a8-wQi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="bIX-a8-wQi" id="fY4-1O-PTC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="58"/>
+            <point key="canvasLocation" x="128.98550724637681" y="57.589285714285708"/>
         </scene>
     </scenes>
     <resources>

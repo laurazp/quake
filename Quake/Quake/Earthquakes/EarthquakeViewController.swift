@@ -7,12 +7,16 @@
 
 import UIKit
 
+var isOpened: Bool = false
+
 class EarthquakeViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
+    private var sections = [EarthquakeEventCell]()
     
     var earthquakesData = [Feature]()
-
+    var myIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
@@ -35,9 +39,10 @@ class EarthquakeViewController: UIViewController {
     }
 
     private func setupTable() {
+        tableView.register(UINib(nibName: "EarthquakeEventCell", bundle: nil), forCellReuseIdentifier: "EarthquakeEventCell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "EarthquakeEventCell", bundle: nil), forCellReuseIdentifier: "EarthquakeEventCell")
+        tableView.frame = view.bounds
     }
     
     struct Response: Codable {
@@ -64,7 +69,7 @@ class EarthquakeViewController: UIViewController {
     }
 
     
-    /*private*/ func getData(completion: @escaping ([Feature])-> ()) {
+    private func getData(completion: @escaping ([Feature])-> ()) {
                 
         let url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02"
                 
@@ -89,7 +94,6 @@ class EarthquakeViewController: UIViewController {
                 return
             }
                     
-            //print(json.type)
             print(json.features)
             // Closure calling
             completion(json.features)
@@ -98,9 +102,17 @@ class EarthquakeViewController: UIViewController {
             task.resume()
     }
 
+    public func expandCells() {
+        print("You're inside the expandCells function!")
+        isOpened = true
+        print("isOpened = " + String(isOpened))
+        
+    }
+    
 }
 
 extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return earthquakesData.count
     }
@@ -108,6 +120,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EarthquakeEventCell", for: indexPath) as? EarthquakeEventCell else { return UITableViewCell() }
         cell.label.text = earthquakesData[indexPath.row].properties.title
+        //cell.expandableImage.backgroundColor = .blue
         return cell
     }
     
@@ -115,11 +128,49 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
         return "Header"
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return earthquakesData.count
+    }
+    
+    func indexPathForPreferredFocusedView(in tableView: UITableView) -> IndexPath? {
+        return tableView.indexPathForSelectedRow
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Expandable cells testing
+        if(isOpened == true) {
+            print("Cell is OPENED")
+            // Expandable cells test
+            isOpened = false
+            //tableView.deselectRow(at: indexPath, animated: true)
+            let sections = IndexSet.init(integer: indexPath.section)
+            tableView.reloadSections(sections, with: .none)
+            //tableView.reloadSections([indexPath.section], with: .none)
+            //earthquakesData[indexPath.section].isOpened = !earthquakesData[indexPath.section].isOpened
+        }
+        else {
+            print("Cell is CLOSED")
+            isOpened = true
+            let sections = IndexSet.init(integer: indexPath.section)
+            tableView.reloadSections(sections, with: .none)
+        }
+        // End of Expandable cells testing
+        
+        myIndex = indexPath.row
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController")
+        //let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController")
+        let viewController = EarthquakeDetailViewController()
         viewController.title = "Detail"
-//        navigationController?.pushViewController(viewController, animated: true) // Navegacion
-        present(viewController, animated: true) // Modal
+        
+        // Passing data to EarthquakeDetailViewController
+        viewController.titleFromCell = earthquakesData[myIndex].properties.title
+        print("Title from cell = " + (viewController.titleFromCell ?? "null"))
+        
+        navigationController?.pushViewController(viewController, animated: true) // Navegacion
+        //present(viewController, animated: true) // Modal (pantalla de abajo a arriba)
+        
+        
+    
     }
 }
