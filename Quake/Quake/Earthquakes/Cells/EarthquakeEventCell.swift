@@ -7,13 +7,19 @@
 
 import UIKit
 
+protocol EarthquakeEventCellDelegate: AnyObject {
+    func didExpandCell(isExpanded: Bool, indexPath: IndexPath)
+}
+
 class EarthquakeEventCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var magnitudeLabel: UILabel!
     @IBOutlet weak var expandableImage: UIImageView!
+    @IBOutlet weak var expandableView: UIView!
     
-    var isOpened: Bool = false
+    var indexPath: IndexPath = IndexPath()
+    weak var delegate: EarthquakeEventCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,29 +33,12 @@ class EarthquakeEventCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    @IBAction func tap() {
-        
-    }
-    
-    @objc func tappedMe() {
+    @objc private func tappedMe() {
         print("Tapped on ExpandableImage")
         
-        // TODO: Expand the cell
-        let viewController = EarthquakeViewController()
-        viewController.expandCells()
-        
-        /*let viewController = EarthquakeViewController()
-        viewController.tableView.deselectRow(at: (viewController.inde, animated: true)
-        
-        if isOpened == true {
-            isOpened = false
-        }
-        else {
-            isOpened = true
-        }
-        
-        viewController.tableView.reloadSections([indexPath.section], with: .none)*/
-        
+        //Expand the cell
+        expandableView.isHidden = !expandableView.isHidden
+        delegate?.didExpandCell(isExpanded: !expandableView.isHidden, indexPath: indexPath)
     }
     
 }

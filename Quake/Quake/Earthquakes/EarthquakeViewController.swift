@@ -9,7 +9,7 @@ import UIKit
 
 var isOpened: Bool = false
 
-class EarthquakeViewController: UIViewController {
+class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     
     @IBOutlet var tableView: UITableView!
     private var sections = [EarthquakeEventCell]()
@@ -101,12 +101,9 @@ class EarthquakeViewController: UIViewController {
         })
             task.resume()
     }
-
-    public func expandCells() {
-        print("You're inside the expandCells function!")
-        isOpened = true
-        print("isOpened = " + String(isOpened))
-        
+    
+    func didExpandCell(isExpanded: Bool, indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
 }
@@ -120,57 +117,41 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EarthquakeEventCell", for: indexPath) as? EarthquakeEventCell else { return UITableViewCell() }
         cell.label.text = earthquakesData[indexPath.row].properties.title
-        //cell.expandableImage.backgroundColor = .blue
+        cell.indexPath = indexPath
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Header"
+        return "Earthquakes"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return earthquakesData.count
-    }
-    
-    func indexPathForPreferredFocusedView(in tableView: UITableView) -> IndexPath? {
-        return tableView.indexPathForSelectedRow
+        return 1
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // Expandable cells testing
-        if(isOpened == true) {
-            print("Cell is OPENED")
-            // Expandable cells test
-            isOpened = false
-            //tableView.deselectRow(at: indexPath, animated: true)
-            let sections = IndexSet.init(integer: indexPath.section)
-            tableView.reloadSections(sections, with: .none)
-            //tableView.reloadSections([indexPath.section], with: .none)
-            //earthquakesData[indexPath.section].isOpened = !earthquakesData[indexPath.section].isOpened
-        }
-        else {
-            print("Cell is CLOSED")
-            isOpened = true
-            let sections = IndexSet.init(integer: indexPath.section)
-            tableView.reloadSections(sections, with: .none)
-        }
-        // End of Expandable cells testing
-        
-        myIndex = indexPath.row
+       
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
-        //let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController")
-        let viewController = EarthquakeDetailViewController()
-        viewController.title = "Detail"
-        
-        // Passing data to EarthquakeDetailViewController
-        viewController.titleFromCell = earthquakesData[myIndex].properties.title
-        print("Title from cell = " + (viewController.titleFromCell ?? "null"))
-        
-        navigationController?.pushViewController(viewController, animated: true) // Navegacion
-        //present(viewController, animated: true) // Modal (pantalla de abajo a arriba)
-        
-        
+        if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
+            //let viewController = EarthquakeDetailViewController()
+            viewController.title = "Detail"
+            
+            // Passing data to EarthquakeDetailViewController
+            viewController.titleFromCell = earthquakesData[myIndex].properties.title
+            print("Title from cell = " + (viewController.titleFromCell ?? "null"))
+            
+            navigationController?.pushViewController(viewController, animated: true) // Navegacion
+            //present(viewController, animated: true) // Modal (pantalla de abajo a arriba)
+            
+        }
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 135
     }
 }
