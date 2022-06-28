@@ -19,7 +19,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         mapView.delegate = self
 
-        // Show custom artwork on map
+        // Show custom earthquake on map
         /*let annotationInMap = AnnotationInMap(
           title: "King David Kalakaua",
           locationName: "Waikiki Gateway Park",
@@ -29,7 +29,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         loadInitialData()
         mapView.addAnnotations(annotationsInMap)
-
     }
      
     private func layoutUI() {
@@ -87,11 +86,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     private func loadInitialData() {
       // 1
-        // TODO: Cambiar este punto 1 por acceso a url de terremotos
-      guard
-        let fileName = Bundle.main.url(forResource: "Earthquakes", withExtension: "geojson"),
+        let url: String = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02"
+        
+      guard let fileName = URL.init(string: url),
+            
         let earthquakesData = try? Data(contentsOf: fileName)
         else {
+          print("Error retrieving data from url")
           return
       }
 
@@ -158,6 +159,7 @@ extension ViewController: MKMapViewDelegate {
   ) -> MKAnnotationView? {
     // 2
     guard let annotation = annotation as? AnnotationInMap else {
+        print("No se puede crear un globo de info")
       return nil
     }
     // 3

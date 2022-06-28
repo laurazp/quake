@@ -53,6 +53,6 @@ class AnnotationInMap: NSObject, MKAnnotation {
 
 
       var subtitle: String? {
-        return place
+          return "Magnitude: \(mag ?? 0.0)"
       }
     }
