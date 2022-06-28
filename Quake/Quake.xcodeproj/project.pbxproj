@@ -13,6 +13,11 @@
 		223A2F1C284FFAA900034143 /* EarthquakesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223A2F1B284FFAA900034143 /* EarthquakesStoryboard.storyboard */; };
 		223A2F1E2856512E00034143 /* EarthquakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2F1D2856512E00034143 /* EarthquakeViewController.swift */; };
 		223A2F222857EF4000034143 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2F212857EF4000034143 /* TabBarController.swift */; };
+		227D906A286B226600A0DED5 /* EarthquakeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9069286B226600A0DED5 /* EarthquakeDetail.swift */; };
+		227D906D286B325900A0DED5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D906C286B325900A0DED5 /* Response.swift */; };
+		227D906F286B329200A0DED5 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D906E286B329200A0DED5 /* Feature.swift */; };
+		227D9071286B32CB00A0DED5 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9070286B32CB00A0DED5 /* Property.swift */; };
+		227D9073286B32F700A0DED5 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9072286B32F700A0DED5 /* Geometry.swift */; };
 		22990A10284BD40500C1104D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A0F284BD40500C1104D /* AppDelegate.swift */; };
 		22990A12284BD40500C1104D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A11284BD40500C1104D /* SceneDelegate.swift */; };
 		22990A14284BD40500C1104D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A13284BD40500C1104D /* ViewController.swift */; };
@@ -54,6 +59,11 @@
 		223A2F1B284FFAA900034143 /* EarthquakesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EarthquakesStoryboard.storyboard; sourceTree = "<group>"; };
 		223A2F1D2856512E00034143 /* EarthquakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeViewController.swift; sourceTree = "<group>"; };
 		223A2F212857EF4000034143 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		227D9069286B226600A0DED5 /* EarthquakeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetail.swift; sourceTree = "<group>"; };
+		227D906C286B325900A0DED5 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		227D906E286B329200A0DED5 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		227D9070286B32CB00A0DED5 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		227D9072286B32F700A0DED5 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		22990A0C284BD40500C1104D /* Quake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990A0F284BD40500C1104D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22990A11284BD40500C1104D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +127,25 @@
 			path = Annotations;
 			sourceTree = "<group>";
 		};
+		227D9068286B223F00A0DED5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				227D9069286B226600A0DED5 /* EarthquakeDetail.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		227D906B286B323300A0DED5 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				227D906C286B325900A0DED5 /* Response.swift */,
+				227D906E286B329200A0DED5 /* Feature.swift */,
+				227D9070286B32CB00A0DED5 /* Property.swift */,
+				227D9072286B32F700A0DED5 /* Geometry.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		22990A03284BD40500C1104D = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +169,7 @@
 		22990A0E284BD40500C1104D /* Quake */ = {
 			isa = PBXGroup;
 			children = (
+				227D906B286B323300A0DED5 /* API */,
 				22143454285CFE9400F1CBA0 /* Settings */,
 				B615E8642858F16A00B77A5F /* EarthquakeDetail */,
 				B615E8612858ED5C00B77A5F /* TabBar */,
@@ -175,6 +205,7 @@
 		B615E85F2858ED4600B77A5F /* Earthquakes */ = {
 			isa = PBXGroup;
 			children = (
+				227D9068286B223F00A0DED5 /* Model */,
 				B615E8672858F5C300B77A5F /* Cells */,
 				223A2F1B284FFAA900034143 /* EarthquakesStoryboard.storyboard */,
 				223A2F1D2856512E00034143 /* EarthquakeViewController.swift */,
@@ -355,15 +386,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227D9071286B32CB00A0DED5 /* Property.swift in Sources */,
 				22990A14284BD40500C1104D /* ViewController.swift in Sources */,
 				B615E86A2858F5EF00B77A5F /* EarthquakeEventCell.swift in Sources */,
 				B615E85A2858EBA800B77A5F /* MapViewController.swift in Sources */,
+				227D9073286B32F700A0DED5 /* Geometry.swift in Sources */,
 				B615E8662858F18100B77A5F /* EarthquakeDetailViewController.swift in Sources */,
+				227D906D286B325900A0DED5 /* Response.swift in Sources */,
 				22990A10284BD40500C1104D /* AppDelegate.swift in Sources */,
 				22990A12284BD40500C1104D /* SceneDelegate.swift in Sources */,
 				223A2F222857EF4000034143 /* TabBarController.swift in Sources */,
 				223A2F1E2856512E00034143 /* EarthquakeViewController.swift in Sources */,
 				2214345E285D093600F1CBA0 /* AnnotationInMap.swift in Sources */,
+				227D906A286B226600A0DED5 /* EarthquakeDetail.swift in Sources */,
+				227D906F286B329200A0DED5 /* Feature.swift in Sources */,
 				22143458285CFED800F1CBA0 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

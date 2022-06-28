@@ -1,9 +1,3 @@
-//
-//  EarthquakeEventCell.swift
-//  Quake
-//
-//  Created by Guillermo Zafra on 14/6/22.
-//
 
 import UIKit
 

@@ -1,9 +1,3 @@
-//
-//  EarthquakeViewController.swift
-//  Quake
-//
-//  Created by Laura Zafra Prat on 12/6/22.
-//
 
 import UIKit
 
@@ -27,15 +21,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
                 self.tableView.reloadData()
             }
         }
-        
         getData(completion: anonymousFunction)
-        
-        // Method calling
-        /*getData { data in self.earthquakesData = data
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-         }*/
     }
 
     private func setupTable() {
@@ -47,9 +33,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
     
     struct Response: Codable {
-        //let type: String
         let features: [Feature]
-                
     }
 
     struct Feature: Codable {
@@ -60,7 +44,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     struct Property: Codable {
         let mag: Double
         let place: String
-        //let time: Date
+        let time: Date
         let tsunami: Int
         let title: String
     }
@@ -69,7 +53,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         let coordinates: [Float]
     }
 
-    
     private func getData(completion: @escaping ([Feature])-> ()) {
                 
         let url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02"
@@ -96,8 +79,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
             }
                     
             print(json.features)
-            // Closure calling
-            completion(json.features)
+            completion(json.features) // Closure calling
                     
         })
             task.resume()
@@ -128,7 +110,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Earthquakes"
+        return "Last Earthquakes"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -137,18 +119,25 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
+        let myIndex = indexPath.row
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
-            //let viewController = EarthquakeDetailViewController()
-            viewController.title = "Detail"
-            
+            viewController.title = "Earthquake Detail"
+           
             // Passing data to EarthquakeDetailViewController
-            viewController.titleFromCell = earthquakesData[myIndex].properties.title
-            print("Title from cell = " + (viewController.titleFromCell ?? "null"))
+            let properties = earthquakesData[myIndex].properties
+            let geometry = earthquakesData[myIndex].geometry
             
+            let selectedEarthquakeDetail = EarthquakeDetail(title: properties.title,
+                                                            place: properties.place,
+                                                            time: properties.time,
+                                                            tsunami: properties.tsunami,
+                                                            coords: geometry.coordinates,
+                                                            magnitude: properties.mag)
+            
+            viewController.earthquakeDetail = selectedEarthquakeDetail
             navigationController?.pushViewController(viewController, animated: true) // Navegacion
             //present(viewController, animated: true) // Modal (pantalla de abajo a arriba)
-            
         }
     }
 }
