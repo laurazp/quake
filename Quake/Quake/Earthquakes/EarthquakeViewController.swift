@@ -28,7 +28,8 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.register(UINib(nibName: "EarthquakeEventCell", bundle: nil), forCellReuseIdentifier: "EarthquakeEventCell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = view.bounds
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 90
     }
     
     struct Response: Codable {
@@ -85,7 +86,12 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
     
     func didExpandCell(isExpanded: Bool, indexPath: IndexPath) {
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        self.tableView.beginUpdates()
+            let cell = tableView.cellForRow(at: indexPath) as! EarthquakeEventCell
+            cell.animate(duration: 0, c: {
+                cell.expandableView.layoutIfNeeded()
+            })
+            self.tableView.endUpdates()
     }
 }
 
@@ -133,13 +139,5 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(viewController, animated: true) // Navegacion
             //present(viewController, animated: true) // Modal (pantalla de abajo a arriba)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 135
     }
 }

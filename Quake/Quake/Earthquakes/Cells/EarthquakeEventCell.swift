@@ -27,11 +27,28 @@ class EarthquakeEventCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func animate(duration:Double, c: @escaping () -> Void) {
+        
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModePaced, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: duration, animations: {
+                
+                self.expandableView.isHidden = !self.expandableView.isHidden
+                if self.expandableView.alpha == 1 {
+                    self.expandableView.alpha = 0.5
+                } else {
+                    self.expandableView.alpha = 1
+                }
+            })
+            
+        }, completion: {  (finished: Bool) in
+            print("animation complete")
+            c()
+        })
+    }
+    
     @objc private func tappedMe() {
         print("Tapped on ExpandableImage")
         
-        //Expand the cell
-        expandableView.isHidden = !expandableView.isHidden
         delegate?.didExpandCell(isExpanded: !expandableView.isHidden, indexPath: indexPath)
     }
     
