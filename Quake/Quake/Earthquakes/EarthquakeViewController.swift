@@ -43,7 +43,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     struct Property: Codable {
         let mag: Double
         let place: String
-        //let time: Date
+        let time: Date
         let tsunami: Int
         let title: String
     }
@@ -124,6 +124,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
             
             let selectedEarthquakeDetail = EarthquakeDetail(title: properties.title,
                                                             place: properties.place,
+                                                            time: properties.time,
                                                             tsunami: properties.tsunami,
                                                             coords: geometry.coordinates,
                                                             magnitude: properties.mag)

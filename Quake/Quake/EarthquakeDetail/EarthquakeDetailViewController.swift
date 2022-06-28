@@ -5,6 +5,7 @@ class EarthquakeDetailViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var tsunamiLabel: UILabel!
     @IBOutlet weak var coordsLabel: UILabel!
     @IBOutlet weak var magnitudeLabel: UILabel!
@@ -13,8 +14,8 @@ class EarthquakeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = .orange
-       
+        //view.backgroundColor = UIColor.systemMint
+        
         if let earthquakeDetail = earthquakeDetail {
             configure(with: earthquakeDetail)
         }
@@ -26,31 +27,18 @@ class EarthquakeDetailViewController: UIViewController {
     }
     
     private func configure(with earthquakeDetail: EarthquakeDetail) {
+        // Formatting Date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .medium
+        let formattedDate = dateFormatter.string(from: earthquakeDetail.time)
+        
+        // Assigning data to variables
         titleLabel.text = earthquakeDetail.title
         placeLabel.text = "Place: \(earthquakeDetail.place)"
+        timeLabel.text = "Time: \(formattedDate)"
         tsunamiLabel.text = "Tsunami: \(earthquakeDetail.tsunami)"
         coordsLabel.text = "Coords: \(earthquakeDetail.coords)"
         magnitudeLabel.text = "Magnitude: \(earthquakeDetail.magnitude)"
     }
 }
-
-
-
-/*
- struct Feature: Codable {
-     let properties: Property
-     let geometry: Geometry
- }
-         
- struct Property: Codable {
-     let mag: Double
-     let place: String
-     //let time: Date
-     let tsunami: Int
-     let title: String
- }
-         
- struct Geometry: Codable {
-     let coordinates: [Float]
- }
- */
