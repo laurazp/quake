@@ -2,17 +2,14 @@
 import UIKit
 import MapKit
 
-
-
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
-    private let mapView = MKMapView(frame: .zero)
+    @IBOutlet private var mapView: MKMapView!
+    //private let mapView = MKMapView(frame: .zero)
     private let locationManager = CLLocationManager()
-    private let rangeInMeters: Double = 10000
-    
+    private let rangeInMeters: Double = 1000000
     private var annotationsInMap: [AnnotationInMap] = []
-
-     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                     

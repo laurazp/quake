@@ -15,9 +15,23 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uh7-M0-QWH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uh7-M0-QWH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ANG-64-rpf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="uh7-M0-QWH" secondAttribute="trailing" id="dgs-ru-RiN"/>
+                            <constraint firstItem="uh7-M0-QWH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="lxf-vO-o31"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="uh7-M0-QWH" secondAttribute="bottom" id="wBF-xv-MWX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="uh7-M0-QWH" id="vnx-le-JCN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
