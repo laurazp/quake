@@ -10,38 +10,52 @@ class AnnotationInMap: NSObject, MKAnnotation {
     let mag: Double?
     let tsunami: Int?
     let coordinate: CLLocationCoordinate2D
+    
+    var markerTintColor: UIColor {
+        let magLvl = getMagnitudeLevel(magnitude: self.mag ?? 0.0)
+        print("mag level = \(magLvl)")
+        
+        switch magLvl {
+        case 1:
+            return .green
+        case 2:
+            return .orange
+        case 3:
+            return .red
+        default:
+            return .blue
+        }
+    }
 
-      init(
+    init(
         title: String?,
         place: String?,
         time: Date?,
         mag: Double?,
         tsunami: Int?,
         coordinate: CLLocationCoordinate2D
-      ) {
-          self.title = title
-          self.place = place
-          self.time = time
-          self.mag = mag
-          self.tsunami = tsunami
-          self.coordinate = coordinate
+    ) {
+        self.title = title
+        self.place = place
+        self.time = time
+        self.mag = mag
+        self.tsunami = tsunami
+        self.coordinate = coordinate
 
-          super.init()
-      }
+        super.init()
+    }
     
     init?(feature: MKGeoJSONFeature) {
-      // 1
-      guard
-        let point = feature.geometry.first as? MKPointAnnotation,
+      
+        guard let point = feature.geometry.first as? MKPointAnnotation,
         let propertiesData = feature.properties,
         let json = try? JSONSerialization.jsonObject(with: propertiesData),
         let properties = json as? [String: Any]
         else {
           print("Error retrieveing data for map")
           return nil
-      }
+        }
 
-      // 3
         title = properties["title"] as? String
         place = properties["place"] as? String
         time = properties["time"] as? Date
@@ -52,7 +66,20 @@ class AnnotationInMap: NSObject, MKAnnotation {
     }
 
 
-      var subtitle: String? {
-          return "Magnitude: \(mag ?? 0.0)"
-      }
+    var subtitle: String? {
+        return "Magnitude: \(mag ?? 0.0)"
     }
+    
+    private func getMagnitudeLevel(magnitude: Double) -> Int {
+        if mag ?? 0.0 < 3 {
+            return 1
+        }
+        if 3 < mag ?? 0.0 && mag ?? 0.0 < 6 {
+            return 2
+        }
+        if mag ?? 0.0 > 6 {
+            return 3
+        }
+        return 0
+    }
+}
