@@ -30,7 +30,7 @@ class EarthquakeDetailViewController: UIViewController {
         // Formatting Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .medium
+        dateFormatter.timeStyle = .medium //TODO: mirar formato !!!
         let formattedDate = dateFormatter.string(from: earthquakeDetail.time)
         
         // Assigning data to variables
