@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EDm-VB-u2D">
-                                <rect key="frame" x="179" y="119" width="56" height="668"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EDm-VB-u2D">
+                                <rect key="frame" x="16" y="119" width="382" height="209"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xz-u2-Tje">
-                                        <rect key="frame" x="0.0" y="0.0" width="56" height="111.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xz-u2-Tje">
+                                        <rect key="frame" x="0.0" y="0.0" width="56" height="26.5"/>
                                         <accessibility key="accessibilityConfiguration" identifier="titleLabel">
                                             <accessibilityTraits key="traits" staticText="YES"/>
                                         </accessibility>
@@ -28,8 +28,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myd-fQ-N41" userLabel="Place Label">
-                                        <rect key="frame" x="0.0" y="111.5" width="56" height="111"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myd-fQ-N41" userLabel="Place Label">
+                                        <rect key="frame" x="0.0" y="36.5" width="48" height="26.5"/>
                                         <accessibility key="accessibilityConfiguration" identifier="titleLabel">
                                             <accessibilityTraits key="traits" staticText="YES"/>
                                         </accessibility>
@@ -38,7 +38,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Oc-dV-WML" userLabel="Time Label">
-                                        <rect key="frame" x="0.0" y="222.5" width="56" height="111.5"/>
+                                        <rect key="frame" x="0.0" y="73" width="48" height="26.5"/>
                                         <accessibility key="accessibilityConfiguration" identifier="titleLabel">
                                             <accessibilityTraits key="traits" staticText="YES"/>
                                         </accessibility>
@@ -47,7 +47,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSH-6d-ND6" userLabel="Tsunami Label">
-                                        <rect key="frame" x="0.0" y="334" width="56" height="111.5"/>
+                                        <rect key="frame" x="0.0" y="109.5" width="48" height="26.5"/>
                                         <accessibility key="accessibilityConfiguration" identifier="titleLabel">
                                             <accessibilityTraits key="traits" staticText="YES"/>
                                         </accessibility>
@@ -56,7 +56,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfj-MH-dYQ" userLabel="Coordinates Label">
-                                        <rect key="frame" x="0.0" y="445.5" width="56" height="111"/>
+                                        <rect key="frame" x="0.0" y="146" width="48" height="26.5"/>
                                         <accessibility key="accessibilityConfiguration" identifier="titleLabel">
                                             <accessibilityTraits key="traits" staticText="YES"/>
                                         </accessibility>
@@ -65,7 +65,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn0-Dr-nsa" userLabel="Magnitude Label">
-                                        <rect key="frame" x="0.0" y="556.5" width="56" height="111.5"/>
+                                        <rect key="frame" x="0.0" y="182.5" width="48" height="26.5"/>
                                         <accessibility key="accessibilityConfiguration" identifier="titleLabel">
                                             <accessibilityTraits key="traits" staticText="YES"/>
                                         </accessibility>
@@ -79,9 +79,9 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EDm-VB-u2D" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8UA-6M-lKi"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="EDm-VB-u2D" secondAttribute="trailing" constant="16" id="8CJ-Gi-BkI"/>
                             <constraint firstItem="EDm-VB-u2D" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="75" id="EKs-Z7-Vid"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="EDm-VB-u2D" secondAttribute="bottom" constant="75" id="xfA-OQ-lJe"/>
+                            <constraint firstItem="EDm-VB-u2D" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="vnv-lp-uhT"/>
                         </constraints>
                     </view>
                     <connections>

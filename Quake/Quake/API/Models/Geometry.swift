@@ -1,6 +1,6 @@
 
 import Foundation
 
-struct Geometry {
+struct Geometry: Codable {
     let coordinates: [Float]
 }

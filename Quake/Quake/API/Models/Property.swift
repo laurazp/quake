@@ -1,9 +1,9 @@
 
 import Foundation
 
-struct Property {
+struct Property: Codable {
     let mag: Double
-    let place: String
+    let place: String?
     let time: Date
     let tsunami: Int
     let title: String

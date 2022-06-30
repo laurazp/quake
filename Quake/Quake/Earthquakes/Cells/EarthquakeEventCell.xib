@@ -36,6 +36,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="MOG-n9-UkV" firstAttribute="top" secondItem="dTO-pC-7Li" secondAttribute="top" constant="20" id="4zM-Bk-Zaq"/>
+                                    <constraint firstItem="PR3-gf-aJw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MOG-n9-UkV" secondAttribute="trailing" constant="8" id="dvD-st-IVb"/>
                                     <constraint firstItem="PR3-gf-aJw" firstAttribute="centerY" secondItem="MOG-n9-UkV" secondAttribute="centerY" id="gtk-hE-kxT"/>
                                     <constraint firstAttribute="trailing" secondItem="PR3-gf-aJw" secondAttribute="trailing" constant="20" id="sRu-ce-viX"/>
                                     <constraint firstItem="MOG-n9-UkV" firstAttribute="leading" secondItem="dTO-pC-7Li" secondAttribute="leading" constant="20" id="uEm-6j-RSW"/>

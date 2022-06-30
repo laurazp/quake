@@ -71,15 +71,14 @@ class AnnotationInMap: NSObject, MKAnnotation {
     }
     
     private func getMagnitudeLevel(magnitude: Double) -> Int {
-        if mag ?? 0.0 < 3 {
+        if magnitude < 3 {
             return 1
         }
-        if 3 < mag ?? 0.0 && mag ?? 0.0 < 6 {
+        else if magnitude >= 3 && magnitude < 6 {
             return 2
         }
-        if mag ?? 0.0 > 6 {
+        else {
             return 3
         }
-        return 0
     }
 }

@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Feature {
+struct Feature: Codable {
     let properties: Property
     let geometry: Geometry
 }

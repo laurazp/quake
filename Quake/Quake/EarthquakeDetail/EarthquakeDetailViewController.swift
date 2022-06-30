@@ -35,7 +35,7 @@ class EarthquakeDetailViewController: UIViewController {
         
         // Assigning data to variables
         titleLabel.text = earthquakeDetail.title
-        placeLabel.text = "Place: \(earthquakeDetail.place)"
+        placeLabel.text = "Place: \(earthquakeDetail.place ?? "Unknown")"
         timeLabel.text = "Time: \(formattedDate)"
         tsunamiLabel.text = "Tsunami: \(earthquakeDetail.tsunami)"
         coordsLabel.text = "Coords: \(earthquakeDetail.coords)"

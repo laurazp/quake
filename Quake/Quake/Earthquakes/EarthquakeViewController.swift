@@ -21,7 +21,16 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
                 self.tableView.reloadData()
             }
         }
-        getData(completion: anonymousFunction)
+        // Dates
+        let endTime = Date.now
+        let startTime = Calendar.current.date(byAdding: .day, value: -30, to: endTime) ?? Date.distantPast
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        let endTimeString = dateFormatterGet.string(from: endTime)
+        let startTimeString = dateFormatterGet.string(from: startTime)
+        
+        getData(startTime: startTimeString, endTime: endTimeString, completion: anonymousFunction)
     }
 
     private func setupTable() {
@@ -31,31 +40,10 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
     }
-    
-    struct Response: Codable {
-        let features: [Feature]
-    }
 
-    struct Feature: Codable {
-        let properties: Property
-        let geometry: Geometry
-    }
-            
-    struct Property: Codable {
-        let mag: Double
-        let place: String
-        let time: Date
-        let tsunami: Int
-        let title: String
-    }
-            
-    struct Geometry: Codable {
-        let coordinates: [Float]
-    }
-
-    private func getData(completion: @escaping ([Feature])-> ()) {
+    private func getData(startTime: String, endTime: String, completion: @escaping ([Feature])-> ()) {
                 
-        let url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02"
+        let url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)"
                 
         let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { (data, response, error) in
             guard let data = data, error == nil else {
