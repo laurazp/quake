@@ -34,6 +34,11 @@ DerivedData/
 timeline.xctimeline
 playground.xcworkspace
 
+## Other
+**.DS_Store
+.DS_Store
+**.xcscheme
+
 # Swift Package Manager
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
