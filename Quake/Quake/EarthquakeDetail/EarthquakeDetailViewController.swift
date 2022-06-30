@@ -35,10 +35,28 @@ class EarthquakeDetailViewController: UIViewController {
         
         // Assigning data to variables
         titleLabel.text = earthquakeDetail.title
-        placeLabel.text = "Place: \(earthquakeDetail.place ?? "Unknown")"
-        timeLabel.text = "Time: \(formattedDate)"
-        tsunamiLabel.text = "Tsunami: \(earthquakeDetail.tsunami)"
-        coordsLabel.text = "Coords: \(earthquakeDetail.coords)"
-        magnitudeLabel.text = "Magnitude: \(earthquakeDetail.magnitude)"
+        placeLabel.attributedText = getLabelText(labelTitle: "Place:  ", labelContent: (earthquakeDetail.place ?? "Unknown"))
+        timeLabel.attributedText = getLabelText(labelTitle: "Time:  ", labelContent: "\(formattedDate)")
+        tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: "\(earthquakeDetail.tsunami)")
+        coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: "\(earthquakeDetail.coords)")
+        magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "\(earthquakeDetail.magnitude)")
+        
+        //placeLabel.text = "Place: \(earthquakeDetail.place ?? "Unknown")"
+        //timeLabel.text = "Time: \(formattedDate)"
+        //tsunamiLabel.text = "Tsunami: \(earthquakeDetail.tsunami)"
+        //coordsLabel.text = "Coords: \(earthquakeDetail.coords)"
+        //magnitudeLabel.text = "Magnitude: \(earthquakeDetail.magnitude)"
+    }
+    
+    private func getLabelText(labelTitle: String, labelContent: String) -> NSMutableAttributedString {
+        let boldText = labelTitle
+        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)]
+        let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
+
+        let normalText = labelContent
+        let normalString = NSMutableAttributedString(string:normalText)
+
+        attributedString.append(normalString)
+        return attributedString
     }
 }

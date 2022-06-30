@@ -15,13 +15,16 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         super.viewDidLoad()
         setupTable()
         
+        let earthquakesApiDataSource = EarthquakesApiDataSource()
+        
         let anonymousFunction = { (fetchedData: [Feature]) in
             DispatchQueue.main.async {
                 self.earthquakesData = fetchedData
                 self.tableView.reloadData()
             }
         }
-        // Dates
+        
+        // Define and format Dates
         let endTime = Date.now
         let startTime = Calendar.current.date(byAdding: .day, value: -30, to: endTime) ?? Date.distantPast
         
@@ -30,7 +33,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         let endTimeString = dateFormatterGet.string(from: endTime)
         let startTimeString = dateFormatterGet.string(from: startTime)
         
-        getData(startTime: startTimeString, endTime: endTimeString, completion: anonymousFunction)
+        earthquakesApiDataSource.getData(startTime: startTimeString, endTime: endTimeString, completion: anonymousFunction)
     }
 
     private func setupTable() {
@@ -41,38 +44,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.estimatedRowHeight = 90
     }
 
-    private func getData(startTime: String, endTime: String, completion: @escaping ([Feature])-> ()) {
-                
-        let url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)"
-                
-        let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { (data, response, error) in
-            guard let data = data, error == nil else {
-                print("Something went wrong...")
-                return
-            }
-                    
-            // Have data
-            var result: Response?
-            do {
-                result = try JSONDecoder().decode(Response.self, from: data)
-                // Closure calling
-                completion(result!.features)
-            }
-            catch {
-                print("Failed to convert \(error)")
-            }
-
-            guard let json = result else {
-                return
-            }
-                    
-            print(json.features)
-            completion(json.features) // Closure calling
-                    
-        })
-            task.resume()
-    }
-    
     func didExpandCell(isExpanded: Bool, indexPath: IndexPath) {
         self.tableView.beginUpdates()
             let cell = tableView.cellForRow(at: indexPath) as! EarthquakeEventCell
@@ -110,7 +81,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
         let myIndex = indexPath.row
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
-            viewController.title = "Earthquake Detail"
+            viewController.title = "Detail"
            
             // Passing data to EarthquakeDetailViewController
             let properties = earthquakesData[myIndex].properties
