@@ -4,10 +4,10 @@ import UIKit
 class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     
     @IBOutlet var tableView: UITableView!
-    private var sections = [EarthquakeEventCell]()
+    private var sections = [EarthquakeEventCell]() // TODO: Unused, remove this
     
     var earthquakesData = [Feature]()
-    var myIndex = 0
+    var myIndex = 0 // TODO: Unused, remove this
     
     override func viewDidLoad() {
         super.viewDidLoad()

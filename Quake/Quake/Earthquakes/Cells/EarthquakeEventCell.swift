@@ -38,6 +38,7 @@ class EarthquakeEventCell: UITableViewCell {
                 } else {
                     self.expandableView.alpha = 1
                 }
+                // TODO: Rotate chevron 180 degrees so it looks upwards
             })
             
         }, completion: {  (finished: Bool) in
