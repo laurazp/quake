@@ -25,13 +25,18 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         }
         
         // Define and format Dates
-        let endTime = Date.now
+        let datesToStringConverter = DatesToStringConverter()
+        let startTimeString = datesToStringConverter.getStartTimeString()
+        let endTimeString = datesToStringConverter.getEndTimeString()
+        
+        
+        /*let endTime = Date.now
         let startTime = Calendar.current.date(byAdding: .day, value: -30, to: endTime) ?? Date.distantPast
         
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
         let endTimeString = dateFormatterGet.string(from: endTime)
-        let startTimeString = dateFormatterGet.string(from: startTime)
+        let startTimeString = dateFormatterGet.string(from: startTime)*/
         
         earthquakesApiDataSource.getData(startTime: startTimeString, endTime: endTimeString, completion: anonymousFunction)
     }
