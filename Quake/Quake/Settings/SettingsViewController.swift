@@ -1,9 +1,3 @@
-//
-//  SettingsViewController.swift
-//  Quake
-//
-//  Created by Laura Zafra Prat on 17/6/22.
-//
 
 import UIKit
 
