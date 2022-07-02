@@ -2,12 +2,15 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchResultsUpdating {
+    
     @IBOutlet private var mapView: MKMapView!
     private let locationManager = CLLocationManager()
     private let rangeInMeters: Double = 1000000
     private var annotationsInMap: [AnnotationInMap] = []
+    
+    var resultSearchController: UISearchController? = nil
+    var matchingItems: [MKMapItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +20,51 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         centerViewOnUser()
         
         mapView.delegate = self
-
+        
         loadInitialData()
         mapView.addAnnotations(annotationsInMap)
+        
+        // SearchBar configuration
+        let locationSearchView = storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        resultSearchController = UISearchController(searchResultsController: locationSearchView)
+        resultSearchController?.searchResultsUpdater = locationSearchView
+        locationSearchView.mapView = mapView
+        //locationSearchView.handleMapSearchDelegate = self
+        
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.searchController = resultSearchController
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.obscuresBackgroundDuringPresentation = true
+        definesPresentationContext = true
+    }
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let mapView = mapView,
+              let searchBarText = searchController.searchBar.text else { return }
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = searchBarText
+        request.region = mapView.region
+        let search = MKLocalSearch(request: request)
+        //TODO: Add a button to start the search
+        search.start { searchResponse, _ in
+            guard let response = searchResponse else {
+                return
+            }
+            self.matchingItems = response.mapItems
+            
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(searchBarText) { (placemarks, error) in
+                
+                if let center = (placemarks?.first?.region as? CLCircularRegion)?.center {
+                    
+                    let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
+                    self.mapView.setRegion(region, animated: true)
+                }
+            }
+        }
     }
      
     private func layoutUI() {
@@ -55,6 +100,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             break
         case .denied:
             // TODO: Here we must tell user how to turn on location on device
+            // Show a dialog to tell the user to enable location services
+            //locationManager.requestLocation() ??
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -119,8 +166,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
 }
 
-
-
 extension MapViewController {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkAuthorizationForLocation()
@@ -129,11 +174,15 @@ extension MapViewController {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-                let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate,
-                                                               latitudinalMeters: rangeInMeters,
-                                                               longitudinalMeters: rangeInMeters)
+        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate,
+                                                       latitudinalMeters: rangeInMeters,
+                                                       longitudinalMeters: rangeInMeters)
         mapView.setRegion(coordinateRegion, animated: true)
     }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+            print("error:: (error)")
+        }
     
     func mapView(
         _ mapView: MKMapView,
