@@ -144,26 +144,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
           print("Unexpected error: \(error).")
       }
     }
-
-    
-    /*private func configureMapTypeButton() {
-        mapTypeButton.delegate = self
-     
-        mapTypeButton.addSecondaryButtonWith(image: UIImage(named: "map")!, labelTitle: "Standard", action: {
-            self.mapView.mapType = .mutedStandard
-        })
-            
-       mapTypeButton.addSecondaryButtonWith(image: UIImage(named: "satellite")!, labelTitle: "Satellite", action: {
-           self.mapView.mapType = .satellite
-       })
-            
-       mapTypeButton.addSecondaryButtonWith(image: UIImage(named: "hybrid")!, labelTitle: "Hybrid", action: {
-           self.mapView.mapType = .hybrid
-       })
-            
-       mapTypeButton.setFABButton()
-    }*/
-    
 }
 
 extension MapViewController {

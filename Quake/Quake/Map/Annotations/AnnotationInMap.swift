@@ -13,8 +13,8 @@ class AnnotationInMap: NSObject, MKAnnotation {
     
     var markerTintColor: UIColor {
         let magLvl = getMagnitudeLevel(magnitude: self.mag ?? 0.0)
-        print("mag level = \(magLvl)")
         
+        // TODO: Change pin image based on magnitude ??
         switch magLvl {
         case 1:
             return .green
@@ -64,7 +64,6 @@ class AnnotationInMap: NSObject, MKAnnotation {
         coordinate = point.coordinate
         super.init()
     }
-
 
     var subtitle: String? {
         return "Magnitude: \(mag ?? 0.0)"
