@@ -43,6 +43,14 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
             let cell = tableView.cellForRow(at: indexPath) as! EarthquakeEventCell
             cell.animate(duration: 0, c: {
                 cell.expandableView.layoutIfNeeded()
+                
+                // Show info in expandableView labels
+                let myDateFormatter = MyDateFormatter()
+                let formattedDate = myDateFormatter.formatDate(dateToFormat: self.earthquakesData[indexPath.row].properties.time ?? 0000)
+                
+                cell.placeLabel.text = "Place: \(self.earthquakesData[indexPath.row].properties.place ?? "unknown")"
+                cell.timeLabel.text = "Time: \(formattedDate)"
+                cell.tsunamiLabel.text = "Tsunami: \(self.earthquakesData[indexPath.row].properties.tsunami ?? 0)"
             })
             self.tableView.endUpdates()
     }

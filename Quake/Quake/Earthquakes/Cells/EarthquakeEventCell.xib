@@ -52,25 +52,33 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="QpV-LS-Ok6">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAn-WW-ue3">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="38.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAn-WW-ue3" userLabel="PlaceLabel">
+                                                <rect key="frame" x="20" y="0.0" width="280" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6x-Nc-fr0">
-                                                <rect key="frame" x="0.0" y="42.5" width="320" height="38"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6x-Nc-fr0" userLabel="TimeLabel">
+                                                <rect key="frame" x="20" y="42.5" width="280" height="38"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbD-tl-stL">
-                                                <rect key="frame" x="0.0" y="84.5" width="320" height="38.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbD-tl-stL" userLabel="TsunamiLabel">
+                                                <rect key="frame" x="20" y="84.5" width="280" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="EbD-tl-stL" firstAttribute="leading" secondItem="QpV-LS-Ok6" secondAttribute="leading" constant="20" id="G9V-9O-LZN"/>
+                                            <constraint firstAttribute="trailing" secondItem="EbD-tl-stL" secondAttribute="trailing" constant="20" id="K7N-96-HRN"/>
+                                            <constraint firstAttribute="trailing" secondItem="b6x-Nc-fr0" secondAttribute="trailing" constant="20" id="Qfx-JM-UN3"/>
+                                            <constraint firstAttribute="trailing" secondItem="GAn-WW-ue3" secondAttribute="trailing" constant="20" id="Ye7-18-2xO"/>
+                                            <constraint firstItem="b6x-Nc-fr0" firstAttribute="leading" secondItem="QpV-LS-Ok6" secondAttribute="leading" constant="20" id="f5a-I1-CU3"/>
+                                            <constraint firstItem="GAn-WW-ue3" firstAttribute="leading" secondItem="QpV-LS-Ok6" secondAttribute="leading" constant="20" id="mh7-vS-48n"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
@@ -96,6 +104,9 @@
                 <outlet property="expandableImage" destination="PR3-gf-aJw" id="lig-YW-295"/>
                 <outlet property="expandableView" destination="tA3-kX-RRI" id="muD-RY-IBg"/>
                 <outlet property="label" destination="MOG-n9-UkV" id="aJu-mK-W9A"/>
+                <outlet property="placeLabel" destination="GAn-WW-ue3" id="b1D-bG-lgK"/>
+                <outlet property="timeLabel" destination="b6x-Nc-fr0" id="Si0-gN-2XM"/>
+                <outlet property="tsunamiLabel" destination="EbD-tl-stL" id="6on-Ey-0i3"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="104.12946428571428"/>
         </tableViewCell>
