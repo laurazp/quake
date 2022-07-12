@@ -2,7 +2,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchResultsUpdating {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
     @IBOutlet private var mapView: MKMapView!
     private let locationManager = CLLocationManager()
@@ -25,37 +25,43 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.addAnnotations(annotationsInMap)
         
         // SearchBar configuration
-        let locationSearchView = storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        resultSearchController = UISearchController(searchResultsController: locationSearchView)
-        resultSearchController?.searchResultsUpdater = locationSearchView
-        locationSearchView.mapView = mapView
-        //locationSearchView.handleMapSearchDelegate = self
+        resultSearchController = UISearchController(searchResultsController: nil)
+        resultSearchController?.searchResultsUpdater = self
         
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
+        searchBar.delegate = self
+        //searchBar.showsSearchResultsButton = true
         navigationItem.searchController = resultSearchController
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.obscuresBackgroundDuringPresentation = true
         definesPresentationContext = true
     }
     
-    
     func updateSearchResults(for searchController: UISearchController) {
-        guard let mapView = mapView,
+        /*guard let mapView = mapView,
               let searchBarText = searchController.searchBar.text else { return }
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchBarText
         request.region = mapView.region
         let search = MKLocalSearch(request: request)
+        
         //TODO: Add a button to start the search
+        
         search.start { searchResponse, _ in
             guard let response = searchResponse else {
                 return
             }
             self.matchingItems = response.mapItems
             
-            let geocoder = CLGeocoder()
+            if let center = (self.matchingItems.first?.placemark.region as? CLCircularRegion)?.center {
+                
+                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
+                self.mapView.setRegion(region, animated: true)
+            }
+            
+            /*let geocoder = CLGeocoder()
             geocoder.geocodeAddressString(searchBarText) { (placemarks, error) in
                 
                 if let center = (placemarks?.first?.region as? CLCircularRegion)?.center {
@@ -63,10 +69,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
                     self.mapView.setRegion(region, animated: true)
                 }
+            }*/
+        }*/
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let mapView = mapView,
+              let searchBarText = searchBar.text else { return }
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = searchBarText
+        request.region = mapView.region
+        let search = MKLocalSearch(request: request)
+        
+        //TODO: Add a button to start the search
+        
+        search.start { searchResponse, _ in
+            guard let response = searchResponse else {
+                return
+            }
+            self.matchingItems = response.mapItems
+            
+            if let center = (self.matchingItems.first?.placemark.region as? CLCircularRegion)?.center {
+                
+                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
+                self.mapView.setRegion(region, animated: true)
             }
         }
+        self.resultSearchController?.isActive = false //Deactivate searchcontroller after search
     }
-     
+    
     private func layoutUI() {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mapView)

@@ -31,6 +31,9 @@
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PR3-gf-aJw">
                                         <rect key="frame" x="281.5" y="40" width="18.5" height="10.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="18.5" id="unu-aH-8Gr"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
