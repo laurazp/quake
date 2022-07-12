@@ -11,6 +11,7 @@ class EarthquakeEventCell: UITableViewCell {
     @IBOutlet weak var expandableImage: UIImageView!
     @IBOutlet weak var expandableView: UIView!
     //@IBOutlet weak var magnitudeLabel: UILabel! // TODO: Mostrar magnitud con color
+    @IBOutlet weak var expandableButton: UIButton!
     
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -24,9 +25,9 @@ class EarthquakeEventCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let tap = UITapGestureRecognizer(target: self, action: #selector(EarthquakeEventCell.tappedMe))
+        /*let tap = UITapGestureRecognizer(target: self, action: #selector(EarthquakeEventCell.tappedMe))
         expandableImage.addGestureRecognizer(tap)
-        expandableImage.isUserInteractionEnabled = true
+        expandableImage.isUserInteractionEnabled = true*/
         expandableView.isHidden = true //Expandable view is hidden by default
     }
 
@@ -46,7 +47,7 @@ class EarthquakeEventCell: UITableViewCell {
                     self.expandableView.alpha = 1
                 }
                 // Rotate chevron 180 degrees so it looks upwards
-                self.expandableImage.transform = self.expandableImage.transform.rotated(by: .pi)
+                self.expandableButton.transform = self.expandableButton.transform.rotated(by: .pi)
             })
             
         }, completion: {  (finished: Bool) in
@@ -54,6 +55,12 @@ class EarthquakeEventCell: UITableViewCell {
             c()
         })
     }
+    
+    @IBAction func buttonPressedDown(_ sender: Any) {
+        delegate?.didExpandCell(isExpanded: !expandableView.isHidden, indexPath: indexPath)
+
+    }
+    
     
     @objc private func tappedMe() {
         delegate?.didExpandCell(isExpanded: !expandableView.isHidden, indexPath: indexPath)

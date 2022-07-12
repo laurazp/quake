@@ -24,24 +24,31 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOG-n9-UkV">
-                                        <rect key="frame" x="20" y="20" width="41.5" height="50"/>
+                                        <rect key="frame" x="20" y="20" width="530" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PR3-gf-aJw">
-                                        <rect key="frame" x="281.5" y="40" width="18.5" height="10.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYl-2a-10p" userLabel="ExpandableButton">
+                                        <rect key="frame" x="270" y="30" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="18.5" id="unu-aH-8Gr"/>
+                                            <constraint firstAttribute="height" constant="30" id="TZK-Kb-NnY"/>
+                                            <constraint firstAttribute="width" constant="30" id="rjz-Z8-v94"/>
                                         </constraints>
-                                    </imageView>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.down.square.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="buttonPressedDown:" destination="KGk-i7-Jjw" eventType="touchDown" id="cWX-NI-UVS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="MOG-n9-UkV" firstAttribute="top" secondItem="dTO-pC-7Li" secondAttribute="top" constant="20" id="4zM-Bk-Zaq"/>
-                                    <constraint firstItem="PR3-gf-aJw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MOG-n9-UkV" secondAttribute="trailing" constant="8" id="dvD-st-IVb"/>
-                                    <constraint firstItem="PR3-gf-aJw" firstAttribute="centerY" secondItem="MOG-n9-UkV" secondAttribute="centerY" id="gtk-hE-kxT"/>
-                                    <constraint firstAttribute="trailing" secondItem="PR3-gf-aJw" secondAttribute="trailing" constant="20" id="sRu-ce-viX"/>
+                                    <constraint firstAttribute="trailing" secondItem="bYl-2a-10p" secondAttribute="trailing" constant="20" id="LLx-zU-uz1"/>
+                                    <constraint firstItem="bYl-2a-10p" firstAttribute="centerX" secondItem="MOG-n9-UkV" secondAttribute="centerX" id="bD8-ss-Blg"/>
+                                    <constraint firstItem="bYl-2a-10p" firstAttribute="centerY" secondItem="MOG-n9-UkV" secondAttribute="centerY" id="hd5-Dk-mHp"/>
+                                    <constraint firstItem="bYl-2a-10p" firstAttribute="top" secondItem="dTO-pC-7Li" secondAttribute="top" constant="30" id="mHy-zG-eEE"/>
                                     <constraint firstItem="MOG-n9-UkV" firstAttribute="leading" secondItem="dTO-pC-7Li" secondAttribute="leading" constant="20" id="uEm-6j-RSW"/>
                                     <constraint firstAttribute="bottom" secondItem="MOG-n9-UkV" secondAttribute="bottom" constant="20" id="xNJ-Xe-Xim"/>
                                 </constraints>
@@ -101,7 +108,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="expandableImage" destination="PR3-gf-aJw" id="lig-YW-295"/>
+                <outlet property="expandableButton" destination="bYl-2a-10p" id="Bz4-Ts-9Ib"/>
                 <outlet property="expandableView" destination="tA3-kX-RRI" id="muD-RY-IBg"/>
                 <outlet property="label" destination="MOG-n9-UkV" id="aJu-mK-W9A"/>
                 <outlet property="placeLabel" destination="GAn-WW-ue3" id="b1D-bG-lgK"/>
@@ -112,7 +119,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <image name="chevron.down.square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
