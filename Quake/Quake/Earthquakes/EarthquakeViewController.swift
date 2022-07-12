@@ -80,12 +80,12 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
             // Passing data to EarthquakeDetailViewController
             let properties = earthquakesData[myIndex].properties
             let geometry = earthquakesData[myIndex].geometry
-            let date = Date(timeIntervalSince1970: TimeInterval(properties.time) / 1000)
+            let date = Date(timeIntervalSince1970: TimeInterval(properties.time ?? 0) / 1000)
             
-            let selectedEarthquakeDetail = EarthquakeDetail(title: properties.title,
+            let selectedEarthquakeDetail = EarthquakeDetail(title: properties.title ?? "unknown",
                                                             place: properties.place,
                                                             time: date,
-                                                            tsunami: properties.tsunami,
+                                                            tsunami: properties.tsunami ?? 0,
                                                             coords: geometry.coordinates,
                                                             magnitude: properties.mag)
             

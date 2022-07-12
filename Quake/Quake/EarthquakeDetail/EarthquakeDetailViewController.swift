@@ -39,7 +39,13 @@ class EarthquakeDetailViewController: UIViewController {
         timeLabel.attributedText = getLabelText(labelTitle: "Time:  ", labelContent: "\(formattedDate)")
         tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: "\(earthquakeDetail.tsunami)")
         coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: "\(earthquakeDetail.coords)")
-        magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "\(earthquakeDetail.magnitude)")
+        
+        if let magnitude = earthquakeDetail.magnitude {
+            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "\(magnitude)")
+        } else {
+            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "Magnitude unknown")
+        }
+        
         
         //placeLabel.text = "Place: \(earthquakeDetail.place ?? "Unknown")"
         //timeLabel.text = "Time: \(formattedDate)"

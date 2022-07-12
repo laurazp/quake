@@ -28,7 +28,7 @@ class EarthquakesApiDataSource {
                 return
             }
                     
-            print(json.features)
+            //print(json.features)
             completion(json.features) // Closure calling
                     
         })
