@@ -24,6 +24,7 @@
 		227D90842875EA0900A0DED5 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D90832875EA0900A0DED5 /* SettingsOption.swift */; };
 		227D90862875F98D00A0DED5 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D90852875F98D00A0DED5 /* SettingTableViewCell.swift */; };
 		227D9088287DC1B800A0DED5 /* MyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9087287DC1B800A0DED5 /* MyDateFormatter.swift */; };
+		227D909C287ED13100A0DED5 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D909B287ED13100A0DED5 /* SettingsSection.swift */; };
 		22990A10284BD40500C1104D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A0F284BD40500C1104D /* AppDelegate.swift */; };
 		22990A12284BD40500C1104D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A11284BD40500C1104D /* SceneDelegate.swift */; };
 		22990A14284BD40500C1104D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A13284BD40500C1104D /* ViewController.swift */; };
@@ -76,6 +77,7 @@
 		227D90832875EA0900A0DED5 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
 		227D90852875F98D00A0DED5 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		227D9087287DC1B800A0DED5 /* MyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDateFormatter.swift; sourceTree = "<group>"; };
+		227D909B287ED13100A0DED5 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		22990A0C284BD40500C1104D /* Quake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990A0F284BD40500C1104D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22990A11284BD40500C1104D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				227D90832875EA0900A0DED5 /* SettingsOption.swift */,
+				227D909B287ED13100A0DED5 /* SettingsSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				22990A12284BD40500C1104D /* SceneDelegate.swift in Sources */,
 				223A2F222857EF4000034143 /* TabBarController.swift in Sources */,
 				227D90812870ADE900A0DED5 /* LocationSearch.swift in Sources */,
+				227D909C287ED13100A0DED5 /* SettingsSection.swift in Sources */,
 				227D907A286F290C00A0DED5 /* DatesToStringConverter.swift in Sources */,
 				223A2F1E2856512E00034143 /* EarthquakeViewController.swift in Sources */,
 				2214345E285D093600F1CBA0 /* AnnotationInMap.swift in Sources */,

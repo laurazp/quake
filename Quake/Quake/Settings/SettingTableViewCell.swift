@@ -8,7 +8,7 @@ class SettingTableViewCell: UITableViewCell {
     private let iconContainer: UIView = {
        let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
         return view
     }()
@@ -42,16 +42,15 @@ class SettingTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         let size: CGFloat = contentView.frame.size.height - 12
-        iconContainer.frame = CGRect(x: 10, y: 6, width: size, height: size)
+        iconContainer.frame = CGRect(x: 15, y: 6, width: size, height: size)
         
         let imageSize: CGFloat = size/1.5
-        iconImageView.frame = CGRect(x: 0, y: 0, width: imageSize, height: imageSize)
-        iconImageView.center = iconContainer.center
+        iconImageView.frame = CGRect(x: (size - imageSize)/2, y: (size - imageSize)/2, width: imageSize, height: imageSize)
         
         label.frame = CGRect(
-            x: 15+iconContainer.frame.size.width,
+            x: 25 + iconContainer.frame.size.width,
             y: 0,
-            width: contentView.frame.size.width - 15 - iconContainer.frame.size.width,
+            width: contentView.frame.size.width - 20 - iconContainer.frame.size.width,
             height: contentView.frame.size.height
         )
     }
@@ -63,7 +62,7 @@ class SettingTableViewCell: UITableViewCell {
         iconContainer.backgroundColor = nil
     }
     
-    private func configure(with model: SettingsOption) {
+    func configure(with model: SettingsOption) {
         label.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
