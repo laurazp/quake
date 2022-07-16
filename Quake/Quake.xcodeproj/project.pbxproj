@@ -25,6 +25,7 @@
 		227D90862875F98D00A0DED5 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D90852875F98D00A0DED5 /* SettingTableViewCell.swift */; };
 		227D9088287DC1B800A0DED5 /* MyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9087287DC1B800A0DED5 /* MyDateFormatter.swift */; };
 		227D909C287ED13100A0DED5 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D909B287ED13100A0DED5 /* SettingsSection.swift */; };
+		227D909E287EE7C500A0DED5 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D909D287EE7C500A0DED5 /* LocationSearchTable.swift */; };
 		22990A10284BD40500C1104D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A0F284BD40500C1104D /* AppDelegate.swift */; };
 		22990A12284BD40500C1104D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A11284BD40500C1104D /* SceneDelegate.swift */; };
 		22990A14284BD40500C1104D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A13284BD40500C1104D /* ViewController.swift */; };
@@ -78,6 +79,7 @@
 		227D90852875F98D00A0DED5 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		227D9087287DC1B800A0DED5 /* MyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDateFormatter.swift; sourceTree = "<group>"; };
 		227D909B287ED13100A0DED5 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		227D909D287EE7C500A0DED5 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		22990A0C284BD40500C1104D /* Quake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990A0F284BD40500C1104D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22990A11284BD40500C1104D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				227D90802870ADE900A0DED5 /* LocationSearch.swift */,
+				227D909D287EE7C500A0DED5 /* LocationSearchTable.swift */,
 			);
 			path = SearchBar;
 			sourceTree = "<group>";
@@ -221,10 +224,10 @@
 				22990A0F284BD40500C1104D /* AppDelegate.swift */,
 				22990A11284BD40500C1104D /* SceneDelegate.swift */,
 				22990A13284BD40500C1104D /* ViewController.swift */,
-				22990A18284BD40900C1104D /* Assets.xcassets */,
-				22990A1A284BD40900C1104D /* LaunchScreen.storyboard */,
-				22990A1D284BD40900C1104D /* Info.plist */,
 				227D9087287DC1B800A0DED5 /* MyDateFormatter.swift */,
+				22990A1A284BD40900C1104D /* LaunchScreen.storyboard */,
+				22990A18284BD40900C1104D /* Assets.xcassets */,
+				22990A1D284BD40900C1104D /* Info.plist */,
 			);
 			path = Quake;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				227D9073286B32F700A0DED5 /* Geometry.swift in Sources */,
 				227D90862875F98D00A0DED5 /* SettingTableViewCell.swift in Sources */,
 				B615E8662858F18100B77A5F /* EarthquakeDetailViewController.swift in Sources */,
+				227D909E287EE7C500A0DED5 /* LocationSearchTable.swift in Sources */,
 				227D906D286B325900A0DED5 /* Response.swift in Sources */,
 				22990A10284BD40500C1104D /* AppDelegate.swift in Sources */,
 				227D9088287DC1B800A0DED5 /* MyDateFormatter.swift in Sources */,

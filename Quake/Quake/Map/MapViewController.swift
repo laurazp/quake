@@ -2,6 +2,10 @@
 import UIKit
 import MapKit
 
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark)
+}
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
     @IBOutlet private var mapView: MKMapView!
@@ -11,6 +15,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var resultSearchController: UISearchController? = nil
     var matchingItems: [MKMapItem] = []
+    var selectedPin:MKPlacemark? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +29,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         loadInitialData()
         mapView.addAnnotations(annotationsInMap)
         
-        // SearchBar configuration
-        resultSearchController = UISearchController(searchResultsController: nil)
-        resultSearchController?.searchResultsUpdater = self
+        // SearchBar and SearchTable configuration
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
+        
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
         
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
         searchBar.delegate = self
         //searchBar.showsSearchResultsButton = true
+        
         navigationItem.searchController = resultSearchController
+        navigationItem.titleView = resultSearchController?.searchBar
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.obscuresBackgroundDuringPresentation = true
         definesPresentationContext = true
@@ -46,9 +57,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         request.naturalLanguageQuery = searchBarText
         request.region = mapView.region
         let search = MKLocalSearch(request: request)
-        
-        //TODO: Add a button to start the search
-        
         search.start { searchResponse, _ in
             guard let response = searchResponse else {
                 return
@@ -223,5 +231,13 @@ extension MapViewController {
     }
 }
 
-
-
+extension MapViewController: HandleMapSearch {
+    
+    func dropPinZoomIn(placemark: MKPlacemark){
+        selectedPin = placemark
+        let span = MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+        
+    }
+}
