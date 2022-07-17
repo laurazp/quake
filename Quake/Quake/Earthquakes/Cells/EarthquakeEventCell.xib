@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOG-n9-UkV">
-                                        <rect key="frame" x="20" y="20" width="530" height="50"/>
+                                        <rect key="frame" x="20" y="20" width="41.5" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -45,8 +45,8 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="MOG-n9-UkV" firstAttribute="top" secondItem="dTO-pC-7Li" secondAttribute="top" constant="20" id="4zM-Bk-Zaq"/>
+                                    <constraint firstItem="bYl-2a-10p" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MOG-n9-UkV" secondAttribute="trailing" constant="20" id="EHR-kl-MA9"/>
                                     <constraint firstAttribute="trailing" secondItem="bYl-2a-10p" secondAttribute="trailing" constant="20" id="LLx-zU-uz1"/>
-                                    <constraint firstItem="bYl-2a-10p" firstAttribute="centerX" secondItem="MOG-n9-UkV" secondAttribute="centerX" id="bD8-ss-Blg"/>
                                     <constraint firstItem="bYl-2a-10p" firstAttribute="centerY" secondItem="MOG-n9-UkV" secondAttribute="centerY" id="hd5-Dk-mHp"/>
                                     <constraint firstItem="bYl-2a-10p" firstAttribute="top" secondItem="dTO-pC-7Li" secondAttribute="top" constant="30" id="mHy-zG-eEE"/>
                                     <constraint firstItem="MOG-n9-UkV" firstAttribute="leading" secondItem="dTO-pC-7Li" secondAttribute="leading" constant="20" id="uEm-6j-RSW"/>
