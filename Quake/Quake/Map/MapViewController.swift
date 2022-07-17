@@ -25,11 +25,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         centerViewOnUser()
         
         mapView.delegate = self
-        
         loadInitialData()
         mapView.addAnnotations(annotationsInMap)
         
-        // SearchBar and SearchTable configuration
+        configureSearchBarAndTable()
+    }
+    
+    // SearchBar and SearchTable configuration
+    func configureSearchBarAndTable() {
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
@@ -37,17 +40,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable
         
-        let searchBar = resultSearchController!.searchBar
-        searchBar.sizeToFit()
-        searchBar.placeholder = "Search for places"
-        searchBar.delegate = self
-        //searchBar.showsSearchResultsButton = true
+        setupSearchBar()
         
         navigationItem.searchController = resultSearchController
         navigationItem.titleView = resultSearchController?.searchBar
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.obscuresBackgroundDuringPresentation = true
         definesPresentationContext = true
+    }
+    
+    func setupSearchBar() {
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        searchBar.delegate = self
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -81,7 +87,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }*/
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    /*func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let mapView = mapView,
               let searchBarText = searchBar.text else { return }
         let request = MKLocalSearch.Request()
@@ -104,7 +110,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
         }
         self.resultSearchController?.isActive = false //Deactivate searchcontroller after search
-    }
+    }*/
     
     private func layoutUI() {
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -155,33 +161,33 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     private func centerViewOnUser() {
         guard let location = locationManager.location?.coordinate else { return }
         
-        let coordinateRegion = MKCoordinateRegion.init(center: location,
-                                                       latitudinalMeters: rangeInMeters,
-                                                       longitudinalMeters: rangeInMeters)
+        let coordinateRegion = MKCoordinateRegion.init(
+            center: location,
+            latitudinalMeters: rangeInMeters,
+            longitudinalMeters: rangeInMeters)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
     private func loadInitialData() {
-        let url: String = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02"
-        
+        let url: String = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson"
         guard let fileName = URL.init(string: url),
-            
-        let earthquakesData = try? Data(contentsOf: fileName)
+              
+                let earthquakesData = try? Data(contentsOf: fileName)
         else {
             print("Error retrieving data from url")
             return
-      }
+        }
         
-      do {
-          let features = try MKGeoJSONDecoder()
-              .decode(earthquakesData)
-              .compactMap { $0 as? MKGeoJSONFeature }
-          
-          let validAnnotations = features.compactMap(AnnotationInMap.init)
-          annotationsInMap.append(contentsOf: validAnnotations)
-      } catch {
-          print("Unexpected error: \(error).")
-      }
+        do {
+            let features = try MKGeoJSONDecoder()
+                .decode(earthquakesData)
+                .compactMap { $0 as? MKGeoJSONFeature }
+            
+            let validAnnotations = features.compactMap(AnnotationInMap.init)
+            annotationsInMap.append(contentsOf: validAnnotations)
+        } catch {
+            print("Unexpected error: \(error).")
+        }
     }
 }
 
@@ -197,6 +203,8 @@ extension MapViewController {
                                                        latitudinalMeters: rangeInMeters,
                                                        longitudinalMeters: rangeInMeters)
         mapView.setRegion(coordinateRegion, animated: true)
+        //Deactivate searchcontroller after search
+        self.resultSearchController?.isActive = false
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {

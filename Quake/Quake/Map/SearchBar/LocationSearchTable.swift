@@ -9,7 +9,7 @@ class LocationSearchTable: UITableViewController {
     
 }
 
-extension LocationSearchTable : UISearchResultsUpdating {
+extension LocationSearchTable: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let mapView = mapView,
             let searchBarText = searchController.searchBar.text else { return }
@@ -25,9 +25,7 @@ extension LocationSearchTable : UISearchResultsUpdating {
             self.tableView.reloadData()
         }
     }
-}
-
-extension LocationSearchTable {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matchingItems.count
     }
@@ -39,9 +37,7 @@ extension LocationSearchTable {
         cell.detailTextLabel?.text = selectedItem.country // Subtitle
         return cell
     }
-}
-
-extension LocationSearchTable {
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedItem = matchingItems[indexPath.row].placemark
         handleMapSearchDelegate?.dropPinZoomIn(placemark: selectedItem)
