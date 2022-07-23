@@ -37,10 +37,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         models.append(SettingsSection(title: "Configuración", options: [
             SettingsOption(title: "Notificaciones push", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
-                
+                let center = UNUserNotificationCenter.current()
+                center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                    
+                    if let error = error {
+                        print(error)
+                        // Handle the error here.
+                    }
+                    // Enable or disable features based on the authorization.
+                }
             },
             SettingsOption(title: "Permisos", icon: UIImage(systemName: "house"), iconBackgroundColor: .link) {
-                
+
             }
         ]))
     }
