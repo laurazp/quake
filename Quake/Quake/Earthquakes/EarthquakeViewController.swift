@@ -54,6 +54,39 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
             })
             self.tableView.endUpdates()
     }
+    
+    func setTitleAndMagnitude(cell: EarthquakeEventCell, indexPath: IndexPath) {
+        let titleSplitFromMagnitude = earthquakesData[indexPath.row].properties.title?.components(separatedBy: "- ")
+        cell.label.text = titleSplitFromMagnitude?[(titleSplitFromMagnitude?.count ?? 0) - 1]
+        
+        let magSubstring = earthquakesData[indexPath.row].properties.title?.prefix(8).prefix(6).suffix(4)
+        let magString = magSubstring.map(String.init)
+        cell.magLabel.text = magString
+        let magColor = getMagnitudeColor(magnitude: earthquakesData[indexPath.row].properties.mag ?? 0)
+        
+        switch magColor {
+        case 1:
+            cell.magLabel.textColor = .green
+        case 2:
+            cell.magLabel.textColor = .orange
+        case 3:
+            cell.magLabel.textColor = .red
+        default:
+            cell.magLabel.textColor = .blue
+        }
+    }
+    
+    private func getMagnitudeColor(magnitude: Double) -> Int {
+        if magnitude < 3 {
+            return 1
+        }
+        else if magnitude >= 3 && magnitude < 5 {
+            return 2
+        }
+        else {
+            return 3
+        }
+    }
 }
 
 extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -64,7 +97,8 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EarthquakeEventCell", for: indexPath) as? EarthquakeEventCell else { return UITableViewCell() }
-        cell.label.text = earthquakesData[indexPath.row].properties.title
+        
+        setTitleAndMagnitude(cell: cell, indexPath: indexPath)
         cell.indexPath = indexPath
         cell.delegate = self
         return cell

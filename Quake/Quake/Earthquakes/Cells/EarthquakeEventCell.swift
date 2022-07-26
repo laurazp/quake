@@ -8,6 +8,7 @@ protocol EarthquakeEventCellDelegate: AnyObject {
 class EarthquakeEventCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var magLabel: UILabel!
     @IBOutlet weak var expandableImage: UIImageView!
     @IBOutlet weak var expandableView: UIView!
     //@IBOutlet weak var magnitudeLabel: UILabel! // TODO: Mostrar magnitud con color
