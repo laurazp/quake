@@ -69,44 +69,36 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tA3-kX-RRI">
                                 <rect key="frame" x="0.0" y="90" width="320" height="123"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="QpV-LS-Ok6">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QpV-LS-Ok6">
+                                        <rect key="frame" x="20" y="10" width="285" height="103"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAn-WW-ue3" userLabel="PlaceLabel">
-                                                <rect key="frame" x="20" y="0.0" width="280" height="38.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="285" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6x-Nc-fr0" userLabel="TimeLabel">
-                                                <rect key="frame" x="20" y="42.5" width="280" height="38"/>
+                                                <rect key="frame" x="0.0" y="52" width="285" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbD-tl-stL" userLabel="TsunamiLabel">
-                                                <rect key="frame" x="20" y="84.5" width="280" height="38.5"/>
+                                                <rect key="frame" x="0.0" y="82.5" width="285" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="EbD-tl-stL" firstAttribute="leading" secondItem="QpV-LS-Ok6" secondAttribute="leading" constant="20" id="G9V-9O-LZN"/>
-                                            <constraint firstAttribute="trailing" secondItem="EbD-tl-stL" secondAttribute="trailing" constant="20" id="K7N-96-HRN"/>
-                                            <constraint firstAttribute="trailing" secondItem="b6x-Nc-fr0" secondAttribute="trailing" constant="20" id="Qfx-JM-UN3"/>
-                                            <constraint firstAttribute="trailing" secondItem="GAn-WW-ue3" secondAttribute="trailing" constant="20" id="Ye7-18-2xO"/>
-                                            <constraint firstItem="b6x-Nc-fr0" firstAttribute="leading" secondItem="QpV-LS-Ok6" secondAttribute="leading" constant="20" id="f5a-I1-CU3"/>
-                                            <constraint firstItem="GAn-WW-ue3" firstAttribute="leading" secondItem="QpV-LS-Ok6" secondAttribute="leading" constant="20" id="mh7-vS-48n"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="QpV-LS-Ok6" firstAttribute="leading" secondItem="tA3-kX-RRI" secondAttribute="leading" id="V4N-5N-1Zb"/>
-                                    <constraint firstAttribute="trailing" secondItem="QpV-LS-Ok6" secondAttribute="trailing" id="jM3-vu-zSv"/>
-                                    <constraint firstItem="QpV-LS-Ok6" firstAttribute="top" secondItem="tA3-kX-RRI" secondAttribute="top" id="oBq-pY-1AZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="QpV-LS-Ok6" secondAttribute="bottom" id="twq-Ge-EF3"/>
+                                    <constraint firstItem="QpV-LS-Ok6" firstAttribute="leading" secondItem="tA3-kX-RRI" secondAttribute="leading" constant="20" id="V4N-5N-1Zb"/>
+                                    <constraint firstAttribute="trailing" secondItem="QpV-LS-Ok6" secondAttribute="trailing" constant="15" id="jM3-vu-zSv"/>
+                                    <constraint firstItem="QpV-LS-Ok6" firstAttribute="top" secondItem="tA3-kX-RRI" secondAttribute="top" constant="10" id="oBq-pY-1AZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="QpV-LS-Ok6" secondAttribute="bottom" constant="10" id="twq-Ge-EF3"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -143,8 +135,8 @@
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -13,3 +13,10 @@
 ### Paginación en los resultados de earthquakes
 
 ## Pantalla Settings (Pensar qué meter)
+
+
+### Revisar error consola al hacer click en botón expandir (constraints)
+### Aumentar número líneas (0) al Place en la celda expansible --> aumentar tamaño celda
+### 
+###
+

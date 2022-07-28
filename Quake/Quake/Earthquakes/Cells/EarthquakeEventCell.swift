@@ -9,11 +9,8 @@ class EarthquakeEventCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var magLabel: UILabel!
-    @IBOutlet weak var expandableImage: UIImageView!
     @IBOutlet weak var expandableView: UIView!
-    //@IBOutlet weak var magnitudeLabel: UILabel! // TODO: Mostrar magnitud con color
     @IBOutlet weak var expandableButton: UIButton!
-    
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var tsunamiLabel: UILabel!
@@ -25,10 +22,6 @@ class EarthquakeEventCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        /*let tap = UITapGestureRecognizer(target: self, action: #selector(EarthquakeEventCell.tappedMe))
-        expandableImage.addGestureRecognizer(tap)
-        expandableImage.isUserInteractionEnabled = true*/
         expandableView.isHidden = true //Expandable view is hidden by default
     }
 
@@ -52,7 +45,6 @@ class EarthquakeEventCell: UITableViewCell {
             })
             
         }, completion: {  (finished: Bool) in
-            //print("animation complete")
             c()
         })
     }
@@ -61,10 +53,4 @@ class EarthquakeEventCell: UITableViewCell {
         delegate?.didExpandCell(isExpanded: !expandableView.isHidden, indexPath: indexPath)
 
     }
-    
-    
-    @objc private func tappedMe() {
-        delegate?.didExpandCell(isExpanded: !expandableView.isHidden, indexPath: indexPath)
-    }
-    
 }
