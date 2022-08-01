@@ -39,8 +39,8 @@ extension LocationSearchTable: UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedItem = matchingItems[indexPath.row].placemark
-        handleMapSearchDelegate?.dropPinZoomIn(placemark: selectedItem)
+        let mapItem = matchingItems[indexPath.row]
+        handleMapSearchDelegate?.dropPinZoomIn(mapItem)
         dismiss(animated: true, completion: nil)
     }
 }

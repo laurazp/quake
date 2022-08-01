@@ -3,10 +3,10 @@ import UIKit
 import MapKit
 
 protocol HandleMapSearch {
-    func dropPinZoomIn(placemark:MKPlacemark)
+    func dropPinZoomIn(_ mapItem: MKMapItem)
 }
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate {
     
     @IBOutlet private var mapView: MKMapView!
     private let locationManager = CLLocationManager()
@@ -33,7 +33,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     // SearchBar and SearchTable configuration
     func configureSearchBarAndTable() {
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        guard let locationSearchTable = storyboard?.instantiateViewController(withIdentifier: "LocationSearchTable") as? LocationSearchTable else { return }
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
         
@@ -56,36 +56,36 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         searchBar.delegate = self
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        /*guard let mapView = mapView,
-              let searchBarText = searchController.searchBar.text else { return }
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = searchBarText
-        request.region = mapView.region
-        let search = MKLocalSearch(request: request)
-        search.start { searchResponse, _ in
-            guard let response = searchResponse else {
-                return
-            }
-            self.matchingItems = response.mapItems
-            
-            if let center = (self.matchingItems.first?.placemark.region as? CLCircularRegion)?.center {
-                
-                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
-                self.mapView.setRegion(region, animated: true)
-            }
-            
-            /*let geocoder = CLGeocoder()
-            geocoder.geocodeAddressString(searchBarText) { (placemarks, error) in
-                
-                if let center = (placemarks?.first?.region as? CLCircularRegion)?.center {
-                    
-                    let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
-                    self.mapView.setRegion(region, animated: true)
-                }
-            }*/
-        }*/
-    }
+//    func updateSearchResults(for searchController: UISearchController) {
+//        /*guard let mapView = mapView,
+//              let searchBarText = searchController.searchBar.text else { return }
+//        let request = MKLocalSearch.Request()
+//        request.naturalLanguageQuery = searchBarText
+//        request.region = mapView.region
+//        let search = MKLocalSearch(request: request)
+//        search.start { searchResponse, _ in
+//            guard let response = searchResponse else {
+//                return
+//            }
+//            self.matchingItems = response.mapItems
+//
+//            if let center = (self.matchingItems.first?.placemark.region as? CLCircularRegion)?.center {
+//
+//                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
+//                self.mapView.setRegion(region, animated: true)
+//            }
+//
+//            /*let geocoder = CLGeocoder()
+//            geocoder.geocodeAddressString(searchBarText) { (placemarks, error) in
+//
+//                if let center = (placemarks?.first?.region as? CLCircularRegion)?.center {
+//
+//                    let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
+//                    self.mapView.setRegion(region, animated: true)
+//                }
+//            }*/
+//        }*/
+//    }
     
     /*func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let mapView = mapView,
@@ -204,7 +204,7 @@ extension MapViewController {
                                                        longitudinalMeters: rangeInMeters)
         mapView.setRegion(coordinateRegion, animated: true)
         //Deactivate searchcontroller after search
-        self.resultSearchController?.isActive = false
+//        self.resultSearchController?.isActive = false
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -242,11 +242,11 @@ extension MapViewController {
 //TODO: Añadir a la otra extension
 extension MapViewController: HandleMapSearch {
     
-    func dropPinZoomIn(placemark: MKPlacemark){
-        selectedPin = placemark
+    func dropPinZoomIn(_ mapItem: MKMapItem){
+        selectedPin = mapItem.placemark
         let span = MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
-        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
+        let region = MKCoordinateRegion(center: mapItem.placemark.coordinate, span: span)
         mapView.setRegion(region, animated: true)
-        
+        resultSearchController?.searchBar.text = mapItem.name
     }
 }
