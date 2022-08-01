@@ -8,5 +8,27 @@
 import Foundation
 
 final class EarthquakesViewModel {
+    weak var viewDelegate: EarthquakeViewController?
     
+    private let getEarthquakesUseCase = GetEarthquakesUseCase()
+    private var earthquakesData = [Feature]()
+    
+    func viewDidLoad() {
+        getEarthquakes()
+    }
+    
+    func getFeature(at index: Int) -> Feature {
+        earthquakesData[index]
+    }
+    
+    func numberOfItems() -> Int {
+        earthquakesData.count
+    }
+    
+    private func getEarthquakes() {
+        getEarthquakesUseCase.getEarthquakes { features in
+            self.earthquakesData = features
+            self.viewDelegate?.updateView()
+        }
+    }
 }

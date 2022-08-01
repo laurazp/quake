@@ -203,20 +203,29 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
-		228D1FFB28984FEB006B6BE8 /* Use Case */ = {
-			isa = PBXGroup;
-			children = (
-				228D1FFF28985048006B6BE8 /* GetEarthquakesUseCase.swift */,
-				228D2001289852A6006B6BE8 /* GetTimeRangeUseCase.swift */,
-			);
-			path = "Use Case";
-			sourceTree = "<group>";
-		};
 		228D1FFC28984FF6006B6BE8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		228D200328985A2D006B6BE8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				227D906B286B323300A0DED5 /* API */,
+				228D200428985A35006B6BE8 /* Use Cases */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		228D200428985A35006B6BE8 /* Use Cases */ = {
+			isa = PBXGroup;
+			children = (
+				228D1FFF28985048006B6BE8 /* GetEarthquakesUseCase.swift */,
+				228D2001289852A6006B6BE8 /* GetTimeRangeUseCase.swift */,
+			);
+			path = "Use Cases";
 			sourceTree = "<group>";
 		};
 		22990A03284BD40500C1104D = {
@@ -242,7 +251,7 @@
 		22990A0E284BD40500C1104D /* Quake */ = {
 			isa = PBXGroup;
 			children = (
-				227D906B286B323300A0DED5 /* API */,
+				228D200328985A2D006B6BE8 /* Common */,
 				22143454285CFE9400F1CBA0 /* Settings */,
 				B615E8642858F16A00B77A5F /* EarthquakeDetail */,
 				B615E8612858ED5C00B77A5F /* TabBar */,
@@ -280,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				228D1FFC28984FF6006B6BE8 /* Repository */,
-				228D1FFB28984FEB006B6BE8 /* Use Case */,
 				228D1FFA28984FDD006B6BE8 /* View Model */,
 				227D9068286B223F00A0DED5 /* Model */,
 				B615E8672858F5C300B77A5F /* Cells */,

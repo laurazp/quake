@@ -4,23 +4,13 @@ import UIKit
 class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     
     @IBOutlet var tableView: UITableView!
-    var earthquakesData = [Feature]()
-    private let getEarthquakesUseCase = GetEarthquakesUseCase()
+   
+    let viewModel = EarthquakesViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
-                
-//        let anonymousFunction = { (fetchedData: [Feature]) in
-//            DispatchQueue.main.async {  // TODO: Comentar por qué
-//                
-//            }
-//        }
-        
-        getEarthquakesUseCase.getEarthquakes { features in
-            self.earthquakesData = features
-            self.tableView.reloadData()
-        }
+        viewModel.viewDidLoad()
     }
 
     private func setupTable() {
@@ -30,32 +20,39 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
     }
+    
+    // MARK: - View Model Output
+    func updateView() {
+        tableView.reloadData()
+    }
 
     func didExpandCell(isExpanded: Bool, indexPath: IndexPath) {
         self.tableView.beginUpdates()
-            let cell = tableView.cellForRow(at: indexPath) as! EarthquakeEventCell
-            cell.animate(duration: 0, c: {
-                cell.expandableView.layoutIfNeeded()
-                
-                // Show info in expandableView labels
-                let myDateFormatter = MyDateFormatter()
-                let formattedDate = myDateFormatter.formatDate(dateToFormat: self.earthquakesData[indexPath.row].properties.time ?? 0000)
-                
-                cell.placeLabel.text = "Place: \(self.earthquakesData[indexPath.row].properties.place ?? "unknown")"
-                cell.timeLabel.text = "Time: \(formattedDate)"
-                cell.tsunamiLabel.text = "Tsunami: \(self.earthquakesData[indexPath.row].properties.tsunami ?? 0)"
-            })
-            self.tableView.endUpdates()
+        let cell = tableView.cellForRow(at: indexPath) as! EarthquakeEventCell
+        let feature = viewModel.getFeature(at: indexPath.row)
+        cell.animate(duration: 0, c: {
+            cell.expandableView.layoutIfNeeded()
+            
+            // Show info in expandableView labels
+            let myDateFormatter = MyDateFormatter()
+            let formattedDate = myDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
+            
+            cell.placeLabel.text = "Place: \(feature.properties.place ?? "unknown")"
+            cell.timeLabel.text = "Time: \(formattedDate)"
+            cell.tsunamiLabel.text = "Tsunami: \(feature.properties.tsunami ?? 0)"
+        })
+        self.tableView.endUpdates()
     }
     
     func setTitleAndMagnitude(cell: EarthquakeEventCell, indexPath: IndexPath) {
-        let titleSplitFromMagnitude = earthquakesData[indexPath.row].properties.title?.components(separatedBy: "- ")
+        let feature = viewModel.getFeature(at: indexPath.row)
+        let titleSplitFromMagnitude = feature.properties.title?.components(separatedBy: "- ")
         cell.label.text = titleSplitFromMagnitude?[(titleSplitFromMagnitude?.count ?? 0) - 1]
         
-        let magSubstring = earthquakesData[indexPath.row].properties.title?.prefix(8).prefix(6).suffix(4)
+        let magSubstring = feature.properties.title?.prefix(8).prefix(6).suffix(4)
         let magString = magSubstring.map(String.init)
         cell.magLabel.text = magString
-        let magColor = getMagnitudeColor(magnitude: earthquakesData[indexPath.row].properties.mag ?? 0)
+        let magColor = getMagnitudeColor(magnitude: feature.properties.mag ?? 0)
         
         switch magColor {
         case 1:
@@ -85,7 +82,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
 extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return earthquakesData.count
+        return viewModel.numberOfItems()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -107,14 +104,14 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        let myIndex = indexPath.row
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
             viewController.title = "Detail"
-           
+            
+            let feature = viewModel.getFeature(at: indexPath.row)
             // Passing data to EarthquakeDetailViewController
-            let properties = earthquakesData[myIndex].properties
-            let geometry = earthquakesData[myIndex].geometry
+            let properties = feature.properties
+            let geometry = feature.geometry
             let date = Date(timeIntervalSince1970: TimeInterval(properties.time ?? 0) / 1000)
             
             let selectedEarthquakeDetail = EarthquakeDetail(title: properties.title ?? "unknown",
