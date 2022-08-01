@@ -24,6 +24,19 @@ class EarthquakeEventCell: UITableViewCell {
         super.awakeFromNib()
         expandableView.isHidden = true //Expandable view is hidden by default
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        label.text = nil
+        magLabel.text = nil
+        placeLabel.text = nil
+        timeLabel.text = nil
+        tsunamiLabel.text = nil
+        
+        expandableView.isHidden = true
+        expandableView.alpha = 0
+        expandableButton.transform = CGAffineTransform.identity
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
