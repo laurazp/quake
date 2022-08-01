@@ -4,30 +4,23 @@ import UIKit
 class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     
     @IBOutlet var tableView: UITableView!
-    private var sections = [EarthquakeEventCell]() // TODO: Unused, remove this
-    
     var earthquakesData = [Feature]()
-    var myIndex = 0 // TODO: Unused, remove this
+    private let getEarthquakesUseCase = GetEarthquakesUseCase()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
+                
+//        let anonymousFunction = { (fetchedData: [Feature]) in
+//            DispatchQueue.main.async {  // TODO: Comentar por qué
+//                
+//            }
+//        }
         
-        let earthquakesApiDataSource = EarthquakesApiDataSource()
-        
-        let anonymousFunction = { (fetchedData: [Feature]) in
-            DispatchQueue.main.async {
-                self.earthquakesData = fetchedData
-                self.tableView.reloadData()
-            }
+        getEarthquakesUseCase.getEarthquakes { features in
+            self.earthquakesData = features
+            self.tableView.reloadData()
         }
-        
-        // Define and format Dates
-        let datesToStringConverter = DatesToStringConverter()
-        let startTimeString = datesToStringConverter.getStartTimeString()
-        let endTimeString = datesToStringConverter.getEndTimeString()
-        
-        earthquakesApiDataSource.getData(startTime: startTimeString, endTime: endTimeString, completion: anonymousFunction)
     }
 
     private func setupTable() {
