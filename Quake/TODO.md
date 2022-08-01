@@ -17,6 +17,8 @@
 
 ### Revisar error consola al hacer click en botón expandir (constraints)
 ### Aumentar número líneas (0) al Place en la celda expansible --> aumentar tamaño celda
-### 
-###
+### Mostrar magnitud en color en Detail (título también??)
+### Reducir tamaño MapView de Detail para que no tape la TabBar
+### Títulos de Detail centrados??
+
 

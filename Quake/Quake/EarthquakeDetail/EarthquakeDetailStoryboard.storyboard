@@ -16,77 +16,110 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="EDm-VB-u2D">
-                                <rect key="frame" x="16" y="119" width="382" height="269"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tP3-1O-C9j">
+                                <rect key="frame" x="0.0" y="44" width="422" height="818"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xz-u2-Tje">
-                                        <rect key="frame" x="0.0" y="0.0" width="56" height="26.5"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="titleLabel">
-                                            <accessibilityTraits key="traits" staticText="YES"/>
-                                        </accessibility>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myd-fQ-N41" userLabel="Place Label">
-                                        <rect key="frame" x="0.0" y="48.5" width="48" height="26.5"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="titleLabel">
-                                            <accessibilityTraits key="traits" staticText="YES"/>
-                                        </accessibility>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Oc-dV-WML" userLabel="Time Label">
-                                        <rect key="frame" x="0.0" y="97" width="48" height="26.5"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="titleLabel">
-                                            <accessibilityTraits key="traits" staticText="YES"/>
-                                        </accessibility>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSH-6d-ND6" userLabel="Tsunami Label">
-                                        <rect key="frame" x="0.0" y="145.5" width="48" height="26.5"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="titleLabel">
-                                            <accessibilityTraits key="traits" staticText="YES"/>
-                                        </accessibility>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfj-MH-dYQ" userLabel="Coordinates Label">
-                                        <rect key="frame" x="0.0" y="194" width="48" height="26.5"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="titleLabel">
-                                            <accessibilityTraits key="traits" staticText="YES"/>
-                                        </accessibility>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn0-Dr-nsa" userLabel="Magnitude Label">
-                                        <rect key="frame" x="0.0" y="242.5" width="48" height="26.5"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="titleLabel">
-                                            <accessibilityTraits key="traits" staticText="YES"/>
-                                        </accessibility>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="EDm-VB-u2D">
+                                        <rect key="frame" x="16" y="20" width="382" height="660.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xz-u2-Tje">
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="26.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="titleLabel">
+                                                    <accessibilityTraits key="traits" staticText="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myd-fQ-N41" userLabel="Place Label">
+                                                <rect key="frame" x="0.0" y="48.5" width="48" height="24"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="titleLabel">
+                                                    <accessibilityTraits key="traits" staticText="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Oc-dV-WML" userLabel="Time Label">
+                                                <rect key="frame" x="0.0" y="94.5" width="48" height="24"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="titleLabel">
+                                                    <accessibilityTraits key="traits" staticText="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSH-6d-ND6" userLabel="Tsunami Label">
+                                                <rect key="frame" x="0.0" y="140.5" width="48" height="24"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="titleLabel">
+                                                    <accessibilityTraits key="traits" staticText="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfj-MH-dYQ" userLabel="Coordinates Label">
+                                                <rect key="frame" x="0.0" y="186.5" width="48" height="24"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="titleLabel">
+                                                    <accessibilityTraits key="traits" staticText="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn0-Dr-nsa" userLabel="Magnitude Label">
+                                                <rect key="frame" x="0.0" y="232.5" width="48" height="24"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="titleLabel">
+                                                    <accessibilityTraits key="traits" staticText="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieu-h7-qbv">
+                                                <rect key="frame" x="0.0" y="278.5" width="382" height="382"/>
+                                                <subviews>
+                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nCa-vq-5Vf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="382"/>
+                                                    </mapView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="382" id="176-8L-hed"/>
+                                                    <constraint firstAttribute="bottom" secondItem="nCa-vq-5Vf" secondAttribute="bottom" id="So2-ua-bUd"/>
+                                                    <constraint firstItem="nCa-vq-5Vf" firstAttribute="leading" secondItem="ieu-h7-qbv" secondAttribute="leading" id="WPK-YF-f0h"/>
+                                                    <constraint firstAttribute="height" constant="382" id="ePG-dD-r5N"/>
+                                                    <constraint firstAttribute="trailing" secondItem="nCa-vq-5Vf" secondAttribute="trailing" id="jSy-8V-0Fc"/>
+                                                    <constraint firstItem="nCa-vq-5Vf" firstAttribute="top" secondItem="ieu-h7-qbv" secondAttribute="top" id="zHF-Qb-GNo"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="EDm-VB-u2D" secondAttribute="trailing" constant="16" id="BZX-J1-G1B"/>
+                                    <constraint firstAttribute="bottom" secondItem="EDm-VB-u2D" secondAttribute="bottom" constant="20" symbolic="YES" id="Cug-EL-iFN"/>
+                                    <constraint firstItem="EDm-VB-u2D" firstAttribute="width" secondItem="tP3-1O-C9j" secondAttribute="width" multiplier="0.905213" id="jz6-l3-lng"/>
+                                    <constraint firstItem="EDm-VB-u2D" firstAttribute="leading" secondItem="tP3-1O-C9j" secondAttribute="leading" constant="16" id="rLH-7h-x9M"/>
+                                    <constraint firstItem="EDm-VB-u2D" firstAttribute="top" secondItem="tP3-1O-C9j" secondAttribute="top" constant="20" symbolic="YES" id="vEg-Bb-NkY"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="kfp-7Q-5HL"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="h9d-kU-kfz"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="EDm-VB-u2D" secondAttribute="trailing" constant="16" id="8CJ-Gi-BkI"/>
-                            <constraint firstItem="EDm-VB-u2D" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="75" id="EKs-Z7-Vid"/>
-                            <constraint firstItem="EDm-VB-u2D" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="vnv-lp-uhT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="tP3-1O-C9j" secondAttribute="bottom" id="6lE-NG-4fo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="leading" secondItem="tP3-1O-C9j" secondAttribute="leading" id="ERH-FV-8tW"/>
+                            <constraint firstItem="tP3-1O-C9j" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="g6u-7V-mX6"/>
+                            <constraint firstItem="tP3-1O-C9j" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hgL-wv-xj7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="coordsLabel" destination="Cfj-MH-dYQ" id="DAj-Lw-Izi"/>
                         <outlet property="magnitudeLabel" destination="Fn0-Dr-nsa" id="CiK-kl-Ncf"/>
+                        <outlet property="mapView" destination="nCa-vq-5Vf" id="HwE-Pm-jOg"/>
                         <outlet property="placeLabel" destination="Myd-fQ-N41" id="c5v-Da-BQl"/>
                         <outlet property="timeLabel" destination="1Oc-dV-WML" id="9Lf-0i-Ftk"/>
                         <outlet property="titleLabel" destination="0Xz-u2-Tje" id="zRl-Yb-4oX"/>
