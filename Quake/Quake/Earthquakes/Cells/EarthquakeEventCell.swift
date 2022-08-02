@@ -43,11 +43,10 @@ class EarthquakeEventCell: UITableViewCell {
     }
     
     func animate(duration:Double, c: @escaping () -> Void) {
-        
         UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModePaced, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: duration, animations: {
                 
-                self.expandableView.isHidden = !self.expandableView.isHidden
+                self.expandableView.isHidden.toggle()
                 if self.expandableView.alpha == 1 {
                     self.expandableView.alpha = 0.7
                 } else {
@@ -56,7 +55,6 @@ class EarthquakeEventCell: UITableViewCell {
                 // Rotate chevron 180 degrees so it looks upwards
                 self.expandableButton.transform = self.expandableButton.transform.rotated(by: .pi)
             })
-            
         }, completion: {  (finished: Bool) in
             c()
         })
@@ -64,6 +62,5 @@ class EarthquakeEventCell: UITableViewCell {
     
     @IBAction func buttonPressedDown(_ sender: Any) {
         delegate?.didExpandCell(isExpanded: !expandableView.isHidden, indexPath: indexPath)
-
     }
 }

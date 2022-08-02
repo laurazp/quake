@@ -28,26 +28,21 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
 
     func didExpandCell(isExpanded: Bool, indexPath: IndexPath) {
         self.tableView.beginUpdates()
-        let cell = tableView.cellForRow(at: indexPath) as! EarthquakeEventCell
-        let feature = viewModel.getFeature(at: indexPath.row)
+        let cell = tableView.cellForRow(at: indexPath) as! EarthquakeEventCell        
         cell.animate(duration: 0, c: {
             cell.expandableView.layoutIfNeeded()
-            
-            // Show info in expandableView labels
-            let myDateFormatter = MyDateFormatter()
-            let formattedDate = myDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
-            
-            cell.placeLabel.text = "Place: \(feature.properties.place ?? "unknown")"
-            cell.timeLabel.text = "Time: \(formattedDate)"
-            cell.tsunamiLabel.text = "Tsunami: \(feature.properties.tsunami ?? 0)"
         })
         self.tableView.endUpdates()
     }
     
-    func setTitleAndMagnitude(cell: EarthquakeEventCell, indexPath: IndexPath) {
+    func configureCell(cell: EarthquakeEventCell, indexPath: IndexPath) {
         let feature = viewModel.getFeature(at: indexPath.row)
-        let titleSplitFromMagnitude = feature.properties.title?.components(separatedBy: "- ")
-        cell.label.text = titleSplitFromMagnitude?[(titleSplitFromMagnitude?.count ?? 0) - 1]
+        if let contains = feature.properties.title?.contains(" of "), contains == true {
+            cell.label.text = feature.properties.title?.components(separatedBy: " of ").last
+        } else {
+            let title = feature.properties.title?.components(separatedBy: " - ")
+            cell.label.text = title?.last
+        }
         
         let magSubstring = feature.properties.title?.prefix(8).prefix(6).suffix(4)
         let magString = magSubstring.map(String.init)
@@ -64,6 +59,14 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         default:
             cell.magLabel.textColor = .blue
         }
+        
+        // Set info for expandableView labels
+        let myDateFormatter = MyDateFormatter()
+        let formattedDate = myDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
+        
+        cell.placeLabel.text = "Place: \(feature.properties.place ?? "unknown")"
+        cell.timeLabel.text = "Time: \(formattedDate)"
+        cell.tsunamiLabel.text = "Tsunami: \(feature.properties.tsunami ?? 0)"
     }
     
     private func getMagnitudeColor(magnitude: Double) -> Int {
@@ -88,7 +91,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EarthquakeEventCell", for: indexPath) as? EarthquakeEventCell else { return UITableViewCell() }
         
-        setTitleAndMagnitude(cell: cell, indexPath: indexPath)
+        configureCell(cell: cell, indexPath: indexPath)
         cell.indexPath = indexPath
         cell.delegate = self
         return cell

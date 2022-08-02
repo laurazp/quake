@@ -17,4 +17,5 @@
 ### Mostrar magnitud en color en Detail (título también??)
 ### Títulos de Detail centrados y borrando hasta el of (if else por si no tiene of)
 
-
+### Revisar error al desplegar celdas que se ven sólo una línea rara !!!!!!!!!!!!!!!
+### Revisar límite de fechas en llamada a API en Map

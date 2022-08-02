@@ -40,8 +40,8 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         let formattedDate = myDateFormatter.formatDate(dateToFormat: earthquakeDetail.time)
         
         // Assigning data to variables
-        let titleSplitFromMagnitude = earthquakeDetail.title.components(separatedBy: "- ")
-        titleLabel.text = titleSplitFromMagnitude[(titleSplitFromMagnitude.count) - 1]
+        let titleSplit = earthquakeDetail.title.components(separatedBy: " of ")
+        titleLabel.text = titleSplit.last
         placeLabel.attributedText = getLabelText(labelTitle: "Place:  ", labelContent: (earthquakeDetail.place ?? "Unknown"))
         timeLabel.attributedText = getLabelText(labelTitle: "Time:  ", labelContent: "\(formattedDate)")
         tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: "\(earthquakeDetail.tsunami)")
@@ -57,9 +57,9 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
         //TODO: cambiar por latitud ...
-        let coord1 = earthquakeDetail.coords[0]
-        let coord2 = earthquakeDetail.coords[1]
-        let location = CLLocationCoordinate2DMake(CLLocationDegrees(coord2), CLLocationDegrees(coord1))
+        let longitude = earthquakeDetail.coords[0]
+        let latitude = earthquakeDetail.coords[1]
+        let location = CLLocationCoordinate2DMake(CLLocationDegrees(latitude), CLLocationDegrees(longitude))
         
         let coordinateRegion = MKCoordinateRegion.init(
             center: location,
@@ -86,7 +86,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
 //            //self.mapView.addAnnotation(placemark)
 //        }
         
-        let coords = CLLocationCoordinate2DMake(CLLocationDegrees(coord2), CLLocationDegrees(coord1))
+        let coords = CLLocationCoordinate2DMake(CLLocationDegrees(latitude), CLLocationDegrees(longitude))
         let annotation = MKPointAnnotation()
         annotation.coordinate = coords
         if let substring = earthquakeDetail.place?.split(separator: ",").last {
