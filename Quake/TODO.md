@@ -18,3 +18,4 @@
 
 ### Quitar tsunami de toda la app??
 ### Mostrar coords como [] o como lat y long?
+### Reutilizar código de la api para mapviewcontroller
