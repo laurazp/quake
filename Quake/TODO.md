@@ -15,7 +15,6 @@
 ### Revisar error consola al hacer click en botón expandir (constraints)
 ### Aumentar número líneas (0) al Place en la celda expansible --> aumentar tamaño celda
 ### Mostrar magnitud en color en Detail (título también??)
-### Títulos de Detail centrados y borrando hasta el of (if else por si no tiene of)
 
-### Revisar error al desplegar celdas que se ven sólo una línea rara !!!!!!!!!!!!!!!
-### Revisar límite de fechas en llamada a API en Map
+### Quitar tsunami de toda la app??
+### Mostrar coords como [] o como lat y long?
