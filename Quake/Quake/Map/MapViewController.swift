@@ -56,62 +56,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         searchBar.delegate = self
     }
     
-//    func updateSearchResults(for searchController: UISearchController) {
-//        /*guard let mapView = mapView,
-//              let searchBarText = searchController.searchBar.text else { return }
-//        let request = MKLocalSearch.Request()
-//        request.naturalLanguageQuery = searchBarText
-//        request.region = mapView.region
-//        let search = MKLocalSearch(request: request)
-//        search.start { searchResponse, _ in
-//            guard let response = searchResponse else {
-//                return
-//            }
-//            self.matchingItems = response.mapItems
-//
-//            if let center = (self.matchingItems.first?.placemark.region as? CLCircularRegion)?.center {
-//
-//                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
-//                self.mapView.setRegion(region, animated: true)
-//            }
-//
-//            /*let geocoder = CLGeocoder()
-//            geocoder.geocodeAddressString(searchBarText) { (placemarks, error) in
-//
-//                if let center = (placemarks?.first?.region as? CLCircularRegion)?.center {
-//
-//                    let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
-//                    self.mapView.setRegion(region, animated: true)
-//                }
-//            }*/
-//        }*/
-//    }
-    
-    /*func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let mapView = mapView,
-              let searchBarText = searchBar.text else { return }
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = searchBarText
-        request.region = mapView.region
-        let search = MKLocalSearch(request: request)
-        
-        //TODO: Add a button to start the search
-        
-        search.start { searchResponse, _ in
-            guard let response = searchResponse else {
-                return
-            }
-            self.matchingItems = response.mapItems
-            
-            if let center = (self.matchingItems.first?.placemark.region as? CLCircularRegion)?.center {
-                
-                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
-                self.mapView.setRegion(region, animated: true)
-            }
-        }
-        self.resultSearchController?.isActive = false //Deactivate searchcontroller after search
-    }*/
-    
     private func layoutUI() {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mapView)
@@ -129,7 +73,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             // TODO: Here we must tell user how to turn on location on device
             return
         }
-            
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
@@ -169,9 +112,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     private func loadInitialData() {
-        let url: String = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson"
+        let getTimeRangeUseCase = GetTimeRangeUseCase()
+        let timeRange = getTimeRangeUseCase.getTimeRange(days: 30)
+        let startTime = timeRange.start
+        let endTime = timeRange.end
+        let url: String = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)"
+        
         guard let fileName = URL.init(string: url),
-              
                 let earthquakesData = try? Data(contentsOf: fileName)
         else {
             print("Error retrieving data from url")
@@ -191,11 +138,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
 }
 
-extension MapViewController {
+extension MapViewController: HandleMapSearch {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkAuthorizationForLocation()
     }
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
@@ -203,8 +149,6 @@ extension MapViewController {
                                                        latitudinalMeters: rangeInMeters,
                                                        longitudinalMeters: rangeInMeters)
         mapView.setRegion(coordinateRegion, animated: true)
-        //Deactivate searchcontroller after search
-//        self.resultSearchController?.isActive = false
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -237,10 +181,6 @@ extension MapViewController {
         view.markerTintColor = annotation.markerTintColor // Change color of pins in map
         return view
     }
-}
-
-//TODO: Añadir a la otra extension
-extension MapViewController: HandleMapSearch {
     
     func dropPinZoomIn(_ mapItem: MKMapItem){
         selectedPin = mapItem.placemark
@@ -250,3 +190,4 @@ extension MapViewController: HandleMapSearch {
         resultSearchController?.searchBar.text = mapItem.name
     }
 }
+
