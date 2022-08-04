@@ -48,7 +48,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         let magString = magSubstring.map(String.init)
         cell.magLabel.text = magString
         
-        let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: feature.properties.mag ?? 0)
+        let magnitudeColor = viewModel.getColor(forMagnitude: feature.properties.mag ?? 0)
         cell.magLabel.textColor = magnitudeColor
         
         // Set info for expandableView labels

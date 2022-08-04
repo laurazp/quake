@@ -28,7 +28,7 @@ final class EarthquakesViewModel {
         }
     }
     
-    func assignMagnitudeColor(magnitude: Double) -> UIColor {
+    func getColor(forMagnitude magnitude: Double) -> UIColor {
         return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
     }
 }
