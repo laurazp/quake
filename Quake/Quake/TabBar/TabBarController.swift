@@ -16,8 +16,11 @@ class TabBarController: UITabBarController {
     
     private func getMapViewController() -> UIViewController {
         let storyboard = UIStoryboard(name: "MapStoryboard", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "MapViewController")
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else {
+            return UIViewController()
+        }
         viewController.title = "Map"
+        viewController.viewModel.viewDelegate = viewController
         let navigationController = UINavigationController(rootViewController: viewController) // TODO: Explicar navigation controller
         navigationController.tabBarItem.image = UIImage(systemName: "map")
         return navigationController

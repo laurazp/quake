@@ -13,6 +13,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     private let rangeInMeters: Double = 1000000
     private var annotationsInMap: [AnnotationInMap] = []
     
+    let viewModel = MapViewModel()
+    
     var resultSearchController: UISearchController? = nil
     var matchingItems: [MKMapItem] = []
     var selectedPin:MKPlacemark? = nil
@@ -25,8 +27,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         centerViewOnUser()
         
         mapView.delegate = self
-        loadInitialData()
-        mapView.addAnnotations(annotationsInMap)
+        viewModel.viewDidLoad()
+        //loadInitialData()
+        //mapView.addAnnotations(annotationsInMap)
         
         configureSearchBarAndTable()
     }
@@ -111,7 +114,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    private func loadInitialData() {
+    /*private func loadInitialData() {
         let getTimeRangeUseCase = GetTimeRangeUseCase()
         let timeRange = getTimeRangeUseCase.getTimeRange(days: 30)
         let startTime = timeRange.start
@@ -135,6 +138,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         } catch {
             print("Unexpected error: \(error).")
         }
+    }*/
+    
+    // MARK: - View Model Output
+    func updateView(annotationsInMap: [AnnotationInMap]) {
+        mapView.addAnnotations(annotationsInMap)
     }
 }
 
