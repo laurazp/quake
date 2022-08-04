@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 final class EarthquakesViewModel {
     weak var viewDelegate: EarthquakeViewController?
     
     private let getEarthquakesUseCase = GetEarthquakesUseCase()
     private var earthquakesData = [Feature]()
+    private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
     
     func viewDidLoad() {
         getEarthquakes()
@@ -30,5 +32,9 @@ final class EarthquakesViewModel {
             self.earthquakesData = features
             self.viewDelegate?.updateView()
         }
+    }
+    
+    func assignMagnitudeColor(magnitude: Double) -> UIColor {
+        return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
     }
 }

@@ -37,6 +37,8 @@
 		22990A27284BD40A00C1104D /* QuakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A26284BD40A00C1104D /* QuakeTests.swift */; };
 		22990A31284BD40A00C1104D /* QuakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A30284BD40A00C1104D /* QuakeUITests.swift */; };
 		22990A33284BD40A00C1104D /* QuakeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A32284BD40A00C1104D /* QuakeUITestsLaunchTests.swift */; };
+		22F68496289B335B00412B34 /* GetMagnitudeColorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */; };
+		22F68499289BECD800412B34 /* EarthquakeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */; };
 		B615E85A2858EBA800B77A5F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615E8582858EBA800B77A5F /* MapViewController.swift */; };
 		B615E85D2858EBE900B77A5F /* MapStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B615E85C2858EBE900B77A5F /* MapStoryboard.storyboard */; };
 		B615E8632858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B615E8622858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard */; };
@@ -97,6 +99,8 @@
 		22990A2C284BD40A00C1104D /* QuakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990A30284BD40A00C1104D /* QuakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeUITests.swift; sourceTree = "<group>"; };
 		22990A32284BD40A00C1104D /* QuakeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMagnitudeColorUseCase.swift; sourceTree = "<group>"; };
+		22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetailViewModel.swift; sourceTree = "<group>"; };
 		B615E8582858EBA800B77A5F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B615E85C2858EBE900B77A5F /* MapStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapStoryboard.storyboard; sourceTree = "<group>"; };
 		B615E8622858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EarthquakeDetailStoryboard.storyboard; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 			children = (
 				228D1FFF28985048006B6BE8 /* GetEarthquakesUseCase.swift */,
 				228D2001289852A6006B6BE8 /* GetTimeRangeUseCase.swift */,
+				22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -285,6 +290,14 @@
 			path = QuakeUITests;
 			sourceTree = "<group>";
 		};
+		22F68497289BECBB00412B34 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 		B615E85F2858ED4600B77A5F /* Earthquakes */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +334,7 @@
 		B615E8642858F16A00B77A5F /* EarthquakeDetail */ = {
 			isa = PBXGroup;
 			children = (
+				22F68497289BECBB00412B34 /* View Model */,
 				B615E8622858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard */,
 				B615E8652858F18100B77A5F /* EarthquakeDetailViewController.swift */,
 			);
@@ -473,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				228D200028985048006B6BE8 /* GetEarthquakesUseCase.swift in Sources */,
+				22F68499289BECD800412B34 /* EarthquakeDetailViewModel.swift in Sources */,
 				227D90842875EA0900A0DED5 /* SettingsOption.swift in Sources */,
 				227D9071286B32CB00A0DED5 /* Property.swift in Sources */,
 				22990A14284BD40500C1104D /* ViewController.swift in Sources */,
@@ -485,6 +500,7 @@
 				227D909E287EE7C500A0DED5 /* LocationSearchTable.swift in Sources */,
 				227D906D286B325900A0DED5 /* Response.swift in Sources */,
 				22990A10284BD40500C1104D /* AppDelegate.swift in Sources */,
+				22F68496289B335B00412B34 /* GetMagnitudeColorUseCase.swift in Sources */,
 				227D9088287DC1B800A0DED5 /* MyDateFormatter.swift in Sources */,
 				22990A12284BD40500C1104D /* SceneDelegate.swift in Sources */,
 				223A2F222857EF4000034143 /* TabBarController.swift in Sources */,

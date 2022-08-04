@@ -178,7 +178,7 @@ extension MapViewController: HandleMapSearch {
         view.canShowCallout = true
         view.calloutOffset = CGPoint(x: -5, y: 5)
         view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        view.markerTintColor = annotation.markerTintColor // Change color of pins in map
+        view.markerTintColor = annotation.markerTintColor // TODO: Change color of pins in map
         return view
     }
     

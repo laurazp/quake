@@ -11,6 +11,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var coordsLabel: UILabel!
     @IBOutlet weak var magnitudeLabel: UILabel!
     
+    let viewModel = EarthquakeDetailViewModel()
     var earthquakeDetail: EarthquakeDetail?
     
     // MapView
@@ -44,7 +45,8 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: "\(earthquakeDetail.coords)")
         
         if let magnitude = earthquakeDetail.magnitude {
-            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "\(magnitude)")
+            let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: magnitude)
+            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "\(magnitude)", contentColor: magnitudeColor)
         } else {
             magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "Magnitude unknown")
         }
@@ -70,16 +72,15 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotation(annotation)
     }
     
-    private func getLabelText(labelTitle: String, labelContent: String) -> NSMutableAttributedString {
-        let boldText = labelTitle
-        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)]
-        let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
+    private func getLabelText(labelTitle: String, labelContent: String, contentColor: UIColor = .black) -> NSMutableAttributedString {
+        let titleAttributes = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)]
+        let titleString = NSMutableAttributedString(string: labelTitle, attributes: titleAttributes)
 
-        let normalText = labelContent
-        let normalString = NSMutableAttributedString(string:normalText)
+        let contentAttributes = [NSAttributedString.Key.foregroundColor : contentColor]
+        let contentString = NSMutableAttributedString(string: labelContent, attributes: contentAttributes)
 
-        attributedString.append(normalString)
-        return attributedString
+        titleString.append(contentString)
+        return titleString
     }
 }
 
@@ -107,6 +108,7 @@ extension EarthquakeDetailViewController {
         view.canShowCallout = false
         view.calloutOffset = CGPoint(x: -5, y: 5)
         view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        view.markerTintColor = annotation.markerTintColor // Change color of pins in map
         return view
     }
 }

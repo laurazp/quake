@@ -28,7 +28,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
 
     func didExpandCell(isExpanded: Bool, indexPath: IndexPath) {
         self.tableView.beginUpdates()
-        let cell = tableView.cellForRow(at: indexPath) as! EarthquakeEventCell        
+        let cell = tableView.cellForRow(at: indexPath) as! EarthquakeEventCell
         cell.animate(duration: 0, c: {
             cell.expandableView.layoutIfNeeded()
         })
@@ -47,18 +47,9 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         let magSubstring = feature.properties.title?.prefix(8).prefix(6).suffix(4)
         let magString = magSubstring.map(String.init)
         cell.magLabel.text = magString
-        let magColor = getMagnitudeColor(magnitude: feature.properties.mag ?? 0)
         
-        switch magColor {
-        case 1:
-            cell.magLabel.textColor = .green
-        case 2:
-            cell.magLabel.textColor = .orange
-        case 3:
-            cell.magLabel.textColor = .red
-        default:
-            cell.magLabel.textColor = .blue
-        }
+        let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: feature.properties.mag ?? 0)
+        cell.magLabel.textColor = magnitudeColor
         
         // Set info for expandableView labels
         let myDateFormatter = MyDateFormatter()
@@ -67,18 +58,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         cell.placeLabel.text = "Place: \(feature.properties.place ?? "unknown")"
         cell.timeLabel.text = "Time: \(formattedDate)"
         cell.tsunamiLabel.text = "Tsunami: \(feature.properties.tsunami ?? 0)"
-    }
-    
-    private func getMagnitudeColor(magnitude: Double) -> Int {
-        if magnitude < 3 {
-            return 1
-        }
-        else if magnitude >= 3 && magnitude < 5 {
-            return 2
-        }
-        else {
-            return 3
-        }
     }
 }
 
