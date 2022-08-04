@@ -89,7 +89,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
             viewController.title = "Detail"
-            
+            viewController.viewModel.viewDelegate = viewController
             let feature = viewModel.getFeature(at: indexPath.row)
             // Passing data to EarthquakeDetailViewController
             let properties = feature.properties
@@ -103,7 +103,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
                                                             coords: geometry.coordinates,
                                                             magnitude: properties.mag)
             
-            viewController.earthquakeDetail = selectedEarthquakeDetail
+            viewController.viewModel.earthquakeDetail = selectedEarthquakeDetail
             navigationController?.pushViewController(viewController, animated: true) // Navegacion
             //present(viewController, animated: true) // Modal (pantalla de abajo a arriba)
         }

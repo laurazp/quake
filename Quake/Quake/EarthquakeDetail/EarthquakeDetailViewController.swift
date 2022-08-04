@@ -12,7 +12,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var magnitudeLabel: UILabel!
     
     let viewModel = EarthquakeDetailViewModel()
-    var earthquakeDetail: EarthquakeDetail?
+
     
     // MapView
     @IBOutlet weak var mapView: MKMapView!
@@ -21,9 +21,11 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let earthquakeDetail = earthquakeDetail {
-            configure(with: earthquakeDetail)
-        }
+        viewModel.viewDidLoad()
+    }
+    
+    func updateView(with detail: EarthquakeDetail) {
+        configure(with: detail)
     }
 
     func didTapButton() {
