@@ -174,13 +174,13 @@ extension MapViewController: HandleMapSearch {
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
             viewController.viewModel.viewDelegate = viewController
-            
+        
             if let selectedAnnotation = view.annotation as? AnnotationInMap {
                 let selectedEarthquakeDetail = EarthquakeDetail(title: selectedAnnotation.title ?? "unknown",
                                                                 place: selectedAnnotation.place,
                                                                 time: selectedAnnotation.time!, //TODO: modificar!!
                                                                 tsunami: selectedAnnotation.tsunami ?? 0,
-                                                                coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude)],
+                                                                coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude), Float()],
                                                                 magnitude: selectedAnnotation.mag)
                 viewController.viewModel.earthquakeDetail = selectedEarthquakeDetail
                 //navigationController?.pushViewController(viewController, animated: true)

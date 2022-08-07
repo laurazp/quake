@@ -7,7 +7,7 @@ struct GetFormattedCoordsUseCase {
         var formattedCoords: String = " "
         let longitude = actualCoords?[0] ?? 0
         let latitude = actualCoords?[1] ?? 0
-        let actualHeight = actualCoords?[2] ?? 0
+        //let actualHeight = actualCoords?[2] ?? 0
         var longitudeString: String
         var latitudeString: String
         var heightString: String
@@ -29,11 +29,7 @@ struct GetFormattedCoordsUseCase {
         }
         let formattedlatitude = latitudeString
         
-//        if actualCoords?[2] != nil {
-//            let formattedHeight = actualCoords?[2] ?? 0
-//        } else { formattedHeight = 0 }
-        
-        if actualHeight == actualCoords?[2] {
+        if let actualHeight = actualCoords?[2] {
             heightString = String(actualHeight) + "Km"
         }
         else {

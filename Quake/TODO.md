@@ -28,3 +28,4 @@
 ### Añadir título del detail en present modal? (he borrado la titleLabel)
 ### Añadir título en Mapa --> cómo???
 ### Resetear mapa al ir a otra view?
+### Línea 183 de MapViewController (tercer float de coords vacío)

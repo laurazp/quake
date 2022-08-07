@@ -62,9 +62,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         cell.timeLabel.text = "Time: \(formattedDate)"
         let tsunamiValue = getTsunamiValue(tsunami: feature.properties.tsunami ?? 0)
         cell.tsunamiLabel.text = "Tsunami: \(tsunamiValue)"
-        
-        // Pruebaa
-        
         cell.coordsLabel.text = "Coords: \(getFormattedCoordsUseCase.getFormattedCoords(actualCoords: feature.geometry.coordinates))"
     }
     

@@ -13,6 +13,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     
     let viewModel = EarthquakeDetailViewModel()
 
+    var getFormattedCoordsUseCase = GetFormattedCoordsUseCase()
     
     // MapView
     @IBOutlet weak var mapView: MKMapView!
@@ -44,7 +45,9 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         
         let tsunamiValue = getTsunamiValue(tsunami: earthquakeDetail.tsunami)
         tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: "\(tsunamiValue)")
-        coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: "\(earthquakeDetail.coords)")
+        
+        let formattedCoords = getFormattedCoordsUseCase.getFormattedCoords(actualCoords: earthquakeDetail.coords)
+        coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: "\(formattedCoords)")
         
         if let magnitude = earthquakeDetail.magnitude {
             let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: magnitude)
