@@ -14,12 +14,12 @@
 ### Revisar error consola al hacer click en botón expandir (constraints)
 ### Aumentar número líneas (0) al Place en la celda expansible --> aumentar tamaño celda
 
-### Cambiar tsunami por si o no
+### Sacar función getTsunamiValue() a clase independiente
 ### Mostrar coords como [] o como lat y long?
 ### Reutilizar código de la api para mapviewcontroller
 ### Clusters en map --> para más adelante
 ### Filtros para buscar terremotos por fechas en la tabla --> importante!!!
-### Ir de la info del pin seleccionado al Detail (con push notification) --> muy importante
+### Ir de la info del pin seleccionado al Detail (con push notification) --> SÓLO SALE CON PRESENT, NO CON PUSH !!!
 ### Título en Mapa (mejor nombre de la app?)
 ### Cargar sólo las anotaciones del área???
 ### Añadir botón de localización propia en mapa

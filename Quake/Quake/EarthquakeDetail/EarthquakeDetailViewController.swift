@@ -39,11 +39,11 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         let formattedDate = myDateFormatter.formatDate(dateToFormat: earthquakeDetail.time)
         
         // Assigning data to variables
-        let titleSplit = earthquakeDetail.title.components(separatedBy: " of ")
-        titleLabel.text = titleSplit.last
         placeLabel.attributedText = getLabelText(labelTitle: "Place:  ", labelContent: (earthquakeDetail.place ?? "Unknown"))
         timeLabel.attributedText = getLabelText(labelTitle: "Time:  ", labelContent: "\(formattedDate)")
-        tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: "\(earthquakeDetail.tsunami)")
+        
+        let tsunamiValue = getTsunamiValue(tsunami: earthquakeDetail.tsunami)
+        tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: "\(tsunamiValue)")
         coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: "\(earthquakeDetail.coords)")
         
         if let magnitude = earthquakeDetail.magnitude {
@@ -74,8 +74,19 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotation(annotation)
     }
     
+    private func getTsunamiValue(tsunami: Int) -> String {
+        switch (tsunami) {
+        case 0:
+            return "No"
+        case 1:
+            return "Yes"
+        default:
+            return "Unknown"
+        }
+    }
+    
     private func getLabelText(labelTitle: String, labelContent: String, contentColor: UIColor = .black) -> NSMutableAttributedString {
-        let titleAttributes = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)]
+        let titleAttributes = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17)]
         let titleString = NSMutableAttributedString(string: labelTitle, attributes: titleAttributes)
 
         let contentAttributes = [NSAttributedString.Key.foregroundColor : contentColor]

@@ -9,6 +9,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Quake"
         setupTable()
         viewModel.viewDidLoad()
     }
@@ -55,9 +56,21 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         let myDateFormatter = MyDateFormatter()
         let formattedDate = myDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
         
-        cell.placeLabel.text = "Place: \(feature.properties.place ?? "unknown")"
+        cell.placeLabel.text = "Place: \(feature.properties.place ?? "Unknown")"
         cell.timeLabel.text = "Time: \(formattedDate)"
-        cell.tsunamiLabel.text = "Tsunami: \(feature.properties.tsunami ?? 0)"
+        let tsunamiValue = getTsunamiValue(tsunami: feature.properties.tsunami ?? 0)
+        cell.tsunamiLabel.text = "Tsunami: \(tsunamiValue)"
+    }
+    
+    private func getTsunamiValue(tsunami: Int) -> String {
+        switch (tsunami) {
+        case 0:
+            return "No"
+        case 1:
+            return "Yes"
+        default:
+            return "Unknown"
+        }
     }
 }
 
@@ -88,7 +101,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
        
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
-            viewController.title = "Detail"
+            //viewController.title = "Detail"
             viewController.viewModel.viewDelegate = viewController
             let feature = viewModel.getFeature(at: indexPath.row)
             // Passing data to EarthquakeDetailViewController
@@ -96,12 +109,19 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
             let geometry = feature.geometry
             let date = Date(timeIntervalSince1970: TimeInterval(properties.time ?? 0) / 1000)
             
-            let selectedEarthquakeDetail = EarthquakeDetail(title: properties.title ?? "unknown",
+            let titleSplit = properties.title?.components(separatedBy: " of ")
+            viewController.title = titleSplit?.last
+            
+            let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
                                                             place: properties.place,
                                                             time: date,
                                                             tsunami: properties.tsunami ?? 0,
                                                             coords: geometry.coordinates,
                                                             magnitude: properties.mag)
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            navigationItem.backBarButtonItem = backItem
             
             viewController.viewModel.earthquakeDetail = selectedEarthquakeDetail
             navigationController?.pushViewController(viewController, animated: true) // Navegacion
