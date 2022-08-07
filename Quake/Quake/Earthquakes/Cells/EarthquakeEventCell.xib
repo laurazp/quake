@@ -73,19 +73,25 @@
                                         <rect key="frame" x="20" y="10" width="285" height="103"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAn-WW-ue3" userLabel="PlaceLabel">
-                                                <rect key="frame" x="0.0" y="0.0" width="285" height="42"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="285" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6x-Nc-fr0" userLabel="TimeLabel">
-                                                <rect key="frame" x="0.0" y="52" width="285" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="30.5" width="285" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbD-tl-stL" userLabel="TsunamiLabel">
-                                                <rect key="frame" x="0.0" y="82.5" width="285" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbD-tl-stL" userLabel="TsunamiLabel">
+                                                <rect key="frame" x="0.0" y="61" width="285" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s61-m3-4cZ" userLabel="CoordsLabel">
+                                                <rect key="frame" x="0.0" y="91.5" width="285" height="11.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -113,6 +119,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="coordsLabel" destination="s61-m3-4cZ" id="bLM-PE-rAd"/>
                 <outlet property="expandableButton" destination="bYl-2a-10p" id="Bz4-Ts-9Ib"/>
                 <outlet property="expandableView" destination="tA3-kX-RRI" id="muD-RY-IBg"/>
                 <outlet property="label" destination="MOG-n9-UkV" id="aJu-mK-W9A"/>

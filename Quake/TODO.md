@@ -15,14 +15,16 @@
 
 ### Sacar función getTsunamiValue() a clase independiente
 ### Mostrar coords como N, S, E, W y altura
-### Reutilizar código de la api para mapviewcontroller
+### Modificar todas las Coords con nuevo UseCase
+### Añadir leyenda para explicar coords, depth... ??
+
 ### Clusters en map --> para más adelante
 ### Filtros para buscar terremotos por fechas en la tabla --> importante!!!
-### Título en Mapa (mejor nombre de la app?)
 ### Cargar sólo las anotaciones del área???
 ### Añadir botón de localización propia en mapa
 ### Fuentes pequeñas, todos los fondos gris claro y en Detail añadir cards blancas con bordes redondeados
 
 ### Ir de la info del pin seleccionado al Detail --> SÓLO SALE CON PRESENT, NO CON PUSH !!!
 ### Añadir título del detail en present modal? (he borrado la titleLabel)
-
+### Añadir título en Mapa --> cómo???
+### Resetear mapa al ir a otra view?
