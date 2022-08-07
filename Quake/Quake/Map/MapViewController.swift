@@ -19,6 +19,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var matchingItems: [MKMapItem] = []
     var selectedPin:MKPlacemark? = nil
     
+    // borrar????
+    let dateFormatter = MyDateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                     
@@ -187,7 +190,32 @@ extension MapViewController: HandleMapSearch {
         view.calloutOffset = CGPoint(x: -5, y: 5)
         view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         view.markerTintColor = annotation.markerTintColor // TODO: Change color of pins in map
+        
+        let btn = UIButton(type: .detailDisclosure)
+        view.rightCalloutAccessoryView = btn
+        //TODO: evento al hacer click en detailDisclosure tbn
+        
         return view
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
+        if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
+            viewController.viewModel.viewDelegate = viewController
+            
+            if let selectedAnnotation = view.annotation as? AnnotationInMap {
+                let selectedEarthquakeDetail = EarthquakeDetail(title: selectedAnnotation.title ?? "unknown",
+                                                                place: selectedAnnotation.place,
+                                                                time: selectedAnnotation.time!, //TODO: modificar!!
+                                                                tsunami: selectedAnnotation.tsunami ?? 0,
+                                                                coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude)],
+                                                                magnitude: selectedAnnotation.mag)
+                viewController.viewModel.earthquakeDetail = selectedEarthquakeDetail
+                //navigationController?.pushViewController(viewController, animated: true)
+                present(viewController, animated: true)
+            }
+            
+        }
     }
     
     func dropPinZoomIn(_ mapItem: MKMapItem){
