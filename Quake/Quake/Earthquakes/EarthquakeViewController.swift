@@ -8,6 +8,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     let viewModel = EarthquakesViewModel()
     
     var getFormattedCoordsUseCase = GetFormattedCoordsUseCase()
+    let getTsunamiValueUseCase = GetTsunamiValueUseCase()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,23 +58,12 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         // Set info for expandableView labels
         let myDateFormatter = MyDateFormatter()
         let formattedDate = myDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
-        
+        let tsunamiValue = getTsunamiValueUseCase.getTsunamiValue(tsunami: feature.properties.tsunami ?? 0)
+
         cell.placeLabel.text = "Place: \(feature.properties.place ?? "Unknown")"
         cell.timeLabel.text = "Time: \(formattedDate)"
-        let tsunamiValue = getTsunamiValue(tsunami: feature.properties.tsunami ?? 0)
         cell.tsunamiLabel.text = "Tsunami: \(tsunamiValue)"
         cell.coordsLabel.text = "Coords: \(getFormattedCoordsUseCase.getFormattedCoords(actualCoords: feature.geometry.coordinates))"
-    }
-    
-    private func getTsunamiValue(tsunami: Int) -> String {
-        switch (tsunami) {
-        case 0:
-            return "No"
-        case 1:
-            return "Yes"
-        default:
-            return "Unknown"
-        }
     }
 }
 

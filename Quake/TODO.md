@@ -29,3 +29,4 @@
 ### Añadir título en Mapa --> cómo???
 ### Resetear mapa al ir a otra view?
 ### Línea 183 de MapViewController (tercer float de coords vacío)
+### Línea 66 de EarthquakeViewController obliga a hacer el useCase var en vez de let (mutable)

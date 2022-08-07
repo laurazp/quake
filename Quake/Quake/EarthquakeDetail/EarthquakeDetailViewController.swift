@@ -14,6 +14,8 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     let viewModel = EarthquakeDetailViewModel()
 
     var getFormattedCoordsUseCase = GetFormattedCoordsUseCase()
+    let getTsunamiValueUseCase = GetTsunamiValueUseCase()
+
     
     // MapView
     @IBOutlet weak var mapView: MKMapView!
@@ -43,7 +45,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         placeLabel.attributedText = getLabelText(labelTitle: "Place:  ", labelContent: (earthquakeDetail.place ?? "Unknown"))
         timeLabel.attributedText = getLabelText(labelTitle: "Time:  ", labelContent: "\(formattedDate)")
         
-        let tsunamiValue = getTsunamiValue(tsunami: earthquakeDetail.tsunami)
+        let tsunamiValue = getTsunamiValueUseCase.getTsunamiValue(tsunami: earthquakeDetail.tsunami )
         tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: "\(tsunamiValue)")
         
         let formattedCoords = getFormattedCoordsUseCase.getFormattedCoords(actualCoords: earthquakeDetail.coords)
@@ -75,17 +77,6 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
             annotation.title = String(substring)
         }
         mapView.addAnnotation(annotation)
-    }
-    
-    private func getTsunamiValue(tsunami: Int) -> String {
-        switch (tsunami) {
-        case 0:
-            return "No"
-        case 1:
-            return "Yes"
-        default:
-            return "Unknown"
-        }
     }
     
     private func getLabelText(labelTitle: String, labelContent: String, contentColor: UIColor = .black) -> NSMutableAttributedString {
