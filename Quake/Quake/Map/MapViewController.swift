@@ -31,9 +31,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         mapView.delegate = self
         viewModel.viewDidLoad()
-        //loadInitialData()
-        //mapView.addAnnotations(annotationsInMap)
-        
+
         configureSearchBarAndTable()
     }
     
@@ -116,32 +114,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             longitudinalMeters: rangeInMeters)
         mapView.setRegion(coordinateRegion, animated: true)
     }
-    
-    /*private func loadInitialData() {
-        let getTimeRangeUseCase = GetTimeRangeUseCase()
-        let timeRange = getTimeRangeUseCase.getTimeRange(days: 30)
-        let startTime = timeRange.start
-        let endTime = timeRange.end
-        let url: String = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)"
-        
-        guard let fileName = URL.init(string: url),
-                let earthquakesData = try? Data(contentsOf: fileName)
-        else {
-            print("Error retrieving data from url")
-            return
-        }
-        
-        do {
-            let features = try MKGeoJSONDecoder()
-                .decode(earthquakesData)
-                .compactMap { $0 as? MKGeoJSONFeature }
-            
-            let validAnnotations = features.compactMap(AnnotationInMap.init)
-            annotationsInMap.append(contentsOf: validAnnotations)
-        } catch {
-            print("Unexpected error: \(error).")
-        }
-    }*/
     
     // MARK: - View Model Output
     func updateView(annotationsInMap: [AnnotationInMap]) {

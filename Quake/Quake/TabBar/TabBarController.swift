@@ -31,7 +31,7 @@ class TabBarController: UITabBarController {
         guard let viewController = storyboard.instantiateInitialViewController() as? EarthquakeViewController else {
             return UIViewController()
         }
-        viewController.title = "Earthquakes"
+        viewController.title = "Quake"
         viewController.viewModel.viewDelegate = viewController
         let navigationController = UINavigationController(rootViewController: viewController) // TODO: Explicar navigation controller
         navigationController.tabBarItem.image = UIImage(systemName: "house")

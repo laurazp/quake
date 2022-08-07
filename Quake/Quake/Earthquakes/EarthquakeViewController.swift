@@ -90,7 +90,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Last Earthquakes"
+        return "Last 30 days"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

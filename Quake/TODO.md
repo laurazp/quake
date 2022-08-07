@@ -5,24 +5,24 @@
 ### OPCIONAL: Añadir botón de buscar manual en la SearchBar?
 
 ## Requiere explicación
-### Añadir ViewModel en MapView (y en Detail)
 ### Usar NavigationControllers para que no se muestre la TabBar al navegar
 ### Paginación en los resultados de earthquakes
 
 ## Pantalla Settings (Pensar qué meter)
 
 ### Revisar error consola al hacer click en botón expandir (constraints)
-### Aumentar número líneas (0) al Place en la celda expansible --> aumentar tamaño celda
+### Aumentar número líneas (0) al Place en la celda expansible --> aumentar tamaño celda ??
 
 ### Sacar función getTsunamiValue() a clase independiente
-### Mostrar coords como [] o como lat y long?
+### Mostrar coords como N, S, E, W y altura
 ### Reutilizar código de la api para mapviewcontroller
 ### Clusters en map --> para más adelante
 ### Filtros para buscar terremotos por fechas en la tabla --> importante!!!
-### Ir de la info del pin seleccionado al Detail (con push notification) --> SÓLO SALE CON PRESENT, NO CON PUSH !!!
 ### Título en Mapa (mejor nombre de la app?)
 ### Cargar sólo las anotaciones del área???
 ### Añadir botón de localización propia en mapa
-### Quitar título Detail y poner ahí el title del earthquake
 ### Fuentes pequeñas, todos los fondos gris claro y en Detail añadir cards blancas con bordes redondeados
+
+### Ir de la info del pin seleccionado al Detail --> SÓLO SALE CON PRESENT, NO CON PUSH !!!
+### Añadir título del detail en present modal? (he borrado la titleLabel)
 
