@@ -19,7 +19,6 @@
 		227D9071286B32CB00A0DED5 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9070286B32CB00A0DED5 /* Property.swift */; };
 		227D9073286B32F700A0DED5 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9072286B32F700A0DED5 /* Geometry.swift */; };
 		227D9075286E27C600A0DED5 /* EarthquakesApiDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9074286E27C600A0DED5 /* EarthquakesApiDataSource.swift */; };
-		227D90812870ADE900A0DED5 /* LocationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D90802870ADE900A0DED5 /* LocationSearch.swift */; };
 		227D90842875EA0900A0DED5 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D90832875EA0900A0DED5 /* SettingsOption.swift */; };
 		227D90862875F98D00A0DED5 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D90852875F98D00A0DED5 /* SettingTableViewCell.swift */; };
 		227D9088287DC1B800A0DED5 /* MyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9087287DC1B800A0DED5 /* MyDateFormatter.swift */; };
@@ -80,7 +79,6 @@
 		227D9070286B32CB00A0DED5 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		227D9072286B32F700A0DED5 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		227D9074286E27C600A0DED5 /* EarthquakesApiDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakesApiDataSource.swift; sourceTree = "<group>"; };
-		227D90802870ADE900A0DED5 /* LocationSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearch.swift; sourceTree = "<group>"; };
 		227D90832875EA0900A0DED5 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
 		227D90852875F98D00A0DED5 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		227D9087287DC1B800A0DED5 /* MyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDateFormatter.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 		227D907B286F610100A0DED5 /* SearchBar */ = {
 			isa = PBXGroup;
 			children = (
-				227D90802870ADE900A0DED5 /* LocationSearch.swift */,
 				227D909D287EE7C500A0DED5 /* LocationSearchTable.swift */,
 			);
 			path = SearchBar;
@@ -523,7 +520,6 @@
 				227D9088287DC1B800A0DED5 /* MyDateFormatter.swift in Sources */,
 				22990A12284BD40500C1104D /* SceneDelegate.swift in Sources */,
 				223A2F222857EF4000034143 /* TabBarController.swift in Sources */,
-				227D90812870ADE900A0DED5 /* LocationSearch.swift in Sources */,
 				228D1FFE28985026006B6BE8 /* EarthquakesViewModel.swift in Sources */,
 				227D909C287ED13100A0DED5 /* SettingsSection.swift in Sources */,
 				223A2F1E2856512E00034143 /* EarthquakeViewController.swift in Sources */,

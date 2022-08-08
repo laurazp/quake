@@ -176,7 +176,7 @@ extension MapViewController: HandleMapSearch {
             viewController.viewModel.viewDelegate = viewController
         
             if let selectedAnnotation = view.annotation as? AnnotationInMap {
-                let selectedEarthquakeDetail = EarthquakeDetail(title: selectedAnnotation.title ?? "unknown",
+                let selectedEarthquakeDetail = EarthquakeDetail(title: selectedAnnotation.title ?? "Unknown",
                                                                 place: selectedAnnotation.place,
                                                                 time: selectedAnnotation.time!, //TODO: modificar!!
                                                                 tsunami: selectedAnnotation.tsunami ?? 0,
