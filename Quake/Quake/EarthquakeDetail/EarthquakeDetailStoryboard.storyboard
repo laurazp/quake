@@ -76,11 +76,11 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="382" id="176-8L-hed"/>
                                                     <constraint firstAttribute="bottom" secondItem="nCa-vq-5Vf" secondAttribute="bottom" id="So2-ua-bUd"/>
                                                     <constraint firstItem="nCa-vq-5Vf" firstAttribute="leading" secondItem="ieu-h7-qbv" secondAttribute="leading" id="WPK-YF-f0h"/>
                                                     <constraint firstAttribute="height" constant="382" id="ePG-dD-r5N"/>
                                                     <constraint firstAttribute="trailing" secondItem="nCa-vq-5Vf" secondAttribute="trailing" id="jSy-8V-0Fc"/>
+                                                    <constraint firstAttribute="width" constant="375" id="jd5-An-JFV"/>
                                                     <constraint firstItem="nCa-vq-5Vf" firstAttribute="top" secondItem="ieu-h7-qbv" secondAttribute="top" id="zHF-Qb-GNo"/>
                                                 </constraints>
                                             </view>
