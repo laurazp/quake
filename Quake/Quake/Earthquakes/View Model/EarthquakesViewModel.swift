@@ -40,11 +40,7 @@ final class EarthquakesViewModel {
         return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
     }
     
-    func configureSearchBar(tableView: UITableView, navigationItem: UINavigationItem) {
-//        guard let locationSearchTable = storyboard?.instantiateViewController(withIdentifier: "LocationSearchTable") as? LocationSearchTable else { return }
-//        locationSearchTable.mapView = mapView
-//        locationSearchTable.handleMapSearchDelegate = self
-        
+    func configureSearchBar(tableView: UITableView, navigationItem: UINavigationItem) {        
         // 1
         searchController.searchResultsUpdater = viewDelegate
         // 2

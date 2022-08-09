@@ -31,7 +31,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
-        viewModel.configureSearchBar(tableView: tableView, navigationItem: navigationItem)
+        viewModel.configureSearchBar(tableView: tableView, navigationItem: navigationItem) // Dates SearchBar
         definesPresentationContext = true
 
     }

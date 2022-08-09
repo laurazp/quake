@@ -33,7 +33,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         centerViewOnUser()
         
         mapView.delegate = self
-        viewModel.viewDidLoad()
+        //viewModel.viewDidLoad() // --> Descomentar para mostrar los pines en el mapa!!!!
 
         configureSearchBarAndTable()
     }
