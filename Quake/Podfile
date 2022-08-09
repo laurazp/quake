@@ -1,4 +1,4 @@
 target 'Quake' do
   use_frameworks!
-  pod 'SwiftLint'
+  pod 'lottie-ios'
 end
