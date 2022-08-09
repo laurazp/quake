@@ -15,6 +15,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     let viewModel = MapViewModel()
     
+    @IBOutlet weak var searchBarView: UIView!
+    
     var resultSearchController: UISearchController? = nil
     var matchingItems: [MKMapItem] = []
     var selectedPin:MKPlacemark? = nil
@@ -24,13 +26,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Map"
         layoutUI()
         checkLocationServices()
         centerViewOnUser()
         
         mapView.delegate = self
-        //viewModel.viewDidLoad()
+        viewModel.viewDidLoad()
 
         configureSearchBarAndTable()
     }
@@ -52,7 +53,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         setupSearchBar()
         
         navigationItem.searchController = resultSearchController
-        navigationItem.titleView = resultSearchController?.searchBar
+        if let searchBar = resultSearchController?.searchBar {
+            searchBarView.addSubview(searchBar)
+        }
+        navigationItem.title = "Map"
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.obscuresBackgroundDuringPresentation = true
         definesPresentationContext = true
