@@ -411,6 +411,7 @@
 				22990A08284BD40500C1104D /* Sources */,
 				22990A09284BD40500C1104D /* Frameworks */,
 				22990A0A284BD40500C1104D /* Resources */,
+				0A9491E6FBF578146C4E4499 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -533,6 +534,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0A9491E6FBF578146C4E4499 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Quake/Pods-Quake-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Quake/Pods-Quake-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Quake/Pods-Quake-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A19F4B37B7FDBBE3E97ED96F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
