@@ -7,6 +7,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
    
     let viewModel = EarthquakesViewModel()
     
+    let getFormattedTitleMapper = GetFormattedTitleMapper()
     var getFormattedCoordsUseCase = GetFormattedCoordsUseCase()
     let getTsunamiValueUseCase = GetTsunamiValueUseCase()
     
@@ -51,13 +52,8 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     
     func configureCell(cell: EarthquakeEventCell, indexPath: IndexPath) {
         let feature = viewModel.getFeature(at: indexPath.row)
-        if let contains = feature.properties.title?.contains(" of "), contains == true {
-            cell.label.text = feature.properties.title?.components(separatedBy: " of ").last
-        } else {
-            let title = feature.properties.title?.components(separatedBy: " - ")
-            cell.label.text = title?.last
-        }
-        
+        cell.label.text = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown")
+   
         let magSubstring = feature.properties.title?.prefix(8).prefix(6).suffix(4)
         let magString = magSubstring.map(String.init)
         cell.magLabel.text = magString
@@ -112,8 +108,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
             let geometry = feature.geometry
             let date = Date(timeIntervalSince1970: TimeInterval(properties.time ?? 0) / 1000)
             
-            let titleSplit = properties.title?.components(separatedBy: " of ")
-            viewController.title = titleSplit?.last
+            viewController.title = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown")
             
             let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
                                                             place: properties.place,

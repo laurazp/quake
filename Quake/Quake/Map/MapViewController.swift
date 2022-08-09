@@ -15,6 +15,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     let viewModel = MapViewModel()
     
+    let getFormattedTitleMapper = GetFormattedTitleMapper()
+    
     @IBOutlet weak var searchBarView: UIView!
     
     var resultSearchController: UISearchController? = nil
@@ -185,14 +187,15 @@ extension MapViewController: HandleMapSearch {
             viewController.viewModel.viewDelegate = viewController
         
             if let selectedAnnotation = view.annotation as? AnnotationInMap {
-                let selectedEarthquakeDetail = EarthquakeDetail(title: selectedAnnotation.title ?? "Unknown",
+                let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
                                                                 place: selectedAnnotation.place,
                                                                 time: selectedAnnotation.time!, //TODO: modificar!!
                                                                 tsunami: selectedAnnotation.tsunami ?? 0,
                                                                 coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude), Float(selectedAnnotation.depth)],
                                                                 magnitude: selectedAnnotation.mag)
                 viewController.viewModel.earthquakeDetail = selectedEarthquakeDetail
-                viewController.title = selectedAnnotation.title
+                let formattedTitle = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown")
+                viewController.title = formattedTitle
                 navigationController?.pushViewController(viewController, animated: false)
                 //present(viewController, animated: true)
             }

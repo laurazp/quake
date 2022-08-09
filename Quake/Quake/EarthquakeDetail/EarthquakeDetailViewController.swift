@@ -76,7 +76,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
             let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: magnitude)
             magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "\(magnitude)", contentColor: magnitudeColor)
         } else {
-            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "Magnitude unknown")
+            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: " unknown")
         }
         
         // MapView config

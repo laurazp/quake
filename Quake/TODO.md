@@ -28,5 +28,6 @@
 ### MyDateFormatter -> cambiar a mappers y formatters los UseCase
 ### Añadir filtro para ordenar quakes por mag, nombre, etc.
 ### Añadir dark mode
-### 
+### Añadir animación lottie en nuevo viewController
+### Poner todos los campos de la API como opcionales???
 

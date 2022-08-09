@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct GetFormattedTitleUseCase {
+struct GetFormattedTitleMapper {
     func getFormattedTitle(titleWithoutFormat: String) -> String {
         var formattedTitle: String = ""
         if (titleWithoutFormat.contains(" of ")) {
