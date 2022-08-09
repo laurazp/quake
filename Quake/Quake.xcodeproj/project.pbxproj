@@ -42,6 +42,7 @@
 		22F684A1289FCAB600412B34 /* GetFormattedCoordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F684A0289FCAB600412B34 /* GetFormattedCoordsUseCase.swift */; };
 		22F684A328A01C8200412B34 /* GetTsunamiValueUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F684A228A01C8200412B34 /* GetTsunamiValueUseCase.swift */; };
 		22F684A528A28CA600412B34 /* GetFormattedTitleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F684A428A28CA600412B34 /* GetFormattedTitleUseCase.swift */; };
+		A778F9D5189E4E6D133735A2 /* Pods_Quake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13EBF4FE8106A3EB9DD2BB85 /* Pods_Quake.framework */; };
 		B615E85A2858EBA800B77A5F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615E8582858EBA800B77A5F /* MapViewController.swift */; };
 		B615E85D2858EBE900B77A5F /* MapStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B615E85C2858EBE900B77A5F /* MapStoryboard.storyboard */; };
 		B615E8632858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B615E8622858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard */; };
@@ -68,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13EBF4FE8106A3EB9DD2BB85 /* Pods_Quake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D85B4687D60E0BA594D84EE /* Pods-Quake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quake.release.xcconfig"; path = "Target Support Files/Pods-Quake/Pods-Quake.release.xcconfig"; sourceTree = "<group>"; };
 		22143455285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsStoryboard.storyboard; sourceTree = "<group>"; };
 		22143457285CFED800F1CBA0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2214345D285D093600F1CBA0 /* AnnotationInMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationInMap.swift; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 		22F684A0289FCAB600412B34 /* GetFormattedCoordsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormattedCoordsUseCase.swift; sourceTree = "<group>"; };
 		22F684A228A01C8200412B34 /* GetTsunamiValueUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTsunamiValueUseCase.swift; sourceTree = "<group>"; };
 		22F684A428A28CA600412B34 /* GetFormattedTitleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormattedTitleUseCase.swift; sourceTree = "<group>"; };
+		5BF7AACE43E90AD4CA50CBBD /* Pods-Quake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quake.debug.xcconfig"; path = "Target Support Files/Pods-Quake/Pods-Quake.debug.xcconfig"; sourceTree = "<group>"; };
 		B615E8582858EBA800B77A5F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B615E85C2858EBE900B77A5F /* MapStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapStoryboard.storyboard; sourceTree = "<group>"; };
 		B615E8622858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EarthquakeDetailStoryboard.storyboard; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A778F9D5189E4E6D133735A2 /* Pods_Quake.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +254,8 @@
 				22990A25284BD40A00C1104D /* QuakeTests */,
 				22990A2F284BD40A00C1104D /* QuakeUITests */,
 				22990A0D284BD40500C1104D /* Products */,
+				A4B27BA23494508AA4A25F04 /* Pods */,
+				AC532F1D1338A16B89E5AB79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -322,6 +329,24 @@
 			path = Mappers;
 			sourceTree = "<group>";
 		};
+		A4B27BA23494508AA4A25F04 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5BF7AACE43E90AD4CA50CBBD /* Pods-Quake.debug.xcconfig */,
+				1D85B4687D60E0BA594D84EE /* Pods-Quake.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AC532F1D1338A16B89E5AB79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13EBF4FE8106A3EB9DD2BB85 /* Pods_Quake.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B615E85F2858ED4600B77A5F /* Earthquakes */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +407,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22990A36284BD40A00C1104D /* Build configuration list for PBXNativeTarget "Quake" */;
 			buildPhases = (
+				A19F4B37B7FDBBE3E97ED96F /* [CP] Check Pods Manifest.lock */,
 				22990A08284BD40500C1104D /* Sources */,
 				22990A09284BD40500C1104D /* Frameworks */,
 				22990A0A284BD40500C1104D /* Resources */,
@@ -505,6 +531,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A19F4B37B7FDBBE3E97ED96F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Quake-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		22990A08284BD40500C1104D /* Sources */ = {
@@ -712,6 +763,7 @@
 		};
 		22990A37284BD40A00C1104D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BF7AACE43E90AD4CA50CBBD /* Pods-Quake.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -740,6 +792,7 @@
 		};
 		22990A38284BD40A00C1104D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D85B4687D60E0BA594D84EE /* Pods-Quake.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
