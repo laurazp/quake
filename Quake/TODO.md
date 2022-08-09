@@ -23,3 +23,4 @@
 ### Modificar título de Detail al hacer push desde map
 ### Arreglar coords para que esté la depth en otra línea
 ### MyDateFormatter -> cambiar a mappers y formatters los UseCase
+### Añadir filtro para ordenar quakes por mag, nombre, etc.

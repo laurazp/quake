@@ -24,13 +24,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                    
+        title = "Map"
         layoutUI()
         checkLocationServices()
         centerViewOnUser()
         
         mapView.delegate = self
-        viewModel.viewDidLoad()
+        //viewModel.viewDidLoad()
 
         configureSearchBarAndTable()
     }

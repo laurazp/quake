@@ -16,6 +16,8 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     var getFormattedCoordsUseCase = GetFormattedCoordsUseCase()
     let getTsunamiValueUseCase = GetTsunamiValueUseCase()
 
+    @IBOutlet weak var infoCard: UIView!
+    @IBOutlet weak var mapCard: UIView!
     
     // MapView
     @IBOutlet weak var mapView: MKMapView!
@@ -24,12 +26,26 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupViews()
+        
         viewModel.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+    }
+    
+    private func setupViews() {
+        infoCard.layer.shadowColor = UIColor.black.cgColor
+        infoCard.layer.shadowOffset = CGSize(width: 1, height: 1)
+        infoCard.layer.shadowRadius = 3
+        infoCard.layer.shadowOpacity = 0.2
+        
+        mapCard.layer.shadowColor = UIColor.black.cgColor
+        mapCard.layer.shadowOffset = CGSize(width: 1, height: 1)
+        mapCard.layer.shadowRadius = 3
+        mapCard.layer.shadowOpacity = 0.2
     }
     
     func updateView(with detail: EarthquakeDetail) {
