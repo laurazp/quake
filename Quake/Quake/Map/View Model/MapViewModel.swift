@@ -34,7 +34,8 @@ final class MapViewModel {
                                 mag: feature.properties.mag,
                                 tsunami: feature.properties.tsunami,
                                 coordinate: CLLocationCoordinate2D(latitude:  CLLocationDegrees(feature.geometry.coordinates[1]),
-                                                                   longitude: CLLocationDegrees(feature.geometry.coordinates[0])))
+                                                                   longitude: CLLocationDegrees(feature.geometry.coordinates[0])),
+                                depth: feature.geometry.coordinates[2])
             }
             self.viewDelegate?.updateView(annotationsInMap: annotations)
         }

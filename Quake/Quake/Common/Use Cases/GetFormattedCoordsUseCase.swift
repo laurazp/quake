@@ -3,41 +3,31 @@ import Foundation
 
 struct GetFormattedCoordsUseCase {
     
-    mutating func getFormattedCoords(actualCoords: [Float]?) -> String {
-        var formattedCoords: String = " "
+    func getFormattedCoords(actualCoords: [Float]?) -> String {
         let longitude = actualCoords?[0] ?? 0
         let latitude = actualCoords?[1] ?? 0
-        //let actualHeight = actualCoords?[2] ?? 0
-        var longitudeString: String
-        var latitudeString: String
-        var heightString: String
-        // TODO: Formatear altura sobre el nivel del mar???
+        let longitudeString: String
+        let latitudeString: String
+        let heightString: String
         
         if (longitude < 0) {
             longitudeString = String(-(longitude )) + "W"
-        }
-        else {
+        } else {
             longitudeString = String((longitude )) + "E"
         }
-        let formattedLongitude = longitudeString
         
         if (latitude < 0) {
             latitudeString = String(-(latitude )) + "S"
-        }
-        else {
+        } else {
             latitudeString = String((latitude )) + "N"
         }
-        let formattedlatitude = latitudeString
         
         if let actualHeight = actualCoords?[2] {
             heightString = String(actualHeight) + "Km"
-        }
-        else {
+        } else {
             heightString = " "
         }
-        let formattedHeight = heightString
         
-        formattedCoords = "\(formattedLongitude), \(formattedlatitude), \(formattedHeight)"
-        return formattedCoords
+        return "\(longitudeString), \(latitudeString), \(heightString)"
     }
 }

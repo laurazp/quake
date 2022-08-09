@@ -10,11 +10,18 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     var getFormattedCoordsUseCase = GetFormattedCoordsUseCase()
     let getTsunamiValueUseCase = GetTsunamiValueUseCase()
     
+    var filteredEarthquakes: [Feature] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Quake"
         setupTable()
         viewModel.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
 
     private func setupTable() {
@@ -23,6 +30,9 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
+        viewModel.configureSearchBar(tableView: tableView, navigationItem: navigationItem)
+        definesPresentationContext = true
+
     }
     
     // MARK: - View Model Output
@@ -67,7 +77,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
 }
 
-extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
+extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
@@ -120,5 +130,14 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(viewController, animated: true) // Navegacion
             //present(viewController, animated: true) // Modal (pantalla de abajo a arriba)
         }
+        
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+        {
+            return 30
+        }
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+      // TODO
     }
 }

@@ -10,6 +10,7 @@ class AnnotationInMap: NSObject, MKAnnotation {
     let mag: Double?
     let tsunami: Int?
     let coordinate: CLLocationCoordinate2D
+    let depth: Float
     
     var markerTintColor: UIColor {
         let magLvl = getMagnitudeLevel(magnitude: self.mag ?? 0.0)
@@ -32,7 +33,8 @@ class AnnotationInMap: NSObject, MKAnnotation {
         time: Date?,
         mag: Double?,
         tsunami: Int?,
-        coordinate: CLLocationCoordinate2D
+        coordinate: CLLocationCoordinate2D,
+        depth: Float
     ) {
         self.title = title
         self.place = place
@@ -40,29 +42,31 @@ class AnnotationInMap: NSObject, MKAnnotation {
         self.mag = mag
         self.tsunami = tsunami
         self.coordinate = coordinate
+        self.depth = depth
 
         super.init()
     }
     
-    init?(feature: MKGeoJSONFeature) {
-      
-        guard let point = feature.geometry.first as? MKPointAnnotation,
-        let propertiesData = feature.properties,
-        let json = try? JSONSerialization.jsonObject(with: propertiesData),
-        let properties = json as? [String: Any]
-        else {
-          print("Error retrieveing data for map")
-          return nil
-        }
-
-        title = properties["title"] as? String
-        place = properties["place"] as? String
-        time = properties["time"] as? Date
-        mag = properties["mag"] as? Double
-        tsunami = properties["tsunami"] as? Int
-        coordinate = point.coordinate
-        super.init()
-    }
+//    init?(feature: MKGeoJSONFeature) {
+//
+//        guard let point = feature.geometry.first as? MKPointAnnotation,
+//        let propertiesData = feature.properties,
+//        let json = try? JSONSerialization.jsonObject(with: propertiesData),
+//        let properties = json as? [String: Any]
+//        else {
+//          print("Error retrieveing data for map")
+//          return nil
+//        }
+//
+//        title = properties["title"] as? String
+//        place = properties["place"] as? String
+//        time = properties["time"] as? Date
+//        mag = properties["mag"] as? Double
+//        tsunami = properties["tsunami"] as? Int
+//        coordinate = point.coordinate
+//        depth =
+//        super.init()
+//    }
 
     var subtitle: String? {
         return "Magnitude: \(mag ?? 0.0)"

@@ -35,6 +35,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         configureSearchBarAndTable()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     // SearchBar and SearchTable configuration
     func configureSearchBarAndTable() {
         guard let locationSearchTable = storyboard?.instantiateViewController(withIdentifier: "LocationSearchTable") as? LocationSearchTable else { return }
@@ -180,11 +185,12 @@ extension MapViewController: HandleMapSearch {
                                                                 place: selectedAnnotation.place,
                                                                 time: selectedAnnotation.time!, //TODO: modificar!!
                                                                 tsunami: selectedAnnotation.tsunami ?? 0,
-                                                                coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude), Float()],
+                                                                coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude), Float(selectedAnnotation.depth)],
                                                                 magnitude: selectedAnnotation.mag)
                 viewController.viewModel.earthquakeDetail = selectedEarthquakeDetail
-                //navigationController?.pushViewController(viewController, animated: true)
-                present(viewController, animated: true)
+                viewController.title = selectedAnnotation.title
+                navigationController?.pushViewController(viewController, animated: false)
+                //present(viewController, animated: true)
             }
             
         }

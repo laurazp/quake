@@ -41,6 +41,7 @@
 		22F6849F289C110500412B34 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F6849E289C110500412B34 /* MapViewModel.swift */; };
 		22F684A1289FCAB600412B34 /* GetFormattedCoordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F684A0289FCAB600412B34 /* GetFormattedCoordsUseCase.swift */; };
 		22F684A328A01C8200412B34 /* GetTsunamiValueUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F684A228A01C8200412B34 /* GetTsunamiValueUseCase.swift */; };
+		22F684A528A28CA600412B34 /* GetFormattedTitleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F684A428A28CA600412B34 /* GetFormattedTitleUseCase.swift */; };
 		B615E85A2858EBA800B77A5F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615E8582858EBA800B77A5F /* MapViewController.swift */; };
 		B615E85D2858EBE900B77A5F /* MapStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B615E85C2858EBE900B77A5F /* MapStoryboard.storyboard */; };
 		B615E8632858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B615E8622858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard */; };
@@ -105,6 +106,7 @@
 		22F6849E289C110500412B34 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		22F684A0289FCAB600412B34 /* GetFormattedCoordsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormattedCoordsUseCase.swift; sourceTree = "<group>"; };
 		22F684A228A01C8200412B34 /* GetTsunamiValueUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTsunamiValueUseCase.swift; sourceTree = "<group>"; };
+		22F684A428A28CA600412B34 /* GetFormattedTitleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormattedTitleUseCase.swift; sourceTree = "<group>"; };
 		B615E8582858EBA800B77A5F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B615E85C2858EBE900B77A5F /* MapStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapStoryboard.storyboard; sourceTree = "<group>"; };
 		B615E8622858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EarthquakeDetailStoryboard.storyboard; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		228D200328985A2D006B6BE8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				22F684A628A2A61C00412B34 /* Mappers */,
 				227D906B286B323300A0DED5 /* API */,
 				228D200428985A35006B6BE8 /* Use Cases */,
 			);
@@ -234,6 +237,7 @@
 				22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */,
 				22F684A0289FCAB600412B34 /* GetFormattedCoordsUseCase.swift */,
 				22F684A228A01C8200412B34 /* GetTsunamiValueUseCase.swift */,
+				22F684A428A28CA600412B34 /* GetFormattedTitleUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -309,6 +313,13 @@
 				22F6849E289C110500412B34 /* MapViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		22F684A628A2A61C00412B34 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 		B615E85F2858ED4600B77A5F /* Earthquakes */ = {
@@ -524,6 +535,7 @@
 				227D909C287ED13100A0DED5 /* SettingsSection.swift in Sources */,
 				223A2F1E2856512E00034143 /* EarthquakeViewController.swift in Sources */,
 				2214345E285D093600F1CBA0 /* AnnotationInMap.swift in Sources */,
+				22F684A528A28CA600412B34 /* GetFormattedTitleUseCase.swift in Sources */,
 				227D9075286E27C600A0DED5 /* EarthquakesApiDataSource.swift in Sources */,
 				227D906A286B226600A0DED5 /* EarthquakeDetail.swift in Sources */,
 				22F684A1289FCAB600412B34 /* GetFormattedCoordsUseCase.swift in Sources */,

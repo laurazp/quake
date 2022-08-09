@@ -27,6 +27,11 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         viewModel.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     func updateView(with detail: EarthquakeDetail) {
         configure(with: detail)
     }
