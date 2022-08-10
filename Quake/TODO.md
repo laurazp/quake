@@ -15,16 +15,17 @@
 ### Revisar error consola al hacer click en botón expandir (constraints)
 ### Aumentar número líneas (0) al Place en la celda expansible --> aumentar tamaño celda ??
 
-### Clusters en map --> para más adelante
 ### Filtros para buscar terremotos por fechas en la tabla --> importante!!!
-### Cargar sólo las anotaciones del área???
+### Clusters en map !!
+### Cargar sólo las anotaciones del área??? --> para más adelante
 ### Añadir botón de localización propia en mapa
 
 ### Arreglar constraints para que funcione push con animación
 ### Arreglar coords para que esté la depth en otra línea
 ### MyDateFormatter -> cambiar a mappers y formatters los UseCase
-### Añadir filtro para ordenar quakes por mag, nombre, etc.
+### Añadir Order by: para ordenar quakes por mag, nombre, etc.
 ### Añadir dark mode
 ### Añadir animación lottie en nuevo viewController
 ### Poner todos los campos de la API como opcionales???
 
+## Por qué sólo sale la primera búsqueda de fecha???

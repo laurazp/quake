@@ -16,18 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yu2-JR-Bcz" userLabel="SearchBar View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="10"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="3C9-CC-2om"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8O2-9O-2Iq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="54" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
+                            <constraint firstItem="8O2-9O-2Iq" firstAttribute="top" secondItem="yu2-JR-Bcz" secondAttribute="bottom" id="5p0-C5-xyT"/>
                             <constraint firstItem="8O2-9O-2Iq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Bk6-H5-VGn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8O2-9O-2Iq" secondAttribute="trailing" id="Gax-bE-6IK"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yu2-JR-Bcz" secondAttribute="trailing" id="KeG-qM-NXd"/>
+                            <constraint firstItem="yu2-JR-Bcz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RRM-AX-0hS"/>
+                            <constraint firstItem="yu2-JR-Bcz" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="o2v-1R-cbj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8O2-9O-2Iq" secondAttribute="bottom" id="vsr-nk-bXc"/>
-                            <constraint firstItem="8O2-9O-2Iq" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="xdM-G6-Nku"/>
                         </constraints>
                     </view>
                     <connections>

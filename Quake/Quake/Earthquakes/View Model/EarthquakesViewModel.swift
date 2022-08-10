@@ -7,14 +7,10 @@ final class EarthquakesViewModel {
     
     private let getEarthquakesUseCase = GetEarthquakesUseCase()
     private var earthquakesData = [Feature]()
+    var filteredEarthquakes: [Feature] = []
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
     
-    //var resultSearchController: UISearchController? = nil
-    var filteredEarthquakes: [Feature] = []
-    let searchController = UISearchController(searchResultsController: nil)
-    var isSearchBarEmpty: Bool {
-      return searchController.searchBar.text?.isEmpty ?? true
-    }
+//    var filteredEarthquakes: [Feature] = []
     
     
     func viewDidLoad() {
@@ -29,6 +25,10 @@ final class EarthquakesViewModel {
         earthquakesData.count
     }
     
+    func getEarthquakesData() -> [Feature] {
+        return earthquakesData
+    }
+    
     private func getEarthquakes() {
         getEarthquakesUseCase.getEarthquakes { features in
             self.earthquakesData = features
@@ -40,46 +40,49 @@ final class EarthquakesViewModel {
         return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
     }
     
-    func configureSearchBar(tableView: UITableView, navigationItem: UINavigationItem) {        
-        // 1
-        searchController.searchResultsUpdater = viewDelegate
-        // 2
-        searchController.obscuresBackgroundDuringPresentation = false
-        // 3
-        searchController.searchBar.placeholder = "Search for dates"
-        // 4
-        navigationItem.searchController = searchController
+    func filterEarthquakesByDate(selectedDate: Date, tableView: UITableView) {
+        //var dateToCompare = Date()
+        var stringDateToCompare: String = ""
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .short
+        let selectedDateString = formatter.string(from: selectedDate)
         
-//        resultSearchController = UISearchController(searchResultsController: viewDelegate)
-//        resultSearchController?.searchResultsUpdater = viewDelegate as? UISearchResultsUpdating
-//
-//        setupSearchBar()
-//
-//        //navigationItem.searchController = resultSearchController
-//        //navigationItem.titleView = resultSearchController?.searchBar
-//        resultSearchController?.hidesNavigationBarDuringPresentation = false
-//        resultSearchController?.obscuresBackgroundDuringPresentation = true
-//        //definesPresentationContext = true
+        print("earthquakesData: \(earthquakesData.count)")
+        let result = earthquakesData.filter({ (feature: Feature) -> Bool in
+            if let date = feature.properties.time {
+                stringDateToCompare = formatter.string(from: Date(timeIntervalSince1970: Double(date)/1000))
+                //print(stringDateToCompare)
+                //print(selectedDateString)
+            }
+            //return dateToCompare == selectedDate
+            print(stringDateToCompare == selectedDateString)
+            
+            if (stringDateToCompare == selectedDateString) {
+                filteredEarthquakes.append(feature)
+            }
+            
+            return stringDateToCompare == selectedDateString
+        })
+        print("filteredEarthquakes: \(result.count)")
+        self.earthquakesData = filteredEarthquakes
+        self.viewDelegate?.updateView()
     }
     
-    /*func filterContentForSearchDates(initialSearchDate: Date,
-                                     finalSearchDate: Date,
-                                     time: EarthquakeDetail.time = nil,
-                                     tableView: UITableView,
-                                     filteredEarthquakes: [Feature]) {
-        let range = initialSearchDate...finalSearchDate
-        self.filteredEarthquakes = earthquakesData.filter { (feature: Feature) -> Bool in
-        return range.contains(feature.properties.time)
-      }
-      
-      tableView.reloadData()
-    }*/
-
-    
-//    func setupSearchBar() {
-//        let searchBar = resultSearchController!.searchBar
-//        searchBar.sizeToFit()
-//        searchBar.placeholder = "Search for dates"
-//        searchBar.delegate = viewDelegate as? UISearchBarDelegate
+//    func filterContentForSearchDates(initialSearchDate: Date,
+//                                      finalSearchDate: Date,
+//                                    //time: EarthquakeDetail.time? = nil,
+//                                      tableView: UITableView) {
+//        var dateToCompare = Date()
+//        let range = initialSearchDate...finalSearchDate
+//        self.filteredEarthquakes = earthquakesData.filter { (feature: Feature) -> Bool in
+//            if let date = feature.properties.time {
+//                dateToCompare = Date(timeIntervalSince1970: Double(date)/1000)
+//                return range.contains(dateToCompare)
+//            }
+//            return range.contains(dateToCompare)
+//        }
+//    
+//        tableView.reloadData()
 //    }
 }
