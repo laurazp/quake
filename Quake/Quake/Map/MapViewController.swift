@@ -36,6 +36,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //viewModel.viewDidLoad() // --> Descomentar para mostrar los pines en el mapa!!!!
 
         configureSearchBarAndTable()
+        addMapTrackingButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +83,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    func addMapTrackingButton(){
+        let image = UIImage(systemName: "location") as UIImage?
+        let button   = UIButton(type: UIButton.ButtonType.system) as UIButton
+        button.frame = CGRect(x: 5, y: 5, width: 35, height: 35)
+        button.setImage(image, for: .normal)
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(MapViewController.centerMapOnUserButtonClicked), for:.touchUpInside)
+        self.mapView.addSubview(button)
+       }
+
+    @objc func centerMapOnUserButtonClicked() {
+        self.mapView.setUserTrackingMode( MKUserTrackingMode.follow, animated: true)
+        centerViewOnUser()
+       }
     
     private func checkLocationServices() {
         guard CLLocationManager.locationServicesEnabled() else {
