@@ -76,7 +76,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
             let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: magnitude)
             magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "\(magnitude)", contentColor: magnitudeColor)
         } else {
-            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: " unknown")
+            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: " Unknown")
         }
         
         // MapView config
@@ -100,7 +100,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotation(annotation)
     }
     
-    private func getLabelText(labelTitle: String, labelContent: String, contentColor: UIColor = .black) -> NSMutableAttributedString {
+    private func getLabelText(labelTitle: String, labelContent: String, contentColor: UIColor = .label) -> NSMutableAttributedString {
         let titleAttributes = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17)]
         let titleString = NSMutableAttributedString(string: labelTitle, attributes: titleAttributes)
 
