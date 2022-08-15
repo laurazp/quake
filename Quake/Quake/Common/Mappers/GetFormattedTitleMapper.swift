@@ -6,9 +6,11 @@ struct GetFormattedTitleMapper {
         var formattedTitle: String = ""
         if (titleWithoutFormat.contains(" of ")) {
             formattedTitle = titleWithoutFormat.components(separatedBy: " of ").last ?? "Unknown"
-        } else {
+        } else if (titleWithoutFormat.contains(" - ")) {
             let title = formattedTitle.components(separatedBy: " - ")
             formattedTitle = title.last ?? "Unknown"
+        } else {
+            formattedTitle = "Unknown"
         }
         return formattedTitle
     }

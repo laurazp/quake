@@ -10,8 +10,7 @@ final class EarthquakesViewModel {
     var filteredEarthquakes: [Feature] = []
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
     
-//    var filteredEarthquakes: [Feature] = []
-    
+    var filteredText: String?
     
     func viewDidLoad() {
         getEarthquakes()
@@ -66,6 +65,16 @@ final class EarthquakesViewModel {
         })
         print("filteredEarthquakes: \(result.count)")
         self.earthquakesData = filteredEarthquakes
+        self.viewDelegate?.updateView()
+    }
+    
+    func orderFeaturesByMagnitude() {
+        earthquakesData.sort(by: { $0.properties.mag ?? 0 < $1.properties.mag ?? 0 })
+        self.viewDelegate?.updateView()
+   }
+    
+    func orderFeaturesByPlace() {
+        earthquakesData.sort(by: { $0.properties.place ?? "" < $1.properties.place ?? "" })
         self.viewDelegate?.updateView()
     }
     

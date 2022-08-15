@@ -12,7 +12,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     let getTsunamiValueUseCase = GetTsunamiValueUseCase()
     
     let searchController = UISearchController(searchResultsController: nil)
-    let datePicker = UIDatePicker()
+    private let datePicker = UIDatePicker()
     
     var isSearchBarEmpty: Bool {
       return searchController.searchBar.text?.isEmpty ?? true
@@ -41,11 +41,12 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
         configureSearchBar() // Dates SearchBar
+        configureFiltersBar()
         definesPresentationContext = true
 
     }
     
-    func configureSearchBar() {
+    private func configureSearchBar() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Select a date"
@@ -64,19 +65,36 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(btnClicked))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(filterButtonTapped))
         toolbar.setItems([doneButton], animated: true)
         searchController.searchBar.searchTextField.inputAccessoryView = toolbar
     }
     
-    @objc func btnClicked() {
+    @objc func filterButtonTapped() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         let dateString = dateFormatter.string(from: datePicker.date)
         searchController.searchBar.text = dateString
         viewModel.filterEarthquakesByDate(selectedDate: datePicker.date, tableView: tableView)
+        datePicker.resignFirstResponder()
       }
+    
+    private func configureFiltersBar() {
+        
+    }
+    
+    @IBAction func orderByMagnitude(_ sender: Any) {
+        viewModel.orderFeaturesByMagnitude()
+    }
+    
+    @IBAction func orderByPlace(_ sender: Any) {
+        viewModel.orderFeaturesByPlace()
+    }
+    
+    @IBAction func orderByDate(_ sender: Any) {
+
+    }
     
 //    func filterContentForSearchDates(initialSearchDate: Date,
 //                                      finalSearchDate: Date,
@@ -99,6 +117,9 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     // MARK: - View Model Output
     func updateView() {
         tableView.reloadData()
+        if let filteredText = viewModel.filteredText {
+            searchController.searchBar.text = filteredText
+        }
     }
 
     func didExpandCell(isExpanded: Bool, indexPath: IndexPath) {
