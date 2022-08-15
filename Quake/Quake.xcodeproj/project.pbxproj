@@ -15,7 +15,7 @@
 		223A2F222857EF4000034143 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2F212857EF4000034143 /* TabBarController.swift */; };
 		224DEBC728A2CA660086D08F /* GetFormattedTitleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224DEBC628A2CA660086D08F /* GetFormattedTitleMapper.swift */; };
 		224DEBC928A3EF170086D08F /* map-pin-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 224DEBC828A3EF170086D08F /* map-pin-animation.json */; };
-		224DEBCD28A3FDFA0086D08F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224DEBCC28A3FDFA0086D08F /* LaunchScreenViewController.swift */; };
+		224DEBCD28A3FDFA0086D08F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224DEBCC28A3FDFA0086D08F /* SplashViewController.swift */; };
 		227D906A286B226600A0DED5 /* EarthquakeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9069286B226600A0DED5 /* EarthquakeDetail.swift */; };
 		227D906D286B325900A0DED5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D906C286B325900A0DED5 /* Response.swift */; };
 		227D906F286B329200A0DED5 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D906E286B329200A0DED5 /* Feature.swift */; };
@@ -31,7 +31,6 @@
 		228D200028985048006B6BE8 /* GetEarthquakesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D1FFF28985048006B6BE8 /* GetEarthquakesUseCase.swift */; };
 		228D2002289852A6006B6BE8 /* GetTimeRangeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D2001289852A6006B6BE8 /* GetTimeRangeUseCase.swift */; };
 		22990A10284BD40500C1104D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A0F284BD40500C1104D /* AppDelegate.swift */; };
-		22990A12284BD40500C1104D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A11284BD40500C1104D /* SceneDelegate.swift */; };
 		22990A14284BD40500C1104D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A13284BD40500C1104D /* ViewController.swift */; };
 		22990A17284BD40500C1104D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22990A15284BD40500C1104D /* Main.storyboard */; };
 		22990A19284BD40900C1104D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22990A18284BD40900C1104D /* Assets.xcassets */; };
@@ -39,6 +38,8 @@
 		22990A27284BD40A00C1104D /* QuakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A26284BD40A00C1104D /* QuakeTests.swift */; };
 		22990A31284BD40A00C1104D /* QuakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A30284BD40A00C1104D /* QuakeUITests.swift */; };
 		22990A33284BD40A00C1104D /* QuakeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A32284BD40A00C1104D /* QuakeUITestsLaunchTests.swift */; };
+		22B47EAE28AAC564008C27E3 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EAD28AAC564008C27E3 /* Splash.storyboard */; };
+		22B47EB128AAFD50008C27E3 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EB028AAFD50008C27E3 /* FAQViewController.swift */; };
 		22F68496289B335B00412B34 /* GetMagnitudeColorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */; };
 		22F68499289BECD800412B34 /* EarthquakeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */; };
 		22F6849F289C110500412B34 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F6849E289C110500412B34 /* MapViewModel.swift */; };
@@ -81,7 +82,7 @@
 		223A2F212857EF4000034143 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		224DEBC628A2CA660086D08F /* GetFormattedTitleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormattedTitleMapper.swift; sourceTree = "<group>"; };
 		224DEBC828A3EF170086D08F /* map-pin-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "map-pin-animation.json"; sourceTree = "<group>"; };
-		224DEBCC28A3FDFA0086D08F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		224DEBCC28A3FDFA0086D08F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		227D9069286B226600A0DED5 /* EarthquakeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetail.swift; sourceTree = "<group>"; };
 		227D906C286B325900A0DED5 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		227D906E286B329200A0DED5 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		228D2001289852A6006B6BE8 /* GetTimeRangeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeRangeUseCase.swift; sourceTree = "<group>"; };
 		22990A0C284BD40500C1104D /* Quake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990A0F284BD40500C1104D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		22990A11284BD40500C1104D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		22990A13284BD40500C1104D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		22990A16284BD40500C1104D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22990A18284BD40900C1104D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +109,8 @@
 		22990A2C284BD40A00C1104D /* QuakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990A30284BD40A00C1104D /* QuakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeUITests.swift; sourceTree = "<group>"; };
 		22990A32284BD40A00C1104D /* QuakeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		22B47EAD28AAC564008C27E3 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		22B47EB028AAFD50008C27E3 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMagnitudeColorUseCase.swift; sourceTree = "<group>"; };
 		22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetailViewModel.swift; sourceTree = "<group>"; };
 		22F6849E289C110500412B34 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				22143455285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard */,
 				22143457285CFED800F1CBA0 /* SettingsViewController.swift */,
 				227D90852875F98D00A0DED5 /* SettingTableViewCell.swift */,
+				22B47EB028AAFD50008C27E3 /* FAQViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 		22990A0E284BD40500C1104D /* Quake */ = {
 			isa = PBXGroup;
 			children = (
+				22B47EAC28AAC54A008C27E3 /* Splash */,
 				228D200328985A2D006B6BE8 /* Common */,
 				22143454285CFE9400F1CBA0 /* Settings */,
 				B615E8642858F16A00B77A5F /* EarthquakeDetail */,
@@ -282,14 +286,12 @@
 				B615E8602858ED5100B77A5F /* Map */,
 				B615E85F2858ED4600B77A5F /* Earthquakes */,
 				22990A0F284BD40500C1104D /* AppDelegate.swift */,
-				22990A11284BD40500C1104D /* SceneDelegate.swift */,
 				22990A13284BD40500C1104D /* ViewController.swift */,
 				227D9087287DC1B800A0DED5 /* MyDateFormatter.swift */,
 				22990A1A284BD40900C1104D /* LaunchScreen.storyboard */,
 				22990A18284BD40900C1104D /* Assets.xcassets */,
 				224DEBC828A3EF170086D08F /* map-pin-animation.json */,
 				22990A1D284BD40900C1104D /* Info.plist */,
-				224DEBCC28A3FDFA0086D08F /* LaunchScreenViewController.swift */,
 			);
 			path = Quake;
 			sourceTree = "<group>";
@@ -309,6 +311,15 @@
 				22990A32284BD40A00C1104D /* QuakeUITestsLaunchTests.swift */,
 			);
 			path = QuakeUITests;
+			sourceTree = "<group>";
+		};
+		22B47EAC28AAC54A008C27E3 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				22B47EAD28AAC564008C27E3 /* Splash.storyboard */,
+				224DEBCC28A3FDFA0086D08F /* SplashViewController.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		22F68497289BECBB00412B34 /* View Model */ = {
@@ -514,6 +525,7 @@
 				223A2F1C284FFAA900034143 /* EarthquakesStoryboard.storyboard in Resources */,
 				22990A1C284BD40900C1104D /* LaunchScreen.storyboard in Resources */,
 				22990A19284BD40900C1104D /* Assets.xcassets in Resources */,
+				22B47EAE28AAC564008C27E3 /* Splash.storyboard in Resources */,
 				B615E8632858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard in Resources */,
 				22990A17284BD40500C1104D /* Main.storyboard in Resources */,
 				224DEBC928A3EF170086D08F /* map-pin-animation.json in Resources */,
@@ -592,7 +604,7 @@
 				227D9071286B32CB00A0DED5 /* Property.swift in Sources */,
 				22F684A328A01C8200412B34 /* GetTsunamiValueUseCase.swift in Sources */,
 				22990A14284BD40500C1104D /* ViewController.swift in Sources */,
-				224DEBCD28A3FDFA0086D08F /* LaunchScreenViewController.swift in Sources */,
+				224DEBCD28A3FDFA0086D08F /* SplashViewController.swift in Sources */,
 				B615E86A2858F5EF00B77A5F /* EarthquakeEventCell.swift in Sources */,
 				228D2002289852A6006B6BE8 /* GetTimeRangeUseCase.swift in Sources */,
 				B615E85A2858EBA800B77A5F /* MapViewController.swift in Sources */,
@@ -606,7 +618,6 @@
 				22990A10284BD40500C1104D /* AppDelegate.swift in Sources */,
 				22F68496289B335B00412B34 /* GetMagnitudeColorUseCase.swift in Sources */,
 				227D9088287DC1B800A0DED5 /* MyDateFormatter.swift in Sources */,
-				22990A12284BD40500C1104D /* SceneDelegate.swift in Sources */,
 				223A2F222857EF4000034143 /* TabBarController.swift in Sources */,
 				228D1FFE28985026006B6BE8 /* EarthquakesViewModel.swift in Sources */,
 				227D909C287ED13100A0DED5 /* SettingsSection.swift in Sources */,
@@ -614,6 +625,7 @@
 				2214345E285D093600F1CBA0 /* AnnotationInMap.swift in Sources */,
 				227D9075286E27C600A0DED5 /* EarthquakesApiDataSource.swift in Sources */,
 				227D906A286B226600A0DED5 /* EarthquakeDetail.swift in Sources */,
+				22B47EB128AAFD50008C27E3 /* FAQViewController.swift in Sources */,
 				22F684A1289FCAB600412B34 /* GetFormattedCoordsUseCase.swift in Sources */,
 				227D906F286B329200A0DED5 /* Feature.swift in Sources */,
 				22143458285CFED800F1CBA0 /* SettingsViewController.swift in Sources */,
@@ -722,6 +734,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -776,6 +789,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -801,7 +815,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location access in order to use this app.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -833,7 +846,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location access in order to use this app.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
