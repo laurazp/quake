@@ -76,8 +76,9 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         dateFormatter.timeStyle = .none
         let dateString = dateFormatter.string(from: datePicker.date)
         searchController.searchBar.text = dateString
-        viewModel.filterEarthquakesByDate(selectedDate: datePicker.date, tableView: tableView)
-        datePicker.resignFirstResponder()
+        viewModel.filterEarthquakesByDate(selectedDate: datePicker.date)
+        //datePicker.resignFirstResponder() <-- no funciona
+        searchController.isActive = false //TODO: así está bien ?????
       }
     
     private func configureFiltersBar() {
@@ -93,7 +94,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
     
     @IBAction func orderByDate(_ sender: Any) {
-
+        viewModel.orderFeaturesByDate()
     }
     
 //    func filterContentForSearchDates(initialSearchDate: Date,

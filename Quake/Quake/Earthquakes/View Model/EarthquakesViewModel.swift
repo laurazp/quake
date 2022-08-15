@@ -9,6 +9,7 @@ final class EarthquakesViewModel {
     private var earthquakesData = [Feature]()
     var filteredEarthquakes: [Feature] = []
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
+    private var isFiltering: Bool = false
     
     var filteredText: String?
     
@@ -17,11 +18,19 @@ final class EarthquakesViewModel {
     }
     
     func getFeature(at index: Int) -> Feature {
-        earthquakesData[index]
+        if (isFiltering) {
+            return filteredEarthquakes[index]
+        } else {
+            return earthquakesData[index]
+        }
     }
     
     func numberOfItems() -> Int {
-        earthquakesData.count
+        if (isFiltering) {
+            return filteredEarthquakes.count
+        } else {
+            return earthquakesData.count
+        }
     }
     
     func getEarthquakesData() -> [Feature] {
@@ -39,42 +48,53 @@ final class EarthquakesViewModel {
         return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
     }
     
-    func filterEarthquakesByDate(selectedDate: Date, tableView: UITableView) {
-        //var dateToCompare = Date()
+    func filterEarthquakesByDate(selectedDate: Date) {
         var stringDateToCompare: String = ""
         let formatter = DateFormatter()
         formatter.timeStyle = .none
         formatter.dateStyle = .short
         let selectedDateString = formatter.string(from: selectedDate)
+        isFiltering = true
         
-        print("earthquakesData: \(earthquakesData.count)")
-        let result = earthquakesData.filter({ (feature: Feature) -> Bool in
+        filteredEarthquakes = earthquakesData.filter({ (feature: Feature) -> Bool in
             if let date = feature.properties.time {
                 stringDateToCompare = formatter.string(from: Date(timeIntervalSince1970: Double(date)/1000))
-                //print(stringDateToCompare)
-                //print(selectedDateString)
             }
-            //return dateToCompare == selectedDate
-            print(stringDateToCompare == selectedDateString)
-            
-            if (stringDateToCompare == selectedDateString) {
-                filteredEarthquakes.append(feature)
-            }
-            
+           
             return stringDateToCompare == selectedDateString
         })
-        print("filteredEarthquakes: \(result.count)")
-        self.earthquakesData = filteredEarthquakes
         self.viewDelegate?.updateView()
     }
     
+    // TODO: resetear la búsqueda y poner isFiltering a false !!! --> cuándo se debe poner a false ???
+    func endFiltering() {
+        isFiltering = false
+    }
+    
     func orderFeaturesByMagnitude() {
-        earthquakesData.sort(by: { $0.properties.mag ?? 0 < $1.properties.mag ?? 0 })
+        if (isFiltering) {
+            filteredEarthquakes.sort(by: { $0.properties.mag ?? 0 < $1.properties.mag ?? 0 })
+        } else {
+            earthquakesData.sort(by: { $0.properties.mag ?? 0 < $1.properties.mag ?? 0 })
+        }
         self.viewDelegate?.updateView()
    }
     
     func orderFeaturesByPlace() {
-        earthquakesData.sort(by: { $0.properties.place ?? "" < $1.properties.place ?? "" })
+        if (isFiltering) {
+            filteredEarthquakes.sort(by: { $0.properties.place ?? "" < $1.properties.place ?? "" })
+        } else {
+            earthquakesData.sort(by: { $0.properties.place ?? "" < $1.properties.place ?? "" })
+        }
+        self.viewDelegate?.updateView()
+    }
+    
+    func orderFeaturesByDate() {
+        if (isFiltering) {
+            filteredEarthquakes.sort(by: { $0.properties.time ?? 0 < $1.properties.time ?? 0 })
+        } else {
+            earthquakesData.sort(by: { $0.properties.time ?? 0 < $1.properties.time ?? 0 })
+        }
         self.viewDelegate?.updateView()
     }
     
