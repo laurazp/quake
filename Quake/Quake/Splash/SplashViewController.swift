@@ -13,11 +13,12 @@ class SplashViewController: UIViewController {
 
         animationView.loopMode = .loop
         animationView.animationSpeed = 0.7
+        animationView.alpha = 0
         animationView.play()
         
         //TODO: Buscar cómo hacer fade in de la animación
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
             UIView.animate(withDuration: 0.5, delay: 0) {
                 self.animationView.alpha = 0
             } completion: { completed in
@@ -28,6 +29,16 @@ class SplashViewController: UIViewController {
             }
         }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1.5, animations: {
+                self.animationView.alpha = 1.0
+                return
+            })
+        }
     }
 }
     
