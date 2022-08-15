@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func configure() {
-        models.append(SettingsSection(title: "General", options: [
+        models.append(SettingsSection(title: "Configuración", options: [
             SettingsOption(title: "Unidades", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemMint) {
                 
             },
@@ -31,21 +31,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 
             },
             SettingsOption(title: "Notificaciones push", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPurple) {
-                
+                //TODO: Descomentar para actualizar
+//                let center = UNUserNotificationCenter.current()
+//                center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+//
+//                    if let error = error {
+//                        print(error)
+//                        // Handle the error here.
+//                    }
+//                    // Enable or disable features based on the authorization.
+//                }
             }
         ]))
         
-        models.append(SettingsSection(title: "Configuración", options: [
+        models.append(SettingsSection(title: "General", options: [
             SettingsOption(title: "API info", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
-                let center = UNUserNotificationCenter.current()
-                center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-                    
-                    if let error = error {
-                        print(error)
-                        // Handle the error here.
-                    }
-                    // Enable or disable features based on the authorization.
-                }
+                
             },
             SettingsOption(title: "FAQ", icon: UIImage(systemName: "house"), iconBackgroundColor: .link) {
 
