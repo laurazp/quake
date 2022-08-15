@@ -27,16 +27,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             SettingsOption(title: "Unidades", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemMint) {
                 
             },
-            SettingsOption(title: "Alertas", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemOrange) {
+            SettingsOption(title: "Permisos", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemOrange) {
                 
             },
-            SettingsOption(title: "Idiomas", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemGreen) {
+            SettingsOption(title: "Notificaciones push", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPurple) {
                 
             }
         ]))
         
         models.append(SettingsSection(title: "Configuración", options: [
-            SettingsOption(title: "Notificaciones push", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
+            SettingsOption(title: "API info", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
                 let center = UNUserNotificationCenter.current()
                 center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
                     
@@ -47,7 +47,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                     // Enable or disable features based on the authorization.
                 }
             },
-            SettingsOption(title: "Permisos", icon: UIImage(systemName: "house"), iconBackgroundColor: .link) {
+            SettingsOption(title: "FAQ", icon: UIImage(systemName: "house"), iconBackgroundColor: .link) {
 
             }
         ]))

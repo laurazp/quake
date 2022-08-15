@@ -14,6 +14,8 @@
 		223A2F1E2856512E00034143 /* EarthquakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2F1D2856512E00034143 /* EarthquakeViewController.swift */; };
 		223A2F222857EF4000034143 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2F212857EF4000034143 /* TabBarController.swift */; };
 		224DEBC728A2CA660086D08F /* GetFormattedTitleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224DEBC628A2CA660086D08F /* GetFormattedTitleMapper.swift */; };
+		224DEBC928A3EF170086D08F /* map-pin-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 224DEBC828A3EF170086D08F /* map-pin-animation.json */; };
+		224DEBCD28A3FDFA0086D08F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224DEBCC28A3FDFA0086D08F /* LaunchScreenViewController.swift */; };
 		227D906A286B226600A0DED5 /* EarthquakeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9069286B226600A0DED5 /* EarthquakeDetail.swift */; };
 		227D906D286B325900A0DED5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D906C286B325900A0DED5 /* Response.swift */; };
 		227D906F286B329200A0DED5 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D906E286B329200A0DED5 /* Feature.swift */; };
@@ -78,6 +80,8 @@
 		223A2F1D2856512E00034143 /* EarthquakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeViewController.swift; sourceTree = "<group>"; };
 		223A2F212857EF4000034143 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		224DEBC628A2CA660086D08F /* GetFormattedTitleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormattedTitleMapper.swift; sourceTree = "<group>"; };
+		224DEBC828A3EF170086D08F /* map-pin-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "map-pin-animation.json"; sourceTree = "<group>"; };
+		224DEBCC28A3FDFA0086D08F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		227D9069286B226600A0DED5 /* EarthquakeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetail.swift; sourceTree = "<group>"; };
 		227D906C286B325900A0DED5 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		227D906E286B329200A0DED5 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
@@ -283,7 +287,9 @@
 				227D9087287DC1B800A0DED5 /* MyDateFormatter.swift */,
 				22990A1A284BD40900C1104D /* LaunchScreen.storyboard */,
 				22990A18284BD40900C1104D /* Assets.xcassets */,
+				224DEBC828A3EF170086D08F /* map-pin-animation.json */,
 				22990A1D284BD40900C1104D /* Info.plist */,
+				224DEBCC28A3FDFA0086D08F /* LaunchScreenViewController.swift */,
 			);
 			path = Quake;
 			sourceTree = "<group>";
@@ -510,6 +516,7 @@
 				22990A19284BD40900C1104D /* Assets.xcassets in Resources */,
 				B615E8632858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard in Resources */,
 				22990A17284BD40500C1104D /* Main.storyboard in Resources */,
+				224DEBC928A3EF170086D08F /* map-pin-animation.json in Resources */,
 				B615E86B2858F5EF00B77A5F /* EarthquakeEventCell.xib in Resources */,
 				22143456285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard in Resources */,
 				B615E85D2858EBE900B77A5F /* MapStoryboard.storyboard in Resources */,
@@ -585,6 +592,7 @@
 				227D9071286B32CB00A0DED5 /* Property.swift in Sources */,
 				22F684A328A01C8200412B34 /* GetTsunamiValueUseCase.swift in Sources */,
 				22990A14284BD40500C1104D /* ViewController.swift in Sources */,
+				224DEBCD28A3FDFA0086D08F /* LaunchScreenViewController.swift in Sources */,
 				B615E86A2858F5EF00B77A5F /* EarthquakeEventCell.swift in Sources */,
 				228D2002289852A6006B6BE8 /* GetTimeRangeUseCase.swift in Sources */,
 				B615E85A2858EBA800B77A5F /* MapViewController.swift in Sources */,
@@ -788,6 +796,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quake/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow location access in order to use this app.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow location access in order to use this app.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location access in order to use this app.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -817,6 +828,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quake/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow location access in order to use this app.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow location access in order to use this app.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location access in order to use this app.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
