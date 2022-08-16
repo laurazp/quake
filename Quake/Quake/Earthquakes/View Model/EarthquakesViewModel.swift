@@ -10,6 +10,7 @@ final class EarthquakesViewModel {
     var filteredEarthquakes: [Feature] = []
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
     private var isFiltering: Bool = false
+    private var inIncreasingOrder = false
     
     var filteredText: String?
     
@@ -72,30 +73,69 @@ final class EarthquakesViewModel {
     }
     
     func orderFeaturesByMagnitude() {
-        if (isFiltering) {
-            filteredEarthquakes.sort(by: { $0.properties.mag ?? 0 < $1.properties.mag ?? 0 })
+        if (!inIncreasingOrder) {
+            if (isFiltering) {
+                filteredEarthquakes.sort(by: { $0.properties.mag ?? 0 < $1.properties.mag ?? 0 })
+                inIncreasingOrder = true
+            } else {
+                earthquakesData.sort(by: { $0.properties.mag ?? 0 < $1.properties.mag ?? 0 })
+                inIncreasingOrder = true
+            }
+            self.viewDelegate?.updateView()
         } else {
-            earthquakesData.sort(by: { $0.properties.mag ?? 0 < $1.properties.mag ?? 0 })
+            if (isFiltering) {
+                filteredEarthquakes.sort(by: { $1.properties.mag ?? 0 < $0.properties.mag ?? 0 })
+                inIncreasingOrder = false
+            } else {
+                earthquakesData.sort(by: { $1.properties.mag ?? 0 < $0.properties.mag ?? 0 })
+                inIncreasingOrder = false
+            }
+            self.viewDelegate?.updateView()
         }
-        self.viewDelegate?.updateView()
    }
     
     func orderFeaturesByPlace() {
-        if (isFiltering) {
-            filteredEarthquakes.sort(by: { $0.properties.place ?? "" < $1.properties.place ?? "" })
+        if (!inIncreasingOrder) {
+            if (isFiltering) {
+                filteredEarthquakes.sort(by: { $0.properties.place ?? "" < $1.properties.place ?? "" })
+                inIncreasingOrder = true
+            } else {
+                earthquakesData.sort(by: { $0.properties.place ?? "" < $1.properties.place ?? "" })
+                inIncreasingOrder = true
+            }
+            self.viewDelegate?.updateView()
         } else {
-            earthquakesData.sort(by: { $0.properties.place ?? "" < $1.properties.place ?? "" })
+            if (isFiltering) {
+                filteredEarthquakes.sort(by: { $1.properties.place ?? "" < $0.properties.place ?? "" })
+                inIncreasingOrder = false
+            } else {
+                earthquakesData.sort(by: { $1.properties.place ?? "" < $0.properties.place ?? "" })
+                inIncreasingOrder = false
+            }
+            self.viewDelegate?.updateView()
         }
-        self.viewDelegate?.updateView()
     }
     
     func orderFeaturesByDate() {
-        if (isFiltering) {
-            filteredEarthquakes.sort(by: { $0.properties.time ?? 0 < $1.properties.time ?? 0 })
+        if (!inIncreasingOrder) {
+            if (isFiltering) {
+                filteredEarthquakes.sort(by: { $0.properties.time ?? 0 < $1.properties.time ?? 0 })
+                inIncreasingOrder = true
+            } else {
+                earthquakesData.sort(by: { $0.properties.time ?? 0 < $1.properties.time ?? 0 })
+                inIncreasingOrder = true
+            }
+            self.viewDelegate?.updateView()
         } else {
-            earthquakesData.sort(by: { $0.properties.time ?? 0 < $1.properties.time ?? 0 })
+            if (isFiltering) {
+                filteredEarthquakes.sort(by: { $1.properties.time ?? 0 < $0.properties.time ?? 0 })
+                inIncreasingOrder = false
+            } else {
+                earthquakesData.sort(by: { $1.properties.time ?? 0 < $0.properties.time ?? 0 })
+                inIncreasingOrder = false
+            }
+            self.viewDelegate?.updateView()
         }
-        self.viewDelegate?.updateView()
     }
     
 //    func filterContentForSearchDates(initialSearchDate: Date,
