@@ -135,7 +135,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     func configureCell(cell: EarthquakeEventCell, indexPath: IndexPath) {
         let feature = viewModel.getFeature(at: indexPath.row)
         
-        cell.label.text = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown")
+        cell.label.text = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
    
         let magSubstring = feature.properties.title?.prefix(8).prefix(6).suffix(4)
         let magString = magSubstring.map(String.init)
@@ -203,7 +203,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
             let geometry = feature.geometry
             let date = Date(timeIntervalSince1970: TimeInterval(properties.time ?? 0) / 1000)
             
-            viewController.title = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown")
+            viewController.title = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
             
             let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
                                                             place: properties.place,
