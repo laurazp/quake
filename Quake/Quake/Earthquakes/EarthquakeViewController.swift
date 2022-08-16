@@ -10,6 +10,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     let getFormattedTitleMapper = GetFormattedTitleMapper()
     var getFormattedCoordsUseCase = GetFormattedCoordsUseCase()
     let getTsunamiValueUseCase = GetTsunamiValueUseCase()
+    private var depthValue: Float = 0
     
     let searchController = UISearchController(searchResultsController: nil)
     private let datePicker = UIDatePicker()
@@ -97,24 +98,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         viewModel.orderFeaturesByDate()
     }
     
-//    func filterContentForSearchDates(initialSearchDate: Date,
-//                                      finalSearchDate: Date,
-//                                    //time: EarthquakeDetail.time? = nil,
-//                                      tableView: UITableView) {
-//        var dateToCompare = Date()
-//        let range = initialSearchDate...finalSearchDate
-//        let data = viewModel.getEarthquakesData()
-//        self.filteredEarthquakes = data.filter { (feature: Feature) -> Bool in
-//            if let date = feature.properties.time {
-//                dateToCompare = Date(timeIntervalSince1970: Double(date)/1000)
-//                return range.contains(dateToCompare)
-//            }
-//            return range.contains(dateToCompare)
-//        }
-//
-//        tableView.reloadData()
-//    }
-    
     // MARK: - View Model Output
     func updateView() {
         tableView.reloadData()
@@ -148,11 +131,16 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         let myDateFormatter = MyDateFormatter()
         let formattedDate = myDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
         let tsunamiValue = getTsunamiValueUseCase.getTsunamiValue(tsunami: feature.properties.tsunami ?? 0)
-
+        if (feature.geometry.coordinates[2] != nil) {
+            depthValue = feature.geometry.coordinates[2]
+        }
+        //guard let depthValue = feature.geometry.coordinates[2] as? Float else { return }
+        
         cell.placeLabel.text = "Place: \(feature.properties.place ?? "Unknown")"
         cell.timeLabel.text = "Time: \(formattedDate)"
         cell.tsunamiLabel.text = "Tsunami: \(tsunamiValue)"
         cell.coordsLabel.text = "Coords: \(getFormattedCoordsUseCase.getFormattedCoords(actualCoords: feature.geometry.coordinates))"
+        cell.depthLabel.text = "Depth: \(depthValue)km"
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -205,11 +193,16 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
             
             viewController.title = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
             
+            if (geometry.coordinates[2] != nil) {
+                depthValue = feature.geometry.coordinates[2]
+            }
+            
             let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
                                                             place: properties.place,
                                                             time: date,
                                                             tsunami: properties.tsunami ?? 0,
                                                             coords: geometry.coordinates,
+                                                            depth: depthValue,
                                                             magnitude: properties.mag)
             
             let backItem = UIBarButtonItem()

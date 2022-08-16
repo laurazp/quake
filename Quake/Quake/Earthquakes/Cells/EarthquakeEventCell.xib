@@ -21,16 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="203"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTO-pC-7Li">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOG-n9-UkV">
-                                        <rect key="frame" x="85" y="12" width="41.5" height="66"/>
+                                        <rect key="frame" x="85" y="12" width="41.5" height="37"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYl-2a-10p" userLabel="ExpandableButton">
-                                        <rect key="frame" x="270" y="30" width="30" height="30"/>
+                                        <rect key="frame" x="270" y="15.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="TZK-Kb-NnY"/>
                                             <constraint firstAttribute="width" constant="30" id="rjz-Z8-v94"/>
@@ -44,7 +44,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MagLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Bf-Z7-Zdq" userLabel="MagLabel">
-                                        <rect key="frame" x="20" y="31.5" width="50" height="27.5"/>
+                                        <rect key="frame" x="20" y="17" width="50" height="27.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="SXq-pb-4EH"/>
                                         </constraints>
@@ -66,10 +66,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tA3-kX-RRI">
-                                <rect key="frame" x="0.0" y="90" width="320" height="113"/>
+                                <rect key="frame" x="0.0" y="61" width="320" height="142"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QpV-LS-Ok6">
-                                        <rect key="frame" x="20" y="10" width="285" height="93"/>
+                                        <rect key="frame" x="20" y="10" width="285" height="122"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAn-WW-ue3" userLabel="PlaceLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="285" height="20.5"/>
@@ -90,7 +90,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s61-m3-4cZ" userLabel="CoordsLabel">
-                                                <rect key="frame" x="0.0" y="91.5" width="285" height="1.5"/>
+                                                <rect key="frame" x="0.0" y="91.5" width="285" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-d8-vzw" userLabel="DepthLabel">
+                                                <rect key="frame" x="0.0" y="101.5" width="285" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -119,6 +125,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="coordsLabel" destination="s61-m3-4cZ" id="bLM-PE-rAd"/>
+                <outlet property="depthLabel" destination="l4K-d8-vzw" id="b7Z-IQ-tqf"/>
                 <outlet property="expandableButton" destination="bYl-2a-10p" id="Bz4-Ts-9Ib"/>
                 <outlet property="expandableView" destination="tA3-kX-RRI" id="muD-RY-IBg"/>
                 <outlet property="label" destination="MOG-n9-UkV" id="aJu-mK-W9A"/>

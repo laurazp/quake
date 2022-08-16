@@ -207,7 +207,8 @@ extension MapViewController: HandleMapSearch {
                                                                 place: selectedAnnotation.place,
                                                                 time: selectedAnnotation.time!, //TODO: modificar!!
                                                                 tsunami: selectedAnnotation.tsunami ?? 0,
-                                                                coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude), Float(selectedAnnotation.depth)],
+                                                                coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude)],
+                                                                depth: Float(selectedAnnotation.depth),
                                                                 magnitude: selectedAnnotation.mag)
                 viewController.viewModel.earthquakeDetail = selectedEarthquakeDetail
                 let formattedTitle = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown")

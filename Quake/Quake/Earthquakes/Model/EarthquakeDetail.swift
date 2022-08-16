@@ -7,5 +7,6 @@ struct EarthquakeDetail {
     let time: Date
     let tsunami: Int
     let coords: [Float]
+    let depth: Float
     let magnitude: Double?
 }

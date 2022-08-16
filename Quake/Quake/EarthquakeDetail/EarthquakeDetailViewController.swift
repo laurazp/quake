@@ -10,6 +10,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var tsunamiLabel: UILabel!
     @IBOutlet weak var coordsLabel: UILabel!
     @IBOutlet weak var magnitudeLabel: UILabel!
+    @IBOutlet weak var depthLabel: UILabel!
     
     let viewModel = EarthquakeDetailViewModel()
 
@@ -71,6 +72,10 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         
         let formattedCoords = getFormattedCoordsUseCase.getFormattedCoords(actualCoords: earthquakeDetail.coords)
         coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: "\(formattedCoords)")
+        
+        if let depth = earthquakeDetail.coords[2] as Float? {
+            depthLabel.attributedText = getLabelText(labelTitle: "Depth: ", labelContent: "\(depth)km")
+        }
         
         if let magnitude = earthquakeDetail.magnitude {
             let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: magnitude)

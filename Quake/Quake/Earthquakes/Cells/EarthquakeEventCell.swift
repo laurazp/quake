@@ -15,6 +15,7 @@ class EarthquakeEventCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var tsunamiLabel: UILabel!
     @IBOutlet weak var coordsLabel: UILabel!
+    @IBOutlet weak var depthLabel: UILabel!
     
     var earthquakeViewController: EarthquakeViewController = EarthquakeViewController()
     
@@ -34,6 +35,7 @@ class EarthquakeEventCell: UITableViewCell {
         timeLabel.text = nil
         tsunamiLabel.text = nil
         coordsLabel.text = nil
+        depthLabel.text = nil
         
         expandableView.isHidden = true
         expandableView.alpha = 0
