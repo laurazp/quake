@@ -8,7 +8,6 @@ struct GetFormattedCoordsUseCase {
         let latitude = actualCoords?[1] ?? 0
         let longitudeString: String
         let latitudeString: String
-        let heightString: String
         
         if (longitude < 0) {
             longitudeString = String(-(longitude )) + "W"
@@ -21,13 +20,7 @@ struct GetFormattedCoordsUseCase {
         } else {
             latitudeString = String((latitude )) + "N"
         }
-        
-        if let actualHeight = actualCoords?[2] {
-            heightString = String(actualHeight) + "Km"
-        } else {
-            heightString = " "
-        }
-        
-        return "\(longitudeString), \(latitudeString), \(heightString)"
+         
+        return "\(longitudeString), \(latitudeString)"
     }
 }

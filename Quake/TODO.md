@@ -16,7 +16,6 @@
 ### Cargar sólo las anotaciones del área??? --> para más adelante
 
 ### Arreglar constraints para que funcione push con animación
-### Arreglar coords para que esté la depth en otra línea
 ### MyDateFormatter -> cambiar a mappers y formatters los UseCase -> está bien así??
 
 ### Poner todos los campos de la API como opcionales???
