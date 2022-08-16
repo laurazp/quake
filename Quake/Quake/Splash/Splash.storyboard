@@ -16,27 +16,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZyA-kn-Bv6" customClass="AnimationView" customModule="Lottie">
-                                <rect key="frame" x="87" y="337.5" width="240" height="231"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="231" id="9w0-oV-fVs"/>
-                                    <constraint firstAttribute="width" constant="240" id="FVu-Ln-f0r"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="map-pin-animation"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3pq-nf-zW8">
+                                <rect key="frame" x="87" y="287.5" width="240" height="331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssY-Fz-2cB">
+                                        <rect key="frame" x="75" y="0.0" width="90" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="9tI-G3-Iuh"/>
+                                            <constraint firstAttribute="height" constant="100" id="Xtm-Cj-jdw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZyA-kn-Bv6" customClass="AnimationView" customModule="Lottie">
+                                        <rect key="frame" x="0.0" y="100" width="240" height="231"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="231" id="9w0-oV-fVs"/>
+                                            <constraint firstAttribute="width" constant="240" id="FVu-Ln-f0r"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="map-pin-animation"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZyA-kn-Bv6" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="9NV-mS-296"/>
-                            <constraint firstItem="ZyA-kn-Bv6" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="paY-jn-8Vy"/>
+                            <constraint firstItem="3pq-nf-zW8" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="FrV-ap-iZR"/>
+                            <constraint firstItem="3pq-nf-zW8" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="eAl-PB-i6l"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="animationView" destination="ZyA-kn-Bv6" id="SEF-RD-sBM"/>
+                        <outlet property="titleLabel" destination="ssY-Fz-2cB" id="sXp-4h-Wbt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -44,6 +60,9 @@
             <point key="canvasLocation" x="34.782608695652179" y="93.75"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="ZyA-kn-Bv6"/>
+    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
