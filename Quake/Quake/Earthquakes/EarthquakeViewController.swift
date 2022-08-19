@@ -5,8 +5,10 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         
     @IBOutlet var tableView: UITableView!
     
-    let viewModel = EarthquakesViewModel()
+    let viewModel = EarthquakesViewModel() // private??
+    private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     
+    //revisar???
     let getFormattedTitleMapper = GetSimplifiedTitleFormatter()
     var getFormattedCoordsFormatter = GetFormattedCoordsFormatter()
     let getTsunamiValueFormatter = GetTsunamiValueFormatter()
@@ -42,7 +44,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
         configureSearchBar() // Dates SearchBar
-        configureFiltersBar()
+        //configureFiltersBar()
         definesPresentationContext = true
 
     }
@@ -82,10 +84,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         searchController.isActive = false //TODO: así está bien ?????
       }
     
-    private func configureFiltersBar() {
-        
-    }
-    
     @IBAction func orderByMagnitude(_ sender: Any) {
         viewModel.orderFeaturesByMagnitude()
     }
@@ -116,31 +114,46 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
     
     func configureCell(cell: EarthquakeEventCell, indexPath: IndexPath) {
-        let feature = viewModel.getFeature(at: indexPath.row)
+//        let feature = viewModel.getFeature(at: indexPath.row)
+//
+//        cell.label.text = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
+//
+//        let magSubstring = feature.properties.title?.prefix(8).prefix(6).suffix(4)
+//        let magString = magSubstring.map(String.init)
+//        cell.magLabel.text = magString
+//
+//        let magnitudeColor = viewModel.getColor(forMagnitude: feature.properties.mag ?? 0)
+//        cell.magLabel.textColor = magnitudeColor
+//
+//        // Set info for expandableView labels
+//        let getDateFormatter = GetDateFormatter()
+//        let formattedDate = getDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
+//        let tsunamiValue = getTsunamiValueFormatter.getTsunamiValue(tsunami: feature.properties.tsunami ?? 0)
+//        if let depth = feature.geometry.coordinates[2] as? Float {
+//            depthValue = depth
+//        }
+//        //guard let depthValue = feature.geometry.coordinates[2] as? Float else { return }
+//
+//        cell.placeLabel.text = "Place: \(feature.properties.place ?? "Unknown")"
+//        cell.timeLabel.text = "Time: \(formattedDate)"
+//        cell.tsunamiLabel.text = "Tsunami: \(tsunamiValue)"
+//        cell.coordsLabel.text = "Coords: \(getFormattedCoordsFormatter.getFormattedCoords(actualCoords: feature.geometry.coordinates))"
+//        cell.depthLabel.text = "Depth: \(depthValue)km"
         
-        cell.label.text = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
-   
-        let magSubstring = feature.properties.title?.prefix(8).prefix(6).suffix(4)
-        let magString = magSubstring.map(String.init)
-        cell.magLabel.text = magString
+        let feature = viewModel.getFeature(at: indexPath.row)
+        let earthquakeModel = featureToEarthquakeModelMapper.map(from: feature)
         
         let magnitudeColor = viewModel.getColor(forMagnitude: feature.properties.mag ?? 0)
+
+        
+        cell.label.text = earthquakeModel.simplifiedTitle
+        cell.magLabel.text = earthquakeModel.magnitude
         cell.magLabel.textColor = magnitudeColor
-        
-        // Set info for expandableView labels
-        let getDateFormatter = GetDateFormatter()
-        let formattedDate = getDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
-        let tsunamiValue = getTsunamiValueFormatter.getTsunamiValue(tsunami: feature.properties.tsunami ?? 0)
-        if let depth = feature.geometry.coordinates[2] as? Float {
-            depthValue = depth
-        }
-        //guard let depthValue = feature.geometry.coordinates[2] as? Float else { return }
-        
-        cell.placeLabel.text = "Place: \(feature.properties.place ?? "Unknown")"
-        cell.timeLabel.text = "Time: \(formattedDate)"
-        cell.tsunamiLabel.text = "Tsunami: \(tsunamiValue)"
-        cell.coordsLabel.text = "Coords: \(getFormattedCoordsFormatter.getFormattedCoords(actualCoords: feature.geometry.coordinates))"
-        cell.depthLabel.text = "Depth: \(depthValue)km"
+        cell.placeLabel.text = "Place: \(earthquakeModel.place)"
+        cell.timeLabel.text = "Date: \(earthquakeModel.date)"
+        cell.tsunamiLabel.text = "Tsunami: \(earthquakeModel.tsunami)"
+        cell.coordsLabel.text = "Coords: \(earthquakeModel.coords)"
+        cell.depthLabel.text = "Depth: \(earthquakeModel.depth)"
     }
     
     func updateSearchResults(for searchController: UISearchController) {
