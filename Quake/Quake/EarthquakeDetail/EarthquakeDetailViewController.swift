@@ -14,8 +14,8 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     
     let viewModel = EarthquakeDetailViewModel()
 
-    var getFormattedCoordsUseCase = GetFormattedCoordsUseCase()
-    let getTsunamiValueUseCase = GetTsunamiValueUseCase()
+    var getFormattedCoordsFormatter = GetFormattedCoordsFormatter()
+    let getTsunamiValueFormatter = GetTsunamiValueFormatter()
 
     @IBOutlet weak var infoCard: UIView!
     @IBOutlet weak var mapCard: UIView!
@@ -60,17 +60,17 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     
     private func configure(with earthquakeDetail: EarthquakeDetail) {
         // Formatting Date
-        let myDateFormatter = MyDateFormatter()
-        let formattedDate = myDateFormatter.formatDate(dateToFormat: earthquakeDetail.time)
+        let getDateFormatter = GetDateFormatter()
+        let formattedDate = getDateFormatter.formatDate(dateToFormat: earthquakeDetail.time)
         
         // Assigning data to variables
         placeLabel.attributedText = getLabelText(labelTitle: "Place:  ", labelContent: (earthquakeDetail.place ?? "Unknown"))
         timeLabel.attributedText = getLabelText(labelTitle: "Time:  ", labelContent: "\(formattedDate)")
         
-        let tsunamiValue = getTsunamiValueUseCase.getTsunamiValue(tsunami: earthquakeDetail.tsunami )
+        let tsunamiValue = getTsunamiValueFormatter.getTsunamiValue(tsunami: earthquakeDetail.tsunami )
         tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: "\(tsunamiValue)")
         
-        let formattedCoords = getFormattedCoordsUseCase.getFormattedCoords(actualCoords: earthquakeDetail.coords)
+        let formattedCoords = getFormattedCoordsFormatter.getFormattedCoords(actualCoords: earthquakeDetail.coords)
         coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: "\(formattedCoords)")
         
         if let depth = earthquakeDetail.coords[2] as Float? {

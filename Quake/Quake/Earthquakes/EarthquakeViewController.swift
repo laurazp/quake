@@ -7,9 +7,9 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     
     let viewModel = EarthquakesViewModel()
     
-    let getFormattedTitleMapper = GetFormattedTitleMapper()
-    var getFormattedCoordsUseCase = GetFormattedCoordsUseCase()
-    let getTsunamiValueUseCase = GetTsunamiValueUseCase()
+    let getFormattedTitleMapper = GetSimplifiedTitleFormatter()
+    var getFormattedCoordsFormatter = GetFormattedCoordsFormatter()
+    let getTsunamiValueFormatter = GetTsunamiValueFormatter()
     private var depthValue: Float = 0
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -118,7 +118,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     func configureCell(cell: EarthquakeEventCell, indexPath: IndexPath) {
         let feature = viewModel.getFeature(at: indexPath.row)
         
-        cell.label.text = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
+        cell.label.text = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
    
         let magSubstring = feature.properties.title?.prefix(8).prefix(6).suffix(4)
         let magString = magSubstring.map(String.init)
@@ -128,18 +128,18 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         cell.magLabel.textColor = magnitudeColor
         
         // Set info for expandableView labels
-        let myDateFormatter = MyDateFormatter()
-        let formattedDate = myDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
-        let tsunamiValue = getTsunamiValueUseCase.getTsunamiValue(tsunami: feature.properties.tsunami ?? 0)
-        if (feature.geometry.coordinates[2] != nil) {
-            depthValue = feature.geometry.coordinates[2]
+        let getDateFormatter = GetDateFormatter()
+        let formattedDate = getDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
+        let tsunamiValue = getTsunamiValueFormatter.getTsunamiValue(tsunami: feature.properties.tsunami ?? 0)
+        if let depth = feature.geometry.coordinates[2] as? Float {
+            depthValue = depth
         }
         //guard let depthValue = feature.geometry.coordinates[2] as? Float else { return }
         
         cell.placeLabel.text = "Place: \(feature.properties.place ?? "Unknown")"
         cell.timeLabel.text = "Time: \(formattedDate)"
         cell.tsunamiLabel.text = "Tsunami: \(tsunamiValue)"
-        cell.coordsLabel.text = "Coords: \(getFormattedCoordsUseCase.getFormattedCoords(actualCoords: feature.geometry.coordinates))"
+        cell.coordsLabel.text = "Coords: \(getFormattedCoordsFormatter.getFormattedCoords(actualCoords: feature.geometry.coordinates))"
         cell.depthLabel.text = "Depth: \(depthValue)km"
     }
     
@@ -191,7 +191,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
             let geometry = feature.geometry
             let date = Date(timeIntervalSince1970: TimeInterval(properties.time ?? 0) / 1000)
             
-            viewController.title = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
+            viewController.title = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
             
             if (geometry.coordinates[2] != nil) {
                 depthValue = feature.geometry.coordinates[2]

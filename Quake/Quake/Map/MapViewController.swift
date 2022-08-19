@@ -15,7 +15,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     let viewModel = MapViewModel()
     
-    let getFormattedTitleMapper = GetFormattedTitleMapper()
+    let getFormattedTitleMapper = GetSimplifiedTitleFormatter()
     
     @IBOutlet weak var searchBarView: UIView!
     
@@ -24,7 +24,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var selectedPin:MKPlacemark? = nil
     
     // borrar????
-    let dateFormatter = MyDateFormatter()
+    let getDateFormatter = GetDateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -211,7 +211,7 @@ extension MapViewController: HandleMapSearch {
                                                                 depth: Float(selectedAnnotation.depth),
                                                                 magnitude: selectedAnnotation.mag)
                 viewController.viewModel.earthquakeDetail = selectedEarthquakeDetail
-                let formattedTitle = getFormattedTitleMapper.getFormattedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown")
+                let formattedTitle = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown")
                 viewController.title = formattedTitle
                 navigationController?.pushViewController(viewController, animated: false)
                 //present(viewController, animated: true)

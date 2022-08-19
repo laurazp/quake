@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct GetTsunamiValueUseCase {
+struct GetTsunamiValueFormatter {
     func getTsunamiValue(tsunami: Int) -> String {
         switch (tsunami) {
         case 0:

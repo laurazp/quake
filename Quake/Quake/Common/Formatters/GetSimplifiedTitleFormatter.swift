@@ -1,8 +1,8 @@
 
 import Foundation
 
-struct GetFormattedTitleMapper {
-    func getFormattedTitle(titleWithoutFormat: String, place: String) -> String {
+struct GetSimplifiedTitleFormatter {
+    func getSimplifiedTitle(titleWithoutFormat: String, place: String) -> String {
         var formattedTitle: String = ""
         if (titleWithoutFormat.contains(" of ")) {
             formattedTitle = titleWithoutFormat.components(separatedBy: " of ").last ?? "Unknown"

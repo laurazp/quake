@@ -1,7 +1,7 @@
 
 import Foundation
 
-class MyDateFormatter {
+class GetDateFormatter {
     
     let dateFormatter = DateFormatter()
     

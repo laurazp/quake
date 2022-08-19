@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct GetFormattedCoordsUseCase {
+struct GetFormattedCoordsFormatter {
     
     func getFormattedCoords(actualCoords: [Float]?) -> String {
         let longitude = actualCoords?[0] ?? 0

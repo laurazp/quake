@@ -10,7 +10,7 @@ final class MapViewModel {
     private let getEarthquakesUseCase = GetEarthquakesUseCase()
     private var earthquakesData = [Feature]()
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
-    private let dateFormatter = MyDateFormatter()
+    private let getDateFormatter = GetDateFormatter()
     
     func viewDidLoad() {
         getEarthquakes()
@@ -30,7 +30,7 @@ final class MapViewModel {
             let annotations: [AnnotationInMap] = features.map { feature in
                 AnnotationInMap(title: feature.properties.title,
                                 place: feature.properties.place,
-                                time: self.dateFormatter.formatIntToDate(dateToFormat: feature.properties.time ?? 0),
+                                time: self.getDateFormatter.formatIntToDate(dateToFormat: feature.properties.time ?? 0),
                                 mag: feature.properties.mag,
                                 tsunami: feature.properties.tsunami,
                                 coordinate: CLLocationCoordinate2D(latitude:  CLLocationDegrees(feature.geometry.coordinates[1]),
