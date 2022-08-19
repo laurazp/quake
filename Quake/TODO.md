@@ -21,3 +21,4 @@
 ### Poner todos los campos de la API como opcionales???
 ### Añadir dark mode --> revisar! falta algo??
 ### Cómo se ordena alfabéticamente por Place??
+### Añadir chevron si es ascendente o descendente (filtros)

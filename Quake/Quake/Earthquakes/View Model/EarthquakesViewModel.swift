@@ -97,19 +97,19 @@ final class EarthquakesViewModel {
     func orderFeaturesByPlace() {
         if (!inIncreasingOrder) {
             if (isFiltering) {
-                filteredEarthquakes.sort(by: { $0.properties.place ?? "" < $1.properties.place ?? "" })
+                filteredEarthquakes.sort(by: { $0.properties.place?.lowercased() ?? "" < $1.properties.place?.lowercased() ?? "" })
                 inIncreasingOrder = true
             } else {
-                earthquakesData.sort(by: { $0.properties.place ?? "" < $1.properties.place ?? "" })
+                earthquakesData.sort(by: { $0.properties.place?.lowercased() ?? "" < $1.properties.place?.lowercased() ?? "" })
                 inIncreasingOrder = true
             }
             self.viewDelegate?.updateView()
         } else {
             if (isFiltering) {
-                filteredEarthquakes.sort(by: { $1.properties.place ?? "" < $0.properties.place ?? "" })
+                filteredEarthquakes.sort(by: { $1.properties.place?.lowercased() ?? "" < $0.properties.place?.lowercased() ?? "" })
                 inIncreasingOrder = false
             } else {
-                earthquakesData.sort(by: { $1.properties.place ?? "" < $0.properties.place ?? "" })
+                earthquakesData.sort(by: { $1.properties.place?.lowercased() ?? "" < $0.properties.place?.lowercased() ?? "" })
                 inIncreasingOrder = false
             }
             self.viewDelegate?.updateView()
