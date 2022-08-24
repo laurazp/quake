@@ -4,7 +4,7 @@ import UIKit
 
 final class EarthquakeDetailViewModel {
     weak var viewDelegate: EarthquakeDetailViewController?
-    var earthquakeDetail: EarthquakeDetail?
+    var earthquakeModel: EarthquakeModel?
     
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
     
@@ -13,8 +13,8 @@ final class EarthquakeDetailViewModel {
     }
     
     func viewDidLoad() {
-        if let earthquakeDetail = earthquakeDetail {
-            viewDelegate?.updateView(with: earthquakeDetail)
+        if let earthquakeModel = earthquakeModel {
+            viewDelegate?.updateView(with: earthquakeModel)
         }
     }
 }

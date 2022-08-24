@@ -6,9 +6,14 @@ final class EarthquakesViewModel {
     weak var viewDelegate: EarthquakeViewController?
     
     private let getEarthquakesUseCase = GetEarthquakesUseCase()
-    private var earthquakesData = [Feature]()
-    var filteredEarthquakes: [Feature] = []
+    private var featuresData = [Feature]()
+    private var earthquakesData = [EarthquakeModel]()
+    //private var modelsData = [EarthquakeModel]()
+    private var filteredEarthquakes: [EarthquakeModel] = []
+    private var filteredFeatures = [Feature]()
+    //private var filteredModels: [EarthquakeModel] = []
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
+    private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     private var isFiltering: Bool = false
     private var inIncreasingOrder = false
     
@@ -19,6 +24,14 @@ final class EarthquakesViewModel {
     }
     
     func getFeature(at index: Int) -> Feature {
+        if (isFiltering) {
+            return filteredFeatures[index]
+        } else {
+            return featuresData[index]
+        }
+    }
+    
+    func getModel(at index: Int) -> EarthquakeModel {
         if (isFiltering) {
             return filteredEarthquakes[index]
         } else {
@@ -34,13 +47,31 @@ final class EarthquakesViewModel {
         }
     }
     
-    func getEarthquakesData() -> [Feature] {
+    func numberOfFeatures() -> Int {
+        if (isFiltering) {
+            return filteredFeatures.count
+        } else {
+            return featuresData.count
+        }
+    }
+    
+    func getFeatures() -> [Feature] {
+        return featuresData
+    }
+    
+    func getEarthquakesData() -> [EarthquakeModel] {
         return earthquakesData
     }
     
     private func getEarthquakes() {
         getEarthquakesUseCase.getEarthquakes { features in
-            self.earthquakesData = features
+            self.featuresData = features
+            
+            //revisar !!!
+            self.featuresData.forEach {feature in
+                let mappedEarthquake = self.featureToEarthquakeModelMapper.map(from: feature)
+                self.earthquakesData.append(mappedEarthquake)
+            }
             self.viewDelegate?.updateView()
         }
     }
@@ -57,10 +88,10 @@ final class EarthquakesViewModel {
         let selectedDateString = formatter.string(from: selectedDate)
         isFiltering = true
         
-        filteredEarthquakes = earthquakesData.filter({ (feature: Feature) -> Bool in
-            if let date = feature.properties.time {
-                stringDateToCompare = formatter.string(from: Date(timeIntervalSince1970: Double(date)/1000))
-            }
+        filteredEarthquakes = earthquakesData.filter({ (earthquake: EarthquakeModel) -> Bool in
+            //if let date = earthquake.date { //y si falta??????
+            stringDateToCompare = formatter.string(from: Date(timeIntervalSince1970: (Double(earthquake.date) ?? 0)/1000))
+            //}
            
             return stringDateToCompare == selectedDateString
         })
@@ -75,20 +106,22 @@ final class EarthquakesViewModel {
     func orderFeaturesByMagnitude() {
         if (!inIncreasingOrder) {
             if (isFiltering) {
-                filteredEarthquakes.sort(by: { $0.properties.mag ?? 0 < $1.properties.mag ?? 0 })
+                filteredEarthquakes.sort(by: { $0.magnitude < $1.magnitude })
                 inIncreasingOrder = true
             } else {
-                earthquakesData.sort(by: { $0.properties.mag ?? 0 < $1.properties.mag ?? 0 })
+                earthquakesData.sort(by: { $0.magnitude < $1.magnitude })
                 inIncreasingOrder = true
+                isFiltering = true
             }
             self.viewDelegate?.updateView()
         } else {
             if (isFiltering) {
-                filteredEarthquakes.sort(by: { $1.properties.mag ?? 0 < $0.properties.mag ?? 0 })
+                filteredEarthquakes.sort(by: { $1.magnitude < $0.magnitude })
                 inIncreasingOrder = false
             } else {
-                earthquakesData.sort(by: { $1.properties.mag ?? 0 < $0.properties.mag ?? 0 })
+                earthquakesData.sort(by: { $1.magnitude < $0.magnitude })
                 inIncreasingOrder = false
+                isFiltering = true
             }
             self.viewDelegate?.updateView()
         }
@@ -97,20 +130,22 @@ final class EarthquakesViewModel {
     func orderFeaturesByPlace() {
         if (!inIncreasingOrder) {
             if (isFiltering) {
-                filteredEarthquakes.sort(by: { $0.properties.place?.lowercased() ?? "" < $1.properties.place?.lowercased() ?? "" })
+                filteredEarthquakes.sort(by: { $0.simplifiedTitle.lowercased() < $1.simplifiedTitle.lowercased() })
                 inIncreasingOrder = true
             } else {
-                earthquakesData.sort(by: { $0.properties.place?.lowercased() ?? "" < $1.properties.place?.lowercased() ?? "" })
+                earthquakesData.sort(by: { $0.simplifiedTitle.lowercased() < $1.simplifiedTitle.lowercased() })
                 inIncreasingOrder = true
+                isFiltering = true
             }
             self.viewDelegate?.updateView()
         } else {
             if (isFiltering) {
-                filteredEarthquakes.sort(by: { $1.properties.place?.lowercased() ?? "" < $0.properties.place?.lowercased() ?? "" })
+                filteredEarthquakes.sort(by: { $1.simplifiedTitle.lowercased() < $0.simplifiedTitle.lowercased() })
                 inIncreasingOrder = false
             } else {
-                earthquakesData.sort(by: { $1.properties.place?.lowercased() ?? "" < $0.properties.place?.lowercased() ?? "" })
+                earthquakesData.sort(by: { $1.simplifiedTitle.lowercased() < $0.simplifiedTitle.lowercased() })
                 inIncreasingOrder = false
+                isFiltering = true
             }
             self.viewDelegate?.updateView()
         }
@@ -119,20 +154,22 @@ final class EarthquakesViewModel {
     func orderFeaturesByDate() {
         if (!inIncreasingOrder) {
             if (isFiltering) {
-                filteredEarthquakes.sort(by: { $0.properties.time ?? 0 < $1.properties.time ?? 0 })
+                filteredEarthquakes.sort(by: { $0.date < $1.date })
                 inIncreasingOrder = true
             } else {
-                earthquakesData.sort(by: { $0.properties.time ?? 0 < $1.properties.time ?? 0 })
+                earthquakesData.sort(by: { $0.date < $1.date })
                 inIncreasingOrder = true
+                isFiltering = true
             }
             self.viewDelegate?.updateView()
         } else {
             if (isFiltering) {
-                filteredEarthquakes.sort(by: { $1.properties.time ?? 0 < $0.properties.time ?? 0 })
+                filteredEarthquakes.sort(by: { $1.date < $0.date })
                 inIncreasingOrder = false
             } else {
-                earthquakesData.sort(by: { $1.properties.time ?? 0 < $0.properties.time ?? 0 })
+                earthquakesData.sort(by: { $1.date < $0.date })
                 inIncreasingOrder = false
+                isFiltering = true
             }
             self.viewDelegate?.updateView()
         }

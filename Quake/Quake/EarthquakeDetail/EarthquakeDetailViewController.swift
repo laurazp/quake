@@ -49,8 +49,8 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         mapCard.layer.shadowOpacity = 0.2
     }
     
-    func updateView(with detail: EarthquakeDetail) {
-        configure(with: detail)
+    func updateView(with model: EarthquakeModel) {
+        configure(with: model)
     }
 
     func didTapButton() {
@@ -58,37 +58,41 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         //dismiss(animated: true) // Si es modal
     }
     
-    private func configure(with earthquakeDetail: EarthquakeDetail) {
+    private func configure(with earthquakeModel: EarthquakeModel) {
         // Formatting Date
-        let getDateFormatter = GetDateFormatter()
-        let formattedDate = getDateFormatter.formatDate(dateToFormat: earthquakeDetail.time)
+        //let getDateFormatter = GetDateFormatter()
+        //let formattedDate = getDateFormatter.formatDate(dateToFormat: earthquakeDetail.time)
         
         // Assigning data to variables
-        placeLabel.attributedText = getLabelText(labelTitle: "Place:  ", labelContent: (earthquakeDetail.place ?? "Unknown"))
-        timeLabel.attributedText = getLabelText(labelTitle: "Time:  ", labelContent: "\(formattedDate)")
+        placeLabel.attributedText = getLabelText(labelTitle: "Place:  ", labelContent: earthquakeModel.place)
+        timeLabel.attributedText = getLabelText(labelTitle: "Time:  ", labelContent: earthquakeModel.date)
+
+        //let tsunamiValue = getTsunamiValueFormatter.getTsunamiValue(tsunami: earthquakeDetail.tsunami )
+        tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: earthquakeModel.tsunami)
+
+        //let formattedCoords = getFormattedCoordsFormatter.getFormattedCoords(actualCoords: earthquakeDetail.coords)
+        coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: earthquakeModel.date)
+        depthLabel.attributedText = getLabelText(labelTitle: "Depth: ", labelContent: earthquakeModel.depth)
         
-        let tsunamiValue = getTsunamiValueFormatter.getTsunamiValue(tsunami: earthquakeDetail.tsunami )
-        tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: "\(tsunamiValue)")
+        let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: Double(earthquakeModel.magnitude) ?? 0)
+        magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: earthquakeModel.magnitude, contentColor: magnitudeColor)
         
-        let formattedCoords = getFormattedCoordsFormatter.getFormattedCoords(actualCoords: earthquakeDetail.coords)
-        coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: "\(formattedCoords)")
-        
-        if let depth = earthquakeDetail.coords[2] as Float? {
-            depthLabel.attributedText = getLabelText(labelTitle: "Depth: ", labelContent: "\(depth)km")
-        }
-        
-        if let magnitude = earthquakeDetail.magnitude {
-            let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: magnitude)
-            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "\(magnitude)", contentColor: magnitudeColor)
-        } else {
-            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: " Unknown")
-        }
+//        if let depth = earthquakeDetail.coords[2] as Float? {
+//            depthLabel.attributedText = getLabelText(labelTitle: "Depth: ", labelContent: "\(depth)km")
+//        }
+//
+//        if let magnitude = earthquakeDetail.magnitude {
+//            let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: magnitude)
+//            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "\(magnitude)", contentColor: magnitudeColor)
+//        } else {
+//            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: " Unknown")
+//        }
         
         // MapView config
         mapView.delegate = self
         
-        let longitude = earthquakeDetail.coords[0]
-        let latitude = earthquakeDetail.coords[1]
+        let longitude = earthquakeModel.originalCoords[0]
+        let latitude = earthquakeModel.originalCoords[1]
         let location = CLLocationCoordinate2DMake(CLLocationDegrees(latitude), CLLocationDegrees(longitude))
         
         let coordinateRegion = MKCoordinateRegion.init(
@@ -99,9 +103,11 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
-        if let substring = earthquakeDetail.place?.split(separator: ",").last {
-            annotation.title = String(substring)
-        }
+        annotation.title = earthquakeModel.simplifiedTitle
+
+//        if let substring = earthquakeDetail.place?.split(separator: ",").last {
+//            annotation.title = String(substring)
+//        }
         mapView.addAnnotation(annotation)
     }
     

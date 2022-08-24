@@ -140,10 +140,11 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
 //        cell.coordsLabel.text = "Coords: \(getFormattedCoordsFormatter.getFormattedCoords(actualCoords: feature.geometry.coordinates))"
 //        cell.depthLabel.text = "Depth: \(depthValue)km"
         
-        let feature = viewModel.getFeature(at: indexPath.row)
-        let earthquakeModel = featureToEarthquakeModelMapper.map(from: feature)
+        //let feature = viewModel.getFeature(at: indexPath.row)
+        //let earthquakeModel = featureToEarthquakeModelMapper.map(from: feature)
+        let earthquakeModel = viewModel.getModel(at: indexPath.row)
         
-        let magnitudeColor = viewModel.getColor(forMagnitude: feature.properties.mag ?? 0)
+        let magnitudeColor = viewModel.getColor(forMagnitude: Double(earthquakeModel.magnitude) ?? 0)
 
         
         cell.label.text = earthquakeModel.simplifiedTitle
@@ -152,7 +153,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         cell.placeLabel.text = "Place: \(earthquakeModel.place)"
         cell.timeLabel.text = "Date: \(earthquakeModel.date)"
         cell.tsunamiLabel.text = "Tsunami: \(earthquakeModel.tsunami)"
-        cell.coordsLabel.text = "Coords: \(earthquakeModel.coords)"
+        cell.coordsLabel.text = "Coords: \(earthquakeModel.formattedCoords)"
         cell.depthLabel.text = "Depth: \(earthquakeModel.depth)"
     }
     
@@ -196,33 +197,45 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
        
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
-            //viewController.title = "Detail"
+            viewController.title = "Detail"
             viewController.viewModel.viewDelegate = viewController
-            let feature = viewModel.getFeature(at: indexPath.row)
+            let earthquakeModel = viewModel.getModel(at: indexPath.row)
+            //let feature = viewModel.getFeature(at: indexPath.row)
             // Passing data to EarthquakeDetailViewController
-            let properties = feature.properties
-            let geometry = feature.geometry
-            let date = Date(timeIntervalSince1970: TimeInterval(properties.time ?? 0) / 1000)
+            //let properties = feature.properties
+            //let geometry = feature.geometry
+            //let date = Date(timeIntervalSince1970: TimeInterval(feature.properties.time ?? 0) / 1000)
+
+            //viewController.title = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
+            viewController.title = earthquakeModel.simplifiedTitle
+
+//            if (feature.geometry.coordinates[2] != nil) {
+//                depthValue = feature.geometry.coordinates[2]
+//            }
             
-            viewController.title = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
-            
-            if (geometry.coordinates[2] != nil) {
-                depthValue = feature.geometry.coordinates[2]
-            }
-            
-            let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
-                                                            place: properties.place,
-                                                            time: date,
-                                                            tsunami: properties.tsunami ?? 0,
-                                                            coords: geometry.coordinates,
-                                                            depth: depthValue,
-                                                            magnitude: properties.mag)
+            let selectedEarthquakeModel = EarthquakeModel(fullTitle: " ",
+                                                          simplifiedTitle: earthquakeModel.simplifiedTitle,
+                                                          place: earthquakeModel.place,
+                                                          formattedCoords: earthquakeModel.formattedCoords,
+                                                          originalCoords: earthquakeModel.originalCoords,
+                                                          depth: earthquakeModel.depth,
+                                                          date: earthquakeModel.date,
+                                                          tsunami: earthquakeModel.tsunami,
+                                                          magnitude: earthquakeModel.magnitude)
+
+//            let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
+//                                                            place: feature.properties.place,
+//                                                            time: date,
+//                                                            tsunami: feature.properties.tsunami ?? 0,
+//                                                            coords: feature.geometry.coordinates,
+//                                                            depth: depthValue,
+//                                                            magnitude: feature.properties.mag)
             
             let backItem = UIBarButtonItem()
             backItem.title = "Back"
             navigationItem.backBarButtonItem = backItem
             
-            viewController.viewModel.earthquakeDetail = selectedEarthquakeDetail
+            viewController.viewModel.earthquakeModel = selectedEarthquakeModel
             navigationController?.pushViewController(viewController, animated: true) // Navegacion
             //present(viewController, animated: true) // Modal (pantalla de abajo a arriba)
         }

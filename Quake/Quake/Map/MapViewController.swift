@@ -15,16 +15,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     let viewModel = MapViewModel()
     
-    let getFormattedTitleMapper = GetSimplifiedTitleFormatter()
+    private let getFormattedTitleMapper = GetSimplifiedTitleFormatter()
+    private let getDateFormatter = GetDateFormatter()
     
     @IBOutlet weak var searchBarView: UIView!
     
     var resultSearchController: UISearchController? = nil
     var matchingItems: [MKMapItem] = []
     var selectedPin:MKPlacemark? = nil
-    
-    // borrar????
-    let getDateFormatter = GetDateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,14 +201,23 @@ extension MapViewController: HandleMapSearch {
             viewController.viewModel.viewDelegate = viewController
         
             if let selectedAnnotation = view.annotation as? AnnotationInMap {
-                let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
-                                                                place: selectedAnnotation.place,
-                                                                time: selectedAnnotation.time!, //TODO: modificar!!
-                                                                tsunami: selectedAnnotation.tsunami ?? 0,
-                                                                coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude)],
-                                                                depth: Float(selectedAnnotation.depth),
-                                                                magnitude: selectedAnnotation.mag)
-                viewController.viewModel.earthquakeDetail = selectedEarthquakeDetail
+                let selectedEarthquakeModel = EarthquakeModel(fullTitle: " ",
+                                                              simplifiedTitle: selectedAnnotation.title ?? "Unknown",
+                                                              place: selectedAnnotation.place ?? "Unknown", formattedCoords: "",
+                                                              originalCoords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude)],
+                                                              depth: String(selectedAnnotation.depth),
+                                                              date: getDateFormatter.formatDate(dateToFormat: selectedAnnotation.time!),
+                                                              tsunami: String(selectedAnnotation.tsunami ?? 0),
+                                                              magnitude: String(selectedAnnotation.mag ?? 0))
+                
+//                let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
+//                                                                place: selectedAnnotation.place,
+//                                                                time: selectedAnnotation.time!,
+//                                                                tsunami: selectedAnnotation.tsunami ?? 0,
+//                                                                coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude)],
+//                                                                depth: Float(selectedAnnotation.depth),
+//                                                                magnitude: selectedAnnotation.mag)
+                viewController.viewModel.earthquakeModel = selectedEarthquakeModel
                 let formattedTitle = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown")
                 viewController.title = formattedTitle
                 navigationController?.pushViewController(viewController, animated: false)
