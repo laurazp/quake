@@ -44,7 +44,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
         configureSearchBar() // Dates SearchBar
-        //configureFiltersBar()
         definesPresentationContext = true
 
     }
@@ -80,7 +79,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         let dateString = dateFormatter.string(from: datePicker.date)
         searchController.searchBar.text = dateString
         viewModel.filterEarthquakesByDate(selectedDate: datePicker.date)
-        //datePicker.resignFirstResponder() <-- no funciona
         searchController.isActive = false //TODO: así está bien ?????
       }
     
@@ -114,39 +112,9 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
     
     func configureCell(cell: EarthquakeEventCell, indexPath: IndexPath) {
-//        let feature = viewModel.getFeature(at: indexPath.row)
-//
-//        cell.label.text = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
-//
-//        let magSubstring = feature.properties.title?.prefix(8).prefix(6).suffix(4)
-//        let magString = magSubstring.map(String.init)
-//        cell.magLabel.text = magString
-//
-//        let magnitudeColor = viewModel.getColor(forMagnitude: feature.properties.mag ?? 0)
-//        cell.magLabel.textColor = magnitudeColor
-//
-//        // Set info for expandableView labels
-//        let getDateFormatter = GetDateFormatter()
-//        let formattedDate = getDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000)
-//        let tsunamiValue = getTsunamiValueFormatter.getTsunamiValue(tsunami: feature.properties.tsunami ?? 0)
-//        if let depth = feature.geometry.coordinates[2] as? Float {
-//            depthValue = depth
-//        }
-//        //guard let depthValue = feature.geometry.coordinates[2] as? Float else { return }
-//
-//        cell.placeLabel.text = "Place: \(feature.properties.place ?? "Unknown")"
-//        cell.timeLabel.text = "Time: \(formattedDate)"
-//        cell.tsunamiLabel.text = "Tsunami: \(tsunamiValue)"
-//        cell.coordsLabel.text = "Coords: \(getFormattedCoordsFormatter.getFormattedCoords(actualCoords: feature.geometry.coordinates))"
-//        cell.depthLabel.text = "Depth: \(depthValue)km"
-        
-        //let feature = viewModel.getFeature(at: indexPath.row)
-        //let earthquakeModel = featureToEarthquakeModelMapper.map(from: feature)
         let earthquakeModel = viewModel.getModel(at: indexPath.row)
-        
         let magnitudeColor = viewModel.getColor(forMagnitude: Double(earthquakeModel.magnitude) ?? 0)
 
-        
         cell.label.text = earthquakeModel.simplifiedTitle
         cell.magLabel.text = earthquakeModel.magnitude
         cell.magLabel.textColor = magnitudeColor
@@ -157,6 +125,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         cell.depthLabel.text = "Depth: \(earthquakeModel.depth)"
     }
     
+    //TODO: poner búsqueda entre dos fechas y actualizar !!
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         
@@ -164,16 +133,16 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UISearchTextField) -> Bool {
-            textField.resignFirstResponder()
-            return true
-        }
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-      return viewModel.numberOfItems()
+        return viewModel.numberOfItems()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -200,19 +169,9 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
             viewController.title = "Detail"
             viewController.viewModel.viewDelegate = viewController
             let earthquakeModel = viewModel.getModel(at: indexPath.row)
-            //let feature = viewModel.getFeature(at: indexPath.row)
-            // Passing data to EarthquakeDetailViewController
-            //let properties = feature.properties
-            //let geometry = feature.geometry
-            //let date = Date(timeIntervalSince1970: TimeInterval(feature.properties.time ?? 0) / 1000)
-
-            //viewController.title = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown")
+            
             viewController.title = earthquakeModel.simplifiedTitle
 
-//            if (feature.geometry.coordinates[2] != nil) {
-//                depthValue = feature.geometry.coordinates[2]
-//            }
-            
             let selectedEarthquakeModel = EarthquakeModel(fullTitle: " ",
                                                           simplifiedTitle: earthquakeModel.simplifiedTitle,
                                                           place: earthquakeModel.place,
@@ -222,15 +181,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
                                                           date: earthquakeModel.date,
                                                           tsunami: earthquakeModel.tsunami,
                                                           magnitude: earthquakeModel.magnitude)
-
-//            let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
-//                                                            place: feature.properties.place,
-//                                                            time: date,
-//                                                            tsunami: feature.properties.tsunami ?? 0,
-//                                                            coords: feature.geometry.coordinates,
-//                                                            depth: depthValue,
-//                                                            magnitude: feature.properties.mag)
-            
+           
             let backItem = UIBarButtonItem()
             backItem.title = "Back"
             navigationItem.backBarButtonItem = backItem

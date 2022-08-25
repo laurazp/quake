@@ -8,10 +8,8 @@ final class EarthquakesViewModel {
     private let getEarthquakesUseCase = GetEarthquakesUseCase()
     private var featuresData = [Feature]()
     private var earthquakesData = [EarthquakeModel]()
-    //private var modelsData = [EarthquakeModel]()
     private var filteredEarthquakes: [EarthquakeModel] = []
     private var filteredFeatures = [Feature]()
-    //private var filteredModels: [EarthquakeModel] = []
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
     private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     private var isFiltering: Bool = false
@@ -22,14 +20,6 @@ final class EarthquakesViewModel {
     func viewDidLoad() {
         getEarthquakes()
     }
-    
-//    func getFeature(at index: Int) -> Feature {
-//        if (isFiltering) {
-//            return filteredFeatures[index]
-//        } else {
-//            return featuresData[index]
-//        }
-//    }
     
     func getModel(at index: Int) -> EarthquakeModel {
         if (isFiltering) {
@@ -46,18 +36,6 @@ final class EarthquakesViewModel {
             return earthquakesData.count
         }
     }
-    
-//    func numberOfFeatures() -> Int {
-//        if (isFiltering) {
-//            return filteredFeatures.count
-//        } else {
-//            return featuresData.count
-//        }
-//    }
-    
-//    func getFeatures() -> [Feature] {
-//        return featuresData
-//    }
     
     func getEarthquakesData() -> [EarthquakeModel] {
         return earthquakesData
@@ -98,7 +76,7 @@ final class EarthquakesViewModel {
         self.viewDelegate?.updateView()
     }
     
-    // TODO: resetear la búsqueda y poner isFiltering a false !!! --> cuándo se debe poner a false ???
+    // TODO: resetear la búsqueda y poner isFiltering a false??? --> cuándo se debe poner a false ???
     func endFiltering() {
         isFiltering = false
     }
