@@ -26,14 +26,14 @@ class EarthquakesApiDataSource {
                 print("Failed to convert \(error)")
             }
             
-            guard let json = result else {
-                return
-            }
-            
-            //print(json.features)
-            DispatchQueue.main.async {
-                completion(json.features) // Closure calling
-            }
+//            guard let json = result else {
+//                return
+//            }
+//            
+//            //print(json.features)
+//            DispatchQueue.main.async {
+//                completion(json.features) // Closure calling
+//            }
         })
         task.resume()
     }

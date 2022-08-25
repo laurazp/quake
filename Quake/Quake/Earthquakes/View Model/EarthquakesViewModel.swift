@@ -23,13 +23,13 @@ final class EarthquakesViewModel {
         getEarthquakes()
     }
     
-    func getFeature(at index: Int) -> Feature {
-        if (isFiltering) {
-            return filteredFeatures[index]
-        } else {
-            return featuresData[index]
-        }
-    }
+//    func getFeature(at index: Int) -> Feature {
+//        if (isFiltering) {
+//            return filteredFeatures[index]
+//        } else {
+//            return featuresData[index]
+//        }
+//    }
     
     func getModel(at index: Int) -> EarthquakeModel {
         if (isFiltering) {
@@ -47,17 +47,17 @@ final class EarthquakesViewModel {
         }
     }
     
-    func numberOfFeatures() -> Int {
-        if (isFiltering) {
-            return filteredFeatures.count
-        } else {
-            return featuresData.count
-        }
-    }
+//    func numberOfFeatures() -> Int {
+//        if (isFiltering) {
+//            return filteredFeatures.count
+//        } else {
+//            return featuresData.count
+//        }
+//    }
     
-    func getFeatures() -> [Feature] {
-        return featuresData
-    }
+//    func getFeatures() -> [Feature] {
+//        return featuresData
+//    }
     
     func getEarthquakesData() -> [EarthquakeModel] {
         return earthquakesData
@@ -67,7 +67,6 @@ final class EarthquakesViewModel {
         getEarthquakesUseCase.getEarthquakes { features in
             self.featuresData = features
             
-            //revisar !!!
             self.featuresData.forEach {feature in
                 let mappedEarthquake = self.featureToEarthquakeModelMapper.map(from: feature)
                 self.earthquakesData.append(mappedEarthquake)
@@ -80,6 +79,7 @@ final class EarthquakesViewModel {
         return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
     }
     
+    // TODO: revisar!!!
     func filterEarthquakesByDate(selectedDate: Date) {
         var stringDateToCompare: String = ""
         let formatter = DateFormatter()
@@ -112,6 +112,9 @@ final class EarthquakesViewModel {
                 earthquakesData.sort(by: { $0.magnitude < $1.magnitude })
                 inIncreasingOrder = true
                 isFiltering = true
+                if (filteredEarthquakes.count == 0) {
+                    self.filteredEarthquakes = earthquakesData // ¿¿¿????
+                }
             }
             self.viewDelegate?.updateView()
         } else {
@@ -122,6 +125,9 @@ final class EarthquakesViewModel {
                 earthquakesData.sort(by: { $1.magnitude < $0.magnitude })
                 inIncreasingOrder = false
                 isFiltering = true
+                if (filteredEarthquakes.count == 0) {
+                    self.filteredEarthquakes = earthquakesData
+                }
             }
             self.viewDelegate?.updateView()
         }
@@ -136,6 +142,9 @@ final class EarthquakesViewModel {
                 earthquakesData.sort(by: { $0.simplifiedTitle.lowercased() < $1.simplifiedTitle.lowercased() })
                 inIncreasingOrder = true
                 isFiltering = true
+                if (filteredEarthquakes.count == 0) {
+                    self.filteredEarthquakes = earthquakesData
+                }
             }
             self.viewDelegate?.updateView()
         } else {
@@ -146,6 +155,9 @@ final class EarthquakesViewModel {
                 earthquakesData.sort(by: { $1.simplifiedTitle.lowercased() < $0.simplifiedTitle.lowercased() })
                 inIncreasingOrder = false
                 isFiltering = true
+                if (filteredEarthquakes.count == 0) {
+                    self.filteredEarthquakes = earthquakesData
+                }
             }
             self.viewDelegate?.updateView()
         }
@@ -160,6 +172,9 @@ final class EarthquakesViewModel {
                 earthquakesData.sort(by: { $0.date < $1.date })
                 inIncreasingOrder = true
                 isFiltering = true
+                if (filteredEarthquakes.count == 0) {
+                    self.filteredEarthquakes = earthquakesData
+                }
             }
             self.viewDelegate?.updateView()
         } else {
@@ -170,6 +185,9 @@ final class EarthquakesViewModel {
                 earthquakesData.sort(by: { $1.date < $0.date })
                 inIncreasingOrder = false
                 isFiltering = true
+                if (filteredEarthquakes.count == 0) {
+                    self.filteredEarthquakes = earthquakesData
+                }
             }
             self.viewDelegate?.updateView()
         }
