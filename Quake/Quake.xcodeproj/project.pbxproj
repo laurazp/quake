@@ -42,6 +42,7 @@
 		22B47EB128AAFD50008C27E3 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EB028AAFD50008C27E3 /* FAQViewController.swift */; };
 		22B47EB428AEFFF4008C27E3 /* EarthquakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EB328AEFFF4008C27E3 /* EarthquakeModel.swift */; };
 		22B47EB628AF0196008C27E3 /* FeatureToEarthquakeModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EB528AF0196008C27E3 /* FeatureToEarthquakeModelMapper.swift */; };
+		22B47EBA28B8D9C4008C27E3 /* FAQStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */; };
 		22F68496289B335B00412B34 /* GetMagnitudeColorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */; };
 		22F68499289BECD800412B34 /* EarthquakeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */; };
 		22F6849F289C110500412B34 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F6849E289C110500412B34 /* MapViewModel.swift */; };
@@ -115,6 +116,7 @@
 		22B47EB028AAFD50008C27E3 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		22B47EB328AEFFF4008C27E3 /* EarthquakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeModel.swift; sourceTree = "<group>"; };
 		22B47EB528AF0196008C27E3 /* FeatureToEarthquakeModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureToEarthquakeModelMapper.swift; sourceTree = "<group>"; };
+		22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQStoryboard.storyboard; sourceTree = "<group>"; };
 		22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMagnitudeColorUseCase.swift; sourceTree = "<group>"; };
 		22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetailViewModel.swift; sourceTree = "<group>"; };
 		22F6849E289C110500412B34 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				22143457285CFED800F1CBA0 /* SettingsViewController.swift */,
 				227D90852875F98D00A0DED5 /* SettingTableViewCell.swift */,
 				22B47EB028AAFD50008C27E3 /* FAQViewController.swift */,
+				22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				223A2F1C284FFAA900034143 /* EarthquakesStoryboard.storyboard in Resources */,
+				22B47EBA28B8D9C4008C27E3 /* FAQStoryboard.storyboard in Resources */,
 				22990A1C284BD40900C1104D /* LaunchScreen.storyboard in Resources */,
 				22990A19284BD40900C1104D /* Assets.xcassets in Resources */,
 				22B47EAE28AAC564008C27E3 /* Splash.storyboard in Resources */,

@@ -49,7 +49,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 
             },
             SettingsOption(title: "FAQ", icon: UIImage(systemName: "house"), iconBackgroundColor: .link) {
-
+                let storyboard = UIStoryboard(name: "FAQStoryboard", bundle: nil)
+                if let viewController = storyboard.instantiateViewController(withIdentifier: "FAQStoryboard") as? FAQViewController {
+                    
+                    viewController.title = "FAQ"
+                    let backItem = UIBarButtonItem()
+                    backItem.title = "Back"
+                    self.navigationItem.backBarButtonItem = backItem
+                    
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
             }
         ]))
     }
