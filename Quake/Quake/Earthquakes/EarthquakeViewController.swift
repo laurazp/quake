@@ -79,7 +79,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         let dateString = dateFormatter.string(from: datePicker.date)
         searchController.searchBar.text = dateString
         viewModel.filterEarthquakesByDate(selectedDate: datePicker.date)
-        searchController.isActive = false //TODO: así está bien ?????
+        //searchController.isActive = false //TODO: así está bien ?????
       }
     
     @IBAction func orderByMagnitude(_ sender: Any) {

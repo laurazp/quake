@@ -59,20 +59,17 @@ final class EarthquakesViewModel {
     
     // TODO: revisar!!!
     func filterEarthquakesByDate(selectedDate: Date) {
-        var stringDateToCompare: String = ""
         let formatter = DateFormatter()
         formatter.timeStyle = .none
         formatter.dateStyle = .short
         let selectedDateString = formatter.string(from: selectedDate)
-        isFiltering = true
         
-        filteredEarthquakes = earthquakesData.filter({ (earthquake: EarthquakeModel) -> Bool in
-            //if let date = earthquake.date { //y si falta??????
-            stringDateToCompare = formatter.string(from: Date(timeIntervalSince1970: (Double(earthquake.date) ?? 0)/1000))
-            //}
-           
-            return stringDateToCompare == selectedDateString
+        let correspondingEarthquakes = earthquakesData.filter ({
+            $0.date == selectedDateString
         })
+        filteredEarthquakes = correspondingEarthquakes
+        print(filteredEarthquakes)
+        isFiltering = true
         self.viewDelegate?.updateView()
     }
     
@@ -89,10 +86,6 @@ final class EarthquakesViewModel {
             } else {
                 earthquakesData.sort(by: { $0.magnitude < $1.magnitude })
                 inIncreasingOrder = true
-                isFiltering = true
-                if (filteredEarthquakes.count == 0) {
-                    self.filteredEarthquakes = earthquakesData // ¿¿¿????
-                }
             }
             self.viewDelegate?.updateView()
         } else {
@@ -102,10 +95,6 @@ final class EarthquakesViewModel {
             } else {
                 earthquakesData.sort(by: { $1.magnitude < $0.magnitude })
                 inIncreasingOrder = false
-                isFiltering = true
-                if (filteredEarthquakes.count == 0) {
-                    self.filteredEarthquakes = earthquakesData
-                }
             }
             self.viewDelegate?.updateView()
         }
@@ -119,10 +108,6 @@ final class EarthquakesViewModel {
             } else {
                 earthquakesData.sort(by: { $0.simplifiedTitle.lowercased() < $1.simplifiedTitle.lowercased() })
                 inIncreasingOrder = true
-                isFiltering = true
-                if (filteredEarthquakes.count == 0) {
-                    self.filteredEarthquakes = earthquakesData
-                }
             }
             self.viewDelegate?.updateView()
         } else {
@@ -132,10 +117,6 @@ final class EarthquakesViewModel {
             } else {
                 earthquakesData.sort(by: { $1.simplifiedTitle.lowercased() < $0.simplifiedTitle.lowercased() })
                 inIncreasingOrder = false
-                isFiltering = true
-                if (filteredEarthquakes.count == 0) {
-                    self.filteredEarthquakes = earthquakesData
-                }
             }
             self.viewDelegate?.updateView()
         }
@@ -149,10 +130,6 @@ final class EarthquakesViewModel {
             } else {
                 earthquakesData.sort(by: { $0.date < $1.date })
                 inIncreasingOrder = true
-                isFiltering = true
-                if (filteredEarthquakes.count == 0) {
-                    self.filteredEarthquakes = earthquakesData
-                }
             }
             self.viewDelegate?.updateView()
         } else {
@@ -162,10 +139,6 @@ final class EarthquakesViewModel {
             } else {
                 earthquakesData.sort(by: { $1.date < $0.date })
                 inIncreasingOrder = false
-                isFiltering = true
-                if (filteredEarthquakes.count == 0) {
-                    self.filteredEarthquakes = earthquakesData
-                }
             }
             self.viewDelegate?.updateView()
         }
