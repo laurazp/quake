@@ -5,6 +5,11 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         
     @IBOutlet var tableView: UITableView!
     
+    @IBOutlet weak var magnitudeChevron: UIImageView!
+    @IBOutlet weak var placeChevron: UIImageView!
+    @IBOutlet weak var dateChevron: UIImageView!
+    
+    
     let viewModel = EarthquakesViewModel() // private??
     private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     
@@ -83,14 +88,17 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
       }
     
     @IBAction func orderByMagnitude(_ sender: Any) {
+        rotateMagnitudeChevronImageWhenOrdering()
         viewModel.orderFeaturesByMagnitude()
     }
     
     @IBAction func orderByPlace(_ sender: Any) {
+        rotatePlaceChevronImageWhenOrdering()
         viewModel.orderFeaturesByPlace()
     }
     
     @IBAction func orderByDate(_ sender: Any) {
+        rotateDateChevronImageWhenOrdering()
         viewModel.orderFeaturesByDate()
     }
     
@@ -135,6 +143,18 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     func textFieldShouldReturn(_ textField: UISearchTextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    private func rotateMagnitudeChevronImageWhenOrdering() {
+        self.magnitudeChevron.transform = self.magnitudeChevron.transform.rotated(by: .pi)
+    }
+    
+    private func rotatePlaceChevronImageWhenOrdering() {
+        self.placeChevron.transform = self.placeChevron.transform.rotated(by: .pi)
+    }
+    
+    private func rotateDateChevronImageWhenOrdering() {
+        self.dateChevron.transform = self.dateChevron.transform.rotated(by: .pi)
     }
 }
 
