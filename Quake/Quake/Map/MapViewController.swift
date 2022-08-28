@@ -31,7 +31,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         centerViewOnUser()
         
         mapView.delegate = self
-        //viewModel.viewDidLoad() // --> Descomentar para mostrar los pines en el mapa!!!!
+        viewModel.viewDidLoad() // --> Comment/uncomment to show pins on map
 
         configureSearchBarAndTable()
         addMapTrackingButton()
@@ -178,15 +178,25 @@ extension MapViewController: HandleMapSearch {
             withIdentifier: identifier) as? MKMarkerAnnotationView {
             dequeuedView.annotation = annotation
             view = dequeuedView
+        } else if let cluster = annotation as? MKClusterAnnotation {
+            let clusterView = mapView.dequeueReusableAnnotationView(withIdentifier: "clusterView")
+                ?? MKAnnotationView(annotation: annotation, reuseIdentifier: "clusterView")
+            
+            clusterView.annotation = cluster
+            clusterView.image = UIImage(named: "cluster") // Hace falta???
+            
+            return clusterView
         } else {
             view = MKMarkerAnnotationView(
                 annotation: annotation,
                 reuseIdentifier: identifier)
         }
+        
         view.canShowCallout = true
         view.calloutOffset = CGPoint(x: -5, y: 5)
         view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         view.markerTintColor = annotation.markerTintColor // TODO: Change color of pins in map
+        view.clusteringIdentifier = "mapItemClustered"
         
         let btn = UIButton(type: .detailDisclosure)
         view.rightCalloutAccessoryView = btn
@@ -210,18 +220,10 @@ extension MapViewController: HandleMapSearch {
                                                               tsunami: String(selectedAnnotation.tsunami ?? 0),
                                                               magnitude: String(selectedAnnotation.mag ?? 0))
                 
-//                let selectedEarthquakeDetail = EarthquakeDetail(title: " ",
-//                                                                place: selectedAnnotation.place,
-//                                                                time: selectedAnnotation.time!,
-//                                                                tsunami: selectedAnnotation.tsunami ?? 0,
-//                                                                coords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude)],
-//                                                                depth: Float(selectedAnnotation.depth),
-//                                                                magnitude: selectedAnnotation.mag)
                 viewController.viewModel.earthquakeModel = selectedEarthquakeModel
                 let formattedTitle = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown")
                 viewController.title = formattedTitle
                 navigationController?.pushViewController(viewController, animated: false)
-                //present(viewController, animated: true)
             }
             
         }
