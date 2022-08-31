@@ -47,6 +47,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         models.append(SettingsSection(title: "General", options: [
             .staticCell(model: SettingsOption(title: "API info", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
                 
+                //<a href="https://www.flaticon.com/free-icons/earthquake" title="earthquake icons">Earthquake icons created by fjstudio - Flaticon</a>
+                
             }),
             .staticCell(model: SettingsOption(title: "FAQ", icon: UIImage(systemName: "questionmark"), iconBackgroundColor: .link) {
                 let storyboard = UIStoryboard(name: "FAQStoryboard", bundle: nil)
