@@ -1,7 +1,8 @@
 
 import UIKit
+import MapKit
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -11,6 +12,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }()
     
     var models = [SettingsSection]()
+    
+    private let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,27 +28,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func configure() {
         models.append(SettingsSection(title: "Configuration", options: [
-            .staticCell(model: SettingsOption(title: "Unidades", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemMint) {
+            .staticCell(model: SettingsOption(title: "Units ", icon: UIImage(systemName: "option"), iconBackgroundColor: .systemMint) {
                 
             }),
-            .switchCell(model: SettingsSwitchOption(title: "Turn Location Services On", icon: UIImage(systemName: "location"), iconBackgroundColor: .systemOrange, handler: {
+            .switchCell(model: SettingsSwitchOption(title: "Push notifications", icon: UIImage(systemName: "message"), iconBackgroundColor: .systemPurple, handler: {
                 
             }, isOn: false)),
-            .staticCell(model: SettingsOption(title: "Push notifications", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPurple) {
-                let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+            .staticCell(model: SettingsOption(title: "Turn Location Services On", icon: UIImage(systemName: "location"), iconBackgroundColor: .systemOrange) {
                 
-                //TODO: Descomentar para actualizar
-//                let center = UNUserNotificationCenter.current()
-//                center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-//
-//                    if let error = error {
-//                        print(error)
-//                        // Handle the error here.
-//                    }
-//                    // Enable or disable features based on the authorization.
-//                }
+                self.checkLocationServices()
+                
+//                let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertController.Style.alert)
+//                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
             })
         ]))
         
@@ -66,6 +61,50 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             })
         ]))
+    }
+    
+    private func checkLocationServices() {
+        guard CLLocationManager.locationServicesEnabled() else {
+            // TODO: Revisar mensaje !!!
+            let alert = UIAlertController(title: "Location Services not enabled", message: "Go to your phone Settings and turn location services on in order to have the whole app working properly.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        let alert = UIAlertController(title: "Location Services enabled", message: "Location Services enabled for Quake.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Accept", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+        checkAuthorizationForLocation()
+    }
+
+    private func checkAuthorizationForLocation() {
+        switch locationManager.authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
+            //mapView.showsUserLocation = true
+            //centerViewOnUser()
+            locationManager.startUpdatingLocation()
+            break
+        case .denied:
+            let alert = UIAlertController(title: "Location Services not enabled", message: "Go to your phone Settings and turn location services on in order to have the app working properly.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+                // TODO: Revisar mensaje !!!
+            let alert = UIAlertController(title: "Alert", message: "Quake is not authorize to use location services. Go to your phone Settings to change it.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            break
+        @unknown default:
+            break
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -22,5 +22,6 @@
 ### Añadir chevron si es ascendente o descendente (filtros)
 ### Decode UTF-8 para que títulos salgan bien escritos
 ### Revisar advertencia clusters en map
+### Revisar error al usar switch de Settings
 
 
