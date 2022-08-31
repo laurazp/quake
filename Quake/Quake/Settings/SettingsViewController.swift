@@ -6,6 +6,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
+        table.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCell.identifier)
         return table
     }()
     
@@ -24,13 +25,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func configure() {
         models.append(SettingsSection(title: "Configuration", options: [
-            SettingsOption(title: "Unidades", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemMint) {
+            .staticCell(model: SettingsOption(title: "Unidades", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemMint) {
                 
-            },
-            SettingsOption(title: "Turn Location Services On", icon: UIImage(systemName: "location"), iconBackgroundColor: .systemOrange) {
+            }),
+            .switchCell(model: SettingsSwitchOption(title: "Turn Location Services On", icon: UIImage(systemName: "location"), iconBackgroundColor: .systemOrange, handler: {
                 
-            },
-            SettingsOption(title: "Push notifications", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPurple) {
+            }, isOn: false)),
+            .staticCell(model: SettingsOption(title: "Push notifications", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPurple) {
                 let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -45,14 +46,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 //                    }
 //                    // Enable or disable features based on the authorization.
 //                }
-            }
+            })
         ]))
         
         models.append(SettingsSection(title: "General", options: [
-            SettingsOption(title: "API info", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
+            .staticCell(model: SettingsOption(title: "API info", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
                 
-            },
-            SettingsOption(title: "FAQ", icon: UIImage(systemName: "questionmark"), iconBackgroundColor: .link) {
+            }),
+            .staticCell(model: SettingsOption(title: "FAQ", icon: UIImage(systemName: "questionmark"), iconBackgroundColor: .link) {
                 let storyboard = UIStoryboard(name: "FAQStoryboard", bundle: nil)
                 if let viewController = storyboard.instantiateViewController(withIdentifier: "FAQStoryboard") as? FAQViewController {
                     
@@ -63,7 +64,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
-            }
+            })
         ]))
     }
     
@@ -82,18 +83,36 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.section].options[indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: SettingTableViewCell.identifier,
-            for: indexPath) as? SettingTableViewCell else {
-            return UITableViewCell()
+        
+        switch model.self {
+        case .staticCell(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SettingTableViewCell.identifier,
+                for: indexPath) as? SettingTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
+        case .switchCell(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SwitchTableViewCell.identifier,
+                for: indexPath) as? SwitchTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
         }
-        cell.configure(with: model)
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let model = models[indexPath.section].options[indexPath.row]
-        model.handler()
+        let type = models[indexPath.section].options[indexPath.row]
+        
+        switch type.self {
+        case .staticCell(let model):
+            model.handler()
+        case .switchCell(let model):
+            model.handler()
+        }
     }
 }
