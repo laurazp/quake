@@ -11,7 +11,6 @@
 
 ## Filtros para buscar terremotos por fechas en la tabla --> importante!!
 ## Pantalla Settings -> avanzar
-### Clusters en map !!
 ### Cargar sólo las anotaciones del área??? --> para más adelante
 
 ### Arreglar constraints para que funcione push con animación
