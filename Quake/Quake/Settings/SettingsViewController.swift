@@ -2,7 +2,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
@@ -23,14 +23,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func configure() {
-        models.append(SettingsSection(title: "Configuración", options: [
+        models.append(SettingsSection(title: "Configuration", options: [
             SettingsOption(title: "Unidades", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemMint) {
                 
             },
-            SettingsOption(title: "Permisos", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemOrange) {
+            SettingsOption(title: "Turn Location Services On", icon: UIImage(systemName: "location"), iconBackgroundColor: .systemOrange) {
                 
             },
-            SettingsOption(title: "Notificaciones push", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPurple) {
+            SettingsOption(title: "Push notifications", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPurple) {
+                let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
                 //TODO: Descomentar para actualizar
 //                let center = UNUserNotificationCenter.current()
 //                center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -48,7 +52,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             SettingsOption(title: "API info", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
                 
             },
-            SettingsOption(title: "FAQ", icon: UIImage(systemName: "house"), iconBackgroundColor: .link) {
+            SettingsOption(title: "FAQ", icon: UIImage(systemName: "questionmark"), iconBackgroundColor: .link) {
                 let storyboard = UIStoryboard(name: "FAQStoryboard", bundle: nil)
                 if let viewController = storyboard.instantiateViewController(withIdentifier: "FAQStoryboard") as? FAQViewController {
                     

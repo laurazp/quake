@@ -99,7 +99,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     private func checkLocationServices() {
         guard CLLocationManager.locationServicesEnabled() else {
-            // TODO: Here we must tell user how to turn on location on device
+            // TODO: Revisar mensaje !!!
+            let alert = UIAlertController(title: "Location Services not enabled", message: "Go to Permissions in Settings and turn location services on in order to have the map working properly.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Accept", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
             return
         }
         locationManager.delegate = self
@@ -116,14 +120,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             locationManager.startUpdatingLocation()
             break
         case .denied:
-            // TODO: Here we must tell user how to turn on location on device
-            // Show a dialog to tell the user to enable location services
-            //locationManager.requestLocation() ??
+            let alert = UIAlertController(title: "Location Services not enabled", message: "Go to Permissions in Settings and turn location services on in order to have the map working properly.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Accept", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
-                // TODO: Here we must tell user that the app is not authorize to use location services
+                // TODO: Revisar mensaje !!!
+            let alert = UIAlertController(title: "Alert", message: "Quake is not authorize to use location services. Go to Permissions in Settings to change it.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Accept", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             break
         @unknown default:
             break
