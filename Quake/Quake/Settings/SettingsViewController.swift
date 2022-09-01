@@ -46,6 +46,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         models.append(SettingsSection(title: "General", options: [
             .staticCell(model: SettingsOption(title: "API info", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
+                let storyboard = UIStoryboard(name: "ApiInfoStoryboard", bundle: nil)
+                if let viewController = storyboard.instantiateViewController(withIdentifier: "ApiInfoStoryboard") as? ApiInfoViewController {
+                    
+                    viewController.title = "API Info"
+                    let backItem = UIBarButtonItem()
+                    backItem.title = "Back"
+                    self.navigationItem.backBarButtonItem = backItem
+                    
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
                 
                 //<a href="https://www.flaticon.com/free-icons/earthquake" title="earthquake icons">Earthquake icons created by fjstudio - Flaticon</a>
                 

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Api Info View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController restorationIdentifier="ApiInfoStoryboard" storyboardIdentifier="ApiInfoStoryboard" id="Y6W-OH-hqX" customClass="ApiInfoViewController" customModule="Quake" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88c-5O-M3b" userLabel="API Card">
+                                <rect key="frame" x="9" y="53" width="396" height="800"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="bFD-ID-V9y">
+                                        <rect key="frame" x="20" y="0.0" width="356" height="800"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAp-mP-kOi" userLabel="API info title">
+                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="133.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVS-aa-6rd" userLabel="API info content">
+                                                <rect key="frame" x="0.0" y="133.5" width="41.5" height="133"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDW-Et-92y" userLabel="Credits title">
+                                                <rect key="frame" x="0.0" y="266.5" width="44.5" height="133.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5S2-Jq-6oX" userLabel="Credits content">
+                                                <rect key="frame" x="0.0" y="400" width="41.5" height="133.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMm-Cc-owe" userLabel="Developer title">
+                                                <rect key="frame" x="0.0" y="533.5" width="44.5" height="133"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsY-9B-DNk" userLabel="Developer content">
+                                                <rect key="frame" x="0.0" y="666.5" width="41.5" height="133.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="bFD-ID-V9y" secondAttribute="bottom" id="61V-vn-AZO"/>
+                                    <constraint firstAttribute="trailing" secondItem="bFD-ID-V9y" secondAttribute="trailing" constant="20" id="9ir-U6-QWR"/>
+                                    <constraint firstItem="bFD-ID-V9y" firstAttribute="top" secondItem="88c-5O-M3b" secondAttribute="top" id="qHg-95-AXg"/>
+                                    <constraint firstItem="bFD-ID-V9y" firstAttribute="leading" secondItem="88c-5O-M3b" secondAttribute="leading" constant="20" id="zhU-ng-gfe"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="9"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="88c-5O-M3b" secondAttribute="bottom" constant="9" id="HxS-Z3-4C4"/>
+                            <constraint firstItem="88c-5O-M3b" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="9" id="a0x-sX-yad"/>
+                            <constraint firstItem="88c-5O-M3b" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="9" id="iwk-YH-Bf5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="88c-5O-M3b" secondAttribute="trailing" constant="9" id="vhD-gJ-Lcq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="apiCard" destination="88c-5O-M3b" id="Er5-9c-ACG"/>
+                        <outlet property="apiInfoContentLabel" destination="bVS-aa-6rd" id="ozN-3N-ZNy"/>
+                        <outlet property="apiInfoTitleLabel" destination="nAp-mP-kOi" id="ciL-Sv-7fw"/>
+                        <outlet property="creditsContentLabel" destination="5S2-Jq-6oX" id="NIa-Ke-VDM"/>
+                        <outlet property="creditsTitleLabel" destination="PDW-Et-92y" id="qnd-YZ-8co"/>
+                        <outlet property="developerContentLabel" destination="fsY-9B-DNk" id="rwN-GU-SKn"/>
+                        <outlet property="developerTitleLabel" destination="VMm-Cc-owe" id="Fss-Xt-knH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6" y="78"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

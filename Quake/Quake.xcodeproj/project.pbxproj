@@ -45,6 +45,8 @@
 		22B47EBA28B8D9C4008C27E3 /* FAQStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */; };
 		22B47EC028BC2C48008C27E3 /* logo_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EBF28BC2C48008C27E3 /* logo_sound.mp3 */; };
 		22B47EC228BFC6A2008C27E3 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EC128BFC6A2008C27E3 /* SwitchTableViewCell.swift */; };
+		22B47EC428C0D060008C27E3 /* ApiInfoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */; };
+		22B47EC628C0DCBA008C27E3 /* ApiInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EC528C0DCBA008C27E3 /* ApiInfoViewController.swift */; };
 		22F68496289B335B00412B34 /* GetMagnitudeColorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */; };
 		22F68499289BECD800412B34 /* EarthquakeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */; };
 		22F6849F289C110500412B34 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F6849E289C110500412B34 /* MapViewModel.swift */; };
@@ -121,6 +123,8 @@
 		22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQStoryboard.storyboard; sourceTree = "<group>"; };
 		22B47EBF28BC2C48008C27E3 /* logo_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = logo_sound.mp3; sourceTree = "<group>"; };
 		22B47EC128BFC6A2008C27E3 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApiInfoStoryboard.storyboard; sourceTree = "<group>"; };
+		22B47EC528C0DCBA008C27E3 /* ApiInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInfoViewController.swift; sourceTree = "<group>"; };
 		22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMagnitudeColorUseCase.swift; sourceTree = "<group>"; };
 		22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetailViewModel.swift; sourceTree = "<group>"; };
 		22F6849E289C110500412B34 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -167,10 +171,10 @@
 				227D90822875E9DF00A0DED5 /* Model */,
 				22143455285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard */,
 				22143457285CFED800F1CBA0 /* SettingsViewController.swift */,
-				227D90852875F98D00A0DED5 /* SettingTableViewCell.swift */,
 				22B47EB028AAFD50008C27E3 /* FAQViewController.swift */,
 				22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */,
-				22B47EC128BFC6A2008C27E3 /* SwitchTableViewCell.swift */,
+				22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */,
+				22B47EC528C0DCBA008C27E3 /* ApiInfoViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -225,6 +229,8 @@
 			children = (
 				227D90832875EA0900A0DED5 /* SettingsOption.swift */,
 				227D909B287ED13100A0DED5 /* SettingsSection.swift */,
+				227D90852875F98D00A0DED5 /* SettingTableViewCell.swift */,
+				22B47EC128BFC6A2008C27E3 /* SwitchTableViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -548,6 +554,7 @@
 				223A2F1C284FFAA900034143 /* EarthquakesStoryboard.storyboard in Resources */,
 				22B47EBA28B8D9C4008C27E3 /* FAQStoryboard.storyboard in Resources */,
 				22990A1C284BD40900C1104D /* LaunchScreen.storyboard in Resources */,
+				22B47EC428C0D060008C27E3 /* ApiInfoStoryboard.storyboard in Resources */,
 				22990A19284BD40900C1104D /* Assets.xcassets in Resources */,
 				22B47EAE28AAC564008C27E3 /* Splash.storyboard in Resources */,
 				B615E8632858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard in Resources */,
@@ -639,6 +646,7 @@
 				224DEBC728A2CA660086D08F /* GetSimplifiedTitleFormatter.swift in Sources */,
 				B615E8662858F18100B77A5F /* EarthquakeDetailViewController.swift in Sources */,
 				22F6849F289C110500412B34 /* MapViewModel.swift in Sources */,
+				22B47EC628C0DCBA008C27E3 /* ApiInfoViewController.swift in Sources */,
 				227D909E287EE7C500A0DED5 /* LocationSearchTable.swift in Sources */,
 				227D906D286B325900A0DED5 /* Response.swift in Sources */,
 				22990A10284BD40500C1104D /* AppDelegate.swift in Sources */,
