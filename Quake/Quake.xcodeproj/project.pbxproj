@@ -59,6 +59,7 @@
 		B615E8662858F18100B77A5F /* EarthquakeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615E8652858F18100B77A5F /* EarthquakeDetailViewController.swift */; };
 		B615E86A2858F5EF00B77A5F /* EarthquakeEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615E8682858F5EF00B77A5F /* EarthquakeEventCell.swift */; };
 		B615E86B2858F5EF00B77A5F /* EarthquakeEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B615E8692858F5EF00B77A5F /* EarthquakeEventCell.xib */; };
+		B6B4D55E28C516FF009E6FF4 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4D55D28C516FF009E6FF4 /* Loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		B615E8652858F18100B77A5F /* EarthquakeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetailViewController.swift; sourceTree = "<group>"; };
 		B615E8682858F5EF00B77A5F /* EarthquakeEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeEventCell.swift; sourceTree = "<group>"; };
 		B615E8692858F5EF00B77A5F /* EarthquakeEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarthquakeEventCell.xib; sourceTree = "<group>"; };
+		B6B4D55D28C516FF009E6FF4 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 		228D200328985A2D006B6BE8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B6B4D55C28C516F0009E6FF4 /* Loading */,
 				22B47EB228AEF2DD008C27E3 /* Formatters */,
 				22F684A628A2A61C00412B34 /* Mappers */,
 				227D906B286B323300A0DED5 /* API */,
@@ -443,6 +446,14 @@
 				B615E8692858F5EF00B77A5F /* EarthquakeEventCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		B6B4D55C28C516F0009E6FF4 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				B6B4D55D28C516FF009E6FF4 /* Loading.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -640,6 +651,7 @@
 				B615E86A2858F5EF00B77A5F /* EarthquakeEventCell.swift in Sources */,
 				228D2002289852A6006B6BE8 /* GetTimeRangeUseCase.swift in Sources */,
 				B615E85A2858EBA800B77A5F /* MapViewController.swift in Sources */,
+				B6B4D55E28C516FF009E6FF4 /* Loading.swift in Sources */,
 				227D9073286B32F700A0DED5 /* Geometry.swift in Sources */,
 				227D90862875F98D00A0DED5 /* SettingTableViewCell.swift in Sources */,
 				22B47EB428AEFFF4008C27E3 /* EarthquakeModel.swift in Sources */,

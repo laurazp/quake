@@ -6,10 +6,8 @@ final class EarthquakesViewModel {
     weak var viewDelegate: EarthquakeViewController?
     
     private let getEarthquakesUseCase = GetEarthquakesUseCase()
-    private var featuresData = [Feature]()
     private var earthquakesData = [EarthquakeModel]()
     private var filteredEarthquakes: [EarthquakeModel] = []
-    private var filteredFeatures = [Feature]()
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
     private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     private var isFiltering: Bool = false
@@ -37,17 +35,10 @@ final class EarthquakesViewModel {
         }
     }
     
-    func getEarthquakesData() -> [EarthquakeModel] {
-        return earthquakesData
-    }
-    
     private func getEarthquakes() {
-        getEarthquakesUseCase.getEarthquakes { features in
-            self.featuresData = features
-            
-            self.featuresData.forEach {feature in
-                let mappedEarthquake = self.featureToEarthquakeModelMapper.map(from: feature)
-                self.earthquakesData.append(mappedEarthquake)
+        getEarthquakesUseCase.getLatestEarthquakes { features in
+            self.earthquakesData = features.map { feature in
+                return self.featureToEarthquakeModelMapper.map(from: feature)
             }
             self.viewDelegate?.updateView()
         }
@@ -59,15 +50,13 @@ final class EarthquakesViewModel {
     
     // TODO: revisar!!!
     func filterEarthquakesByDate(selectedDate: Date) {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .short
-        let selectedDateString = formatter.string(from: selectedDate)
-        
-        let correspondingEarthquakes = earthquakesData.filter ({
-            $0.date == selectedDateString
-        })
-        filteredEarthquakes = correspondingEarthquakes
+        getEarthquakesUseCase.getEarthquakesByDate(selectedDate) { features in
+            self.filteredEarthquakes = features.map { feature in
+                return self.featureToEarthquakeModelMapper.map(from: feature)
+            }
+            self.viewDelegate?.updateView()
+        }
+
         print(filteredEarthquakes)
         isFiltering = true
         self.viewDelegate?.updateView()
@@ -79,25 +68,13 @@ final class EarthquakesViewModel {
     }
     
     func orderFeaturesByMagnitude() {
-        if (!inIncreasingOrder) {
-            if (isFiltering) {
-                filteredEarthquakes.sort(by: { $0.magnitude < $1.magnitude })
-                inIncreasingOrder = true
-            } else {
-                earthquakesData.sort(by: { $0.magnitude < $1.magnitude })
-                inIncreasingOrder = true
-            }
-            self.viewDelegate?.updateView()
+        inIncreasingOrder = !inIncreasingOrder
+        if (isFiltering) {
+            filteredEarthquakes.sort(by: { inIncreasingOrder ? $0.magnitude < $1.magnitude : $0.magnitude > $1.magnitude })
         } else {
-            if (isFiltering) {
-                filteredEarthquakes.sort(by: { $1.magnitude < $0.magnitude })
-                inIncreasingOrder = false
-            } else {
-                earthquakesData.sort(by: { $1.magnitude < $0.magnitude })
-                inIncreasingOrder = false
-            }
-            self.viewDelegate?.updateView()
+            earthquakesData.sort(by: { inIncreasingOrder ? $0.magnitude < $1.magnitude : $0.magnitude > $1.magnitude })
         }
+        self.viewDelegate?.updateView()
    }
     
     func orderFeaturesByPlace() {

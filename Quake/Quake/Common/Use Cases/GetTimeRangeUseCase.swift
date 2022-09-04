@@ -3,22 +3,25 @@ import Foundation
 
 struct GetTimeRangeUseCase {
     private let dateFormatterGet = DateFormatter()
-    private let endTime = Date.now
 
     func getTimeRange(days: Int) -> (start: String, end: String) {
-        return (getStartTimeString(days: days), getEndTimeString())
+        (getDateString(date: Date.now, byAddingDays: -days), getDateString(date: Date.now))
     }
     
-    private func getStartTimeString(days: Int) -> String {
+    func getDateRange(date: Date)  -> (start: String, end: String) {
+        (getDateString(date: date), getDateString(date: date, byAddingDays: 1))
+    }
+    
+    private func getDateString(date: Date, byAddingDays days: Int) -> String {
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
-        let startTime = Calendar.current.date(byAdding: .day, value: -days, to: endTime) ?? Date.distantPast
+        let startTime = Calendar.current.date(byAdding: .day, value: days, to: date) ?? Date.distantPast
         let startTimeString = dateFormatterGet.string(from: startTime)
         return startTimeString
     }
     
-    private func getEndTimeString() -> String {
+    private func getDateString(date: Date) -> String {
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
-        let endTimeString = dateFormatterGet.string(from: endTime)
+        let endTimeString = dateFormatterGet.string(from: date)
         return endTimeString
     }
 }

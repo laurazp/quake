@@ -9,7 +9,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     @IBOutlet weak var placeChevron: UIImageView!
     @IBOutlet weak var dateChevron: UIImageView!
     
-    
     let viewModel = EarthquakesViewModel() // private??
     private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     
@@ -50,9 +49,8 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.estimatedRowHeight = 90
         configureSearchBar() // Dates SearchBar
         definesPresentationContext = true
-
     }
-    
+
     private func configureSearchBar() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -85,6 +83,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         searchController.searchBar.text = dateString
         viewModel.filterEarthquakesByDate(selectedDate: datePicker.date)
         //searchController.isActive = false //TODO: así está bien ?????
+        searchController.searchBar.resignFirstResponder()
       }
     
     @IBAction func orderByMagnitude(_ sender: Any) {
@@ -146,7 +145,9 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
     
     private func rotateMagnitudeChevronImageWhenOrdering() {
-        self.magnitudeChevron.transform = self.magnitudeChevron.transform.rotated(by: .pi)
+        UIView.animate(withDuration: 0.2, animations: {
+            self.magnitudeChevron.transform = self.magnitudeChevron.transform.rotated(by: .pi)
+        })
     }
     
     private func rotatePlaceChevronImageWhenOrdering() {
