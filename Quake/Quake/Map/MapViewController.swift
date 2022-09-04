@@ -227,6 +227,7 @@ extension MapViewController: HandleMapSearch {
                                                               originalCoords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude)],
                                                               depth: String(selectedAnnotation.depth),
                                                               date: getDateFormatter.formatDate(dateToFormat: selectedAnnotation.time!),
+                                                              originalDate: selectedAnnotation.time ?? Date.now,
                                                               tsunami: String(selectedAnnotation.tsunami ?? 0),
                                                               magnitude: String(selectedAnnotation.mag ?? 0))
                 

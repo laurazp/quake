@@ -9,6 +9,7 @@ struct EarthquakeModel {
     let originalCoords: [Float]
     let depth: String
     let date: String
+    let originalDate: Date
     let tsunami: String
     let magnitude: String
 }

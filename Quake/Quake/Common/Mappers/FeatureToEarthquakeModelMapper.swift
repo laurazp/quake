@@ -15,6 +15,7 @@ struct FeatureToEarthquakeModelMapper {
                         originalCoords: feature.geometry.coordinates,
                         depth: "\(String(feature.geometry.coordinates[2]))km", //no debería ser opcional?
                         date: getDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000),
+                        originalDate: getDateFormatter.formatIntToDate(dateToFormat: feature.properties.time ?? 0),
                         tsunami: getTsunamiValueFormatter.getTsunamiValue(tsunami: feature.properties.tsunami ?? 0),
                         magnitude: String(format: "%.1f", feature.properties.mag ?? 0))
     }

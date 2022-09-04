@@ -125,19 +125,19 @@ final class EarthquakesViewModel {
     func orderFeaturesByDate() {
         if (!inIncreasingOrder) {
             if (isFiltering) {
-                filteredEarthquakes.sort(by: { $0.date < $1.date })
+                filteredEarthquakes.sort(by: { $0.originalDate < $1.originalDate })
                 inIncreasingOrder = true
             } else {
-                earthquakesData.sort(by: { $0.date < $1.date })
+                earthquakesData.sort(by: { $0.originalDate < $1.originalDate })
                 inIncreasingOrder = true
             }
             self.viewDelegate?.updateView()
         } else {
             if (isFiltering) {
-                filteredEarthquakes.sort(by: { $1.date < $0.date })
+                filteredEarthquakes.sort(by: { $1.originalDate < $0.originalDate })
                 inIncreasingOrder = false
             } else {
-                earthquakesData.sort(by: { $1.date < $0.date })
+                earthquakesData.sort(by: { $1.originalDate < $0.originalDate })
                 inIncreasingOrder = false
             }
             self.viewDelegate?.updateView()

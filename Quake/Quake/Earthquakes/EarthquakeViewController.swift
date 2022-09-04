@@ -199,6 +199,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
                                                           originalCoords: earthquakeModel.originalCoords,
                                                           depth: earthquakeModel.depth,
                                                           date: earthquakeModel.date,
+                                                          originalDate: earthquakeModel.originalDate,
                                                           tsunami: earthquakeModel.tsunami,
                                                           magnitude: earthquakeModel.magnitude)
            
