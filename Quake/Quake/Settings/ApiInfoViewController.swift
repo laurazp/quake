@@ -29,7 +29,7 @@ class ApiInfoViewController: UIViewController {
         apiInfoTitleLabel.text = "API Info"
         apiInfoContentLabel.text = ""
         creditsTitleLabel.text = "Credits"
-        creditsContentLabel.text = ""
+        creditsContentLabel.text = ""//<a href="https://www.flaticon.com/free-icons/seismic" title="seismic icons">Seismic icons created by Freepik - Flaticon</a>
         developerTitleLabel.text = "Developer"
         developerContentLabel.text = ""
     }

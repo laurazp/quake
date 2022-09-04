@@ -150,6 +150,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // MARK: - View Model Output
     func updateView(annotationsInMap: [AnnotationInMap]) {
         mapView.addAnnotations(annotationsInMap)
+        
+//        let visibleAnnotationsInMap = mapView.visibleAnnotations()
+//        mapView.addAnnotations(visibleAnnotationsInMap)
     }
 }
 
@@ -245,3 +248,8 @@ extension MapViewController: HandleMapSearch {
     }
 }
 
+extension MKMapView {
+    func visibleAnnotations() -> [MKAnnotation] {
+        return self.annotations(in: self.visibleMapRect).map { obj -> MKAnnotation in return obj as! MKAnnotation }
+    }
+}
