@@ -13,12 +13,8 @@
 ## Pantalla Settings -> avanzar
 ### Cargar sólo las anotaciones del área??? --> para más adelante
 
-### Arreglar constraints para que funcione push con animación
-### MyDateFormatter -> está bien así??
-## Por qué al ordenar por fecha no salen los últimos terremotos ?????
-
+### Arreglar constraints para que funcione push con animación ???
 ### Poner todos los campos de la API como opcionales???
-### Añadir dark mode --> revisar! falta algo??
 ### Añadir chevron si es ascendente o descendente (filtros)
 ### Decode UTF-8 para que títulos salgan bien escritos
 ### Revisar advertencia clusters en map
