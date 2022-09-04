@@ -25,7 +25,7 @@ final class MapViewModel {
     }
     
     private func getEarthquakes() {
-        getEarthquakesUseCase.getEarthquakes { features in
+        getEarthquakesUseCase.getLatestEarthquakes { features in
             //self.earthquakesData = features
             let annotations: [AnnotationInMap] = features.map { feature in
                 AnnotationInMap(title: feature.properties.title,

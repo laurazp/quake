@@ -13,9 +13,12 @@ class EarthquakesApiDataSource {
         var request = URLRequest(url: url)
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "content-type")
         
+        GlobalLoader.startLoading()
+        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
                 print("Something went wrong...")
+                GlobalLoader.stopLoading()
                 return
             }
             
@@ -25,10 +28,12 @@ class EarthquakesApiDataSource {
                 result = try JSONDecoder().decode(Response.self, from: data)
                 // Closure calling
                 DispatchQueue.main.async {
+                    GlobalLoader.stopLoading()
                     completion(result!.features)
                 }
             }
             catch {
+                GlobalLoader.stopLoading()
                 print("Failed to convert \(error)")
             }
         }

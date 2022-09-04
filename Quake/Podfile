@@ -1,0 +1,5 @@
+target 'Quake' do
+  use_frameworks!
+  pod 'lottie-ios'
+  pod 'MBProgressHUD', '~> 1.2.0'
+end
