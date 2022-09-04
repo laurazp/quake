@@ -6,7 +6,6 @@ final class EarthquakesViewModel {
     weak var viewDelegate: EarthquakeViewController?
     
     private let getEarthquakesUseCase = GetEarthquakesUseCase()
-    private var featuresData = [Feature]()
     private var earthquakesData = [EarthquakeModel]()
     private var filteredEarthquakes: [EarthquakeModel] = []
     private var filteredFeatures = [Feature]()
@@ -43,11 +42,8 @@ final class EarthquakesViewModel {
     
     private func getEarthquakes() {
         getEarthquakesUseCase.getEarthquakes { features in
-            self.featuresData = features
-            
-            self.featuresData.forEach {feature in
-                let mappedEarthquake = self.featureToEarthquakeModelMapper.map(from: feature)
-                self.earthquakesData.append(mappedEarthquake)
+            self.earthquakesData = features.map { feature in
+                return self.featureToEarthquakeModelMapper.map(from: feature)
             }
             self.viewDelegate?.updateView()
         }
