@@ -68,25 +68,13 @@ final class EarthquakesViewModel {
     }
     
     func orderFeaturesByMagnitude() {
-        if (!inIncreasingOrder) {
-            if (isFiltering) {
-                filteredEarthquakes.sort(by: { $0.magnitude < $1.magnitude })
-                inIncreasingOrder = true
-            } else {
-                earthquakesData.sort(by: { $0.magnitude < $1.magnitude })
-                inIncreasingOrder = true
-            }
-            self.viewDelegate?.updateView()
+        inIncreasingOrder = !inIncreasingOrder
+        if (isFiltering) {
+            filteredEarthquakes.sort(by: { inIncreasingOrder ? $0.magnitude < $1.magnitude : $0.magnitude > $1.magnitude })
         } else {
-            if (isFiltering) {
-                filteredEarthquakes.sort(by: { $1.magnitude < $0.magnitude })
-                inIncreasingOrder = false
-            } else {
-                earthquakesData.sort(by: { $1.magnitude < $0.magnitude })
-                inIncreasingOrder = false
-            }
-            self.viewDelegate?.updateView()
+            earthquakesData.sort(by: { inIncreasingOrder ? $0.magnitude < $1.magnitude : $0.magnitude > $1.magnitude })
         }
+        self.viewDelegate?.updateView()
    }
     
     func orderFeaturesByPlace() {

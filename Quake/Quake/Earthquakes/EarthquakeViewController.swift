@@ -145,7 +145,9 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
     
     private func rotateMagnitudeChevronImageWhenOrdering() {
-        self.magnitudeChevron.transform = self.magnitudeChevron.transform.rotated(by: .pi)
+        UIView.animate(withDuration: 0.2, animations: {
+            self.magnitudeChevron.transform = self.magnitudeChevron.transform.rotated(by: .pi)
+        })
     }
     
     private func rotatePlaceChevronImageWhenOrdering() {
