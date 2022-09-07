@@ -38,6 +38,7 @@
 		22990A27284BD40A00C1104D /* QuakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A26284BD40A00C1104D /* QuakeTests.swift */; };
 		22990A31284BD40A00C1104D /* QuakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A30284BD40A00C1104D /* QuakeUITests.swift */; };
 		22990A33284BD40A00C1104D /* QuakeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990A32284BD40A00C1104D /* QuakeUITestsLaunchTests.swift */; };
+		229EA82428C941E700A03263 /* DatesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229EA82328C941E700A03263 /* DatesPicker.swift */; };
 		22B47EAE28AAC564008C27E3 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EAD28AAC564008C27E3 /* Splash.storyboard */; };
 		22B47EB128AAFD50008C27E3 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EB028AAFD50008C27E3 /* FAQViewController.swift */; };
 		22B47EB428AEFFF4008C27E3 /* EarthquakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EB328AEFFF4008C27E3 /* EarthquakeModel.swift */; };
@@ -117,6 +118,7 @@
 		22990A2C284BD40A00C1104D /* QuakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990A30284BD40A00C1104D /* QuakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeUITests.swift; sourceTree = "<group>"; };
 		22990A32284BD40A00C1104D /* QuakeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		229EA82328C941E700A03263 /* DatesPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesPicker.swift; sourceTree = "<group>"; };
 		22B47EAD28AAC564008C27E3 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		22B47EB028AAFD50008C27E3 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		22B47EB328AEFFF4008C27E3 /* EarthquakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeModel.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				B615E8672858F5C300B77A5F /* Cells */,
 				223A2F1B284FFAA900034143 /* EarthquakesStoryboard.storyboard */,
 				223A2F1D2856512E00034143 /* EarthquakeViewController.swift */,
+				229EA82328C941E700A03263 /* DatesPicker.swift */,
 			);
 			path = Earthquakes;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				227D906A286B226600A0DED5 /* EarthquakeDetail.swift in Sources */,
 				22B47EB128AAFD50008C27E3 /* FAQViewController.swift in Sources */,
 				22F684A1289FCAB600412B34 /* GetFormattedCoordsFormatter.swift in Sources */,
+				229EA82428C941E700A03263 /* DatesPicker.swift in Sources */,
 				227D906F286B329200A0DED5 /* Feature.swift in Sources */,
 				22143458285CFED800F1CBA0 /* SettingsViewController.swift in Sources */,
 			);

@@ -20,6 +20,18 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     
     let searchController = UISearchController(searchResultsController: nil)
     private let datePicker = UIDatePicker()
+    private let datePicker2 = UIDatePicker()
+
+    private lazy var datesPicker: DatesPicker = {
+        let picker = DatesPicker()
+        picker.setup()
+        picker.didSelectDates = { [weak self] (startDate, endDate) in
+            let text = Date.buildTimeRangeString(startDate: startDate, endDate: endDate)
+            //self?.label.text = text
+            self?.searchController.searchBar.placeholder = text
+        }
+        return picker
+    }()
     
     var isSearchBarEmpty: Bool {
       return searchController.searchBar.text?.isEmpty ?? true
@@ -57,14 +69,21 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         searchController.searchBar.placeholder = "Select a date"
         navigationItem.searchController = searchController
         
-        //Configure DatePicker
-        datePicker.datePickerMode = .date
-        datePicker.locale = .current
-        if #available(iOS 14, *) {
-            datePicker.preferredDatePickerStyle = .wheels
-            datePicker.sizeToFit()
-        }
-        searchController.searchBar.searchTextField.inputView = datePicker
+//        //Configure DatePicker
+//        datePicker.datePickerMode = .date
+//        datePicker.locale = .current
+//        if #available(iOS 14, *) {
+//            datePicker.preferredDatePickerStyle = .wheels
+//            datePicker.sizeToFit()
+//        }
+//        //Configure DatePicker2
+//        datePicker2.datePickerMode = .date
+//        datePicker2.locale = .current
+//        if #available(iOS 14, *) {
+//            datePicker2.preferredDatePickerStyle = .wheels
+//            datePicker2.sizeToFit()
+//        }
+        searchController.searchBar.searchTextField.inputView = datesPicker.inputView
         
         //Create a toolbar with a Done button
         let toolbar = UIToolbar()
@@ -76,14 +95,20 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
     
     @objc func filterButtonTapped() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        let dateString = dateFormatter.string(from: datePicker.date)
-        searchController.searchBar.text = dateString
+        searchController.searchBar.text = datesPicker.selectedDates
+        
+        // continuar... TODO: Modificar función para que coja las 2 fechas!!!
         viewModel.filterEarthquakesByDate(selectedDate: datePicker.date)
-        //searchController.isActive = false //TODO: así está bien ?????
         searchController.searchBar.resignFirstResponder()
+        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.timeStyle = .none
+//        let dateString = dateFormatter.string(from: datePicker.date)
+//        searchController.searchBar.text = dateString
+//        viewModel.filterEarthquakesByDate(selectedDate: datePicker.date)
+//        //searchController.isActive = false //TODO: así está bien ?????
+//        searchController.searchBar.resignFirstResponder()
       }
     
     @IBAction func orderByMagnitude(_ sender: Any) {

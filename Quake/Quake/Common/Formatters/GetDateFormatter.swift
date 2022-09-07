@@ -29,4 +29,13 @@ class GetDateFormatter {
         let formattedDate = Date(timeIntervalSince1970: Double(dateToFormat)/1000)
         return formattedDate
     }
+    
+    func simpleFormatDate(dateToFormat: Date) -> String {
+        dateFormatter.dateStyle = .short
+        //dateFormatter.dateFormat = "yyyy/MM/dd hh:mm:ss a";
+        
+        let formattedDate = dateFormatter.string(from: dateToFormat)
+        
+        return formattedDate
+    }
 }
