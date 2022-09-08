@@ -6,7 +6,8 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var didSelectDates: ((_ start: Date, _ end: Date) -> Void)?
     
-    var selectedDates = ""
+    var selectedDatesString = ""
+    var selectedDates = [Date]()
     
     private lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
@@ -27,7 +28,6 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func setup() {
         dayFormatter.dateFormat = "dd MMM YYYY"
-        //timeFormatter.timeStyle = .short
         startDate = setDays()
         endDate = setDays()
     }
@@ -44,8 +44,6 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
             return startDate.count
         case 1:
             return endDate.count
-            //case 2:
-            //return endTimes.count
         default:
             return 0
         }
@@ -87,15 +85,14 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         
         guard startDate.indices.contains(startDayIndex),
               endDate.indices.contains(endDayIndex)
-                //startTimes.indices.contains(startTimeIndex),
-                //endTimes.indices.contains(endTimeIndex)
         else { return }
         
         let startDay = startDate[startDayIndex]
         let endDay = endDate[endDayIndex]
         
         didSelectDates?(startDay, endDay)
-        self.selectedDates = returnDates(startDate: startDay, endDate: endDay)
+        self.selectedDatesString = returnDates(startDate: startDay, endDate: endDay)
+        self.selectedDates = [startDay, endDay]
     }
     
     // MARK: - Private helpers
@@ -146,24 +143,8 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
 extension Date {
     
     static func buildTimeRangeString(startDate: Date, endDate: Date) -> String {
-        
         let dayFormatter = DateFormatter()
         dayFormatter.dateFormat = "dd MMM yyyy"
-        
-        //    let startTimeFormatter = DateFormatter()
-        //    startTimeFormatter.dateFormat = "h:mm a"
-        //
-        //    let endTimeFormatter = DateFormatter()
-        //    endTimeFormatter.dateFormat = "h:mm a"
-        
-        //let range = startDate...endDate
-        
         return String(format: "\(startDate) - \(endDate)")
-        
-        //    return String(format: "%@ - %@",
-        //                  dayFormatter.string(from: endDate),
-        //                  dayFormatter.string(from: startDate))
-        //startTimeFormatter.string(from: startDate),
-        //endTimeFormatter.string(from: endDate))
     }
 }

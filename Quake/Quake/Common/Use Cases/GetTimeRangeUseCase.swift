@@ -12,6 +12,10 @@ struct GetTimeRangeUseCase {
         (getDateString(date: date), getDateString(date: date, byAddingDays: 1))
     }
     
+    func getDateRangeFromDates(startDate: Date, endDate: Date) -> (start: String, end: String) {
+        (getDateString(date: startDate), getDateString(date: endDate))
+    }
+    
     private func getDateString(date: Date, byAddingDays days: Int) -> String {
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
         let startTime = Calendar.current.date(byAdding: .day, value: days, to: date) ?? Date.distantPast

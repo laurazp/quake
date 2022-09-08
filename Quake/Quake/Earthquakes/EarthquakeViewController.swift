@@ -95,10 +95,8 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
     
     @objc func filterButtonTapped() {
-        searchController.searchBar.text = datesPicker.selectedDates
-        
-        // continuar... TODO: Modificar función para que coja las 2 fechas!!!
-        viewModel.filterEarthquakesByDate(selectedDate: datePicker.date)
+        searchController.searchBar.text = datesPicker.selectedDatesString
+        viewModel.filterEarthquakesByDate(selectedDates: datesPicker.selectedDates)
         searchController.searchBar.resignFirstResponder()
         
 //        let dateFormatter = DateFormatter()

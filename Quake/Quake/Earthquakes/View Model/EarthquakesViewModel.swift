@@ -13,6 +13,8 @@ final class EarthquakesViewModel {
     private var isFiltering: Bool = false
     private var inIncreasingOrder = false
     
+    private let datesPicker = DatesPicker()
+    
     var filteredText: String?
     
     func viewDidLoad() {
@@ -48,18 +50,44 @@ final class EarthquakesViewModel {
         return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
     }
     
-    // TODO: revisar!!!
-    func filterEarthquakesByDate(selectedDate: Date) {
-        getEarthquakesUseCase.getEarthquakesByDate(selectedDate) { features in
-            self.filteredEarthquakes = features.map { feature in
-                return self.featureToEarthquakeModelMapper.map(from: feature)
+    // Versión para una sola fecha
+//    func filterEarthquakesByDate(selectedDate: Date) {
+//        getEarthquakesUseCase.getEarthquakesByDate(selectedDate) { features in
+//            self.filteredEarthquakes = features.map { feature in
+//                return self.featureToEarthquakeModelMapper.map(from: feature)
+//            }
+//            self.viewDelegate?.updateView()
+//        }
+//
+//        print(filteredEarthquakes)
+//        isFiltering = true
+//        self.viewDelegate?.updateView()
+//    }
+    
+    func filterEarthquakesByDate(selectedDates: [Date]) {
+        print(selectedDates[0])
+        if selectedDates[0] == selectedDates[1] {
+            getEarthquakesUseCase.getEarthquakesByDate(selectedDates[0]) { features in
+                self.filteredEarthquakes = features.map { feature in
+                    return self.featureToEarthquakeModelMapper.map(from: feature)
+                }
+                self.viewDelegate?.updateView()
             }
+            //print(filteredEarthquakes)
+            isFiltering = true
+            self.viewDelegate?.updateView()
+        } else {
+            getEarthquakesUseCase.getEarthquakesBetweenDates(selectedDates[0], selectedDates[1]) { features in
+                self.filteredEarthquakes = features.map { feature in
+                    return self.featureToEarthquakeModelMapper.map(from: feature)
+                }
+                self.viewDelegate?.updateView()
+            }
+
+            //print(filteredEarthquakes)
+            isFiltering = true
             self.viewDelegate?.updateView()
         }
-
-        print(filteredEarthquakes)
-        isFiltering = true
-        self.viewDelegate?.updateView()
     }
     
     // TODO: resetear la búsqueda y poner isFiltering a false??? --> cuándo se debe poner a false ???
@@ -120,21 +148,4 @@ final class EarthquakesViewModel {
             self.viewDelegate?.updateView()
         }
     }
-    
-//    func filterContentForSearchDates(initialSearchDate: Date,
-//                                      finalSearchDate: Date,
-//                                    //time: EarthquakeDetail.time? = nil,
-//                                      tableView: UITableView) {
-//        var dateToCompare = Date()
-//        let range = initialSearchDate...finalSearchDate
-//        self.filteredEarthquakes = earthquakesData.filter { (feature: Feature) -> Bool in
-//            if let date = feature.properties.time {
-//                dateToCompare = Date(timeIntervalSince1970: Double(date)/1000)
-//                return range.contains(dateToCompare)
-//            }
-//            return range.contains(dateToCompare)
-//        }
-//    
-//        tableView.reloadData()
-//    }
 }
