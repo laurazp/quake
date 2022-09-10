@@ -66,7 +66,18 @@ final class EarthquakesViewModel {
     
     func filterEarthquakesByDate(selectedDates: [Date]) {
         print(selectedDates[0])
-        if selectedDates[0] == selectedDates[1] {
+        print(selectedDates[1])
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        let date1 = formatter.string(from: selectedDates[0])
+        let date2 = formatter.string(from: selectedDates[1])
+        print(date1)
+        print(date2)
+        
+        
+        if date1 == date2 {
+            print("iguales!")
             getEarthquakesUseCase.getEarthquakesByDate(selectedDates[0]) { features in
                 self.filteredEarthquakes = features.map { feature in
                     return self.featureToEarthquakeModelMapper.map(from: feature)
