@@ -70,6 +70,7 @@ final class EarthquakesViewModel {
         
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
+        formatter.timeStyle = .none
         let date1 = formatter.string(from: selectedDates[0])
         let date2 = formatter.string(from: selectedDates[1])
         print(date1)
