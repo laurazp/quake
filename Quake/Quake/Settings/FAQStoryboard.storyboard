@@ -19,29 +19,41 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMy-fb-6iE" userLabel="FAQ Card">
                                 <rect key="frame" x="9" y="53" width="396" height="800"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="top" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Al0-a1-f4e">
-                                        <rect key="frame" x="20" y="0.0" width="356" height="800"/>
+                                    <stackView opaque="NO" contentMode="top" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Al0-a1-f4e">
+                                        <rect key="frame" x="20" y="20" width="356" height="123"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ck-Sw-bKV" userLabel="First question Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDy-bP-2wd" userLabel="First answer">
-                                                <rect key="frame" x="0.0" y="200" width="41.5" height="200"/>
+                                                <rect key="frame" x="0.0" y="20.5" width="41.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRb-AL-B19" userLabel="Second question Label">
-                                                <rect key="frame" x="0.0" y="400" width="44.5" height="200"/>
+                                                <rect key="frame" x="0.0" y="41" width="44.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEo-qz-P0L" userLabel="Second answer">
-                                                <rect key="frame" x="0.0" y="600" width="41.5" height="200"/>
+                                                <rect key="frame" x="0.0" y="61.5" width="41.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-IU-wB5" userLabel="Third question Label">
+                                                <rect key="frame" x="0.0" y="82" width="44.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fy-b9-OuT" userLabel="Third answer">
+                                                <rect key="frame" x="0.0" y="102.5" width="41.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -52,8 +64,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Al0-a1-f4e" secondAttribute="trailing" constant="20" id="1Ic-Q7-3IR"/>
-                                    <constraint firstAttribute="bottom" secondItem="Al0-a1-f4e" secondAttribute="bottom" id="BID-Ti-1O0"/>
-                                    <constraint firstItem="Al0-a1-f4e" firstAttribute="top" secondItem="cMy-fb-6iE" secondAttribute="top" id="JB3-WQ-BEW"/>
+                                    <constraint firstItem="Al0-a1-f4e" firstAttribute="top" secondItem="cMy-fb-6iE" secondAttribute="top" constant="20" id="JB3-WQ-BEW"/>
                                     <constraint firstItem="Al0-a1-f4e" firstAttribute="leading" secondItem="cMy-fb-6iE" secondAttribute="leading" constant="20" id="nlf-px-msV"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -78,6 +89,8 @@
                         <outlet property="firstQuestionLabel" destination="4Ck-Sw-bKV" id="I41-WJ-bBY"/>
                         <outlet property="secondAnswerLabel" destination="KEo-qz-P0L" id="jTG-xl-8Mx"/>
                         <outlet property="secondQuestionLabel" destination="CRb-AL-B19" id="AQu-pk-0bO"/>
+                        <outlet property="thirdAnswerLabel" destination="5Fy-b9-OuT" id="TOK-52-n5N"/>
+                        <outlet property="thirdQuestionLabel" destination="QIu-IU-wB5" id="O2U-Kw-jWt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
