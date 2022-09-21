@@ -49,21 +49,7 @@ final class EarthquakesViewModel {
     func getColor(forMagnitude magnitude: Double) -> UIColor {
         return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
     }
-    
-    // Versión para una sola fecha
-//    func filterEarthquakesByDate(selectedDate: Date) {
-//        getEarthquakesUseCase.getEarthquakesByDate(selectedDate) { features in
-//            self.filteredEarthquakes = features.map { feature in
-//                return self.featureToEarthquakeModelMapper.map(from: feature)
-//            }
-//            self.viewDelegate?.updateView()
-//        }
-//
-//        print(filteredEarthquakes)
-//        isFiltering = true
-//        self.viewDelegate?.updateView()
-//    }
-    
+
     func filterEarthquakesByDate(selectedDates: [Date]) {
         print(selectedDates[0])
         print(selectedDates[1])
@@ -96,7 +82,6 @@ final class EarthquakesViewModel {
                 self.viewDelegate?.updateView()
             }
 
-            //print(filteredEarthquakes)
             isFiltering = true
             self.viewDelegate?.updateView()
         }

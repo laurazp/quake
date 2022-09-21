@@ -69,20 +69,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         searchController.searchBar.placeholder = "Select a date"
         navigationItem.searchController = searchController
         
-//        //Configure DatePicker
-//        datePicker.datePickerMode = .date
-//        datePicker.locale = .current
-//        if #available(iOS 14, *) {
-//            datePicker.preferredDatePickerStyle = .wheels
-//            datePicker.sizeToFit()
-//        }
-//        //Configure DatePicker2
-//        datePicker2.datePickerMode = .date
-//        datePicker2.locale = .current
-//        if #available(iOS 14, *) {
-//            datePicker2.preferredDatePickerStyle = .wheels
-//            datePicker2.sizeToFit()
-//        }
         searchController.searchBar.searchTextField.inputView = datesPicker.inputView
         
         //Create a toolbar with a Done button
@@ -99,12 +85,8 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         viewModel.filterEarthquakesByDate(selectedDates: datesPicker.selectedDates)
         searchController.searchBar.resignFirstResponder()
         
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateStyle = .medium
-//        dateFormatter.timeStyle = .none
-//        let dateString = dateFormatter.string(from: datePicker.date)
+        //TODO: Borrar texto de searchbar al dar al botón Cancel
 //        searchController.searchBar.text = dateString
-//        viewModel.filterEarthquakesByDate(selectedDate: datePicker.date)
 //        //searchController.isActive = false //TODO: así está bien ?????
 //        searchController.searchBar.resignFirstResponder()
       }

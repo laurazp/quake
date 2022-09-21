@@ -199,7 +199,6 @@
 		227D9068286B223F00A0DED5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B615E8672858F5C300B77A5F /* Cells */,
 				227D9069286B226600A0DED5 /* EarthquakeDetail.swift */,
 				22B47EB328AEFFF4008C27E3 /* EarthquakeModel.swift */,
 			);
@@ -415,6 +414,7 @@
 		B615E85F2858ED4600B77A5F /* Earthquakes */ = {
 			isa = PBXGroup;
 			children = (
+				B615E8672858F5C300B77A5F /* Cells */,
 				228D1FFC28984FF6006B6BE8 /* Repository */,
 				228D1FFA28984FDD006B6BE8 /* View Model */,
 				227D9068286B223F00A0DED5 /* Model */,
