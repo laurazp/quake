@@ -18,5 +18,8 @@
 ### Añadir más fechas al buscador??? (de momento hay 60 días)
 ### Por qué salen fechas con horario canario en la searchBar al seleccionar datePickers???? --> mejor que no se marquen hasta que se elijan las fechas definitivas?
 ### Al dar a cancel en la búsqueda de fechas, se quedan marcadas fechas
-### Confirmar mailto en device
 
+### Comprobar que mailto funciona en device (apiInfo)
+### Después de cancelar una búsqueda de fechas, se queda la lista de quakes de esa búsqueda y debería volver a salir la lista completa
+### Push notifications
+### Units

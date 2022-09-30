@@ -80,12 +80,19 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         searchController.searchBar.searchTextField.inputAccessoryView = toolbar
     }
     
+//    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+//        print("Search cancelled")
+//        searchController.searchBar.text = ""
+//        searchController.searchBar.showsCancelButton = false
+//    }
+    
     @objc func filterButtonTapped() {
         searchController.searchBar.text = datesPicker.selectedDatesString
         viewModel.filterEarthquakesByDate(selectedDates: datesPicker.selectedDates)
         searchController.searchBar.resignFirstResponder()
         
         //TODO: Borrar texto de searchbar al dar al botón Cancel
+        
 //        searchController.searchBar.text = dateString
 //        //searchController.isActive = false //TODO: así está bien ?????
 //        searchController.searchBar.resignFirstResponder()

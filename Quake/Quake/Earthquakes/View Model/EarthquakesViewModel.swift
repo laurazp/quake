@@ -71,7 +71,6 @@ final class EarthquakesViewModel {
                 }
                 self.viewDelegate?.updateView()
             }
-            //print(filteredEarthquakes)
             isFiltering = true
             self.viewDelegate?.updateView()
         } else {

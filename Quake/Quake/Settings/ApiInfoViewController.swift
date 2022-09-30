@@ -137,7 +137,7 @@ class ApiInfoViewController: UIViewController {
         if gesture.didTapAttributedTextInLabel(label: self.apiInfoContentLabel, inRange: apiLinkRange) {
             //Open API web page
             guard let url = URL(string: "https://earthquake.usgs.gov/fdsnws/event/1/") else {
-              return //be safe
+              return
             }
 
             if #available(iOS 10.0, *) {
@@ -145,17 +145,10 @@ class ApiInfoViewController: UIViewController {
             } else {
                 UIApplication.shared.openURL(url)
             }
-            
-//            let alertcontroller = UIAlertController(title: "Tapped on", message: "user tapped on api link text", preferredStyle: .alert)
-//            let alertAction = UIAlertAction(title: "OK", style: .default) { (alert) in
-//
-//            }
-//            alertcontroller.addAction(alertAction)
-//            self.present(alertcontroller, animated: true)
         } else if gesture.didTapAttributedTextInLabel(label: self.creditsContentLabel, inRange: creditsLinkRange) {
             //Open web page
             guard let url = URL(string: "https://www.flaticon.com/free-icons/seismic") else {
-              return //be safe
+              return
             }
 
             if #available(iOS 10.0, *) {
@@ -169,17 +162,31 @@ class ApiInfoViewController: UIViewController {
             
             
         } else if gesture.didTapAttributedTextInLabel(label: self.developerContentLabel, inRange: developerLinkRange) {
-            //TODO: link to mail app
-            let email = "quake@gmail.com"
-            guard let url = URL(string: "mailto:\(email)") else {
-              return //be safe
-            }
+            // Show alert before sending an e-mail
+            let alertcontroller = UIAlertController(title: "Alert", message: "Are you sure you want to open your e-mail app?", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: .default) { (alert) in
+                //Link to mail app
+                let email = "quake@gmail.com"
+                guard let url = URL(string: "mailto:\(email)") else {
+                  return
+                }
+                
+                if let url = URL(string: "mailto:\(email)") {
+                    if(UIApplication.shared.canOpenURL(url)){
+                        print("ok")
+                    }else{
+                        print("not ok")
+                    }
+                }
 
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
             }
+            alertcontroller.addAction(alertAction)
+            self.present(alertcontroller, animated: true)
         }
     }
 }
