@@ -50,6 +50,8 @@
 		22B47EC228BFC6A2008C27E3 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EC128BFC6A2008C27E3 /* SwitchTableViewCell.swift */; };
 		22B47EC428C0D060008C27E3 /* ApiInfoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */; };
 		22B47EC628C0DCBA008C27E3 /* ApiInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EC528C0DCBA008C27E3 /* ApiInfoViewController.swift */; };
+		22EEA01228F2C5D700F7D86F /* UnitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEA01128F2C5D700F7D86F /* UnitsViewController.swift */; };
+		22EEA01428F2C5F600F7D86F /* UnitsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EEA01328F2C5F600F7D86F /* UnitsStoryboard.storyboard */; };
 		22F68496289B335B00412B34 /* GetMagnitudeColorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */; };
 		22F68499289BECD800412B34 /* EarthquakeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */; };
 		22F6849F289C110500412B34 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F6849E289C110500412B34 /* MapViewModel.swift */; };
@@ -132,6 +134,8 @@
 		22B47EC128BFC6A2008C27E3 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApiInfoStoryboard.storyboard; sourceTree = "<group>"; };
 		22B47EC528C0DCBA008C27E3 /* ApiInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInfoViewController.swift; sourceTree = "<group>"; };
+		22EEA01128F2C5D700F7D86F /* UnitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsViewController.swift; sourceTree = "<group>"; };
+		22EEA01328F2C5F600F7D86F /* UnitsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnitsStoryboard.storyboard; sourceTree = "<group>"; };
 		22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMagnitudeColorUseCase.swift; sourceTree = "<group>"; };
 		22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetailViewModel.swift; sourceTree = "<group>"; };
 		22F6849E289C110500412B34 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				227D90822875E9DF00A0DED5 /* Model */,
 				22143455285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard */,
 				22143457285CFED800F1CBA0 /* SettingsViewController.swift */,
+				22EEA01128F2C5D700F7D86F /* UnitsViewController.swift */,
+				22EEA01328F2C5F600F7D86F /* UnitsStoryboard.storyboard */,
 				22B47EB028AAFD50008C27E3 /* FAQViewController.swift */,
 				22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */,
 				22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */,
@@ -584,6 +590,7 @@
 				22990A1C284BD40900C1104D /* LaunchScreen.storyboard in Resources */,
 				22B47EC428C0D060008C27E3 /* ApiInfoStoryboard.storyboard in Resources */,
 				22990A19284BD40900C1104D /* Assets.xcassets in Resources */,
+				22EEA01428F2C5F600F7D86F /* UnitsStoryboard.storyboard in Resources */,
 				22B47EAE28AAC564008C27E3 /* Splash.storyboard in Resources */,
 				B615E8632858F16600B77A5F /* EarthquakeDetailStoryboard.storyboard in Resources */,
 				22990A17284BD40500C1104D /* Main.storyboard in Resources */,
@@ -696,6 +703,7 @@
 				22F684A1289FCAB600412B34 /* GetFormattedCoordsFormatter.swift in Sources */,
 				229EA82428C941E700A03263 /* DatesPicker.swift in Sources */,
 				227D906F286B329200A0DED5 /* Feature.swift in Sources */,
+				22EEA01228F2C5D700F7D86F /* UnitsViewController.swift in Sources */,
 				22143458285CFED800F1CBA0 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

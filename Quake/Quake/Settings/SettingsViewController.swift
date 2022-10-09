@@ -29,7 +29,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func configure() {
         models.append(SettingsSection(title: "Configuration", options: [
             .staticCell(model: SettingsOption(title: "Units ", icon: UIImage(systemName: "option"), iconBackgroundColor: .systemMint) {
-                
+                let storyboard = UIStoryboard(name: "UnitsStoryboard", bundle: nil)
+                if let viewController = storyboard.instantiateViewController(withIdentifier: "UnitsStoryboard") as? UnitsViewController {
+                    
+                    viewController.title = "Units"
+                    let backItem = UIBarButtonItem()
+                    backItem.title = "Back"
+                    self.navigationItem.backBarButtonItem = backItem
+                    
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
             }),
             .switchCell(model: SettingsSwitchOption(title: "Push notifications", icon: UIImage(systemName: "message"), iconBackgroundColor: .systemPurple, handler: {
                 
