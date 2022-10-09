@@ -83,5 +83,6 @@ class SwitchTableViewCell: UITableViewCell {
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
         settingsSwitch.isOn = model.isOn
+        settingsSwitch.isEnabled = model.isEnabled
     }
 }

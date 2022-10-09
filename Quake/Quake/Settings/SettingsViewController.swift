@@ -28,28 +28,27 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func configure() {
         models.append(SettingsSection(title: "Configuration", options: [
-            .staticCell(model: SettingsOption(title: "Units ", icon: UIImage(systemName: "option"), iconBackgroundColor: .systemMint) {
+            .staticCell(model: SettingsOption(title: "Units", icon: UIImage(systemName: "option"), iconBackgroundColor: .systemMint) {
                 let storyboard = UIStoryboard(name: "UnitsStoryboard", bundle: nil)
                 if let viewController = storyboard.instantiateViewController(withIdentifier: "UnitsStoryboard") as? UnitsViewController {
-                    
+
                     viewController.title = "Units"
                     let backItem = UIBarButtonItem()
                     backItem.title = "Back"
                     self.navigationItem.backBarButtonItem = backItem
-                    
+
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }),
             .switchCell(model: SettingsSwitchOption(title: "Push notifications", icon: UIImage(systemName: "message"), iconBackgroundColor: .systemPurple, handler: {
-                
-            }, isOn: false)),
+                //Delete when Push notifications are enabled
+                let alert = UIAlertController(title: "Alert", message: "Push notifications not available yet.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }, isOn: false, isEnabled: false)),
             .staticCell(model: SettingsOption(title: "Turn Location Services On", icon: UIImage(systemName: "location"), iconBackgroundColor: .systemOrange) {
                 
                 self.checkLocationServices()
-                
-//                let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertController.Style.alert)
-//                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-//                self.present(alert, animated: true, completion: nil)
             })
         ]))
         

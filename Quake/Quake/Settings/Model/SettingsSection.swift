@@ -18,4 +18,5 @@ struct SettingsSwitchOption {
     let iconBackgroundColor: UIColor
     let handler: (() -> Void)
     var isOn: Bool
+    var isEnabled: Bool
 }
