@@ -139,12 +139,16 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-//TODO: Revisar y añadir credit del chico !!!
 extension Date {
     
     static func buildTimeRangeString(startDate: Date, endDate: Date) -> String {
         let dayFormatter = DateFormatter()
-        dayFormatter.dateFormat = "dd MMM yyyy"
-        return String(format: "\(startDate) - \(endDate)")
+        dayFormatter.timeStyle = .none
+        dayFormatter.dateStyle = .short
+        dayFormatter.dateFormat = "MMM dd, yyyy"
+        let finalStartDate = dayFormatter.string(from: startDate)
+        let finalEndDate = dayFormatter.string(from: endDate)
+        
+        return String(format: "\(finalStartDate) - \(finalEndDate)")
     }
 }
