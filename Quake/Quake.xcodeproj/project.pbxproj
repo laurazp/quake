@@ -46,7 +46,6 @@
 		22B47EB428AEFFF4008C27E3 /* EarthquakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EB328AEFFF4008C27E3 /* EarthquakeModel.swift */; };
 		22B47EB628AF0196008C27E3 /* FeatureToEarthquakeModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EB528AF0196008C27E3 /* FeatureToEarthquakeModelMapper.swift */; };
 		22B47EBA28B8D9C4008C27E3 /* FAQStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */; };
-		22B47EC028BC2C48008C27E3 /* logo_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EBF28BC2C48008C27E3 /* logo_sound.mp3 */; };
 		22B47EC228BFC6A2008C27E3 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EC128BFC6A2008C27E3 /* SwitchTableViewCell.swift */; };
 		22B47EC428C0D060008C27E3 /* ApiInfoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */; };
 		22B47EC628C0DCBA008C27E3 /* ApiInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EC528C0DCBA008C27E3 /* ApiInfoViewController.swift */; };
@@ -130,7 +129,6 @@
 		22B47EB328AEFFF4008C27E3 /* EarthquakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeModel.swift; sourceTree = "<group>"; };
 		22B47EB528AF0196008C27E3 /* FeatureToEarthquakeModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureToEarthquakeModelMapper.swift; sourceTree = "<group>"; };
 		22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQStoryboard.storyboard; sourceTree = "<group>"; };
-		22B47EBF28BC2C48008C27E3 /* logo_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = logo_sound.mp3; sourceTree = "<group>"; };
 		22B47EC128BFC6A2008C27E3 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApiInfoStoryboard.storyboard; sourceTree = "<group>"; };
 		22B47EC528C0DCBA008C27E3 /* ApiInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInfoViewController.swift; sourceTree = "<group>"; };
@@ -326,7 +324,6 @@
 				22990A18284BD40900C1104D /* Assets.xcassets */,
 				224DEBC828A3EF170086D08F /* map-pin-animation.json */,
 				22990A1D284BD40900C1104D /* Info.plist */,
-				22B47EBF28BC2C48008C27E3 /* logo_sound.mp3 */,
 			);
 			path = Quake;
 			sourceTree = "<group>";
@@ -596,7 +593,6 @@
 				22990A17284BD40500C1104D /* Main.storyboard in Resources */,
 				224DEBC928A3EF170086D08F /* map-pin-animation.json in Resources */,
 				B615E86B2858F5EF00B77A5F /* EarthquakeEventCell.xib in Resources */,
-				22B47EC028BC2C48008C27E3 /* logo_sound.mp3 in Resources */,
 				22143456285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard in Resources */,
 				B615E85D2858EBE900B77A5F /* MapStoryboard.storyboard in Resources */,
 			);

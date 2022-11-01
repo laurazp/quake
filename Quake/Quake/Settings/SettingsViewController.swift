@@ -40,12 +40,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }),
-            .switchCell(model: SettingsSwitchOption(title: "Push notifications", icon: UIImage(systemName: "message"), iconBackgroundColor: .systemPurple, handler: {
-                //Delete when Push notifications are enabled
-                let alert = UIAlertController(title: "Alert", message: "Push notifications not available yet.", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }, isOn: false, isEnabled: false)),
             .staticCell(model: SettingsOption(title: "Turn Location Services On", icon: UIImage(systemName: "location"), iconBackgroundColor: .systemOrange) {
                 
                 self.checkLocationServices()
@@ -64,9 +58,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
-                
-                //<a href="https://www.flaticon.com/free-icons/earthquake" title="earthquake icons">Earthquake icons created by fjstudio - Flaticon</a>
-                
             }),
             .staticCell(model: SettingsOption(title: "FAQ", icon: UIImage(systemName: "questionmark"), iconBackgroundColor: .link) {
                 let storyboard = UIStoryboard(name: "FAQStoryboard", bundle: nil)
@@ -85,7 +76,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func checkLocationServices() {
         guard CLLocationManager.locationServicesEnabled() else {
-            // TODO: Revisar mensaje !!!
             let alert = UIAlertController(title: "Location Services not enabled", message: "Go to your phone Settings and turn location services on in order to have the whole app working properly.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -105,8 +95,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     private func checkAuthorizationForLocation() {
         switch locationManager.authorizationStatus {
         case .authorizedWhenInUse, .authorizedAlways:
-            //mapView.showsUserLocation = true
-            //centerViewOnUser()
             locationManager.startUpdatingLocation()
             break
         case .denied:
@@ -117,7 +105,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
-                // TODO: Revisar mensaje !!!
             let alert = UIAlertController(title: "Alert", message: "Quake is not authorize to use location services. Go to your phone Settings to change it.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
