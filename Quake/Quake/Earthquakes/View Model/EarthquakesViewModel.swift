@@ -63,7 +63,6 @@ final class EarthquakesViewModel {
         print(date1)
         print(date2)
         
-        
         if date1 == date2 {
             print("iguales!")
             getEarthquakesUseCase.getEarthquakesByDate(selectedDates[0]) { features in
@@ -81,7 +80,6 @@ final class EarthquakesViewModel {
                 }
                 self.viewDelegate?.updateView()
             }
-
             isFiltering = true
             self.viewDelegate?.updateView()
         }

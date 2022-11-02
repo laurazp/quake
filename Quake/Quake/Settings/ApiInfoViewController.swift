@@ -145,28 +145,22 @@ class ApiInfoViewController: UIViewController {
         self.developerContentLabel.addGestureRecognizer(developerTapgesture)
     }
     
-    //MARK:- getAttributedString
     func getAttributedString(arrayText:[String]?, arrayColors:[UIColor]?, arrayFonts:[UIFont]?) -> NSMutableAttributedString {
         
         let finalAttributedString = NSMutableAttributedString()
         
         for i in 0 ..< (arrayText?.count)! {
-            
             let attributes = [NSAttributedString.Key.foregroundColor: arrayColors?[i], NSAttributedString.Key.font: arrayFonts?[i]]
             let attributedStr = (NSAttributedString.init(string: arrayText?[i] ?? "", attributes: attributes as [NSAttributedString.Key : Any]))
             
             if i != 0 {
-                
                 finalAttributedString.append(NSAttributedString.init(string: " "))
             }
-            
             finalAttributedString.append(attributedStr)
         }
-        
         return finalAttributedString
     }
     
-    //MARK:- tappedOnLabel
     @objc func tappedOnLabel(_ gesture: UITapGestureRecognizer) {
         guard let apiText = self.apiInfoContentLabel.text else { return }
         let apiLinkRange = (apiText as NSString).range(of: "USGS (United States Geological Survey)")
@@ -240,7 +234,7 @@ class ApiInfoViewController: UIViewController {
                 if let url = URL(string: "mailto:\(email)") {
                     if(UIApplication.shared.canOpenURL(url)){
                         print("ok")
-                    }else{
+                    } else {
                         print("not ok")
                     }
                 }
@@ -257,3 +251,5 @@ class ApiInfoViewController: UIViewController {
     }
 }
 
+
+// Reference from https://stackoverflow.com/questions/40878547/is-it-possible-to-have-uidatepicker-work-with-start-and-end-time

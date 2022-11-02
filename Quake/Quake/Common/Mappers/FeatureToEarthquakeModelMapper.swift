@@ -26,10 +26,8 @@ struct FeatureToEarthquakeModelMapper {
         var finalDepth = Measurement(value: 0.0, unit: UnitLength.kilometers)
         if (unitsUseCase.getSelectedUnit() == "kilometers") {
             finalDepth = Measurement(value: initialDepthInKms, unit: UnitLength.kilometers)
-           print("Depth updated: kilometers selected")
         } else {
             finalDepth = Measurement(value: (initialDepthInKms * 0.62137), unit: UnitLength.miles)
-            print("Depth updated: miles selected")
         }
         return finalDepth
     }

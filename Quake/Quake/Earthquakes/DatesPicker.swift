@@ -2,8 +2,6 @@ import UIKit
 
 class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    // Reference from https://stackoverflow.com/questions/40878547/is-it-possible-to-have-uidatepicker-work-with-start-and-end-time
-    
     var didSelectDates: ((_ start: Date, _ end: Date) -> Void)?
     
     var selectedDatesString = ""
@@ -31,9 +29,7 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         startDate = setDays()
         endDate = setDays()
     }
-    
-    // MARK: - UIPickerViewDelegate & DateSource
-    
+        
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -95,8 +91,6 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         self.selectedDates = [startDay, endDay]
     }
     
-    // MARK: - Private helpers
-    
     // Dates shown in DatePickers
     private func getDays(of date: Date) -> [Date] {
         var dates = [Date]()
@@ -106,7 +100,7 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         // first date
         var currentDate = date
         
-        // substracting 60 days to current date ¿¿¿¿¿ añadir más tiempo ?????
+        // substracting 60 days to current date
         let twoMonthsToNow = calendar.date(byAdding: .day, value: -60, to: currentDate)
         
         // last date

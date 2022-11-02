@@ -9,14 +9,8 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     @IBOutlet weak var placeChevron: UIImageView!
     @IBOutlet weak var dateChevron: UIImageView!
     
-    let viewModel = EarthquakesViewModel() // private??
+    let viewModel = EarthquakesViewModel()
     private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
-    
-    //revisar???
-    let getFormattedTitleMapper = GetSimplifiedTitleFormatter()
-    var getFormattedCoordsFormatter = GetFormattedCoordsFormatter()
-    let getTsunamiValueFormatter = GetTsunamiValueFormatter()
-    private var depthValue: Float = 0
     
     let searchController = UISearchController(searchResultsController: nil)
     private let datePicker = UIDatePicker()
@@ -27,7 +21,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         picker.setup()
         picker.didSelectDates = { [weak self] (startDate, endDate) in
             let text = Date.buildTimeRangeString(startDate: startDate, endDate: endDate)
-            //self?.label.text = text
             self?.searchController.searchBar.placeholder = text
         }
         return picker
@@ -51,6 +44,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
+        viewModel.viewDidLoad() // Update tableview
     }
 
     private func setupTable() {
@@ -69,10 +63,9 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         searchController.searchBar.placeholder = "Select dates to search"
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
-        
         searchController.searchBar.searchTextField.inputView = datesPicker.inputView
         
-        //Create a toolbar with a Done button
+        // Toolbar
         let toolbar = UIToolbar()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(filterButtonTapped))
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
@@ -139,11 +132,8 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         cell.depthLabel.text = "Depth: \(earthquakeModel.depth)"
     }
     
-    //TODO: poner búsqueda entre dos fechas y actualizar !!
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
         
-        //viewModel.filterContentForSearchDates(initialSearchDate: searchBar.initialDate, finalSearchDate: searchBar.finalDate, tableView: tableView)
     }
     
     func textFieldShouldReturn(_ textField: UISearchTextField) -> Bool {
@@ -221,7 +211,6 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
             
             viewController.viewModel.earthquakeModel = selectedEarthquakeModel
             navigationController?.pushViewController(viewController, animated: true) // Navegacion
-            //present(viewController, animated: true) // Modal (pantalla de abajo a arriba)
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
