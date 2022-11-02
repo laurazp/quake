@@ -6,6 +6,7 @@ final class EarthquakesViewModel {
     weak var viewDelegate: EarthquakeViewController?
     
     private let getEarthquakesUseCase = GetEarthquakesUseCase()
+    private let unitsUseCase = UnitsUseCase()
     private var earthquakesData = [EarthquakeModel]()
     private var filteredEarthquakes: [EarthquakeModel] = []
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
@@ -86,7 +87,6 @@ final class EarthquakesViewModel {
         }
     }
     
-    // TODO: resetear la búsqueda y poner isFiltering a false??? --> cuándo se debe poner a false ???
     func endFiltering() {
         isFiltering = false
     }
@@ -143,5 +143,13 @@ final class EarthquakesViewModel {
             }
             self.viewDelegate?.updateView()
         }
+    }
+    
+    func setSelectedUnit(selectedIndex: Int) {
+        unitsUseCase.saveSelectedUnit(selectedSegmentIndex: selectedIndex)
+    }
+    
+    func getSelectedUnit() -> String {
+        return unitsUseCase.getSelectedUnit()
     }
 }

@@ -4,6 +4,7 @@ import UIKit
 class UnitsViewController: UIViewController {
 
     @IBOutlet weak var unitsCard: UIView!
+    private let viewModel = EarthquakesViewModel()
     
     let segmentedControl: UISegmentedControl = {
        let segmentedControl = UISegmentedControl(items: ["Kilometers", "Miles"])
@@ -12,15 +13,8 @@ class UnitsViewController: UIViewController {
         return segmentedControl
     }()
     
-    @objc fileprivate func handleSegmentChange() {
-        if segmentedControl.selectedSegmentIndex == 0 {
-            print("Kilometers selected")
-            //TODO: Cambiar units a km
-        } else {
-            print("Miles selected")
-            //TODO: Cambiar units a miles
-
-        }
+    @objc func handleSegmentChange() {
+        viewModel.setSelectedUnit(selectedIndex: segmentedControl.selectedSegmentIndex)
     }
     
     let lengthLabel: UILabel = {
