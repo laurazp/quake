@@ -54,39 +54,18 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     }
 
     func didTapButton() {
-        navigationController?.popViewController(animated: true) // Volver si es por navegacion
-        //dismiss(animated: true) // Si es modal
+        navigationController?.popViewController(animated: true) // Turn back
     }
     
     private func configure(with earthquakeModel: EarthquakeModel) {
-        // Formatting Date
-        //let getDateFormatter = GetDateFormatter()
-        //let formattedDate = getDateFormatter.formatDate(dateToFormat: earthquakeDetail.time)
-        
-        // Assigning data to variables
         placeLabel.attributedText = getLabelText(labelTitle: "Place:  ", labelContent: earthquakeModel.place)
         timeLabel.attributedText = getLabelText(labelTitle: "Time:  ", labelContent: earthquakeModel.date)
-
-        //let tsunamiValue = getTsunamiValueFormatter.getTsunamiValue(tsunami: earthquakeDetail.tsunami )
         tsunamiLabel.attributedText = getLabelText(labelTitle: "Tsunami:  ", labelContent: earthquakeModel.tsunami)
-
-        //let formattedCoords = getFormattedCoordsFormatter.getFormattedCoords(actualCoords: earthquakeDetail.coords)
         coordsLabel.attributedText = getLabelText(labelTitle: "Coords:  ", labelContent: earthquakeModel.date)
         depthLabel.attributedText = getLabelText(labelTitle: "Depth: ", labelContent: earthquakeModel.depth)
         
         let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: Double(earthquakeModel.magnitude) ?? 0)
         magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: earthquakeModel.magnitude, contentColor: magnitudeColor)
-        
-//        if let depth = earthquakeDetail.coords[2] as Float? {
-//            depthLabel.attributedText = getLabelText(labelTitle: "Depth: ", labelContent: "\(depth)km")
-//        }
-//
-//        if let magnitude = earthquakeDetail.magnitude {
-//            let magnitudeColor = viewModel.assignMagnitudeColor(magnitude: magnitude)
-//            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: "\(magnitude)", contentColor: magnitudeColor)
-//        } else {
-//            magnitudeLabel.attributedText = getLabelText(labelTitle: "Magnitude:  ", labelContent: " Unknown")
-//        }
         
         // MapView config
         mapView.delegate = self
@@ -105,9 +84,6 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         annotation.coordinate = location
         annotation.title = earthquakeModel.simplifiedTitle
 
-//        if let substring = earthquakeDetail.place?.split(separator: ",").last {
-//            annotation.title = String(substring)
-//        }
         mapView.addAnnotation(annotation)
     }
     

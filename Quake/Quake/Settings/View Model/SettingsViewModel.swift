@@ -7,8 +7,6 @@ final class SettingsViewModel {
     
     private let unitsUseCase = UnitsUseCase()
 
-    // Functions to work with Units
-    
     func setSelectedUnit(selectedIndex: Int) {
         unitsUseCase.saveSelectedUnit(selectedSegmentIndex: selectedIndex)
     }

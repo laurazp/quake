@@ -250,6 +250,3 @@ class ApiInfoViewController: UIViewController {
         }
     }
 }
-
-
-// Reference from https://stackoverflow.com/questions/40878547/is-it-possible-to-have-uidatepicker-work-with-start-and-end-time

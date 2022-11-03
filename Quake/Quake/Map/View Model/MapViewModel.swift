@@ -26,7 +26,6 @@ final class MapViewModel {
     
     private func getEarthquakes() {
         getEarthquakesUseCase.getLatestEarthquakes { features in
-            //self.earthquakesData = features
             let annotations: [AnnotationInMap] = features.map { feature in
                 AnnotationInMap(title: feature.properties.title,
                                 place: feature.properties.place,
@@ -41,7 +40,6 @@ final class MapViewModel {
         }
     }
     
-    //TODO: Mover cambio color de pines aquí?
     func assignPinColor(magnitude: Double) -> UIColor {
         return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
     }

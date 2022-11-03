@@ -25,6 +25,8 @@
 ### Color gris de DatesPicker se puede cambiar en dark mode??
 ### Botón Cancel dentro del DatesPicker no borra del todo (como el Cancel a la dcha de la searchBar)
 ### UpdateSearchResults para qué se usa? No tiene código dentro (EarthquakesViewController ln. 136)
+### Pasar funciones de Settings y de Map a los ViewModel??
+### Revisar advertencias amarillas
 
 
 ## Antes de publicar en AppStore

@@ -8,17 +8,14 @@ class GetDateFormatter {
     func formatDate(dateToFormat: Date) -> String {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .long
-        //dateFormatter.dateFormat = "yyyy/MM/dd hh:mm:ss a";
-        
         let formattedDate = dateFormatter.string(from: dateToFormat)
-        
+    
         return formattedDate
     }
     
     func formatDate(dateToFormat: Int64) -> String {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .long
-        
         let dateToFormat = Date(timeIntervalSince1970: Double(dateToFormat)/1000)
         let formattedDate = dateFormatter.string(from: dateToFormat)
         
@@ -31,9 +28,7 @@ class GetDateFormatter {
     }
     
     func simpleFormatDate(dateToFormat: Date) -> String {
-        dateFormatter.dateStyle = .short
-        //dateFormatter.dateFormat = "yyyy/MM/dd hh:mm:ss a";
-        
+        dateFormatter.dateStyle = .short        
         let formattedDate = dateFormatter.string(from: dateToFormat)
         
         return formattedDate

@@ -45,7 +45,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         tabBarController?.tabBar.isHidden = false
     }
     
-    // SearchBar and SearchTable configuration
     func configureSearchBarAndTable() {
         guard let locationSearchTable = storyboard?.instantiateViewController(withIdentifier: "LocationSearchTable") as? LocationSearchTable else { return }
         locationSearchTable.mapView = mapView

@@ -99,10 +99,8 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         
         // first date
         var currentDate = date
-        
         // substracting 60 days to current date
         let twoMonthsToNow = calendar.date(byAdding: .day, value: -60, to: currentDate)
-        
         // last date
         let endDate = twoMonthsToNow
 
