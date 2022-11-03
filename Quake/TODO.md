@@ -22,8 +22,7 @@
 
 
 ### Por qué no sale Unknown en Map??
-### ViewModel de Settings independiente o el mismo que para Earthquakes??
-### Color gris en API info feo (dark mode)
+### Color gris de DatesPicker se puede cambiar en dark mode??
 ### Botón Cancel dentro del DatesPicker no borra del todo (como el Cancel a la dcha de la searchBar)
 ### UpdateSearchResults para qué se usa? No tiene código dentro (EarthquakesViewController ln. 136)
 

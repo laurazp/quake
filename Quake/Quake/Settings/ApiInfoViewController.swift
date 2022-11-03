@@ -38,10 +38,10 @@ class ApiInfoViewController: UIViewController {
         apiInfoTextArray.append("Data source credit belongs to")
         apiInfoTextArray.append("USGS (United States Geological Survey)")
         
-        apiInfoFontArray.append(.systemFont(ofSize: 17, weight: .semibold))
+        apiInfoFontArray.append(.systemFont(ofSize: 17))
         apiInfoFontArray.append(.systemFont(ofSize: 17, weight: .semibold))
         
-        apiInfoColorArray.append(.systemGray)
+        apiInfoColorArray.append(UIColor.label)
         apiInfoColorArray.append(.systemBlue)
 
         apiInfoContentLabel.attributedText = getAttributedString(arrayText: apiInfoTextArray, arrayColors: apiInfoColorArray, arrayFonts: apiInfoFontArray)
@@ -56,10 +56,10 @@ class ApiInfoViewController: UIViewController {
         creditsTextArray.append("Seismic icons created by")
         creditsTextArray.append("Freepik - Flaticon\n")
         
-        creditsFontArray.append(.systemFont(ofSize: 17, weight: .semibold))
+        creditsFontArray.append(.systemFont(ofSize: 17))
         creditsFontArray.append(.systemFont(ofSize: 17, weight: .semibold))
         
-        creditsColorArray.append(.systemGray)
+        creditsColorArray.append(UIColor.label)
         creditsColorArray.append(.systemBlue)
 
         creditsContentLabel.attributedText = getAttributedString(arrayText: creditsTextArray, arrayColors: creditsColorArray, arrayFonts: creditsFontArray)
@@ -72,10 +72,10 @@ class ApiInfoViewController: UIViewController {
         credits2TextArray.append("Earthquake icons created by")
         credits2TextArray.append("fjstudio - Flaticon\n")
         
-        credits2FontArray.append(.systemFont(ofSize: 17, weight: .semibold))
+        credits2FontArray.append(.systemFont(ofSize: 17))
         credits2FontArray.append(.systemFont(ofSize: 17, weight: .semibold))
         
-        credits2ColorArray.append(.systemGray)
+        credits2ColorArray.append(UIColor.label)
         credits2ColorArray.append(.systemBlue)
 
         credits2ContentLabel.attributedText = getAttributedString(arrayText: credits2TextArray, arrayColors: credits2ColorArray, arrayFonts: credits2FontArray)
@@ -88,10 +88,10 @@ class ApiInfoViewController: UIViewController {
         credits3TextArray.append("API info links code from")
         credits3TextArray.append("leoiphonedev - Github\n")
         
-        credits3FontArray.append(.systemFont(ofSize: 17, weight: .semibold))
+        credits3FontArray.append(.systemFont(ofSize: 17))
         credits3FontArray.append(.systemFont(ofSize: 17, weight: .semibold))
         
-        credits3ColorArray.append(.systemGray)
+        credits3ColorArray.append(UIColor.label)
         credits3ColorArray.append(.systemBlue)
 
         credits3ContentLabel.attributedText = getAttributedString(arrayText: credits3TextArray, arrayColors: credits3ColorArray, arrayFonts: credits3FontArray)
@@ -106,10 +106,10 @@ class ApiInfoViewController: UIViewController {
         developerTextArray.append("If you have any questions, please feel free to contact us at")
         developerTextArray.append("quake@gmail.com")
         
-        developerFontArray.append(.systemFont(ofSize: 17, weight: .semibold))
+        developerFontArray.append(.systemFont(ofSize: 17))
         developerFontArray.append(.systemFont(ofSize: 17, weight: .semibold))
         
-        developerColorArray.append(.systemGray)
+        developerColorArray.append(UIColor.label)
         developerColorArray.append(.systemBlue)
 
         developerContentLabel.attributedText = getAttributedString(arrayText: developerTextArray, arrayColors: developerColorArray, arrayFonts: developerFontArray)
