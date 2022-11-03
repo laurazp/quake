@@ -3,7 +3,7 @@
 
 ## Requiere explicación
 ### Usar NavigationControllers para que no se muestre la TabBar al navegar
-### Paginación en los resultados de earthquakes ??
+
 
 ### Cargar sólo las anotaciones del área??? --> para más adelante
 
@@ -12,6 +12,26 @@
 ### Revisar advertencia clusters en map
 ### Añadir más fechas al buscador??? (de momento hay 60 días)
 
-### Comprobar que mailto funciona en device (apiInfo)
+
+
+
+
 ### Terminar API info
+### Paginación en los resultados de earthquakes ??
+### Añadir idiomas? --> con NSLocalizedStrings
+
+
+### Por qué no sale Unknown en Map??
+### ViewModel de Settings independiente o el mismo que para Earthquakes??
+### Color gris en API info feo (dark mode)
+### Botón Cancel dentro del DatesPicker no borra del todo (como el Cancel a la dcha de la searchBar)
+### UpdateSearchResults para qué se usa? No tiene código dentro (EarthquakesViewController ln. 136)
+
+
+## Antes de publicar en AppStore
+
+### Artwork --> imagen de la animación Splash con fondo blanco
+### Pantallazos de la app funcionando
+### Revisar en diferentes dispositivos
+### Comprobar que mailto funciona en device (API Info)
 

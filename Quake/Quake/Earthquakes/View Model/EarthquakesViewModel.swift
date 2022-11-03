@@ -6,7 +6,6 @@ final class EarthquakesViewModel {
     weak var viewDelegate: EarthquakeViewController?
     
     private let getEarthquakesUseCase = GetEarthquakesUseCase()
-    private let unitsUseCase = UnitsUseCase()
     private var earthquakesData = [EarthquakeModel]()
     private var filteredEarthquakes: [EarthquakeModel] = []
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
@@ -140,24 +139,6 @@ final class EarthquakesViewModel {
                 inIncreasingOrder = false
             }
             self.viewDelegate?.updateView()
-        }
-    }
-    
-    // Functions to work with Units
-    
-    func setSelectedUnit(selectedIndex: Int) {
-        unitsUseCase.saveSelectedUnit(selectedSegmentIndex: selectedIndex)
-    }
-    
-    func getSelectedUnit() -> String {
-        return unitsUseCase.getSelectedUnit()
-    }
-    
-    func getSelectedUnit() -> Int {
-        if unitsUseCase.getSelectedUnit() == "kilometers" {
-            return 0
-        } else {
-            return 1
         }
     }
 }

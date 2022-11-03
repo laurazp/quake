@@ -4,7 +4,7 @@ import UIKit
 class UnitsViewController: UIViewController {
 
     @IBOutlet weak var unitsCard: UIView!
-    private let viewModel = EarthquakesViewModel()
+    private let viewModel = SettingsViewModel()
     
     let segmentedControl: UISegmentedControl = {
        let segmentedControl = UISegmentedControl(items: ["Kilometers", "Miles"])
