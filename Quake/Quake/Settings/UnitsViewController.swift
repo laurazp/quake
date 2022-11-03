@@ -8,7 +8,6 @@ class UnitsViewController: UIViewController {
     
     let segmentedControl: UISegmentedControl = {
        let segmentedControl = UISegmentedControl(items: ["Kilometers", "Miles"])
-        segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
         return segmentedControl
     }()
@@ -27,6 +26,8 @@ class UnitsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        
+        segmentedControl.selectedSegmentIndex = getSelectedSegmentIndex()
     }
     
     private func setupViews() {
@@ -50,5 +51,9 @@ class UnitsViewController: UIViewController {
         stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20).isActive = true
         stackView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 30).isActive = true
         stackView.setCustomSpacing(10, after: lengthLabel)
+    }
+    
+    private func getSelectedSegmentIndex() -> Int {
+        return viewModel.getSelectedUnit()
     }
 }
