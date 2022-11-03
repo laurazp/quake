@@ -46,27 +46,6 @@ class AnnotationInMap: NSObject, MKAnnotation {
 
         super.init()
     }
-    
-//    init?(feature: MKGeoJSONFeature) {
-//
-//        guard let point = feature.geometry.first as? MKPointAnnotation,
-//        let propertiesData = feature.properties,
-//        let json = try? JSONSerialization.jsonObject(with: propertiesData),
-//        let properties = json as? [String: Any]
-//        else {
-//          print("Error retrieveing data for map")
-//          return nil
-//        }
-//
-//        title = properties["title"] as? String
-//        place = properties["place"] as? String
-//        time = properties["time"] as? Date
-//        mag = properties["mag"] as? Double
-//        tsunami = properties["tsunami"] as? Int
-//        coordinate = point.coordinate
-//        depth =
-//        super.init()
-//    }
 
     var subtitle: String? {
         return "Magnitude: \(mag ?? 0.0)"

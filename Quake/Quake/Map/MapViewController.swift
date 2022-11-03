@@ -16,7 +16,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     let viewModel = MapViewModel()
     
     private let getFormattedTitleMapper = GetSimplifiedTitleFormatter()
+    private let getSimplifiedTitleFormatter = GetSimplifiedTitleFormatter()
+    private let getTsunamiValueFormatter = GetTsunamiValueFormatter()
     private let getDateFormatter = GetDateFormatter()
+    private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     
     @IBOutlet weak var searchBarView: UIView!
     
@@ -31,7 +34,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         centerViewOnUser()
         
         mapView.delegate = self
-        viewModel.viewDidLoad() // --> Comment/uncomment to show pins on map
+        viewModel.viewDidLoad()
 
         configureSearchBarAndTable()
         addMapTrackingButton()
@@ -99,7 +102,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     private func checkLocationServices() {
         guard CLLocationManager.locationServicesEnabled() else {
-            // TODO: Revisar mensaje !!!
             let alert = UIAlertController(title: "Location Services not enabled", message: "Go to Permissions in Settings and turn location services on in order to have the whole app working properly.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -127,7 +129,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
-                // TODO: Revisar mensaje !!!
             let alert = UIAlertController(title: "Alert", message: "Quake is not authorize to use location services. Go to your phone Settings to change it.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -150,9 +151,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // MARK: - View Model Output
     func updateView(annotationsInMap: [AnnotationInMap]) {
         mapView.addAnnotations(annotationsInMap)
-        
-//        let visibleAnnotationsInMap = mapView.visibleAnnotations()
-//        mapView.addAnnotations(visibleAnnotationsInMap)
     }
 }
 
@@ -191,10 +189,8 @@ extension MapViewController: HandleMapSearch {
         } else if let cluster = annotation as? MKClusterAnnotation {
             let clusterView = mapView.dequeueReusableAnnotationView(withIdentifier: "clusterView")
                 ?? MKAnnotationView(annotation: annotation, reuseIdentifier: "clusterView")
-            
             clusterView.annotation = cluster
-            clusterView.image = UIImage(named: "cluster") // Hace falta???
-            
+            clusterView.image = UIImage(named: "cluster")
             return clusterView
         } else {
             view = MKMarkerAnnotationView(
@@ -205,13 +201,11 @@ extension MapViewController: HandleMapSearch {
         view.canShowCallout = true
         view.calloutOffset = CGPoint(x: -5, y: 5)
         view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        view.markerTintColor = annotation.markerTintColor // TODO: Change color of pins in map
+        view.markerTintColor = annotation.markerTintColor // Change color of pins in map
         view.clusteringIdentifier = "mapItemClustered"
         
         let btn = UIButton(type: .detailDisclosure)
         view.rightCalloutAccessoryView = btn
-        //TODO: evento al hacer click en detailDisclosure tbn
-        
         return view
     }
     
@@ -222,13 +216,15 @@ extension MapViewController: HandleMapSearch {
         
             if let selectedAnnotation = view.annotation as? AnnotationInMap {
                 let selectedEarthquakeModel = EarthquakeModel(fullTitle: " ",
-                                                              simplifiedTitle: selectedAnnotation.title ?? "Unknown",
+                                                              //simplifiedTitle: selectedAnnotation.title ?? "Unknown",
+                                                              //simplifiedTitle: getSimplifiedTitleFormatter.getSimplifiedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown"),
+                                                              simplifiedTitle: getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown"),
                                                               place: selectedAnnotation.place ?? "Unknown", formattedCoords: "",
                                                               originalCoords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude)],
-                                                              depth: String(selectedAnnotation.depth),
+                                                              depth: formatDepth(initialDepth: selectedAnnotation.depth),
                                                               date: getDateFormatter.formatDate(dateToFormat: selectedAnnotation.time!),
                                                               originalDate: selectedAnnotation.time ?? Date.now,
-                                                              tsunami: String(selectedAnnotation.tsunami ?? 0),
+                                                              tsunami: getTsunamiValueFormatter.getTsunamiValue(tsunami: selectedAnnotation.tsunami ?? 0),
                                                               magnitude: String(selectedAnnotation.mag ?? 0))
                 
                 viewController.viewModel.earthquakeModel = selectedEarthquakeModel
@@ -236,8 +232,12 @@ extension MapViewController: HandleMapSearch {
                 viewController.title = formattedTitle
                 navigationController?.pushViewController(viewController, animated: false)
             }
-            
         }
+    }
+    
+    func formatDepth(initialDepth: Float) -> String {
+        let formattedDepth = featureToEarthquakeModelMapper.depthInSelectedUnitsFromFloat(depth: initialDepth)
+        return "\(formattedDepth)"
     }
     
     func dropPinZoomIn(_ mapItem: MKMapItem){
