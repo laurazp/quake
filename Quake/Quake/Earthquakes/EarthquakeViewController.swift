@@ -4,6 +4,7 @@ import UIKit
 class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         
     @IBOutlet var tableView: UITableView!
+    let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var magnitudeChevron: UIImageView!
     @IBOutlet weak var placeChevron: UIImageView!
@@ -62,6 +63,17 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         tableView.estimatedRowHeight = 90
         configureSearchBar() // Dates SearchBar
         definesPresentationContext = true
+        
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(refreshEarthquakesData(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Earthquakes Data ...")
     }
 
     private func configureSearchBar() {
@@ -92,6 +104,12 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         searchController.searchBar.resignFirstResponder()
         searchBarCancelButtonClicked(searchController.searchBar)
       }
+    
+    @objc private func refreshEarthquakesData(_ sender: Any) {
+        // Fetch Earthquakes Data
+        viewModel.viewDidLoad() //TODO: change for the first call to the API
+        self.refreshControl.endRefreshing()
+    }
     
     @IBAction func orderByMagnitude(_ sender: Any) {
         rotateMagnitudeChevronImageWhenOrdering()

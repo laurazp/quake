@@ -13,11 +13,11 @@
 ### Añadir más fechas al buscador??? (de momento hay 60 días)
 
 
+### Ordenar por fecha no funciona con los cambios --> revisar Paginación
 
 
 
 ### Terminar API info
-### Paginación en los resultados de earthquakes ??
 ### Añadir idiomas? --> con NSLocalizedStrings
 
 
@@ -25,7 +25,11 @@
 ### Color gris de DatesPicker se puede cambiar en dark mode??
 ### Botón Cancel dentro del DatesPicker no borra del todo (como el Cancel a la dcha de la searchBar)
 ### UpdateSearchResults para qué se usa? No tiene código dentro (EarthquakesViewController ln. 136)
-### Pasar funciones de Settings y de Map a los ViewModel??
+### Revisar Refresher
+
+
+
+### Pasar funciones de Settings y de Map a los ViewModel
 ### Revisar advertencias amarillas
 
 
