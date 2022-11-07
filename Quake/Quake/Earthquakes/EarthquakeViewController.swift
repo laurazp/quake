@@ -8,6 +8,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     @IBOutlet weak var magnitudeChevron: UIImageView!
     @IBOutlet weak var placeChevron: UIImageView!
     @IBOutlet weak var dateChevron: UIImageView!
+    var fetchingMore = false
     
     let viewModel = EarthquakesViewModel()
     private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
@@ -39,6 +40,12 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         title = "Quake"
         setupTable()
         viewModel.viewDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //call api for data
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,6 +110,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     
     // MARK: - View Model Output
     func updateView() {
+        fetchingMore = false
         tableView.reloadData()
         if let filteredText = viewModel.filteredText {
             searchController.searchBar.text = filteredText
@@ -160,7 +168,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
 }
 
-extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, UIScrollViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
@@ -217,13 +225,53 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
             return 30
         }
     }
-}
-
-extension EarthquakeViewController: UISearchBarDelegate {
+    
+    // Pagination
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath, features: [Feature]) {
+//        let totalPages = features.count/20 //Revisar las comas!
+//        if indexPath.row == features.count - 1 { //
+//            if  pageNo < totalPages {
+//                pageNo += 1
+//                self.current(pageNo: pageNo)
+//            }
+//        }
+//    }
+//
+//    func current(pageNo:Int) {
+//
+//        //offset
+//
+//        API.myCurAds(pageNo: pageNo, completion: { (error: Error?, data:[MyAds]?) in
+//            if data != nil {
+//            self.myAds.append(contentsOf: data!)
+//            self.tableView.reloadWithAnimation()
+//            print("myAds", data!)
+//            }
+//        })
+//    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         viewModel.endFiltering()
         updateView()
         self.searchController.searchBar.placeholder = "Select dates to search"
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
+            if !fetchingMore {
+                beginFetchMore()
+                print("More data")
+            }
+        }
+    }
+    
+    func beginFetchMore() {
+        fetchingMore = true
+        print("Begining batch fetch")
+        
+        //TODO: fetch more data
+        viewModel.fetchNextPage()
+    }
 }
+

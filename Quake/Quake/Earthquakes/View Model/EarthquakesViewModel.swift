@@ -12,12 +12,17 @@ final class EarthquakesViewModel {
     private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     private var isFiltering: Bool = false
     private var inIncreasingOrder = false
+    private var pageNumber = 0
+    var hasMoreData = true //Cuando recibamos datos vacíos (arrray), lo ponemos a false y, cuando haya datos, a true. Idealmente, si el num de datos en < que el num de items (20), ya será false
+    var isPaginating = true
     
     private let datesPicker = DatesPicker()
+    var selectedDates = [Date]()
     
     var filteredText: String?
     
     func viewDidLoad() {
+        isPaginating = false
         getEarthquakes()
     }
     
@@ -29,6 +34,12 @@ final class EarthquakesViewModel {
         }
     }
     
+    func getIndex() -> Int {
+        let newIndex = 0 // change
+        //TODO: update index
+        return newIndex
+    }
+    
     func numberOfItems() -> Int {
         if (isFiltering) {
             return filteredEarthquakes.count
@@ -37,11 +48,32 @@ final class EarthquakesViewModel {
         }
     }
     
+    func fetchNextPage() {
+        isPaginating = true
+        if isFiltering {
+            filterEarthquakesByDate(selectedDates: selectedDates)
+        } else {
+            getEarthquakes()
+
+        }
+    }
+    
     private func getEarthquakes() {
-        getEarthquakesUseCase.getLatestEarthquakes { features in
-            self.earthquakesData = features.map { feature in
+        //página 0 -> 1   página 1 -> 21  página 2 -> 41
+        let offset = pageNumber * EarthquakesApiDataSource.Constants.pageSize + 1
+        getEarthquakesUseCase.getLatestEarthquakes(offset: offset, pageSize: 20) { features in
+            let earthquakes = features.map { feature in
                 return self.featureToEarthquakeModelMapper.map(from: feature)
             }
+            
+            if self.isPaginating {
+                self.earthquakesData.append(contentsOf: earthquakes)
+            } else {
+                self.earthquakesData = earthquakes
+            }
+            
+            self.hasMoreData = !(earthquakes.count < EarthquakesApiDataSource.Constants.pageSize)
+            self.pageNumber += 1
             self.viewDelegate?.updateView()
         }
     }
@@ -51,6 +83,8 @@ final class EarthquakesViewModel {
     }
 
     func filterEarthquakesByDate(selectedDates: [Date]) {
+        self.selectedDates = selectedDates
+        isPaginating = false
         print(selectedDates[0])
         print(selectedDates[1])
         
@@ -62,9 +96,11 @@ final class EarthquakesViewModel {
         print(date1)
         print(date2)
         
+        let offset = pageNumber * EarthquakesApiDataSource.Constants.pageSize + 1
+        
         if date1 == date2 {
             print("iguales!")
-            getEarthquakesUseCase.getEarthquakesByDate(selectedDates[0]) { features in
+            getEarthquakesUseCase.getEarthquakesBetweenDates(selectedDates[0], nil, offset: offset, pageSize: 20) { features in
                 self.filteredEarthquakes = features.map { feature in
                     return self.featureToEarthquakeModelMapper.map(from: feature)
                 }
@@ -73,10 +109,11 @@ final class EarthquakesViewModel {
             isFiltering = true
             self.viewDelegate?.updateView()
         } else {
-            getEarthquakesUseCase.getEarthquakesBetweenDates(selectedDates[0], selectedDates[1]) { features in
+            getEarthquakesUseCase.getEarthquakesBetweenDates(selectedDates[0], selectedDates[1], offset: offset, pageSize: 20) { features in
                 self.filteredEarthquakes = features.map { feature in
                     return self.featureToEarthquakeModelMapper.map(from: feature)
                 }
+                self.pageNumber += 1
                 self.viewDelegate?.updateView()
             }
             isFiltering = true

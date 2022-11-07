@@ -3,9 +3,21 @@ import Foundation
 
 class EarthquakesApiDataSource {
     
-    func getData(startTime: String, endTime: String, completion: @escaping ([Feature])-> ()) {
+    let offset = 1
+    enum Constants {
+        static let pageSize = 20
+    }
         
-        let urlString = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)"
+    func getData(startTime: String, endTime: String, offset: Int, pageSize: Int, completion: @escaping ([Feature])-> ()) {
+        
+        let actualOffset = offset
+        
+        //let urlString = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)"
+        
+        let selectedPageSize = getPageSize(pageSize: pageSize)
+        
+       let urlString = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)&limit=\(selectedPageSize)&offset=\(actualOffset)"
+       
         guard let url = URL(string: urlString) else {
             completion([])
             return
@@ -38,5 +50,15 @@ class EarthquakesApiDataSource {
             }
         }
         task.resume()
+    }
+    
+    func getPageSize(pageSize: Int) -> Int {
+        var finalPageSize = 0
+        if pageSize != 20 {
+            finalPageSize = pageSize
+        } else {
+            finalPageSize = Constants.pageSize
+        }
+        return finalPageSize
     }
 }

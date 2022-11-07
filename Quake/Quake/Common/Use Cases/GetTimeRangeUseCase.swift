@@ -8,12 +8,26 @@ struct GetTimeRangeUseCase {
         (getDateString(date: Date.now, byAddingDays: -days), getDateString(date: Date.now))
     }
     
-    func getDateRange(date: Date)  -> (start: String, end: String) {
-        (getDateString(date: date.trueMidnight), getDateString(date: date.trueEndOfDay))
-    }
+//    func getDateRange(date: Date)  -> (start: String, end: String) {
+//        (getDateString(date: date.trueMidnight), getDateString(date: date.trueEndOfDay))
+//    }
+//
+//    func getDateRangeFromDates(startDate: Date, endDate: Date) -> (start: String, end: String) {
+//        (getDateString(date: startDate), getDateString(date: endDate))
+//    }
     
-    func getDateRangeFromDates(startDate: Date, endDate: Date) -> (start: String, end: String) {
-        (getDateString(date: startDate), getDateString(date: endDate))
+    func getDateRangeFromDates(startDate: Date?, endDate: Date?) -> (start: String, end: String) {
+        if let startDate = startDate, let endDate = endDate {
+            return (getDateString(date: startDate), getDateString(date: endDate))
+        } else if let startDate = startDate {
+            return (getDateString(date: startDate.trueMidnight), getDateString(date: startDate.trueEndOfDay))
+        } else if let endDate = endDate {
+            return (getDateString(date: endDate.trueMidnight), getDateString(date: endDate.trueEndOfDay))
+        } else {
+            return (getDateString(date: Date.now.trueMidnight), getDateString(date: Date.now.trueEndOfDay))
+
+        }
+        
     }
     
     private func getDateString(date: Date, byAddingDays days: Int) -> String {
