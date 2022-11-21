@@ -15,7 +15,6 @@ class ApiInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tabBarController?.tabBar.isHidden = true
         setupLabels()
         setupViews()

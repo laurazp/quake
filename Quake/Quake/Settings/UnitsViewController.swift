@@ -25,8 +25,8 @@ class UnitsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         setupViews()
-        
         segmentedControl.selectedSegmentIndex = getSelectedSegmentIndex()
     }
     

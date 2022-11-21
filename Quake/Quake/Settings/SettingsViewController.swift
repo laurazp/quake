@@ -22,11 +22,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
-        
         configure()
     }
     
-    //Probandoooo
     override func viewDidAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
     }
