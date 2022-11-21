@@ -15,7 +15,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     let viewModel = MapViewModel()
     
-    private let getFormattedTitleMapper = GetSimplifiedTitleFormatter()
     private let getSimplifiedTitleFormatter = GetSimplifiedTitleFormatter()
     private let getTsunamiValueFormatter = GetTsunamiValueFormatter()
     private let getDateFormatter = GetDateFormatter()
@@ -215,10 +214,9 @@ extension MapViewController: HandleMapSearch {
         
             if let selectedAnnotation = view.annotation as? AnnotationInMap {
                 let selectedEarthquakeModel = EarthquakeModel(fullTitle: " ",
-                                                              //simplifiedTitle: selectedAnnotation.title ?? "Unknown",
-                                                              //simplifiedTitle: getSimplifiedTitleFormatter.getSimplifiedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown"),
-                                                              simplifiedTitle: getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown"),
-                                                              place: selectedAnnotation.place ?? "Unknown", formattedCoords: "",
+                                                              simplifiedTitle: getSimplifiedTitleFormatter.getSimplifiedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown"),
+                                                              place: selectedAnnotation.place ?? "Unknown",
+                                                              formattedCoords: "",
                                                               originalCoords: [Float(selectedAnnotation.coordinate.longitude), Float(selectedAnnotation.coordinate.latitude)],
                                                               depth: formatDepth(initialDepth: selectedAnnotation.depth),
                                                               date: getDateFormatter.formatDate(dateToFormat: selectedAnnotation.time!),
@@ -227,7 +225,7 @@ extension MapViewController: HandleMapSearch {
                                                               magnitude: String(selectedAnnotation.mag ?? 0))
                 
                 viewController.viewModel.earthquakeModel = selectedEarthquakeModel
-                let formattedTitle = getFormattedTitleMapper.getSimplifiedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown")
+                let formattedTitle = getSimplifiedTitleFormatter.getSimplifiedTitle(titleWithoutFormat: selectedEarthquakeModel.simplifiedTitle , place: selectedEarthquakeModel.place)
                 viewController.title = formattedTitle
                 navigationController?.pushViewController(viewController, animated: false)
             }
