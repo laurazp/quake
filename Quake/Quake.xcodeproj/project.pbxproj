@@ -47,8 +47,8 @@
 		22B47EB628AF0196008C27E3 /* FeatureToEarthquakeModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EB528AF0196008C27E3 /* FeatureToEarthquakeModelMapper.swift */; };
 		22B47EBA28B8D9C4008C27E3 /* FAQStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */; };
 		22B47EC228BFC6A2008C27E3 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EC128BFC6A2008C27E3 /* SwitchTableViewCell.swift */; };
-		22B47EC428C0D060008C27E3 /* ApiInfoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */; };
-		22B47EC628C0DCBA008C27E3 /* ApiInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EC528C0DCBA008C27E3 /* ApiInfoViewController.swift */; };
+		22B47EC428C0D060008C27E3 /* AppInfoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B47EC328C0D060008C27E3 /* AppInfoStoryboard.storyboard */; };
+		22B47EC628C0DCBA008C27E3 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B47EC528C0DCBA008C27E3 /* AppInfoViewController.swift */; };
 		22EEA01228F2C5D700F7D86F /* UnitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEA01128F2C5D700F7D86F /* UnitsViewController.swift */; };
 		22EEA01428F2C5F600F7D86F /* UnitsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EEA01328F2C5F600F7D86F /* UnitsStoryboard.storyboard */; };
 		22EEA0192912A3B500F7D86F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEA0182912A3B500F7D86F /* UserDefaults.swift */; };
@@ -134,8 +134,8 @@
 		22B47EB528AF0196008C27E3 /* FeatureToEarthquakeModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureToEarthquakeModelMapper.swift; sourceTree = "<group>"; };
 		22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQStoryboard.storyboard; sourceTree = "<group>"; };
 		22B47EC128BFC6A2008C27E3 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
-		22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApiInfoStoryboard.storyboard; sourceTree = "<group>"; };
-		22B47EC528C0DCBA008C27E3 /* ApiInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInfoViewController.swift; sourceTree = "<group>"; };
+		22B47EC328C0D060008C27E3 /* AppInfoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfoStoryboard.storyboard; sourceTree = "<group>"; };
+		22B47EC528C0DCBA008C27E3 /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		22EEA01128F2C5D700F7D86F /* UnitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsViewController.swift; sourceTree = "<group>"; };
 		22EEA01328F2C5F600F7D86F /* UnitsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnitsStoryboard.storyboard; sourceTree = "<group>"; };
 		22EEA0182912A3B500F7D86F /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -194,8 +194,8 @@
 				22EEA01328F2C5F600F7D86F /* UnitsStoryboard.storyboard */,
 				22B47EB028AAFD50008C27E3 /* FAQViewController.swift */,
 				22B47EB928B8D9C4008C27E3 /* FAQStoryboard.storyboard */,
-				22B47EC328C0D060008C27E3 /* ApiInfoStoryboard.storyboard */,
-				22B47EC528C0DCBA008C27E3 /* ApiInfoViewController.swift */,
+				22B47EC328C0D060008C27E3 /* AppInfoStoryboard.storyboard */,
+				22B47EC528C0DCBA008C27E3 /* AppInfoViewController.swift */,
 				229EA82528D5EDBC00A03263 /* UITapGesture.swift */,
 			);
 			path = Settings;
@@ -618,7 +618,7 @@
 				223A2F1C284FFAA900034143 /* EarthquakesStoryboard.storyboard in Resources */,
 				22B47EBA28B8D9C4008C27E3 /* FAQStoryboard.storyboard in Resources */,
 				22990A1C284BD40900C1104D /* LaunchScreen.storyboard in Resources */,
-				22B47EC428C0D060008C27E3 /* ApiInfoStoryboard.storyboard in Resources */,
+				22B47EC428C0D060008C27E3 /* AppInfoStoryboard.storyboard in Resources */,
 				22990A19284BD40900C1104D /* Assets.xcassets in Resources */,
 				22EEA01428F2C5F600F7D86F /* UnitsStoryboard.storyboard in Resources */,
 				22B47EAE28AAC564008C27E3 /* Splash.storyboard in Resources */,
@@ -714,7 +714,7 @@
 				22EEA0192912A3B500F7D86F /* UserDefaults.swift in Sources */,
 				B615E8662858F18100B77A5F /* EarthquakeDetailViewController.swift in Sources */,
 				22F6849F289C110500412B34 /* MapViewModel.swift in Sources */,
-				22B47EC628C0DCBA008C27E3 /* ApiInfoViewController.swift in Sources */,
+				22B47EC628C0DCBA008C27E3 /* AppInfoViewController.swift in Sources */,
 				227D909E287EE7C500A0DED5 /* LocationSearchTable.swift in Sources */,
 				227D906D286B325900A0DED5 /* Response.swift in Sources */,
 				22990A10284BD40500C1104D /* AppDelegate.swift in Sources */,

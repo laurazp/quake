@@ -1,6 +1,7 @@
 
 import UIKit
 import MapKit
+import CTFeedbackSwift
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
@@ -50,11 +51,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ]))
         
         models.append(SettingsSection(title: "General", options: [
-            .staticCell(model: SettingsOption(title: "API info", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
-                let storyboard = UIStoryboard(name: "ApiInfoStoryboard", bundle: nil)
-                if let viewController = storyboard.instantiateViewController(withIdentifier: "ApiInfoStoryboard") as? ApiInfoViewController {
+            .staticCell(model: SettingsOption(title: "App Info", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
+                let storyboard = UIStoryboard(name: "AppInfoStoryboard", bundle: nil)
+                if let viewController = storyboard.instantiateViewController(withIdentifier: "AppInfoStoryboard") as? AppInfoViewController {
                     
-                    viewController.title = "API Info"
+                    viewController.title = "App Info"
                     let backItem = UIBarButtonItem()
                     backItem.title = "Back"
                     self.navigationItem.backBarButtonItem = backItem
@@ -73,6 +74,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
+            }),
+            .staticCell(model: SettingsOption(title: "Feedback", icon: UIImage(systemName: "wave.3.backward.circle"), iconBackgroundColor: .systemGreen) {
+                let configuration = FeedbackConfiguration(toRecipients: ["laurikazp@gmail.com"], usesHTML: true)
+                let controller = FeedbackViewController(configuration: configuration)
+                self.navigationController?.pushViewController(controller, animated: true)
             })
         ]))
     }

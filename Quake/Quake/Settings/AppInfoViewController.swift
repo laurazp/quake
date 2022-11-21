@@ -1,17 +1,16 @@
 
 import UIKit
 
-class ApiInfoViewController: UIViewController {
+class AppInfoViewController: UIViewController {
 
     @IBOutlet weak var apiCard: UIView!
     @IBOutlet weak var apiInfoTitleLabel: UILabel!
     @IBOutlet weak var apiInfoContentLabel: UILabel!
     @IBOutlet weak var creditsTitleLabel: UILabel!
     @IBOutlet weak var creditsContentLabel: UILabel!
-    @IBOutlet weak var developerTitleLabel: UILabel!
-    @IBOutlet weak var developerContentLabel: UILabel!    
     @IBOutlet weak var credits2ContentLabel: UILabel!
     @IBOutlet weak var credits3ContentLabel: UILabel!
+    @IBOutlet weak var credits4ContentLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class ApiInfoViewController: UIViewController {
         var apiInfoFontArray = [UIFont]()
         var apiInfoColorArray = [UIColor]()
         
-        apiInfoTextArray.append("Data source credit belongs to")
+        apiInfoTextArray.append("Data source credits belongs to")
         apiInfoTextArray.append("USGS (United States Geological Survey)\n")
         
         apiInfoFontArray.append(.systemFont(ofSize: 17))
@@ -85,7 +84,7 @@ class ApiInfoViewController: UIViewController {
         var credits3FontArray = [UIFont]()
         var credits3ColorArray = [UIColor]()
         
-        credits3TextArray.append("API info links code from")
+        credits3TextArray.append("DetectLinksUILabel code from")
         credits3TextArray.append("leoiphonedev - Github\n")
         
         credits3FontArray.append(.systemFont(ofSize: 17))
@@ -96,23 +95,21 @@ class ApiInfoViewController: UIViewController {
 
         credits3ContentLabel.attributedText = getAttributedString(arrayText: credits3TextArray, arrayColors: credits3ColorArray, arrayFonts: credits3FontArray)
         
-        //Support
-        developerTitleLabel.text = " \nSupport"
+        //Credits4
+        var credits4TextArray = [String]()
+        var credits4FontArray = [UIFont]()
+        var credits4ColorArray = [UIColor]()
         
-        var developerTextArray = [String]()
-        var developerFontArray = [UIFont]()
-        var developerColorArray = [UIColor]()
+        credits4TextArray.append("CTFeedbackSwift Package code from")
+        credits4TextArray.append("rizumita - Github\n")
         
-        developerTextArray.append("If you have any questions, please feel free to contact us at")
-        developerTextArray.append("quake@gmail.com")
+        credits4FontArray.append(.systemFont(ofSize: 17))
+        credits4FontArray.append(.systemFont(ofSize: 17, weight: .semibold))
         
-        developerFontArray.append(.systemFont(ofSize: 17))
-        developerFontArray.append(.systemFont(ofSize: 17, weight: .semibold))
-        
-        developerColorArray.append(UIColor.label)
-        developerColorArray.append(.systemBlue)
+        credits4ColorArray.append(UIColor.label)
+        credits4ColorArray.append(.systemBlue)
 
-        developerContentLabel.attributedText = getAttributedString(arrayText: developerTextArray, arrayColors: developerColorArray, arrayFonts: developerFontArray)
+        credits4ContentLabel.attributedText = getAttributedString(arrayText: credits4TextArray, arrayColors: credits4ColorArray, arrayFonts: credits4FontArray)
         
         // Configure apiInfoContentLabel for TapGesture
         self.apiInfoContentLabel.isUserInteractionEnabled = true
@@ -138,11 +135,11 @@ class ApiInfoViewController: UIViewController {
         credits3Tapgesture.numberOfTapsRequired = 1
         self.credits3ContentLabel.addGestureRecognizer(credits3Tapgesture)
         
-        // Configure developerContentLabel for TapGesture
-        self.developerContentLabel.isUserInteractionEnabled = true
-        let developerTapgesture = UITapGestureRecognizer(target: self, action: #selector(tappedOnLabel(_ :)))
-        developerTapgesture.numberOfTapsRequired = 1
-        self.developerContentLabel.addGestureRecognizer(developerTapgesture)
+        // Configure credits4ContentLabel for TapGesture
+        self.credits4ContentLabel.isUserInteractionEnabled = true
+        let credits4Tapgesture = UITapGestureRecognizer(target: self, action: #selector(tappedOnLabel(_ :)))
+        credits4Tapgesture.numberOfTapsRequired = 1
+        self.credits4ContentLabel.addGestureRecognizer(credits4Tapgesture)
     }
     
     func getAttributedString(arrayText:[String]?, arrayColors:[UIColor]?, arrayFonts:[UIFont]?) -> NSMutableAttributedString {
@@ -174,11 +171,10 @@ class ApiInfoViewController: UIViewController {
         guard let credits3Text = self.credits3ContentLabel.text else { return }
         let credits3LinkRange = (credits3Text as NSString).range(of: "leoiphonedev - Github")
         
-        guard let developerText = self.developerContentLabel.text else { return }
-        let developerLinkRange = (developerText as NSString).range(of: "quake@gmail.com")
+        guard let credits4Text = self.credits4ContentLabel.text else { return }
+        let credits4LinkRange = (credits4Text as NSString).range(of: "rizumita - Github")
         
         if gesture.didTapAttributedTextInLabel(label: self.apiInfoContentLabel, inRange: apiLinkRange) {
-            //Open API web page
             guard let url = URL(string: "https://earthquake.usgs.gov/fdsnws/event/1/") else {
               return
             }
@@ -221,32 +217,16 @@ class ApiInfoViewController: UIViewController {
                 UIApplication.shared.openURL(url)
             }
             
-        } else if gesture.didTapAttributedTextInLabel(label: self.developerContentLabel, inRange: developerLinkRange) {
-            // Show alert before sending an e-mail
-            let alertcontroller = UIAlertController(title: "Alert", message: "Are you sure you want to open your e-mail app?", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: .default) { (alert) in
-                //Link to mail app
-                let email = "quake@gmail.com"
-                guard let url = URL(string: "mailto:\(email)") else {
-                  return
-                }
-                
-                if let url = URL(string: "mailto:\(email)") {
-                    if(UIApplication.shared.canOpenURL(url)){
-                        print("ok")
-                    } else {
-                        print("not ok")
-                    }
-                }
-
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.openURL(url)
-                }
+        } else if gesture.didTapAttributedTextInLabel(label: self.credits4ContentLabel, inRange: credits4LinkRange) {
+            guard let url = URL(string: "https://github.com/rizumita/CTFeedbackSwift") else {
+              return
             }
-            alertcontroller.addAction(alertAction)
-            self.present(alertcontroller, animated: true)
+
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
         }
     }
 }

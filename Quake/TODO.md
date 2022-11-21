@@ -2,12 +2,8 @@
 # TODO
 
 ### Titulito del minimapa accediendo desde Map sale con place en vez de simplified
-### Ocultar la TabBar para que no se muestre la TabBar al navegar en Settings
-### Revisar Api info y cambiarle el nombre
-### Añadir elemento Feedback a Settings y borrar Support con correo
-### Cambiar color fondo Settings
-### Correo gmail de quake no está creado (cambiar en API info)
-### Revisar por qué carga diferentes earthquakes cualdo vuelves de push
+### En Feedback no se puede poner TabBar hidden
+### Cambiar color fondo Settings para que no sea igual a la TabBar
 
 
 
