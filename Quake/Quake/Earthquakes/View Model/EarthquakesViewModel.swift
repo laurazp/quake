@@ -20,6 +20,7 @@ final class EarthquakesViewModel {
     
     func viewDidLoad() {
         isPaginating = false
+        pageNumber = 0
         getEarthquakes()
     }
     
@@ -50,44 +51,27 @@ final class EarthquakesViewModel {
         if isFiltering {
             filterEarthquakesByDate(selectedDates: selectedDates)
         } else {
+            pageNumber += 1
             getEarthquakes()
-
         }
     }
     
     private func getEarthquakes() {
-        guard let isRefreshing = viewDelegate?.refreshControl.isRefreshing else {
-            return
-        }
-        if isRefreshing {
-            getEarthquakesUseCase.getLatestEarthquakes(offset: 1, pageSize: 20) { features in
-                let earthquakes = features.map { feature in
-                    return self.featureToEarthquakeModelMapper.map(from: feature)
-                }
+        //página 0 -> 1   página 1 -> 21  página 2 -> 41
+        let offset = pageNumber * EarthquakesApiDataSource.Constants.pageSize + 1
+        getEarthquakesUseCase.getLatestEarthquakes(offset: offset, pageSize: 20) { features in
+            let earthquakes = features.map { feature in
+                return self.featureToEarthquakeModelMapper.map(from: feature)
+            }
+            
+            if self.isPaginating {
+                self.earthquakesData.append(contentsOf: earthquakes)
+            } else {
                 self.earthquakesData = earthquakes
-                self.hasMoreData = !(earthquakes.count < EarthquakesApiDataSource.Constants.pageSize)
-                self.pageNumber += 1
-                self.viewDelegate?.updateView()
-                self.viewDelegate?.refreshControl.endRefreshing()
             }
-        } else {
-            //página 0 -> 1   página 1 -> 21  página 2 -> 41
-            let offset = pageNumber * EarthquakesApiDataSource.Constants.pageSize + 1
-            getEarthquakesUseCase.getLatestEarthquakes(offset: offset, pageSize: 20) { features in
-                let earthquakes = features.map { feature in
-                    return self.featureToEarthquakeModelMapper.map(from: feature)
-                }
-                
-                if self.isPaginating {
-                    self.earthquakesData.append(contentsOf: earthquakes)
-                } else {
-                    self.earthquakesData = earthquakes
-                }
-                
-                self.hasMoreData = !(earthquakes.count < EarthquakesApiDataSource.Constants.pageSize)
-                self.pageNumber += 1
-                self.viewDelegate?.updateView()
-            }
+            
+            self.hasMoreData = !(earthquakes.count < EarthquakesApiDataSource.Constants.pageSize)
+            self.viewDelegate?.updateView()
         }
     }
     

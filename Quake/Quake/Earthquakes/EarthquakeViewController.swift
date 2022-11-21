@@ -40,15 +40,8 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         super.viewDidLoad()
         title = "Quake"
         setupTable()
-        viewModel.viewDidLoad()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        //call api for data
-        
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
