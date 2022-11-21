@@ -54,6 +54,7 @@
 		22EEA0192912A3B500F7D86F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEA0182912A3B500F7D86F /* UserDefaults.swift */; };
 		22EEA01B2912ABAB00F7D86F /* UnitsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEA01A2912ABAB00F7D86F /* UnitsUseCase.swift */; };
 		22EEA01E2913F7CC00F7D86F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEA01D2913F7CC00F7D86F /* SettingsViewModel.swift */; };
+		22EEA023292BE65000F7D86F /* CTFeedbackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22EEA022292BE65000F7D86F /* CTFeedbackSwift */; };
 		22F68496289B335B00412B34 /* GetMagnitudeColorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68495289B335B00412B34 /* GetMagnitudeColorUseCase.swift */; };
 		22F68499289BECD800412B34 /* EarthquakeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F68498289BECD800412B34 /* EarthquakeDetailViewModel.swift */; };
 		22F6849F289C110500412B34 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F6849E289C110500412B34 /* MapViewModel.swift */; };
@@ -160,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22EEA023292BE65000F7D86F /* CTFeedbackSwift in Frameworks */,
 				A778F9D5189E4E6D133735A2 /* Pods_Quake.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +521,9 @@
 			dependencies = (
 			);
 			name = Quake;
+			packageProductDependencies = (
+				22EEA022292BE65000F7D86F /* CTFeedbackSwift */,
+			);
 			productName = Quake;
 			productReference = 22990A0C284BD40500C1104D /* Quake.app */;
 			productType = "com.apple.product-type.application";
@@ -591,6 +596,9 @@
 				Base,
 			);
 			mainGroup = 22990A03284BD40500C1104D;
+			packageReferences = (
+				22EEA021292BE65000F7D86F /* XCRemoteSwiftPackageReference "CTFeedbackSwift" */,
+			);
 			productRefGroup = 22990A0D284BD40500C1104D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1074,6 +1082,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22EEA021292BE65000F7D86F /* XCRemoteSwiftPackageReference "CTFeedbackSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rizumita/CTFeedbackSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22EEA022292BE65000F7D86F /* CTFeedbackSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22EEA021292BE65000F7D86F /* XCRemoteSwiftPackageReference "CTFeedbackSwift" */;
+			productName = CTFeedbackSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22990A04284BD40500C1104D /* Project object */;
 }
