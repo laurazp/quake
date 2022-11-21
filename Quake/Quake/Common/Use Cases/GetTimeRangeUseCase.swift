@@ -8,14 +8,6 @@ struct GetTimeRangeUseCase {
         (getDateString(date: Date.now, byAddingDays: -days), getDateString(date: Date.now))
     }
     
-//    func getDateRange(date: Date)  -> (start: String, end: String) {
-//        (getDateString(date: date.trueMidnight), getDateString(date: date.trueEndOfDay))
-//    }
-//
-//    func getDateRangeFromDates(startDate: Date, endDate: Date) -> (start: String, end: String) {
-//        (getDateString(date: startDate), getDateString(date: endDate))
-//    }
-    
     func getDateRangeFromDates(startDate: Date?, endDate: Date?) -> (start: String, end: String) {
         if let startDate = startDate, let endDate = endDate {
             return (getDateString(date: startDate), getDateString(date: endDate))

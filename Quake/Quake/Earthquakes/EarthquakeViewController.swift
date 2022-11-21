@@ -72,12 +72,9 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         }
         // Configure Refresh Control
         refreshControl.addTarget(self, action: #selector(refreshEarthquakesData(_:)), for: .valueChanged)
-        refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Earthquakes Data ...")
     }
 
     private func configureSearchBar() {
-        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Select dates to search"
         navigationItem.searchController = searchController
@@ -103,6 +100,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     @objc func cancelButtonTapped() {
         searchController.searchBar.resignFirstResponder()
         searchBarCancelButtonClicked(searchController.searchBar)
+        searchController.isActive = false
       }
     
     @objc private func refreshEarthquakesData(_ sender: Any) {
@@ -157,11 +155,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         cell.coordsLabel.text = "Coords: \(earthquakeModel.formattedCoords)"
         cell.depthLabel.text = "Depth: \(earthquakeModel.depth)"
     }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
+ 
     func textFieldShouldReturn(_ textField: UISearchTextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -186,7 +180,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
     }
 }
 
-extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, UIScrollViewDelegate {
+extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
@@ -244,30 +238,6 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    // Pagination
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath, features: [Feature]) {
-//        let totalPages = features.count/20 //Revisar las comas!
-//        if indexPath.row == features.count - 1 { //
-//            if  pageNo < totalPages {
-//                pageNo += 1
-//                self.current(pageNo: pageNo)
-//            }
-//        }
-//    }
-//
-//    func current(pageNo:Int) {
-//
-//        //offset
-//
-//        API.myCurAds(pageNo: pageNo, completion: { (error: Error?, data:[MyAds]?) in
-//            if data != nil {
-//            self.myAds.append(contentsOf: data!)
-//            self.tableView.reloadWithAnimation()
-//            print("myAds", data!)
-//            }
-//        })
-//    }
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         viewModel.endFiltering()
         updateView()
@@ -287,8 +257,6 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
     func beginFetchMore() {
         fetchingMore = true
         print("Begining batch fetch")
-        
-        //TODO: fetch more data
         viewModel.fetchNextPage()
     }
 }

@@ -11,6 +11,7 @@ class TabBarController: UITabBarController {
         let map = getMapViewController()
         let settings = getSettingsViewController()
         viewControllers = [earthquakes, map, settings]
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func getMapViewController() -> UIViewController {

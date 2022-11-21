@@ -26,6 +26,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         configure()
     }
     
+    //Probandoooo
+    override func viewDidAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     func configure() {
         models.append(SettingsSection(title: "Configuration", options: [
             .staticCell(model: SettingsOption(title: "Units", icon: UIImage(systemName: "option"), iconBackgroundColor: .systemMint) {

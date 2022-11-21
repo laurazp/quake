@@ -1,36 +1,30 @@
 
 # TODO
 
-## Requiere explicación
-### Usar NavigationControllers para que no se muestre la TabBar al navegar
+### Titulito del minimapa accediendo desde Map sale con place en vez de simplified
+### Ocultar la TabBar para que no se muestre la TabBar al navegar en Settings
+### Revisar Api info y cambiarle el nombre
+### Añadir elemento Feedback a Settings y borrar Support con correo
+### Cambiar color fondo Settings
+### Correo gmail de quake no está creado (cambiar en API info)
+### Revisar por qué carga diferentes earthquakes cualdo vuelves de push
+
 
 
 ### Cargar sólo las anotaciones del área??? --> para más adelante
 
 ### Revisar error consola al hacer click en botón expandir (constraints)
-### Poner todos los campos de la API como opcionales???
 ### Revisar advertencia clusters en map
-### Añadir más fechas al buscador??? (de momento hay 60 días)
+### Poner todos los campos de la API como opcionales???
 
-
-### Ordenar por fecha no funciona con los cambios --> revisar Paginación
-
-
-
-### Terminar API info
 ### Añadir idiomas? --> con NSLocalizedStrings
 
 
-### Por qué no sale Unknown en Map??
-### Color gris de DatesPicker se puede cambiar en dark mode??
-### Botón Cancel dentro del DatesPicker no borra del todo (como el Cancel a la dcha de la searchBar)
-### UpdateSearchResults para qué se usa? No tiene código dentro (EarthquakesViewController ln. 136)
-### Revisar Refresher
 
 
+### Pasar funciones de Settings y de Map a los ViewModel ??
+### Revisar advertencias amarillas ??
 
-### Pasar funciones de Settings y de Map a los ViewModel
-### Revisar advertencias amarillas
 
 
 ## Antes de publicar en AppStore

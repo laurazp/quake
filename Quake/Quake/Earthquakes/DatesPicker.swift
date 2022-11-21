@@ -54,7 +54,7 @@ class DatesPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
             label = UILabel()
         }
         
-        label.textColor = .black
+        label.textColor = .label
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15)
         

@@ -16,6 +16,7 @@ class ApiInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tabBarController?.tabBar.isHidden = true
         setupLabels()
         setupViews()
     }
@@ -36,7 +37,7 @@ class ApiInfoViewController: UIViewController {
         var apiInfoColorArray = [UIColor]()
         
         apiInfoTextArray.append("Data source credit belongs to")
-        apiInfoTextArray.append("USGS (United States Geological Survey)")
+        apiInfoTextArray.append("USGS (United States Geological Survey)\n")
         
         apiInfoFontArray.append(.systemFont(ofSize: 17))
         apiInfoFontArray.append(.systemFont(ofSize: 17, weight: .semibold))

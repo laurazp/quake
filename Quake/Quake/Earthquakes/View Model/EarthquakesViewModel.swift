@@ -15,10 +15,7 @@ final class EarthquakesViewModel {
     private var pageNumber = 0
     var hasMoreData = true //Cuando recibamos datos vacíos (arrray), lo ponemos a false y, cuando haya datos, a true. Idealmente, si el num de datos en < que el num de items (20), ya será false
     var isPaginating = true
-    
-    private let datesPicker = DatesPicker()
     var selectedDates = [Date]()
-    
     var filteredText: String?
     
     func viewDidLoad() {
