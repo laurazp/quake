@@ -7,17 +7,14 @@ class EarthquakesApiDataSource {
     enum Constants {
         static let pageSize = 20
     }
-        
+    
     func getData(startTime: String, endTime: String, offset: Int, pageSize: Int, completion: @escaping ([Feature])-> ()) {
         
         let actualOffset = offset
-        
-        //let urlString = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)"
-        
         let selectedPageSize = getPageSize(pageSize: pageSize)
         
-       let urlString = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)&limit=\(selectedPageSize)&offset=\(actualOffset)"
-       
+        let urlString = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)&limit=\(selectedPageSize)&offset=\(actualOffset)"
+        
         guard let url = URL(string: urlString) else {
             completion([])
             return
@@ -38,7 +35,6 @@ class EarthquakesApiDataSource {
             var result: Response?
             do {
                 result = try JSONDecoder().decode(Response.self, from: data)
-                // Closure calling
                 DispatchQueue.main.async {
                     GlobalLoader.stopLoading()
                     completion(result!.features)

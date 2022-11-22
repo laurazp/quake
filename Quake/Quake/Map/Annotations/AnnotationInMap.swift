@@ -26,7 +26,7 @@ class AnnotationInMap: NSObject, MKAnnotation {
             return .blue
         }
     }
-
+    
     init(
         title: String?,
         place: String?,
@@ -43,10 +43,10 @@ class AnnotationInMap: NSObject, MKAnnotation {
         self.tsunami = tsunami
         self.coordinate = coordinate
         self.depth = depth
-
+        
         super.init()
     }
-
+    
     var subtitle: String? {
         return "Magnitude: \(mag ?? 0.0)"
     }

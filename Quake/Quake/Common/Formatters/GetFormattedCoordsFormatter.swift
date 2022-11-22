@@ -20,7 +20,7 @@ struct GetFormattedCoordsFormatter {
         } else {
             latitudeString = String((latitude )) + "N"
         }
-         
+        
         return "\(longitudeString), \(latitudeString)"
     }
 }

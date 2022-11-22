@@ -2,12 +2,12 @@
 import UIKit
 
 class UnitsViewController: UIViewController {
-
+    
     @IBOutlet weak var unitsCard: UIView!
     private let viewModel = SettingsViewModel()
     
     let segmentedControl: UISegmentedControl = {
-       let segmentedControl = UISegmentedControl(items: ["Kilometers", "Miles"])
+        let segmentedControl = UISegmentedControl(items: ["Kilometers", "Miles"])
         segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
         return segmentedControl
     }()
@@ -46,7 +46,7 @@ class UnitsViewController: UIViewController {
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
         unitsCard.addSubview(stackView)
-
+        
         let margins = view.layoutMarginsGuide
         stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20).isActive = true
         stackView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 30).isActive = true

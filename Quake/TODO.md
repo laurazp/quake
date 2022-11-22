@@ -6,14 +6,12 @@
 ### Mover items de TabBar un poco para abajo ??
 ### Pasar funciones de Settings y de Map a los ViewModel ??
 ### Poner todos los campos de la API como opcionales???
-
-
-### Cargar sólo las anotaciones del área ??
+### Revisar si se cargan sólo las anotaciones del área
+### Revisar advertencias amarillas
 
 
 ### Revisar error consola al hacer click en botón expandir (constraints)
 ### Revisar advertencia clusters en map
-### Revisar advertencias amarillas ??
 
 
 

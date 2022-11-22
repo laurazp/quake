@@ -6,7 +6,7 @@ final class SettingsViewModel {
     weak var viewDelegate: SettingsViewController?
     
     private let unitsUseCase = UnitsUseCase()
-
+    
     func setSelectedUnit(selectedIndex: Int) {
         unitsUseCase.saveSelectedUnit(selectedSegmentIndex: selectedIndex)
     }

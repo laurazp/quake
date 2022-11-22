@@ -13,10 +13,10 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var depthLabel: UILabel!
     
     let viewModel = EarthquakeDetailViewModel()
-
+    
     var getFormattedCoordsFormatter = GetFormattedCoordsFormatter()
     let getTsunamiValueFormatter = GetTsunamiValueFormatter()
-
+    
     @IBOutlet weak var infoCard: UIView!
     @IBOutlet weak var mapCard: UIView!
     
@@ -26,9 +26,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
-        
         viewModel.viewDidLoad()
     }
     
@@ -52,7 +50,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     func updateView(with model: EarthquakeModel) {
         configure(with: model)
     }
-
+    
     func didTapButton() {
         navigationController?.popViewController(animated: true) // Turn back
     }
@@ -83,17 +81,17 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
         annotation.title = earthquakeModel.simplifiedTitle
-
+        
         mapView.addAnnotation(annotation)
     }
     
     private func getLabelText(labelTitle: String, labelContent: String, contentColor: UIColor = .label) -> NSMutableAttributedString {
         let titleAttributes = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17)]
         let titleString = NSMutableAttributedString(string: labelTitle, attributes: titleAttributes)
-
+        
         let contentAttributes = [NSAttributedString.Key.foregroundColor : contentColor]
         let contentString = NSMutableAttributedString(string: labelContent, attributes: contentAttributes)
-
+        
         titleString.append(contentString)
         return titleString
     }

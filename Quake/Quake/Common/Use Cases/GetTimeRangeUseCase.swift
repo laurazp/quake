@@ -3,7 +3,7 @@ import Foundation
 
 struct GetTimeRangeUseCase {
     private let dateFormatterGet = DateFormatter()
-
+    
     func getTimeRange(days: Int) -> (start: String, end: String) {
         (getDateString(date: Date.now, byAddingDays: -days), getDateString(date: Date.now))
     }
@@ -17,9 +17,7 @@ struct GetTimeRangeUseCase {
             return (getDateString(date: endDate.trueMidnight), getDateString(date: endDate.trueEndOfDay))
         } else {
             return (getDateString(date: Date.now.trueMidnight), getDateString(date: Date.now.trueEndOfDay))
-
         }
-        
     }
     
     private func getDateString(date: Date, byAddingDays days: Int) -> String {

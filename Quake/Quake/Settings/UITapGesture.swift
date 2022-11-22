@@ -5,16 +5,13 @@ import UIKit
 extension UITapGestureRecognizer {
     
     func didTapAttributedTextInLabel(label: UILabel, inRange targetRange: NSRange) -> Bool {
-        // Create instances of NSLayoutManager, NSTextContainer and NSTextStorage
         let layoutManager = NSLayoutManager()
         let textContainer = NSTextContainer(size: CGSize.zero)
         let textStorage = NSTextStorage(attributedString: label.attributedText!)
         
-        // Configure layoutManager and textStorage
         layoutManager.addTextContainer(textContainer)
         textStorage.addLayoutManager(layoutManager)
         
-        // Configure textContainer
         textContainer.lineFragmentPadding = 0.0
         textContainer.lineBreakMode = NSLineBreakMode.byWordWrapping
         textContainer.maximumNumberOfLines = label.numberOfLines

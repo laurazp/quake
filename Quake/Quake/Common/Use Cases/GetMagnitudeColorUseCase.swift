@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 
 struct GetMagnitudeColorUseCase {
-
+    
     func getMagnitudeColor(magnitude: Double) -> UIColor {
         var magnitudeLevel: Int
         var magnitudeColor: UIColor

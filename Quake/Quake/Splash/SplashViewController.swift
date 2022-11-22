@@ -4,7 +4,7 @@ import Lottie
 import AVFoundation
 
 class SplashViewController: UIViewController {
-
+    
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -17,7 +17,7 @@ class SplashViewController: UIViewController {
         animationView.animationSpeed = 0.7
         animationView.alpha = 0
         animationView.play()
-                
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
             UIView.animate(withDuration: 0.7, delay: 0) {
                 self.titleLabel.alpha = 0
@@ -48,4 +48,4 @@ class SplashViewController: UIViewController {
         }
     }
 }
-    
+

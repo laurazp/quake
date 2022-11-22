@@ -9,7 +9,7 @@ class GetDateFormatter {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .long
         let formattedDate = dateFormatter.string(from: dateToFormat)
-    
+        
         return formattedDate
     }
     
@@ -28,7 +28,7 @@ class GetDateFormatter {
     }
     
     func simpleFormatDate(dateToFormat: Date) -> String {
-        dateFormatter.dateStyle = .short        
+        dateFormatter.dateStyle = .short
         let formattedDate = dateFormatter.string(from: dateToFormat)
         
         return formattedDate

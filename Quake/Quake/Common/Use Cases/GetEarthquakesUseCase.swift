@@ -17,14 +17,6 @@ struct GetEarthquakesUseCase {
                               completion: completion)
     }
     
-//    func getEarthquakesByDate(_ date: Date, offset: Int, completion: @escaping GetEarthquakesResult) {
-//        let dateRange = getTimeRangeUseCase.getDateRangeFromDates(date: date)
-//        apiDataSource.getData(startTime: dateRange.start,
-//                              endTime: dateRange.end,
-//                              offset: offset,
-//                              completion: completion)
-//    }
-    
     func getEarthquakesBetweenDates(_ startDate: Date, _ endDate: Date?, offset: Int, pageSize: Int, completion: @escaping GetEarthquakesResult) {
         let dateRange = getTimeRangeUseCase.getDateRangeFromDates(startDate: startDate, endDate: endDate)
         apiDataSource.getData(startTime: dateRange.start,

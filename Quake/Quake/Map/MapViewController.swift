@@ -21,7 +21,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     
     @IBOutlet weak var searchBarView: UIView!
-    
+
     var resultSearchController: UISearchController? = nil
     var matchingItems: [MKMapItem] = []
     var selectedPin:MKPlacemark? = nil
@@ -34,7 +34,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         mapView.delegate = self
         viewModel.viewDidLoad()
-
+        
         configureSearchBarAndTable()
         addMapTrackingButton()
     }
@@ -53,7 +53,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         resultSearchController?.searchResultsUpdater = locationSearchTable
         
         setupSearchBar()
-        
         navigationItem.searchController = resultSearchController
         if let searchBar = resultSearchController?.searchBar {
             searchBarView.addSubview(searchBar)
@@ -74,7 +73,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     private func layoutUI() {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mapView)
-            
+        
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -91,12 +90,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(MapViewController.centerMapOnUserButtonClicked), for:.touchUpInside)
         self.mapView.addSubview(button)
-       }
-
+    }
+    
     @objc func centerMapOnUserButtonClicked() {
         self.mapView.setUserTrackingMode( MKUserTrackingMode.follow, animated: true)
         centerViewOnUser()
-       }
+    }
     
     private func checkLocationServices() {
         guard CLLocationManager.locationServicesEnabled() else {
@@ -108,10 +107,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
         checkAuthorizationForLocation()
     }
-
+    
     private func checkAuthorizationForLocation() {
         switch locationManager.authorizationStatus {
         case .authorizedWhenInUse, .authorizedAlways:
@@ -135,7 +133,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             break
         }
     }
-
+    
     private func centerViewOnUser() {
         guard let location = locationManager.location?.coordinate else { return }
         
@@ -166,8 +164,8 @@ extension MapViewController: HandleMapSearch {
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-            print("error:: (error)")
-        }
+        print("error:: (error)")
+    }
     
     func mapView(
         _ mapView: MKMapView,
@@ -186,7 +184,7 @@ extension MapViewController: HandleMapSearch {
             view = dequeuedView
         } else if let cluster = annotation as? MKClusterAnnotation {
             let clusterView = mapView.dequeueReusableAnnotationView(withIdentifier: "clusterView")
-                ?? MKAnnotationView(annotation: annotation, reuseIdentifier: "clusterView")
+            ?? MKAnnotationView(annotation: annotation, reuseIdentifier: "clusterView")
             clusterView.annotation = cluster
             clusterView.image = UIImage(named: "cluster")
             return clusterView
@@ -211,7 +209,7 @@ extension MapViewController: HandleMapSearch {
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
             viewController.viewModel.viewDelegate = viewController
-        
+            
             if let selectedAnnotation = view.annotation as? AnnotationInMap {
                 let selectedEarthquakeModel = EarthquakeModel(fullTitle: " ",
                                                               simplifiedTitle: getSimplifiedTitleFormatter.getSimplifiedTitle(titleWithoutFormat: selectedAnnotation.title ?? "Unknown", place: selectedAnnotation.place ?? "Unknown"),

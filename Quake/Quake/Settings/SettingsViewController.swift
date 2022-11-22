@@ -35,12 +35,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             .staticCell(model: SettingsOption(title: "Units", icon: UIImage(systemName: "option"), iconBackgroundColor: .systemMint) {
                 let storyboard = UIStoryboard(name: "UnitsStoryboard", bundle: nil)
                 if let viewController = storyboard.instantiateViewController(withIdentifier: "UnitsStoryboard") as? UnitsViewController {
-
+                    
                     viewController.title = "Units"
                     let backItem = UIBarButtonItem()
                     backItem.title = "Back"
                     self.navigationItem.backBarButtonItem = backItem
-
+                    
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }),
@@ -97,10 +97,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let alert = UIAlertController(title: "Location Services enabled", message: "Location Services enabled for Quake.", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Accept", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        
         checkAuthorizationForLocation()
     }
-
+    
     private func checkAuthorizationForLocation() {
         switch locationManager.authorizationStatus {
         case .authorizedWhenInUse, .authorizedAlways:

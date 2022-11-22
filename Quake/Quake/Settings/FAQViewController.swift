@@ -12,7 +12,6 @@ class FAQViewController: UIViewController {
     @IBOutlet weak var thirdQuestionLabel: UILabel!
     @IBOutlet weak var thirdAnswerLabel: UILabel!
     
-    //TODO: Añadir info sobre magnitudes negativas, profundidad de los terremotos... AQUÍ????!!!
     private let firstQuestion = "Why there are earthquakes with negative magnitudes? \n"
     private let firstAnswer = "A negative magnitude means an earthquake that is not felt by humans because it's smaller than those originally chosen for zero magnitude in the Richter scale. That's possible because modern seismographs can detect smaller seismic waves than before. \n\n"
     private let secondQuestion = "What's the depth of an earthquake? \n"

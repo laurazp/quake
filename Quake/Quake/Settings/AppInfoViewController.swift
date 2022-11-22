@@ -2,7 +2,7 @@
 import UIKit
 
 class AppInfoViewController: UIViewController {
-
+    
     @IBOutlet weak var apiCard: UIView!
     @IBOutlet weak var apiInfoTitleLabel: UILabel!
     @IBOutlet weak var apiInfoContentLabel: UILabel!
@@ -42,7 +42,7 @@ class AppInfoViewController: UIViewController {
         
         apiInfoColorArray.append(UIColor.label)
         apiInfoColorArray.append(.systemBlue)
-
+        
         apiInfoContentLabel.attributedText = getAttributedString(arrayText: apiInfoTextArray, arrayColors: apiInfoColorArray, arrayFonts: apiInfoFontArray)
         
         //Credits
@@ -60,7 +60,7 @@ class AppInfoViewController: UIViewController {
         
         creditsColorArray.append(UIColor.label)
         creditsColorArray.append(.systemBlue)
-
+        
         creditsContentLabel.attributedText = getAttributedString(arrayText: creditsTextArray, arrayColors: creditsColorArray, arrayFonts: creditsFontArray)
         
         //Credits2
@@ -76,7 +76,7 @@ class AppInfoViewController: UIViewController {
         
         credits2ColorArray.append(UIColor.label)
         credits2ColorArray.append(.systemBlue)
-
+        
         credits2ContentLabel.attributedText = getAttributedString(arrayText: credits2TextArray, arrayColors: credits2ColorArray, arrayFonts: credits2FontArray)
         
         //Credits3
@@ -92,7 +92,7 @@ class AppInfoViewController: UIViewController {
         
         credits3ColorArray.append(UIColor.label)
         credits3ColorArray.append(.systemBlue)
-
+        
         credits3ContentLabel.attributedText = getAttributedString(arrayText: credits3TextArray, arrayColors: credits3ColorArray, arrayFonts: credits3FontArray)
         
         //Credits4
@@ -108,7 +108,7 @@ class AppInfoViewController: UIViewController {
         
         credits4ColorArray.append(UIColor.label)
         credits4ColorArray.append(.systemBlue)
-
+        
         credits4ContentLabel.attributedText = getAttributedString(arrayText: credits4TextArray, arrayColors: credits4ColorArray, arrayFonts: credits4FontArray)
         
         // Configure apiInfoContentLabel for TapGesture
@@ -176,9 +176,9 @@ class AppInfoViewController: UIViewController {
         
         if gesture.didTapAttributedTextInLabel(label: self.apiInfoContentLabel, inRange: apiLinkRange) {
             guard let url = URL(string: "https://earthquake.usgs.gov/fdsnws/event/1/") else {
-              return
+                return
             }
-
+            
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -186,9 +186,9 @@ class AppInfoViewController: UIViewController {
             }
         } else if gesture.didTapAttributedTextInLabel(label: self.creditsContentLabel, inRange: creditsLinkRange) {
             guard let url = URL(string: "https://www.flaticon.com/free-icons/seismic") else {
-              return
+                return
             }
-
+            
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -197,9 +197,9 @@ class AppInfoViewController: UIViewController {
             
         } else if gesture.didTapAttributedTextInLabel(label: self.credits2ContentLabel, inRange: credits2LinkRange) {
             guard let url = URL(string: "https://www.flaticon.com/free-icons/earthquake") else {
-              return
+                return
             }
-
+            
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -208,9 +208,9 @@ class AppInfoViewController: UIViewController {
             
         } else if gesture.didTapAttributedTextInLabel(label: self.credits3ContentLabel, inRange: credits3LinkRange) {
             guard let url = URL(string: "https://github.com/leoiphonedev/DetectLinksUILabel") else {
-              return
+                return
             }
-
+            
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -219,9 +219,9 @@ class AppInfoViewController: UIViewController {
             
         } else if gesture.didTapAttributedTextInLabel(label: self.credits4ContentLabel, inRange: credits4LinkRange) {
             guard let url = URL(string: "https://github.com/rizumita/CTFeedbackSwift") else {
-              return
+                return
             }
-
+            
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {

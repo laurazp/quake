@@ -2,11 +2,11 @@
 import UIKit
 
 class SettingTableViewCell: UITableViewCell {
-
+    
     static let identifier = "SettingTableViewCell"
     
     private let iconContainer: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.clipsToBounds = true
         view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
@@ -14,7 +14,7 @@ class SettingTableViewCell: UITableViewCell {
     }()
     
     private let iconImageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
         return imageView

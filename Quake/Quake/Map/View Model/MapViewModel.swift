@@ -3,7 +3,6 @@ import Foundation
 import UIKit
 import MapKit
 
-
 final class MapViewModel {
     weak var viewDelegate: MapViewController?
     
@@ -29,14 +28,14 @@ final class MapViewModel {
         getEarthquakesUseCase.getLatestEarthquakes(offset: 1, pageSize: 10000) { features in
             let annotations: [AnnotationInMap] = features.map { feature in
                 AnnotationInMap(
-                                title: self.getSimplifiedTitleFormatter.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown"),
-                                place: feature.properties.place ?? "Unknown",
-                                time: self.getDateFormatter.formatIntToDate(dateToFormat: feature.properties.time ?? 0),
-                                mag: feature.properties.mag,
-                                tsunami: feature.properties.tsunami,
-                                coordinate: CLLocationCoordinate2D(latitude:  CLLocationDegrees(feature.geometry.coordinates[1]),
-                                                                   longitude: CLLocationDegrees(feature.geometry.coordinates[0])),
-                                depth: feature.geometry.coordinates[2]
+                    title: self.getSimplifiedTitleFormatter.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown"),
+                    place: feature.properties.place ?? "Unknown",
+                    time: self.getDateFormatter.formatIntToDate(dateToFormat: feature.properties.time ?? 0),
+                    mag: feature.properties.mag,
+                    tsunami: feature.properties.tsunami,
+                    coordinate: CLLocationCoordinate2D(latitude:  CLLocationDegrees(feature.geometry.coordinates[1]),
+                                                       longitude: CLLocationDegrees(feature.geometry.coordinates[0])),
+                    depth: feature.geometry.coordinates[2]
                 )
             }
             self.viewDelegate?.updateView(annotationsInMap: annotations)

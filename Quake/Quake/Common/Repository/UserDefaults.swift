@@ -2,7 +2,7 @@
 import Foundation
 
 extension UserDefaults {
-        
+    
     func saveUnits(unit: String) {
         UserDefaults.standard.set(unit, forKey: "Units")
     }
