@@ -1,7 +1,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
     @IBInspectable var initialIndex: Int = 0
     
     override func viewDidLoad() {
@@ -12,6 +12,21 @@ class TabBarController: UITabBarController {
         let settings = getSettingsViewController()
         viewControllers = [earthquakes, map, settings]
         navigationController?.navigationBar.isHidden = true
+        delegate = self
+        setupTabBar()
+    }
+    
+    func setupTabBar() {
+        tabBar.layer.shadowColor = UIColor.lightGray.cgColor
+        tabBar.layer.shadowOpacity = 0.5
+        tabBar.layer.shadowOffset = CGSize.zero
+        tabBar.layer.shadowRadius = 5
+        self.tabBar.layer.borderColor = UIColor.clear.cgColor
+        self.tabBar.layer.borderWidth = 0
+        self.tabBar.clipsToBounds = false
+        self.tabBar.backgroundColor = UIColor.white
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
     }
     
     private func getMapViewController() -> UIViewController {
@@ -21,7 +36,7 @@ class TabBarController: UITabBarController {
         }
         viewController.title = "Map"
         viewController.viewModel.viewDelegate = viewController
-        let navigationController = UINavigationController(rootViewController: viewController) // TODO: Explicar navigation controller
+        let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.tabBarItem.image = UIImage(systemName: "map")
         return navigationController
     }
@@ -33,8 +48,8 @@ class TabBarController: UITabBarController {
         }
         viewController.title = "Quake"
         viewController.viewModel.viewDelegate = viewController
-        let navigationController = UINavigationController(rootViewController: viewController) // TODO: Explicar navigation controller
-        navigationController.tabBarItem.image = UIImage(systemName: "house")
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.tabBarItem.image = UIImage(systemName: "house")?.withAlignmentRectInsets(UIEdgeInsets(top: 8.5, left: 0, bottom: -8.5, right: 0))
         return navigationController
     }
     
@@ -42,7 +57,7 @@ class TabBarController: UITabBarController {
         let storyboard = UIStoryboard(name: "SettingsStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
         viewController.title = "Settings"
-        let navigationController = UINavigationController(rootViewController: viewController) // TODO: Explicar navigation controller
+        let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.tabBarItem.image = UIImage(systemName: "wrench.and.screwdriver")
         return navigationController
     }
