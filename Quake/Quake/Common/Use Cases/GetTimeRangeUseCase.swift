@@ -10,7 +10,7 @@ struct GetTimeRangeUseCase {
     
     func getDateRangeFromDates(startDate: Date?, endDate: Date?) -> (start: String, end: String) {
         if let startDate = startDate, let endDate = endDate {
-            return (getDateString(date: startDate), getDateString(date: endDate))
+            return (getDateString(date: startDate.trueMidnight), getDateString(date: endDate.trueEndOfDay))
         } else if let startDate = startDate {
             return (getDateString(date: startDate.trueMidnight), getDateString(date: startDate.trueEndOfDay))
         } else if let endDate = endDate {

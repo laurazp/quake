@@ -3,8 +3,8 @@ import Foundation
 import UIKit
 
 final class EarthquakesViewModel {
+    // MARK: - Properties
     weak var viewDelegate: EarthquakeViewController?
-    
     private let getEarthquakesUseCase = GetEarthquakesUseCase()
     private var earthquakesData = [EarthquakeModel]()
     private var filteredEarthquakes: [EarthquakeModel] = []
@@ -18,6 +18,7 @@ final class EarthquakesViewModel {
     var selectedDates = [Date]()
     var filteredText: String?
     
+    // MARK: - Public methods
     func viewDidLoad() {
         isPaginating = false
         pageNumber = 0
@@ -48,14 +49,19 @@ final class EarthquakesViewModel {
     
     func fetchNextPage() {
         isPaginating = true
+        pageNumber += 1
         if isFiltering {
-            filterEarthquakesByDate(selectedDates: selectedDates)
+            getFilteredEarthquakesByDate(selectedDates: selectedDates)
         } else {
-            pageNumber += 1
             getEarthquakes()
         }
     }
     
+    func getColor(forMagnitude magnitude: Double) -> UIColor {
+        return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
+    }
+    
+    // MARK: - Private methods
     private func getEarthquakes() {
         //página 0 -> 1   página 1 -> 21  página 2 -> 41
         let offset = pageNumber * EarthquakesApiDataSource.Constants.pageSize + 1
@@ -75,13 +81,9 @@ final class EarthquakesViewModel {
         }
     }
     
-    func getColor(forMagnitude magnitude: Double) -> UIColor {
-        return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
-    }
-
-    func filterEarthquakesByDate(selectedDates: [Date]) {
+    private func getFilteredEarthquakesByDate(selectedDates: [Date]) {
         self.selectedDates = selectedDates
-        isPaginating = false
+        isFiltering = true
         print(selectedDates[0])
         print(selectedDates[1])
         
@@ -95,33 +97,37 @@ final class EarthquakesViewModel {
         
         let offset = pageNumber * EarthquakesApiDataSource.Constants.pageSize + 1
         
-        if date1 == date2 {
-            print("iguales!")
-            getEarthquakesUseCase.getEarthquakesBetweenDates(selectedDates[0], nil, offset: offset, pageSize: 20) { features in
-                self.filteredEarthquakes = features.map { feature in
-                    return self.featureToEarthquakeModelMapper.map(from: feature)
-                }
-                self.viewDelegate?.updateView()
+        let leftDate = selectedDates[0]
+        let rightDate = date1 == date2 ? nil : selectedDates[1]
+        
+        getEarthquakesUseCase.getEarthquakesBetweenDates(leftDate, rightDate, offset: offset, pageSize: 20) { features in
+            let mappedEarthquakes = features.map { feature in
+                return self.featureToEarthquakeModelMapper.map(from: feature)
             }
-            isFiltering = true
-            self.viewDelegate?.updateView()
-        } else {
-            getEarthquakesUseCase.getEarthquakesBetweenDates(selectedDates[0], selectedDates[1], offset: offset, pageSize: 20) { features in
-                self.filteredEarthquakes = features.map { feature in
-                    return self.featureToEarthquakeModelMapper.map(from: feature)
-                }
-                self.pageNumber += 1
-                self.viewDelegate?.updateView()
+            
+            if self.isPaginating {
+                self.filteredEarthquakes.append(contentsOf: mappedEarthquakes)
+            } else {
+                self.filteredEarthquakes = mappedEarthquakes
             }
-            isFiltering = true
+            self.hasMoreData = !(mappedEarthquakes.count < EarthquakesApiDataSource.Constants.pageSize)
+            print("FILTERING: Returned \(features.count). Paginating: \(self.isPaginating). HasMoreData: \(self.hasMoreData)")
             self.viewDelegate?.updateView()
         }
+    }
+
+    // MARK: - Filtering
+    func filterEarthquakesByDate(selectedDates: [Date]) {
+        isPaginating = false
+        pageNumber = 0
+        getFilteredEarthquakesByDate(selectedDates: selectedDates)
     }
     
     func endFiltering() {
         isFiltering = false
     }
     
+    // MARK: - Ordering
     func orderFeaturesByMagnitude() {
         inIncreasingOrder = !inIncreasingOrder
         if (isFiltering) {

@@ -15,6 +15,7 @@ class EarthquakesApiDataSource {
         
         let urlString = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(startTime)&endtime=\(endTime)&limit=\(selectedPageSize)&offset=\(actualOffset)"
         
+        print("REQUESTING ---- starttime=\(startTime)&endtime=\(endTime)")
         guard let url = URL(string: urlString) else {
             completion([])
             return
