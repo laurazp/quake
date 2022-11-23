@@ -36,6 +36,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         return searchController.isActive && !isSearchBarEmpty
     }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Quake"
@@ -48,6 +49,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         viewModel.viewDidLoad() // Update tableview
     }
 
+    // MARK: - Privatte
     private func setupTable() {
         tableView.register(UINib(nibName: "EarthquakeEventCell", bundle: nil), forCellReuseIdentifier: "EarthquakeEventCell")
         tableView.delegate = self
@@ -84,22 +86,24 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         searchController.searchBar.searchTextField.inputAccessoryView = toolbar
     }
     
-    @objc func filterButtonTapped() {
-        searchController.searchBar.text = datesPicker.selectedDatesString
-        viewModel.filterEarthquakesByDate(selectedDates: datesPicker.selectedDates)
-        searchController.searchBar.resignFirstResponder()
-      }
-    
-    @objc func cancelButtonTapped() {
-        searchController.searchBar.resignFirstResponder()
-        searchBarCancelButtonClicked(searchController.searchBar)
-        searchController.isActive = false
-      }
     
     @objc private func refreshEarthquakesData(_ sender: Any) {
         // Fetch Earthquakes Data
         viewModel.viewDidLoad() //TODO: change for the first call to the API
         self.refreshControl.endRefreshing()
+    }
+    
+    // MARK: - Actions
+    @objc func filterButtonTapped() {
+        searchController.searchBar.text = datesPicker.selectedDatesString
+        viewModel.filterEarthquakesByDate(selectedDates: datesPicker.selectedDates)
+        searchController.searchBar.resignFirstResponder()
+    }
+    
+    @objc func cancelButtonTapped() {
+        searchController.searchBar.resignFirstResponder()
+        searchBarCancelButtonClicked(searchController.searchBar)
+        searchController.isActive = false
     }
     
     @IBAction func orderByMagnitude(_ sender: Any) {
@@ -240,7 +244,7 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
-            if !fetchingMore {
+            if !fetchingMore && viewModel.hasMoreData {
                 beginFetchMore()
                 print("More data")
             }
