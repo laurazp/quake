@@ -26,7 +26,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         configure()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
     }
     
@@ -78,6 +79,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             .staticCell(model: SettingsOption(title: "Feedback", icon: UIImage(systemName: "wave.3.backward.circle"), iconBackgroundColor: .systemGreen) {
                 let configuration = FeedbackConfiguration(toRecipients: ["laurikazp@gmail.com"], usesHTML: true)
                 let controller = FeedbackViewController(configuration: configuration)
+                self.tabBarController?.tabBar.isHidden = true
                 self.navigationController?.pushViewController(controller, animated: true)
             })
         ]))

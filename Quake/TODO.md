@@ -1,18 +1,15 @@
 
 # TODO
 
+## Añadir MARKs en clases
+
 ### Titulito del minimapa accediendo desde Map sale con place en vez de simplified
-### En Feedback no se puede poner TabBar hidden
-### Mover items de TabBar un poco para abajo ??
-### Pasar funciones de Settings y de Map a los ViewModel ??
-### Poner todos los campos de la API como opcionales???
-### Revisar si se cargan sólo las anotaciones del área
+
+### Cambiar color de clusters???
+
 ### Revisar advertencias amarillas
-
-
 ### Revisar error consola al hacer click en botón expandir (constraints)
 ### Revisar advertencia clusters en map
-
 
 
 ## Antes de publicar en AppStore
@@ -20,11 +17,14 @@
 ### Artwork --> imagen de la animación Splash con fondo blanco
 ### Pantallazos de la app funcionando
 ### Revisar en diferentes dispositivos
-### Comprobar que mailto funciona en device (API Info)
 
+### Comprobar que mailto funciona en device (API Info)
+### Comprobar que funciona botón de centrar en localiazción del user
 
 
 ## Mejoras
 
+### Añadir búsqueda por zonas en Earthquakes (además de y junto con búsqueda por fecha)
 ### Añadir idiomas --> con NSLocalizedStrings
-
+### Cargar sólo las anotaciones de la view del mapa
+### Pasar funciones de Settings y de Map a los ViewModel

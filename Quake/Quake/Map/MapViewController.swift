@@ -182,16 +182,18 @@ extension MapViewController: HandleMapSearch {
             withIdentifier: identifier) as? MKMarkerAnnotationView {
             dequeuedView.annotation = annotation
             view = dequeuedView
-        } else if let cluster = annotation as? MKClusterAnnotation {
+        } else {
+            view = MKMarkerAnnotationView(
+                annotation: annotation,
+                reuseIdentifier: identifier)
+        }
+        
+        if let cluster = annotation as? MKClusterAnnotation {
             let clusterView = mapView.dequeueReusableAnnotationView(withIdentifier: "clusterView")
             ?? MKAnnotationView(annotation: annotation, reuseIdentifier: "clusterView")
             clusterView.annotation = cluster
             clusterView.image = UIImage(named: "cluster")
             return clusterView
-        } else {
-            view = MKMarkerAnnotationView(
-                annotation: annotation,
-                reuseIdentifier: identifier)
         }
         
         view.canShowCallout = true

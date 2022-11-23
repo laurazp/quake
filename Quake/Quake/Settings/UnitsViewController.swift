@@ -6,7 +6,7 @@ class UnitsViewController: UIViewController {
     @IBOutlet weak var unitsCard: UIView!
     private let viewModel = SettingsViewModel()
     
-    let segmentedControl: UISegmentedControl = {
+    lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["Kilometers", "Miles"])
         segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
         return segmentedControl

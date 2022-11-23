@@ -13,7 +13,7 @@ final class EarthquakesViewModel {
     private var isFiltering: Bool = false
     private var inIncreasingOrder = false
     private var pageNumber = 0
-    var hasMoreData = true //Cuando recibamos datos vacíos (arrray), lo ponemos a false y, cuando haya datos, a true. Idealmente, si el num de datos en < que el num de items (20), ya será false
+    var hasMoreData = true
     var isPaginating = true
     var selectedDates = [Date]()
     var filteredText: String?
