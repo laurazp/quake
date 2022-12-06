@@ -24,7 +24,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.layer.borderColor = UIColor.clear.cgColor
         self.tabBar.layer.borderWidth = 0
         self.tabBar.clipsToBounds = false
-        self.tabBar.backgroundColor = UIColor.white
+        self.tabBar.backgroundColor = UIColor.systemGray6
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
     }
