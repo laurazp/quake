@@ -77,7 +77,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }),
             .staticCell(model: SettingsOption(title: "Feedback", icon: UIImage(systemName: "wave.3.backward.circle"), iconBackgroundColor: .systemGreen) {
-                let configuration = FeedbackConfiguration(toRecipients: ["laurikazp@gmail.com"], usesHTML: true)
+                let configuration = FeedbackConfiguration(toRecipients: ["luridevlabs@gmail.com"], usesHTML: true)
                 let controller = FeedbackViewController(configuration: configuration)
                 self.tabBarController?.tabBar.isHidden = true
                 self.navigationController?.pushViewController(controller, animated: true)

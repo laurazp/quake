@@ -156,11 +156,7 @@ extension MapViewController: HandleMapSearch {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate,
-                                                       latitudinalMeters: rangeInMeters,
-                                                       longitudinalMeters: rangeInMeters)
-        mapView.setRegion(coordinateRegion, animated: true)
+
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
