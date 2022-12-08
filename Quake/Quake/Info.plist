@@ -7,9 +7,9 @@
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>Privacy - Location When In Use Usage Description</key>
-		<string>Go to Permissions in Settings and turn location services on in order to have the whole app working properly</string>
+		<string>Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you</string>
 		<key>Privacy - Location usage Description</key>
-		<string>Go to Permissions in Settings and turn location services on in order to have the whole app working properly</string>
+		<string>Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you</string>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 	</dict>

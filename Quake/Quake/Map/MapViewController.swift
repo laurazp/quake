@@ -99,7 +99,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     private func checkLocationServices() {
         guard CLLocationManager.locationServicesEnabled() else {
-            let alert = UIAlertController(title: "Location Services not enabled", message: "Go to Permissions in Settings and turn location services on in order to have the whole app working properly.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Location Services not enabled", message: "Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -118,14 +118,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             locationManager.startUpdatingLocation()
             break
         case .denied:
-            let alert = UIAlertController(title: "Location Services not enabled", message: "Go to your phone Settings and turn location services on in order to have the map working properly.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Location Services not enabled", message: "Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
-            let alert = UIAlertController(title: "Alert", message: "Quake is not authorize to use location services. Go to your phone Settings to change it.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Alert", message: "Quake is not authorize to use location services. Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you. Go to your phone Settings to change it.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             break
