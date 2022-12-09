@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationUsageDescription</key>
-	<string>Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you</string>
+	<string>Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you</string>
+	<string>Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you</string>
+	<string>Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you</string>
+	<string>Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>13.0.0</string>
 	<key>UIApplicationSceneManifest</key>
