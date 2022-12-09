@@ -920,9 +920,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quake/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow location access in order to use this app.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow location access in order to use this app.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location access in order to use this app.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -955,9 +956,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quake/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow location access in order to use this app.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow location access in order to use this app.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location access in order to use this app.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Turning on location services allows the app to locate yourself in the map so you can see earthquakes around you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
