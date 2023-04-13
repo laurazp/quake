@@ -4,16 +4,15 @@ import UIKit
 class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         
     @IBOutlet var tableView: UITableView!
-    let refreshControl = UIRefreshControl()
-    
     @IBOutlet weak var magnitudeChevron: UIImageView!
     @IBOutlet weak var placeChevron: UIImageView!
     @IBOutlet weak var dateChevron: UIImageView!
-    var fetchingMore = false
     
     let viewModel = EarthquakesViewModel()
     private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     
+    var fetchingMore = false
+    let refreshControl = UIRefreshControl()
     let searchController = UISearchController(searchResultsController: nil)
     private let datePicker = UIDatePicker()
     private let datePicker2 = UIDatePicker()
@@ -41,15 +40,16 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         super.viewDidLoad()
         title = "Quake"
         setupTable()
+        viewModel.viewDidLoad() // Update tableview
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-        viewModel.viewDidLoad() // Update tableview
+        //viewModel.viewDidLoad() // Update tableview
     }
 
-    // MARK: - Privatte
+    // MARK: - Private
     private func setupTable() {
         tableView.register(UINib(nibName: "EarthquakeEventCell", bundle: nil), forCellReuseIdentifier: "EarthquakeEventCell")
         tableView.delegate = self
@@ -85,7 +85,6 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
         toolbar.sizeToFit()
         searchController.searchBar.searchTextField.inputAccessoryView = toolbar
     }
-    
     
     @objc private func refreshEarthquakesData(_ sender: Any) {
         // Fetch Earthquakes Data
