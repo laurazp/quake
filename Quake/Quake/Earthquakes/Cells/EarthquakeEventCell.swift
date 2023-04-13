@@ -16,6 +16,7 @@ class EarthquakeEventCell: UITableViewCell {
     @IBOutlet weak var tsunamiLabel: UILabel!
     @IBOutlet weak var coordsLabel: UILabel!
     @IBOutlet weak var depthLabel: UILabel!
+    @IBOutlet weak var cardView: UIView!
     
     var earthquakeViewController: EarthquakeViewController = EarthquakeViewController()
     
@@ -25,6 +26,7 @@ class EarthquakeEventCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         expandableView.isHidden = true //Expandable view is hidden by default
+        cardView.layer.cornerRadius = 12
     }
     
     override func prepareForReuse() {
