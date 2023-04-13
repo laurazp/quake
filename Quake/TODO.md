@@ -28,3 +28,11 @@
 ### Añadir idiomas --> con NSLocalizedStrings
 ### Cargar sólo las anotaciones de la view del mapa
 ### Pasar funciones de Settings y de Map a los ViewModel
+
+
+## Nueva versión 1.2
+
+### Si ordenas lista, al cargar nuevos quakes, se añaden sin ordenar
+### Queda raro que actualice cada vez que vuelves desde EarthquakeDetail a Earthquake?? --> lo he quitado
+### Revisar animación al cerrar las cells
+
