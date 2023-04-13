@@ -65,7 +65,7 @@ final class EarthquakesViewModel {
     private func getEarthquakes() {
         //página 0 -> 1   página 1 -> 21  página 2 -> 41
         let offset = pageNumber * EarthquakesApiDataSource.Constants.pageSize + 1
-        getEarthquakesUseCase.getLatestEarthquakes(offset: offset, pageSize: 20) { features in
+        getEarthquakesUseCase.getLatestEarthquakes(offset: offset, pageSize: 30) { features in
             let earthquakes = features.map { feature in
                 return self.featureToEarthquakeModelMapper.map(from: feature)
             }
@@ -100,7 +100,7 @@ final class EarthquakesViewModel {
         let leftDate = selectedDates[0]
         let rightDate = date1 == date2 ? nil : selectedDates[1]
         
-        getEarthquakesUseCase.getEarthquakesBetweenDates(leftDate, rightDate, offset: offset, pageSize: 20) { features in
+        getEarthquakesUseCase.getEarthquakesBetweenDates(leftDate, rightDate, offset: offset, pageSize: 30) { features in
             let mappedEarthquakes = features.map { feature in
                 return self.featureToEarthquakeModelMapper.map(from: feature)
             }

@@ -178,8 +178,7 @@ class EarthquakeViewController: UIViewController, EarthquakeEventCellDelegate {
 
 extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate {
     
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
     }
 
@@ -204,10 +203,8 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
        
         let storyboard = UIStoryboard(name: "EarthquakeDetailStoryboard", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "EarthquakeDetailViewController") as? EarthquakeDetailViewController {
-            viewController.title = "Detail"
             viewController.viewModel.viewDelegate = viewController
             let earthquakeModel = viewModel.getModel(at: indexPath.row)
-            
             viewController.title = earthquakeModel.simplifiedTitle
 
             let selectedEarthquakeModel = EarthquakeModel(fullTitle: " ",
@@ -220,17 +217,12 @@ extension EarthquakeViewController: UITableViewDelegate, UITableViewDataSource, 
                                                           originalDate: earthquakeModel.originalDate,
                                                           tsunami: earthquakeModel.tsunami,
                                                           magnitude: earthquakeModel.magnitude)
-           
             let backItem = UIBarButtonItem()
             backItem.title = "Back"
             navigationItem.backBarButtonItem = backItem
             
             viewController.viewModel.earthquakeModel = selectedEarthquakeModel
             navigationController?.pushViewController(viewController, animated: true) // Navegacion
-        }
-        
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 30
         }
     }
     

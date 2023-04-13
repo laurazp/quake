@@ -33,6 +33,5 @@
 ## Nueva versión 1.2
 
 ### Si ordenas lista, al cargar nuevos quakes, se añaden sin ordenar
-### Queda raro que actualice cada vez que vuelves desde EarthquakeDetail a Earthquake?? --> lo he quitado
 ### Revisar animación al cerrar las cells
 
