@@ -11,19 +11,18 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var coordsLabel: UILabel!
     @IBOutlet weak var magnitudeLabel: UILabel!
     @IBOutlet weak var depthLabel: UILabel!
-    
-    let viewModel = EarthquakeDetailViewModel()
-    
-    var getFormattedCoordsFormatter = GetFormattedCoordsFormatter()
-    let getTsunamiValueFormatter = GetTsunamiValueFormatter()
-    
     @IBOutlet weak var infoCard: UIView!
     @IBOutlet weak var mapCard: UIView!
+    
+    let viewModel = EarthquakeDetailViewModel()
+    var getFormattedCoordsFormatter = GetFormattedCoordsFormatter()
+    let getTsunamiValueFormatter = GetTsunamiValueFormatter()
     
     // MapView
     @IBOutlet weak var mapView: MKMapView!
     private let rangeInMeters: Double = 1000000
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -35,6 +34,7 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         tabBarController?.tabBar.isHidden = true
     }
     
+    // MARK: - Private
     private func setupViews() {
         infoCard.layer.shadowColor = UIColor.black.cgColor
         infoCard.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -45,14 +45,6 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         mapCard.layer.shadowOffset = CGSize(width: 1, height: 1)
         mapCard.layer.shadowRadius = 3
         mapCard.layer.shadowOpacity = 0.2
-    }
-    
-    func updateView(with model: EarthquakeModel) {
-        configure(with: model)
-    }
-    
-    func didTapButton() {
-        navigationController?.popViewController(animated: true) // Turn back
     }
     
     private func configure(with earthquakeModel: EarthquakeModel) {
@@ -94,6 +86,15 @@ class EarthquakeDetailViewController: UIViewController, MKMapViewDelegate {
         
         titleString.append(contentString)
         return titleString
+    }
+    
+    // MARK: - View Model Output
+    func updateView(with model: EarthquakeModel) {
+        configure(with: model)
+    }
+    
+    func didTapButton() {
+        navigationController?.popViewController(animated: true) // Turn back
     }
 }
 
