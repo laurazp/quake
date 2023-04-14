@@ -235,7 +235,7 @@ extension MapViewController: HandleMapSearch {
     
     func dropPinZoomIn(_ mapItem: MKMapItem){
         selectedPin = mapItem.placemark
-        let span = MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
+        let span = MKCoordinateSpan(latitudeDelta: 35, longitudeDelta: 35)
         let region = MKCoordinateRegion(center: mapItem.placemark.coordinate, span: span)
         mapView.setRegion(region, animated: true)
         resultSearchController?.searchBar.text = mapItem.name
