@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220236C729E9A27A00E2625C /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220236C629E9A27A00E2625C /* LocationServices.swift */; };
 		22143456285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22143455285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard */; };
 		22143458285CFED800F1CBA0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22143457285CFED800F1CBA0 /* SettingsViewController.swift */; };
 		2214345E285D093600F1CBA0 /* AnnotationInMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214345D285D093600F1CBA0 /* AnnotationInMap.swift */; };
@@ -90,6 +91,7 @@
 /* Begin PBXFileReference section */
 		13EBF4FE8106A3EB9DD2BB85 /* Pods_Quake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D85B4687D60E0BA594D84EE /* Pods-Quake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quake.release.xcconfig"; path = "Target Support Files/Pods-Quake/Pods-Quake.release.xcconfig"; sourceTree = "<group>"; };
+		220236C629E9A27A00E2625C /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
 		22143455285CFEBD00F1CBA0 /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsStoryboard.storyboard; sourceTree = "<group>"; };
 		22143457285CFED800F1CBA0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2214345D285D093600F1CBA0 /* AnnotationInMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationInMap.swift; sourceTree = "<group>"; };
@@ -183,6 +185,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220236C529E9A26000E2625C /* LocationServices */ = {
+			isa = PBXGroup;
+			children = (
+				220236C629E9A27A00E2625C /* LocationServices.swift */,
+			);
+			path = LocationServices;
+			sourceTree = "<group>";
+		};
 		22143454285CFE9400F1CBA0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +285,7 @@
 		228D200328985A2D006B6BE8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				220236C529E9A26000E2625C /* LocationServices */,
 				22EEA0172912A37F00F7D86F /* Repository */,
 				229EA82928DB1CEF00A03263 /* Extensions */,
 				B6B4D55C28C516F0009E6FF4 /* Loading */,
@@ -716,6 +727,7 @@
 				22F6849F289C110500412B34 /* MapViewModel.swift in Sources */,
 				22B47EC628C0DCBA008C27E3 /* AppInfoViewController.swift in Sources */,
 				227D909E287EE7C500A0DED5 /* LocationSearchTable.swift in Sources */,
+				220236C729E9A27A00E2625C /* LocationServices.swift in Sources */,
 				227D906D286B325900A0DED5 /* Response.swift in Sources */,
 				22990A10284BD40500C1104D /* AppDelegate.swift in Sources */,
 				22B47EB628AF0196008C27E3 /* FeatureToEarthquakeModelMapper.swift in Sources */,
