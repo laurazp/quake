@@ -8,20 +8,21 @@ protocol HandleMapSearch {
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate {
     
+    let viewModel = MapViewModel()
+    
     @IBOutlet private var mapView: MKMapView!
+    @IBOutlet weak var searchBarView: UIView!
+    
+    private let locationServices = LocationServices()
     private let locationManager = CLLocationManager()
     private let rangeInMeters: Double = 1000000
     private var annotationsInMap: [AnnotationInMap] = []
-    
-    let viewModel = MapViewModel()
     
     private let getSimplifiedTitleFormatter = GetSimplifiedTitleFormatter()
     private let getTsunamiValueFormatter = GetTsunamiValueFormatter()
     private let getDateFormatter = GetDateFormatter()
     private let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
     
-    @IBOutlet weak var searchBarView: UIView!
-
     var resultSearchController: UISearchController? = nil
     var matchingItems: [MKMapItem] = []
     var selectedPin:MKPlacemark? = nil
@@ -29,7 +30,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutUI()
-        checkLocationServices()
+        locationServices.checkLocationServices(controller: self)
         centerViewOnUser()
         
         mapView.delegate = self
@@ -97,44 +98,45 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         centerViewOnUser()
     }
     
-    private func checkLocationServices() {
-        guard CLLocationManager.locationServicesEnabled() else {
-            let alert = UIAlertController(title: "Location Services not enabled", message: "Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
-            return
-        }
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        checkAuthorizationForLocation()
-    }
-    
-    private func checkAuthorizationForLocation() {
-        switch locationManager.authorizationStatus {
-        case .authorizedWhenInUse, .authorizedAlways:
-            mapView.showsUserLocation = true
-            centerViewOnUser()
-            locationManager.startUpdatingLocation()
-            break
-        case .denied:
-            let alert = UIAlertController(title: "Location Services not enabled", message: "Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            let alert = UIAlertController(title: "Alert", message: "Quake is not authorize to use location services. Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you. Go to your phone Settings to change it.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            break
-        @unknown default:
-            break
-        }
-    }
+//    private func checkLocationServices() {
+//        guard CLLocationManager.locationServicesEnabled() else {
+//            let alert = UIAlertController(title: "Location Services not enabled", message: "Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you.", preferredStyle: UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//
+//            return
+//        }
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        checkAuthorizationForLocation()
+//    }
+//
+//    private func checkAuthorizationForLocation() {
+//        switch locationManager.authorizationStatus {
+//        case .authorizedWhenInUse, .authorizedAlways:
+//            mapView.showsUserLocation = true
+//            centerViewOnUser()
+//            locationManager.startUpdatingLocation()
+//            break
+//        case .denied:
+//            let alert = UIAlertController(title: "Location Services not enabled", message: "Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you.", preferredStyle: UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//            break
+//        case .notDetermined:
+//            locationManager.requestWhenInUseAuthorization()
+//        case .restricted:
+//            let alert = UIAlertController(title: "Alert", message: "Quake is not authorize to use location services. Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you. Go to your phone Settings to change it.", preferredStyle: UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//            break
+//        @unknown default:
+//            break
+//        }
+//    }
     
     private func centerViewOnUser() {
+        //TODO: Revisar!!
         guard let location = locationManager.location?.coordinate else { return }
         
         let coordinateRegion = MKCoordinateRegion.init(
@@ -152,7 +154,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
 extension MapViewController: HandleMapSearch {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkAuthorizationForLocation()
+        locationServices.checkAuthorizationForLocation(controller: self)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

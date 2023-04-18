@@ -13,8 +13,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }()
     
     var models = [SettingsSection]()
-    
-    private let locationManager = CLLocationManager()
+    private let locationServices = LocationServices()
+    //private let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             }),
             .staticCell(model: SettingsOption(title: "Turn Location Services On", icon: UIImage(systemName: "location"), iconBackgroundColor: .systemOrange) {
                 
-                self.checkLocationServices()
+                self.locationServices.checkLocationServices(controller: self)
+                //self.checkLocationServices()
             })
         ]))
         
@@ -85,44 +86,44 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ]))
     }
     
-    private func checkLocationServices() {
-        guard CLLocationManager.locationServicesEnabled() else {
-            let alert = UIAlertController(title: "Location Services not enabled", message: "Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            return
-        }
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        let alert = UIAlertController(title: "Location Services enabled", message: "Location Services enabled for Quake.", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Accept", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        checkAuthorizationForLocation()
-    }
-    
-    private func checkAuthorizationForLocation() {
-        switch locationManager.authorizationStatus {
-        case .authorizedWhenInUse, .authorizedAlways:
-            locationManager.startUpdatingLocation()
-            break
-        case .denied:
-            let alert = UIAlertController(title: "Location Services not enabled", message: "Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            let alert = UIAlertController(title: "Alert", message: "Quake is not authorize to use location services. Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you. Go to your phone Settings to change it.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            break
-        @unknown default:
-            break
-        }
-    }
+//    private func checkLocationServices() {
+//        guard CLLocationManager.locationServicesEnabled() else {
+//            let alert = UIAlertController(title: "Location Services not enabled", message: "Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you.", preferredStyle: UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//            return
+//        }
+//        
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        
+//        let alert = UIAlertController(title: "Location Services enabled", message: "Location Services enabled for Quake.", preferredStyle: UIAlertController.Style.alert)
+//        alert.addAction(UIAlertAction(title: "Accept", style: UIAlertAction.Style.default, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+//        checkAuthorizationForLocation()
+//    }
+//    
+//    private func checkAuthorizationForLocation() {
+//        switch locationManager.authorizationStatus {
+//        case .authorizedWhenInUse, .authorizedAlways:
+//            locationManager.startUpdatingLocation()
+//            break
+//        case .denied:
+//            let alert = UIAlertController(title: "Location Services not enabled", message: "Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you.", preferredStyle: UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//            break
+//        case .notDetermined:
+//            locationManager.requestWhenInUseAuthorization()
+//        case .restricted:
+//            let alert = UIAlertController(title: "Alert", message: "Quake is not authorize to use location services. Turning on location services allows us to pinpoint you in the world map so you can see earthquakes around you. Go to your phone Settings to change it.", preferredStyle: UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//            break
+//        @unknown default:
+//            break
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let section = models[section]
